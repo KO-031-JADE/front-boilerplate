@@ -28,16 +28,18 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1601px;
+  max-width: 1600px;
   margin: 0 auto;
+}
+
+.contents-container {
+  width: 100%;
+  max-width: 1400px;
+  margin:0 auto;
 }
 
 .main-color {
   color: #1cabe2;
-}
-
-.yellow-color {
-  color: #fec214;
 }
 
 /* header start */
@@ -209,7 +211,165 @@ body {
   position: relative;
 }
 
-.recruit-section .schedule-box .container .recruit-title{
+.recruit-section .schedule-box .container .recruit-schedule {
+  width: 100%;
+  height: 463px;
+  position: relative;
+  margin-bottom: 135px;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .top-box{
+  /* width: 390px; */
+  width: 24.38%;
+  height: 60px;
+  border-radius: 65px 55px 0 0;
+  border: 4px solid #1cabe2;
+  background-color: #fff;
+  border-bottom: none;
+  box-shadow: 3.86px 0px 0.64px -1px rgba(0, 160, 233, 1);
+  position: absolute;
+  top: -56px;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-title {
+  font-size: 54px;
+  font-weight: 800;
+  position: absolute;
+  top: -36px;
+  left: 100px;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents {
+  border-radius:0 40px 40px 40px;
+  width: 100%;
+  height: 447px;
+  border: 4px solid #1cabe2;
+  background-color: #fff;
+  box-shadow: 6px 6px 0px 0px rgba(0, 174, 255, 1);
+  padding-top: 80px;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap{
+  margin-top: 61px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li{
+  display: flex;
+  align-items: center;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:first-child {
+  font-size: 24px;
+  font-weight: 600;
+}
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:first-child img {
+  margin-right: 7px;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:last-child {
+  font-weight: 600;
+  display: block;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:last-child p:last-child {
+  font-size: 16px;
+  color:#999;
+}
+
+.yellow-color {
+  color:#ffc20e;
+}
+.red-color {
+  color:#f26a21;
+}
+
+.low-green-color {
+  color: #80bd41;
+}
+
+.green-color {
+  color:#00833d;
+}
+
+.blue-color {
+  color: #374ea2; 
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li img{
+  width: 22px;
+  height: 20px;
+}
+
+/* .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .month{
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .month li {
+  display: flex;
+  background-color: #1cabe2;
+  align-items: center;
+  justify-content: center;
+  color:#fff;
+  font-size: 20px;
+  height: 44px;
+  border-radius: 22px;
+  font-weight: 600;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .month li:first-child{
+  width: 89.99%;
+  max-width: 1259px;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .month li:last-child{
+  width: 10.01%;
+  max-width: 140px;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .day{  
+  display: flex;
+  margin-top: 16px;
+  justify-content: space-around;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .day li{
+  width: 3.31%;
+  padding-top: 20px;
+  background-color:#eef0f1;
+  color:#000;
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  padding: 1.43% 0% 4.857% 0%;
+  font-size: 18px;
+  position: relative;
+  overflow: visible;
+}
+
+.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .day li .yellow-line {
+  width: 510px;
+  height: 20px;
+  background-color: #ffc20e;
+  border-radius: 10px;
+  position: absolute;
+  top: 44%;
+  left: 22%;
+  z-index: 1;
+}
+
+.grey-color{
+  color:#999999!important;
+  font-weight: 400!important;
+} */
+
+.recruit-title{
   border-top: 0.9px solid #000;
   border-bottom: 0.9px solid #000;
   font-weight: 800;
@@ -245,23 +405,32 @@ body {
 }
 .recruit-section .schedule-box .container .subject-list .wrap .type3 {
   position: relative;
-  width: 504px;
+  max-width: 504px;
+  border-radius: 40px;
+  overflow: hidden;
+  border: 4px solid #1cabe2;
+  box-shadow: 3.86px 4.64px 0px 0px rgba(0, 160, 233, 1);
 }
 
 .recruit-section .schedule-box .container .subject-list .wrap .type3 .thumb {
+  width: 100%;
   height: 100%;
+  min-width: 496px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .recruit-section .schedule-box .container .subject-list .wrap .type3 a{
   font-weight: 800;
   font-size: 34px;
   background: #1cabe2;
-  width: 498px;
+  width: 500px;
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0 0 40px 40px;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -388,9 +557,143 @@ body {
 
 /* recruit-section end */
 
+/* examination-details-section start */
+.examination-details-section {
+  position: relative;
+  padding-top: 180px;
+}
+
+.examination-details-section .container{
+  position: relative;
+  padding-top: 1;
+}
+.examination-details-section .bg {
+  background: url(../images/examination_details_bg.png) no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.examination-details-section .container .box-wrap { 
+  padding-top: 137px;
+  padding-bottom: 100px;
+} 
+
+.examination-details-section .container .box-wrap .examination-detail {
+  position: relative;
+}
+
+.examination-details-section .container .box-wrap .examination-detail .top-box {
+  width: 24.38%;
+  height: 60px;
+  border-radius: 65px 55px 0 0;
+  border: 4px solid #00833d;
+  background-color: #fff;
+  border-bottom: none;
+  box-shadow: 3.86px 0px 0.64px -1px #00833d;
+  position: absolute;
+  top: -56px;
+}
+
+.examination-details-section .container .box-wrap .examination-detail .box-title {
+  font-size: 54px;
+  font-weight: 800;
+  position: absolute;
+  top: -36px;
+  left: 100px;
+}
+
+.examination-details-section .container .box-wrap .examination-detail .box-contents {
+  border-radius:0 40px 40px 40px;
+  width: 100%;
+  border: 4px solid #00833d;
+  background-color: #fff;
+  box-shadow: 6px 6px 0px 0px #00833d;
+}
+
+.examination-details-section .container .box-wrap .detail01 {
+  width: 100%;
+  height: 912px;
+}
+.examination-details-section .container .box-wrap .detail01 .box-contents {
+  height: 852px;
+}
+.examination-details-section .container .box-wrap .detail02 {
+  width: 100%;
+  height: 758px;
+  margin-top: 85px;
+}
+.examination-details-section .container .box-wrap .detail02 .box-contents {
+  height: 697px;
+}
+/* 공통 스타일 */
+
+.award-section > div {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  margin-bottom: 6px;
+}
+
+.award-header, 
+.criteria-header { 
+  margin-top: 81px;
+  display: flex;
+  height: 84px;
+  align-items: center;
+  background-color: #f2f9f5;
+  font-size:30px;
+  font-weight: 800;
+  text-align: center;
+  gap: 6px;
+}
+
+.award {
+  background-color: #f9f9f9;
+  font-size: 24px;
+  font-weight: 500;
+  height: 80px;
+}
+.award-row {
+  gap: 6px;
+  font-weight: 500;
+}
+.award-row div{
+  height: 80px;
+  line-height: 80px;
+  border-radius: 20px;
+  font-size: 24px;
+}
+
+.award-header div:nth-child(1),
+.award-row div:nth-child(1),
+.award-header div:nth-child(3),
+.award-row div:nth-child(3)
+{
+  max-width: 290px;
+  width: 20.7%;
+  background-color: #f2f9f5;
+}
+
+.award-header div:nth-child(2),
+.award-row div:nth-child(2){
+  max-width: 809px;
+  width: 57.74%;
+}
+.award-row div:nth-child(2){
+  background-color: #f9f9f9;
+}
+
+/* examination-details-section end */
+
 /* benefit-section start */
 .benefit-section {
-  background: #00833d;
   padding: 160px 0;
 }
 
