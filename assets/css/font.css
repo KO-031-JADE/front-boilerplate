@@ -158,3 +158,20 @@
   font-display: swap;
   src: url('../fonts/pretendard/Pretendard-Thin.woff2') format('woff2');
 }
+
+/* Wanted Sans 폰트 */
+@font-face {
+  font-family: 'Wanted Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('../fonts/wantedsans/WantedSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Wanted Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('../fonts/wantedsans/WantedSans-Regular.ttf') format('truetype');
+}

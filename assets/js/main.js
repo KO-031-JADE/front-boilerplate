@@ -72,4 +72,17 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("팝업 요소가 존재하지 않습니다. HTML 코드를 확인해주세요.");
   }
+
+  // 공지사항 토글 이벤트
+  const noticeTitles = document.querySelectorAll('.notice-lists_tit');
+  
+  noticeTitles.forEach(title => {
+    title.addEventListener('click', function() {
+      if (this.classList.contains('open')) {
+        this.classList.remove('open');
+      } else {
+        this.classList.add('open');
+      }
+    });
+  });
 });
