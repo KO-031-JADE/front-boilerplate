@@ -1,13 +1,13 @@
 .font-r {
-  font-family: 'font-r', sans-serif;
+  font-family: "font-r", sans-serif;
 }
 
 .font-b {
-  font-family: 'font-b', sans-serif;
+  font-family: "font-b", sans-serif;
 }
 
 .font-h {
-  font-family: 'font-h', sans-serif;
+  font-family: "font-h", sans-serif;
 }
 
 html {
@@ -16,12 +16,12 @@ html {
 }
 
 body {
-  font-family: 'Paperlogy', sans-serif;
+  font-family: "Paperlogy", sans-serif;
   width: 100%;
   height: 100%;
 }
 
-.wrap{
+.wrap {
   width: 100%;
   height: 100%;
 }
@@ -35,7 +35,7 @@ body {
 .contents-container {
   width: 100%;
   max-width: 1400px;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 .main-color {
@@ -86,21 +86,22 @@ body {
 
 /* main-section start */
 .main-section {
-  background:url(../images/main.jpg) no-repeat;
+  background: url(../images/main.jpg) no-repeat;
   width: 100%;
-  height:100vh;
+  height: 126vh;
   background-size: cover;
-  background-position: bottom;
+  background-position: top;
+  max-height: 1145px;
 }
 
-.main-section .container .top{
+.main-section .container .top {
   padding: 203px 100px 0 100px;
   display: flex;
   justify-content: space-between;
 }
 
 .main-section .container .top p {
-  font-family: 'Paperlogy', sans-serif;
+  font-family: "Paperlogy", sans-serif;
   font-weight: 900;
   font-size: 108px;
   line-height: 126px;
@@ -113,34 +114,35 @@ body {
 .main-section .container .top .main-title del {
   text-decoration: none;
   position: absolute;
-  top: 15px;
+  top: 18px;
   left: 356px;
   background: #10a34a;
-	border-radius: 30px;
+  border-radius: 30px;
   color: #fff;
   font-size: 30px;
-  padding: 17px 45px;
+  padding: 7.5px 45px;
+  font-weight: 600;
 }
 
 .main-section .container .top .main-title del::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 0;
-	height: 0;
-	border: 17px solid transparent;
-	border-top-color: #10a34a;
-	border-bottom: 0;
-	border-left: 0;
-	margin-left: -13px;
-	margin-bottom: -17px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 17px solid transparent;
+  border-top-color: #10a34a;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -13px;
+  margin-bottom: -16px;
 }
 
 .main-section .container .top .main-title-float {
   width: 275px;
   height: 225px;
-
+  margin-right: -46px;
 }
 
 .main-section .container .bottom {
@@ -155,12 +157,12 @@ body {
   margin-bottom: 0;
 }
 
-.main-section .container .bottom ul li p:first-child{
+.main-section .container .bottom ul li p:first-child {
   font-size: 26px;
   margin-right: 19px;
   font-weight: 600;
 }
-.main-section .container .bottom ul li p:last-child{
+.main-section .container .bottom ul li p:last-child {
   font-size: 24px;
   font-weight: 300;
   display: flex;
@@ -173,7 +175,7 @@ body {
   position: absolute;
   top: 520px;
   right: -172px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: "Pretendard", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
@@ -199,7 +201,7 @@ body {
   left: 0;
   width: 100%;
   height: calc(100% + 129px);
-  background-size: cover ;
+  background-size: cover;
 }
 
 .recruit-section .schedule-box {
@@ -218,7 +220,7 @@ body {
   margin-bottom: 135px;
 }
 
-.recruit-section .schedule-box .container .recruit-schedule .top-box{
+.recruit-section .schedule-box .container .recruit-schedule .top-box {
   /* width: 390px; */
   width: 24.38%;
   height: 60px;
@@ -240,7 +242,7 @@ body {
 }
 
 .recruit-section .schedule-box .container .recruit-schedule .box-contents {
-  border-radius:0 40px 40px 40px;
+  border-radius: 0 40px 40px 40px;
   width: 100%;
   height: 447px;
   border: 4px solid #1cabe2;
@@ -249,42 +251,90 @@ body {
   padding-top: 80px;
 }
 
-.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap{
+.recruit-section
+  .schedule-box
+  .container
+  .recruit-schedule
+  .box-contents
+  .contents-container
+  .txt-wrap {
   margin-top: 61px;
   display: flex;
   justify-content: space-between;
 }
 
-.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li{
+.recruit-section
+  .schedule-box
+  .container
+  .recruit-schedule
+  .box-contents
+  .contents-container
+  .txt-wrap
+  ul
+  li {
   display: flex;
   align-items: center;
 }
 
-.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:first-child {
+.recruit-section
+  .schedule-box
+  .container
+  .recruit-schedule
+  .box-contents
+  .contents-container
+  .txt-wrap
+  ul
+  li:first-child {
   font-size: 24px;
   font-weight: 600;
 }
-.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:first-child img {
+.recruit-section
+  .schedule-box
+  .container
+  .recruit-schedule
+  .box-contents
+  .contents-container
+  .txt-wrap
+  ul
+  li:first-child
+  img {
   margin-right: 7px;
 }
 
-.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:last-child {
+.recruit-section
+  .schedule-box
+  .container
+  .recruit-schedule
+  .box-contents
+  .contents-container
+  .txt-wrap
+  ul
+  li:last-child {
   font-weight: 600;
   display: block;
   font-size: 20px;
   margin-top: 5px;
 }
 
-.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:last-child p:last-child {
+.recruit-section
+  .schedule-box
+  .container
+  .recruit-schedule
+  .box-contents
+  .contents-container
+  .txt-wrap
+  ul
+  li:last-child
+  p:last-child {
   font-size: 16px;
-  color:#999;
+  color: #999;
 }
 
 .yellow-color {
-  color:#ffc20e;
+  color: #ffc20e;
 }
 .red-color {
-  color:#f26a21;
+  color: #f26a21;
 }
 
 .low-green-color {
@@ -292,14 +342,23 @@ body {
 }
 
 .green-color {
-  color:#00833d;
+  color: #00833d;
 }
 
 .blue-color {
-  color: #374ea2; 
+  color: #374ea2;
 }
 
-.recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li img{
+.recruit-section
+  .schedule-box
+  .container
+  .recruit-schedule
+  .box-contents
+  .contents-container
+  .txt-wrap
+  ul
+  li
+  img {
   width: 22px;
   height: 20px;
 }
@@ -369,7 +428,7 @@ body {
   font-weight: 400!important;
 } */
 
-.recruit-title{
+.recruit-title {
   border-top: 0.9px solid #000;
   border-bottom: 0.9px solid #000;
   font-weight: 800;
@@ -394,7 +453,13 @@ body {
   min-height: 425px;
 }
 
-.recruit-section .schedule-box .container .subject-list .wrap .type1 .decorating{
+.recruit-section
+  .schedule-box
+  .container
+  .subject-list
+  .wrap
+  .type1
+  .decorating {
   position: absolute;
   bottom: 0;
   left: -83px;
@@ -422,7 +487,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.recruit-section .schedule-box .container .subject-list .wrap .type3 a{
+.recruit-section .schedule-box .container .subject-list .wrap .type3 a {
   font-weight: 800;
   font-size: 34px;
   background: #1cabe2;
@@ -441,10 +506,17 @@ body {
   color: #fff;
 }
 
-.recruit-section .schedule-box .container .subject-list .wrap .type3 a .subject_list_btn {
+.recruit-section
+  .schedule-box
+  .container
+  .subject-list
+  .wrap
+  .type3
+  a
+  .subject_list_btn {
   margin-left: 39px;
 }
-.recruit-section .schedule-box .container .subject-list .wrap .nemo{
+.recruit-section .schedule-box .container .subject-list .wrap .nemo {
   display: block;
   width: 100%;
   height: 100%;
@@ -457,7 +529,7 @@ body {
   padding: 55px 48px;
 }
 
-.recruit-section .schedule-box .container .subject-list .wrap .nemo .num{
+.recruit-section .schedule-box .container .subject-list .wrap .nemo .num {
   display: block;
   display: flex;
   justify-content: center;
@@ -465,8 +537,8 @@ body {
   width: 60px;
   height: 60px;
   font-weight: 800;
-  font-size:27px;
-  color:#fff;
+  font-size: 27px;
+  color: #fff;
   background-color: #000;
   position: absolute;
   top: 31px;
@@ -474,7 +546,7 @@ body {
   border-radius: 100%;
 }
 
-.recruit-section .schedule-box .container .subject-list .wrap .nemo .title{
+.recruit-section .schedule-box .container .subject-list .wrap .nemo .title {
   font-size: 40px;
   font-weight: 800;
   margin-bottom: 45px;
@@ -482,7 +554,6 @@ body {
 
 .recruit-section .schedule-box .container .subject-list .wrap .nemo ul {
   position: relative;
-
 }
 
 .recruit-section .schedule-box .container .subject-list .wrap .nemo ul li {
@@ -492,10 +563,17 @@ body {
   padding-left: 29px;
   line-height: 34px;
   letter-spacing: -0.8px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: "Pretendard", sans-serif;
 }
 
-.recruit-section .schedule-box .container .subject-list .wrap .nemo ul li:first-child::before {
+.recruit-section
+  .schedule-box
+  .container
+  .subject-list
+  .wrap
+  .nemo
+  ul
+  li:first-child::before {
   content: "";
   display: block;
   width: 8px;
@@ -524,7 +602,6 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-
 }
 
 .recruit-section .schedule-box .container .subject-notice .wrap span {
@@ -532,7 +609,7 @@ body {
   height: 80px;
   background-color: #1cabe2;
   border-radius: 40px;
-  color:#fff;
+  color: #fff;
   position: absolute;
   top: 0;
   left: 0;
@@ -563,7 +640,7 @@ body {
   padding-top: 180px;
 }
 
-.examination-details-section .container{
+.examination-details-section .container {
   position: relative;
   padding-top: 1;
 }
@@ -577,10 +654,10 @@ body {
   background-size: cover;
 }
 
-.examination-details-section .container .box-wrap { 
+.examination-details-section .container .box-wrap {
   padding-top: 137px;
   padding-bottom: 100px;
-} 
+}
 
 .examination-details-section .container .box-wrap .examination-detail {
   position: relative;
@@ -598,7 +675,11 @@ body {
   top: -56px;
 }
 
-.examination-details-section .container .box-wrap .examination-detail .box-title {
+.examination-details-section
+  .container
+  .box-wrap
+  .examination-detail
+  .box-title {
   font-size: 54px;
   font-weight: 800;
   position: absolute;
@@ -606,8 +687,12 @@ body {
   left: 100px;
 }
 
-.examination-details-section .container .box-wrap .examination-detail .box-contents {
-  border-radius:0 40px 40px 40px;
+.examination-details-section
+  .container
+  .box-wrap
+  .examination-detail
+  .box-contents {
+  border-radius: 0 40px 40px 40px;
   width: 100%;
   border: 4px solid #00833d;
   background-color: #fff;
@@ -641,14 +726,14 @@ body {
   margin-bottom: 6px;
 }
 
-.award-header, 
-.criteria-header { 
+.award-header,
+.criteria-header {
   margin-top: 81px;
   display: flex;
   height: 84px;
   align-items: center;
   background-color: #f2f9f5;
-  font-size:30px;
+  font-size: 30px;
   font-weight: 800;
   text-align: center;
   gap: 6px;
@@ -664,7 +749,7 @@ body {
   gap: 6px;
   font-weight: 500;
 }
-.award-row div{
+.award-row div {
   height: 80px;
   line-height: 80px;
   border-radius: 20px;
@@ -674,19 +759,18 @@ body {
 .award-header div:nth-child(1),
 .award-row div:nth-child(1),
 .award-header div:nth-child(3),
-.award-row div:nth-child(3)
-{
+.award-row div:nth-child(3) {
   max-width: 290px;
   width: 20.7%;
   background-color: #f2f9f5;
 }
 
 .award-header div:nth-child(2),
-.award-row div:nth-child(2){
+.award-row div:nth-child(2) {
   max-width: 809px;
   width: 57.74%;
 }
-.award-row div:nth-child(2){
+.award-row div:nth-child(2) {
   background-color: #f9f9f9;
 }
 
@@ -768,7 +852,7 @@ body {
 }
 
 .benefit-ref {
-  font-family: 'Wanted Sans';
+  font-family: "Wanted Sans";
   font-size: 18px;
   color: #fff;
   letter-spacing: -0.54px;
@@ -832,7 +916,7 @@ body {
 }
 
 .notice-lists_tit::after {
-  content: '';
+  content: "";
   display: block;
   width: 15px;
   height: 9px;
@@ -928,9 +1012,9 @@ footer p {
 
 footer .logo {
   display: block;
-  margin: 0 auto ;
+  margin: 0 auto;
   padding: 100px 0 41px 0;
- }
+}
 
 footer .footer-info {
   margin-bottom: 20px;
@@ -942,10 +1026,10 @@ footer .footer-info {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate( -50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
-.lego_popup .popup-buttons{
+.lego_popup .popup-buttons {
   display: flex;
   width: 100%;
 }
@@ -953,7 +1037,7 @@ footer .footer-info {
   width: 50%;
   height: 60px;
   font-size: 20px;
-  color:#fff;
+  color: #fff;
   border: none;
   flex-grow: 1;
   cursor: pointer;
@@ -963,7 +1047,7 @@ footer .footer-info {
   background-color: #444444;
 }
 
-.close-btn{
+.close-btn {
   background-color: #000000;
 }
 
