@@ -22,7 +22,8 @@ p,
 figure,
 blockquote,
 dl,
-dd {
+dd,
+ol  {
   margin-block-end: 0;
   margin: 0;
   padding: 0;

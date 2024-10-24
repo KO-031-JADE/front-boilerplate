@@ -930,6 +930,7 @@ body {
 /* examination-details-section end */
 
 /* voting-section start */
+/* tabs-wrap */
 .voting-section{
   background-color: #fff9e7;
 }
@@ -951,14 +952,15 @@ body {
 .voting-section .tabs {
   display: flex;
   height: 80px;
-  display: flex;
   align-items: center;
+  position: relative;
 }
-.voting-section .tabs .indicator{
+
+.voting-section .tabs .indicator {
   display: block;
   position: absolute;
   width: 380px;
-  background: black !important;
+  background: black;
   top: 0;
   bottom: 0;
   left: 0;
@@ -971,40 +973,124 @@ body {
 
 .voting-section .tabs .tab {
   transition: color 0.1s linear;
-  transition-delay: 0.1s;
   box-shadow: none;
   background-color: transparent;
   width: 380px;
   margin: 0;
-  padding: 0;
+  padding: 13px 30px;
   cursor: pointer;
   z-index: 1;
   color: #2b2c33;
   font-weight: 700;
-  border-radius: 25px;
-  font-size: 18px;
-  padding: 13px 30px 13px 30px;
-  border-radius: 40px;
-  height: 80px;
+  font-size: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  border-radius: 40px;
 }
 
-.voting-section .tabs .tab:not(.active) {
-  background: white
+.voting-section .tabs-wrap .tabs .tab:not(.active) {
+  background: white;
 }
 
 .voting-section .tabs .tab.active {
   color: #fff;
-  box-shadow: none;
   background-color: transparent;
 }
 
-.with-indicator {
-  position: relative
+/* cate-wrap */
+.cate-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+  position: relative;
 }
+
+.cate-wrap .tabs {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 60px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.cate-wrap .tabs .indicator {
+  display: block;
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  background: black;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: transform 0.5s cubic-bezier(0.17, 0.8, 0.33, 0.99), width 0.5s linear;
+  z-index: 0;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px 0 rgba(43, 44, 51, 0.15);
+}
+
+.cate-wrap .tabs .tab {
+  transition: color 0.1s linear;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 15px 70px;
+  cursor: pointer;
+  z-index: 1;
+  color: #2b2c33;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  font-size: 24px;
+  position: relative;
+}
+
+.cate-wrap .tabs .tab::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background-color: gray;
+  border-radius: 50%;
+  position: absolute;
+  right: -20px; /* cate-wrap 간격 */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cate-wrap .tabs .tab:first-child::after,
+.cate-wrap .tabs .tab:nth-child(6)::after {
+  display: none;
+}
+
+.cate-wrap .tabs .tab.active {
+  color: #fff;
+  background-color: transparent;
+}
+
+/* voting-box */
+.voting-section .container .voting-box {
+  width: 100%;
+  height: 1382px;
+  border: 4px solid #1cabe2;
+  box-shadow: 6px 6px 0px 0px #1cabe2;
+  border-radius: 50px;
+  margin-top: 50px;
+  overflow: hidden;
+} 
+.voting-section .container .voting-box .top{
+  width: 100%;
+  height: 150px;
+  border-radius: 50px 50px 0 0;
+  background: #f3fbfe;
+} 
+.voting-section .container .voting-box .contents{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+} 
 
 /* benefit-section start */
 

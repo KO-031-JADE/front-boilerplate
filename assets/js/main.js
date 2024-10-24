@@ -1,88 +1,140 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 헤더 애니메이션
-  let header = document.querySelector(".header");
+  handleHeaderAnimation(); // 헤더 애니메이션
+  handlePopup(); // 팝업
+  toggleNoticeTitles(); // 공지사항 토글
+  handleTabs(); // 투표하기 탭 애니메이션
+  handleCateTabs(); // 카테고리 탭 애니메이션
+});
 
-  if (header) {
-    let headerHeight = header.offsetHeight;
-
-    window.onscroll = function () {
-      console.log(headerHeight);
-      let windowTop = window.scrollY;
-      // 스크롤 세로값이 헤더높이보다 크거나 같으면 
-      // 헤더에 클래스 'drop'을 추가한다
-      if (windowTop >= headerHeight) {
-        header.classList.add("drop");
-      } 
-      // 아니면 클래스 'drop'을 제거
-      else {
-        header.classList.remove("drop");
-      }
-    };
-  } else {
-    console.error("관리자에게 문의해주세요");
+// 헤더의 애니메이션
+function handleHeaderAnimation() {
+  const header = document.querySelector(".header");
+  if (!header) {
+    console.error("헤더 요소가 없습니다. 관리자에게 문의해주세요.");
+    return;
   }
 
-  // 팝업
+  const headerHeight = header.offsetHeight;
+  window.onscroll = () => {
+    const windowTop = window.scrollY;
+    if (windowTop >= headerHeight) {
+      header.classList.add("drop");
+    } else {
+      header.classList.remove("drop");
+    }
+  };
+}
+
+// 팝업
+function handlePopup() {
   const popup = document.getElementById("lego_popup");
   const noShow7DaysBtn = document.getElementById("no-show-7days-btn");
   const closeBtn = document.getElementById("close-btn");
 
-  // 팝업이 존재하는지 확인
-  if (popup && noShow7DaysBtn && closeBtn) {
-    // 팝업이 7일 동안 열리지 않도록 설정
-      noShow7DaysBtn.addEventListener("click", function () {
-      setCookie("hideLegoPopup", "true", 7); // 7일간 쿠키 설정
-      popup.style.display = "none";
-    });
-
-    // 팝업 닫기
-    closeBtn.addEventListener("click", function () {
-      popup.style.display = "none";
-    });
-
-    // 쿠키 설정 함수
-    function setCookie(name, value, days) {
-      let expires = "";
-      if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-
-    // 쿠키 읽기 함수
-    function getCookie(name) {
-      const nameEQ = name + "=";
-      const ca = document.cookie.split(';');
-      for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-      }
-      return null;
-    }
-
-    // 쿠키에 hidePopup이 없으면 팝업 표시
-    if (getCookie("hideLegoPopup") !== "true") {
-      popup.style.display = "block";
-    } else {
-      popup.style.display = "none";
-    }
-  } else {
-    console.error("팝업 요소가 존재하지 않습니다. HTML 코드를 확인해주세요.");
+  if (!popup || !noShow7DaysBtn || !closeBtn) {
+    console.error("팝업 관련 요소가 존재하지 않습니다. HTML 코드를 확인해주세요.");
+    return;
   }
 
-  // 공지사항 토글 이벤트
+  // 7일간 팝업 표시 안 함 버튼 처리
+  noShow7DaysBtn.addEventListener("click", () => setCookieAndHidePopup(popup));
+  // 팝업 닫기 버튼 처리
+  closeBtn.addEventListener("click", () => popup.style.display = "none");
+
+  // 페이지 로드 시 쿠키 검사 후 팝업 표시 결정
+  if (getCookie("hideLegoPopup") !== "true") {
+    popup.style.display = "block";
+  } else {
+    popup.style.display = "none";
+  }
+}
+
+// 쿠키 설정 후 팝업 숨김 처리
+function setCookieAndHidePopup(popup) {
+  setCookie("hideLegoPopup", "true", 7);
+  popup.style.display = "none";
+}
+
+// 쿠키를 설정하는 함수
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = `${name}=${value}${expires}; path=/`;
+}
+
+// 쿠키를 가져오는 함수
+function getCookie(name) {
+  const nameEQ = `${name}=`;
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+  }
+  return null;
+}
+
+// 공지사항 타이틀 클릭 시 토글
+function toggleNoticeTitles() {
   const noticeTitles = document.querySelectorAll('.notice-lists_tit');
-  
   noticeTitles.forEach(title => {
-    title.addEventListener('click', function() {
-      if (this.classList.contains('open')) {
-        this.classList.remove('open');
-      } else {
-        this.classList.add('open');
-      }
-    });
+    title.addEventListener('click', () => title.classList.toggle('open'));
   });
-});
+}
+
+
+// 투표하기 탭 애니메이션
+function handleTabs() {
+  const tabs = document.querySelectorAll('.tabs-wrap .tab');
+  const indicator = document.querySelector('.tabs-wrap .indicator');
+
+  tabs.forEach((tab, index) => tab.addEventListener('click', () => {
+    document.querySelector('.tabs-wrap .tab.active').classList.remove('active');
+    tab.classList.add('active');
+    const tabWidth = tab.offsetWidth;
+    const tabLeft = tab.offsetLeft;
+    indicator.style.transform = `translateX(${tabLeft}px)`;
+    indicator.style.width = `${tabWidth}px`;
+  }));
+
+  // 초기 active 상태 설정
+  const activeTab = document.querySelector('.tabs-wrap .tab.active');
+  if (activeTab) {
+    const tabWidth = activeTab.offsetWidth;
+    const tabLeft = activeTab.offsetLeft;
+    const indicator = document.querySelector('.tabs-wrap .indicator');
+    indicator.style.transform = `translateX(${tabLeft}px)`;
+    indicator.style.width = `${tabWidth}px`;
+  }
+}
+
+// 카테고리 탭 애니메이션
+function handleCateTabs() {
+  const tabs = document.querySelectorAll('.cate-wrap .tab');
+  const indicator = document.querySelector('.cate-wrap .indicator');
+
+  tabs.forEach((tab, index) => tab.addEventListener('click', () => {
+    document.querySelector('.cate-wrap .tab.active').classList.remove('active');
+    tab.classList.add('active');
+    const tabWidth = tab.offsetWidth;
+    const tabLeft = tab.offsetLeft;
+    indicator.style.transform = `translateX(${tabLeft}px)`;
+    indicator.style.width = `${tabWidth}px`;
+  }));
+
+  // 초기 active 상태 설정
+  const activeTab = document.querySelector('.cate-wrap .tab.active');
+  if (activeTab) {
+    const tabWidth = activeTab.offsetWidth;
+    const tabLeft = activeTab.offsetLeft;
+    const indicator = document.querySelector('.cate-wrap .indicator');
+    indicator.style.transform = `translateX(${tabLeft}px)`;
+    indicator.style.width = `${tabWidth}px`;
+  }
+}
+
+
+
