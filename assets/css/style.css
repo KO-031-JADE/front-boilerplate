@@ -88,10 +88,9 @@ body {
 .main-section {
   background: url(../images/main.jpg) no-repeat;
   width: 100%;
-  height: 126vh;
+  height: 100vh;
   background-size: cover;
-  background-position: top;
-  max-height: 1145px;
+  background-position: center;
 }
 
 .main-section .container .top {
@@ -638,11 +637,11 @@ body {
 .examination-details-section {
   position: relative;
   padding-top: 180px;
+  padding-bottom: 528px;
 }
 
 .examination-details-section .container {
   position: relative;
-  padding-top: 1;
 }
 .examination-details-section .bg {
   background: url(../images/examination_details_bg.png) no-repeat;
@@ -701,20 +700,19 @@ body {
 
 .examination-details-section .container .box-wrap .detail01 {
   width: 100%;
-  height: 912px;
+  height: calc(912px - 60px);
 }
 .examination-details-section .container .box-wrap .detail01 .box-contents {
   height: 852px;
 }
 .examination-details-section .container .box-wrap .detail02 {
   width: 100%;
-  height: 758px;
-  margin-top: 85px;
+  height: calc(758px - 60px);
+  margin-top: 147px;
 }
 .examination-details-section .container .box-wrap .detail02 .box-contents {
   height: 697px;
 }
-/* 공통 스타일 */
 
 .award-section > div {
   width: 100%;
@@ -737,6 +735,11 @@ body {
   font-weight: 800;
   text-align: center;
   gap: 6px;
+  border-radius: 20px;
+}
+
+.criteria-header {
+  margin-bottom: 6px;
 }
 
 .award {
@@ -745,7 +748,8 @@ body {
   font-weight: 500;
   height: 80px;
 }
-.award-row {
+.award-row,
+.criteria-row {
   gap: 6px;
   font-weight: 500;
 }
@@ -774,19 +778,242 @@ body {
   background-color: #f9f9f9;
 }
 
-/* examination-details-section end */
-
-/* benefit-section start */
-.benefit-section {
-  padding: 160px 0;
+.criteria-section > .criteria-row  {
+  width: 100%;
+  display: flex;
+  height: 132px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 6px;
 }
 
+.criteria-row > div{  
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 24px;
+}
+
+.criteria-row:nth-child(3) {
+  height: 172px;
+}
+
+
+.criteria-row div:nth-child(1),
+.criteria-row div:nth-child(3) {
+  background-color: #f9f9f9 ;
+}
+
+.criteria-row div:nth-child(2) {
+  background-color: #f2f9f5 ;
+
+}
+.criteria-row div:nth-child(4) {
+  background-color: #f9f9f9 ;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.criteria-header div:nth-child(1),
+.criteria-row div:nth-child(1),
+.criteria-header div:nth-child(3),
+.criteria-row div:nth-child(3) {
+  width: 12.86%;
+}
+
+.criteria-header div:nth-child(2),
+.criteria-row div:nth-child(2) {
+  width: 21.43%;
+}
+
+.criteria-header div:nth-child(4),
+.criteria-row div:nth-child(4) {
+  width: 51.57%;
+}
+
+.criteria-row div:nth-child(4) {
+  padding-left: 54px;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.criteria-row div:nth-child(4) em {
+  font-size:20px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.score-wrap{
+  display: flex;
+  gap: 5%;
+  /* gap: 40px; */
+  padding-bottom: 140px;
+}
+
+.score-wrap .evaluation-score,
+.score-wrap .additional-points {
+  width: 47.5%;
+}
+
+.score-wrap .evaluation-score p,
+.score-wrap .additional-points p {
+  width: 280px;
+  height: 90px;
+  background-color: #000;
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 45px;
+  margin: 0 auto;
+  font-size: 36px;
+}
+
+.evaluation-score ul,
+.additional-points ul {
+  margin-top: 30px;
+}
+
+.evaluation-score ul li {
+  font-size: 22px;
+}
+
+.additional-points ul li {
+  font-size: 24px;
+}
+
+.evaluation-score ul li,
+.additional-points ul li{
+  background-color: #fff;
+  width: 100%;
+  border-radius: 40px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-family: "Pretendard", sans-serif;
+}
+
+.evaluation-score ul li:last-child,
+.additional-points ul li:last-child{
+  margin: 0;
+}
+
+
+.evaluation-score ul li span {
+  width: 100px;
+  height: 60px;
+  background-color: #00833d;
+  border-radius: 30px;
+  color:#fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px 0 10px;
+}
+
+.additional-points ul li .check_icon {
+  width: 52px;
+  height: 53px;
+  background: url(../images/chack_icon.png) no-repeat;
+  background-size: cover;
+  margin: 0 20px;
+}
+
+
+/* examination-details-section end */
+
+/* voting-section start */
+.voting-section{
+  background-color: #fff9e7;
+}
+
+.voting-section .container{
+  padding-top: 100px;
+}
+.voting-section .tabs-wrap {
+  width: 800px;
+  height: 100px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 45px;
+  margin: 0 auto;
+}
+
+.voting-section .tabs {
+  display: flex;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.voting-section .tabs .indicator{
+  display: block;
+  position: absolute;
+  width: 380px;
+  background: black !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: transform 0.5s cubic-bezier(0.17, 0.8, 0.33, 0.99), width 0.5s linear;
+  z-index: 0;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px 0 rgba(43,44,51,0.15);
+  border-radius: 40px;
+}
+
+.voting-section .tabs .tab {
+  transition: color 0.1s linear;
+  transition-delay: 0.1s;
+  box-shadow: none;
+  background-color: transparent;
+  width: 380px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  z-index: 1;
+  color: #2b2c33;
+  font-weight: 700;
+  border-radius: 25px;
+  font-size: 18px;
+  padding: 13px 30px 13px 30px;
+  border-radius: 40px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.voting-section .tabs .tab:not(.active) {
+  background: white
+}
+
+.voting-section .tabs .tab.active {
+  color: #fff;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.with-indicator {
+  position: relative
+}
+
+/* benefit-section start */
+
 .section-title {
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
   font-weight: 800;
   font-size: 54px;
-  color: #fff;
+  color: #000;
   text-align: center;
   padding: 23px 0;
 }
@@ -802,7 +1029,11 @@ body {
 }
 
 .benefit-lists li {
-  background: url(../images/benefit-box.png) no-repeat;
+  /* background: url(../images/benefit-box.png) no-repeat; */
+  border:4px solid #00833d;
+  border-radius: 40px;
+  background-color: #fff;
+  box-shadow: 6px 6px 0px 0px #00833d;
   background-size: 100% 100%;
   flex: 1;
   padding: 65px 10px;
@@ -846,37 +1077,40 @@ body {
 
 .benefit-lists_txt .sub {
   display: inline-block;
-  font-weight: 300;
+  font-weight: 500;
+  font-size: 20px;
   opacity: 0.5;
   margin-top: 10px;
 }
 
 .benefit-ref {
-  font-family: "Wanted Sans";
+  font-family: "Pretendard", sans-serif;
   font-size: 18px;
   color: #fff;
   letter-spacing: -0.54px;
   text-align: right;
-  margin-top: 20px;
+  margin-top: 25px;
+  color:#222;
 }
 /* benefit-section end */
 
 /* notice-section start */
 .notice-section {
-  background: #384ea3;
-  padding: 120px 0 115px;
+  padding: 190px 0 175px;
 }
 
 .notice-box {
   background: #fff;
-  border: 4px solid #1d2a57;
-  border-radius: 20px;
+  border: 4px solid #000;
+  border-radius: 50px;
   padding: 0 95px;
   margin-top: 70px;
+  box-shadow: 6px 6px 0px 0px #000;
 }
 
 .notice-lists {
   counter-reset: notice-count;
+  margin:0;
 }
 
 .notice-lists > li {
@@ -908,11 +1142,13 @@ body {
 }
 
 .notice-lists_tit {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
   padding-left: 100px;
   cursor: pointer;
   position: relative;
+  height: 60px;
+  line-height: 60px;
 }
 
 .notice-lists_tit::after {
@@ -949,6 +1185,10 @@ body {
   margin-top: 30px;
 }
 
+.notice-lists_des p {
+  line-height: 30px;
+}
+
 .download-box {
   background: #fff;
   border-radius: 50px;
@@ -958,6 +1198,7 @@ body {
   width: 100%;
   font-size: 20px;
   margin-top: 30px;
+  box-shadow: 1px -1px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 .download-box ul {
@@ -986,17 +1227,22 @@ body {
 }
 
 .download-file_button {
-  width: 180px;
+  width: 170px;
   line-height: 50px;
   padding: 0 30px;
   display: flex;
   justify-content: space-between;
-  background: #141d3e;
+  background: url(../images/down_icon.png) no-repeat;
+  background-color: #000;
   border-radius: 50px;
   color: #fff;
+  background-position: 136px center;
 }
 
 /* notice-section end */
+
+
+/* voting-section end */
 
 /* footer start */
 footer {
