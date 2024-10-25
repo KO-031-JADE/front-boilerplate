@@ -34,5 +34,6 @@
   .main-section {
     max-height: 1419px;
     height: 120vh;
+    background-position: center;
   }
 }

@@ -21,9 +21,24 @@ body {
   height: 100%;
 }
 
-.wrap {
+body > .wrap {
   width: 100%;
   height: 100%;
+  position: relative;
+}
+
+body > .wrap > .container {
+  position: relative;
+}
+
+body > .wrap > .main-title-float > .float {
+  position: absolute;
+  top: 712px;
+  right: -33px;
+}
+
+.flex {
+  display: flex;
 }
 
 .container {
@@ -44,7 +59,7 @@ body {
 
 /* header start */
 .header {
-  padding: 40px 0;
+  padding: 30px 0;
   background-color: none;
   position: fixed;
   z-index: 1;
@@ -53,8 +68,8 @@ body {
 }
 
 .header h1 a {
-  width: 120px;
-  height: 64px;
+  width: 206px;
+  height: 77px;
   display: block;
   background: url(../images/logo.png) no-repeat;
   background-size: contain;
@@ -74,7 +89,7 @@ body {
 }
 
 .header .container .menu li a {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 500;
 }
 
@@ -90,11 +105,11 @@ body {
   width: 100%;
   height: 100vh;
   background-size: cover;
-  background-position: center;
+  background-position: top;
 }
 
 .main-section .container .top {
-  padding: 203px 100px 0 100px;
+  padding: 189px 100px 0 100px;
   display: flex;
   justify-content: space-between;
 }
@@ -138,12 +153,6 @@ body {
   margin-bottom: -16px;
 }
 
-.main-section .container .top .main-title-float {
-  width: 275px;
-  height: 225px;
-  margin-right: -46px;
-}
-
 .main-section .container .bottom {
   padding: 60px 100px 0 100px;
 }
@@ -156,12 +165,12 @@ body {
   margin-bottom: 0;
 }
 
-.main-section .container .bottom ul li p:first-child {
+.main-section .container .bottom ul li p.main-color {
   font-size: 26px;
   margin-right: 19px;
   font-weight: 600;
 }
-.main-section .container .bottom ul li p:last-child {
+.main-section .container .bottom ul li > p:last-child {
   font-size: 24px;
   font-weight: 300;
   display: flex;
@@ -169,18 +178,27 @@ body {
   justify-content: center;
 }
 
+.main-section .container .bottom ul li > div > p {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.main-section .container .bottom ul li > div > p.flex{
+  align-items: center;
+}
+
+.gts-icon {
+  margin: 0 10px 0px 5px;
+}
+
 .main-section .main-right-float {
   transform: rotate(90deg);
   position: absolute;
   top: 520px;
-  right: -172px;
+  right: 172px;
   font-family: "Pretendard", sans-serif;
   font-size: 16px;
   font-weight: 400;
-}
-
-.gts-icon {
-  margin: 0 9px;
 }
 
 /* main-section end */

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   handleHeaderAnimation(); // 헤더 애니메이션
+  handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
   handlePopup(); // 팝업
   toggleNoticeTitles(); // 공지사항 토글
   handleTabs(); // 투표하기 탭 애니메이션
@@ -134,6 +135,21 @@ function handleCateTabs() {
     indicator.style.transform = `translateX(${tabLeft}px)`;
     indicator.style.width = `${tabWidth}px`;
   }
+}
+
+// 접수하러 가기 플로팅 애니메이션
+function handleReceptionButtonFloating() {
+  // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.	
+  // var floatPosition = parseInt($("#floatButton").css('top'));	
+  var floatPosition = 712;	
+  // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 ); 	
+  $(window).scroll(function() {		
+    // 현재 스크롤 위치를 가져온다.		
+    var scrollTop = $(window).scrollTop();		
+    var newPosition = scrollTop + floatPosition + "px"; 		
+    /* 애니메이션 없이 바로 따라감		 $("#floatMenu").css('top', newPosition);		 */ 
+    $("#floatButton").stop().animate({			"top" : newPosition		}, 500); 	
+  }).scroll();
 }
 
 
