@@ -3,8 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
   handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
   handlePopup(); // 팝업
   toggleNoticeTitles(); // 공지사항 토글
-  handleTabs(); // 투표하기, 점수확인 탭
-  handleCateTabs(); // 카테고리 탭
+  handleTabs(); // 투표하기 탭 애니메이션
+  handleCateTabs(); // 카테고리 탭 애니메이션
+
+  popSelect(); // 접수하기 팝업 공모부분 selectbox
+  attachFiles(); // 사업소개서 첨부파일
 });
 
 // 헤더의 애니메이션
@@ -102,3 +105,155 @@ function handleReceptionButtonFloating() {
     $("#floatButton").stop().animate({ "top": newPosition }, 500);	
   }).scroll();
 }
+
+
+
+
+
+
+// 접수하기 팝업
+function openPopupApply() {
+  document.querySelector(".popup-dim").classList.add("on");
+  document.querySelector("#apply_popup").classList.add("on");
+  document.querySelector("html").classList.add("blockScroll");
+  document.querySelector("#apply_popup").scrollTop = 0; // 팝업 맨 위로 이동
+}
+
+function closePopupApply() {
+  document.querySelector(".popup-dim").classList.remove("on");
+  document.querySelector("#apply_popup").classList.remove("on");
+  document.querySelector("html").classList.remove("blockScroll");
+}
+
+
+// 접수하기 팝업 공모부분 selectbox
+function popSelect() {
+  document.querySelector('.select-selected').addEventListener('click', function() {
+    document.querySelector('.select_box').classList.toggle('open');
+    console.log('select click');
+  });
+  
+  document.querySelectorAll('.select-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const selectedHTML = this.innerHTML;
+      const selectedValue = this.getAttribute('data-value');
+      
+      document.querySelector('.select-selected').innerHTML = selectedHTML;
+      document.querySelector('#customSelectValue').value = selectedValue;
+      document.querySelector('.select_box').classList.remove('open');
+    });
+  });
+}
+
+// 사업소개서 첨부파일 (최대 5개)
+function attachFiles() {
+  const maxBoxes = 5;
+  const fileBoxes = document.querySelector(".file_boxes");
+
+  // 1. btn-document_add 클릭 시 파일 선택창 열기
+  fileBoxes.addEventListener("click", function(event) {
+    if (event.target.classList.contains("btn-document_add")) {
+      const fileInput = event.target.previousElementSibling; // 자매 요소인 input[type="file"]
+      if (fileInput) {
+        fileInput.click(); // 파일 선택창 열기
+      }
+    }
+  });
+
+  // 2. 파일 첨부 시 파일명 표시 및 삭제 버튼 추가
+  fileBoxes.addEventListener("change", function(event) {
+    if (event.target.classList.contains("a11yHidden")) {
+      const fileInput = event.target;
+      const fileNameSpan = fileInput.closest(".file_box").querySelector(".file_name");
+
+      if (fileInput.files[0]) {
+        // 파일이 첨부된 경우
+        fileNameSpan.textContent = fileInput.files[0].name;
+        fileNameSpan.classList.remove("no_files");
+
+        // 삭제 버튼 추가
+        if (!fileNameSpan.querySelector(".btn-document_delete")) {
+          const deleteButton = document.createElement("button");
+          deleteButton.type = "button";
+          deleteButton.className = "btn-document_delete";
+          deleteButton.innerHTML = '<img src="assets/images/x_text.png" alt="파일-삭제">';
+          fileNameSpan.appendChild(deleteButton);
+        }
+      } else {
+        // 파일이 첨부되지 않은 경우
+        fileNameSpan.textContent = "파일을 선택하세요.";
+        fileNameSpan.classList.add("no_files");
+
+        // 기존 삭제 버튼 제거
+        const deleteButton = fileNameSpan.querySelector(".btn-document_delete");
+        if (deleteButton) deleteButton.remove();
+      }
+    }
+  });
+
+  // 3. 파일 삭제 버튼 클릭 시 파일명 초기화 및 삭제 버튼 제거
+  fileBoxes.addEventListener("click", function(event) {
+    if (event.target.closest(".btn-document_delete")) {
+      const fileBox = event.target.closest(".file_box");
+      const fileInput = fileBox.querySelector("input[type='file']");
+      const fileNameSpan = fileBox.querySelector(".file_name");
+
+      // 파일 초기화 및 파일명 초기화
+      fileInput.value = "";
+      fileNameSpan.textContent = "파일을 선택하세요.";
+      fileNameSpan.classList.add("no_files");
+
+      // 삭제 버튼 제거
+      event.target.closest(".btn-document_delete").remove();
+    }
+  });
+
+  // 4. 파일박스 추가 버튼 클릭 시 새로운 파일박스 생성
+  fileBoxes.addEventListener("click", function(event) {
+    if (event.target.closest(".btn-filebox_add")) {
+      const boxCount = fileBoxes.querySelectorAll("li").length;
+
+      if (boxCount < maxBoxes) {
+        const newBox = document.createElement("li");
+        newBox.innerHTML = `
+          <div class="file_box">
+            <span class="file_label">첨부파일</span>
+            <span class="file_name no_files">파일을 선택하세요.</span>
+            <input type="file" id="documentInput_${boxCount}" class="a11yHidden">
+            <button type="button" class="btn-document_add">첨부</button>
+          </div>
+          <button type="button" class="btn-filebox_add">
+            <img src="assets/images/btn-files-add.png" alt="파일박스-추가">
+          </button>
+          ${boxCount > 0 ? `
+            <button type="button" class="btn-filebox_delete">
+              <img src="assets/images/btn-files-delete.png" alt="파일박스-삭제">
+            </button>` : ""}
+        `;
+
+        fileBoxes.appendChild(newBox);
+
+        // 최대 개수에 도달하면 추가 버튼 숨기기
+        if (boxCount + 1 === maxBoxes) {
+          // document.querySelectorAll(".btn-filebox_add").forEach(btn => btn.style.display = "none");
+        }
+      }
+    }
+  });
+
+  // 5. 파일박스 삭제 버튼 클릭 시 해당 파일박스 제거
+  fileBoxes.addEventListener("click", function(event) {
+    if (event.target.closest(".btn-filebox_delete")) {
+      const boxToDelete = event.target.closest("li");
+      boxToDelete.remove();
+
+      // 파일박스 개수가 최대 미만이면 추가 버튼 다시 표시
+      if (fileBoxes.querySelectorAll("li").length < maxBoxes) {
+        document.querySelectorAll(".btn-filebox_add").forEach(btn => btn.style.display = "inline-block");
+      }
+    }
+  });
+}
+
+
+

@@ -12,13 +12,307 @@
   <link rel="stylesheet" href="assets/css/font.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/midea.css">
+  <link rel="stylesheet" href="assets/css/popup.css">
   <script src="assets/js/main.js"></script>
   <title>2024 UNICEF Awards 공모전</title>
 </head>
 
 <body>
+  <!-- 접수하기 팝업 -->
+  <div class="popup-dim on"></div>
+  <div id="apply_popup" class="on">
+    <div class="popup-box">
+      <div class="top-box"></div>
+      <div class="popup-title">2024 <span class="main-color">UNICEFAwards</span> 공모전 접수하기</div>
+      <div class="popup-content">
+        <div class="pop-tb pop-tb__info">
+          <div class="tb-header">신청 단체 정보</div>
+          <div class="tb-body">
+
+            <div class="tb-row">
+              <div class="tb-tit">
+                <strong class="essential">단체명</strong>
+                <span>(지자체 · 학교)</span>
+              </div>
+              <div class="tb-con">
+                <div class="input_box">
+                  <input type="text" name="" id="" placeholder=" ex) 00시 00초등학교">
+                </div>
+              </div>
+            </div>
+            <div class="tb-row">
+              <div class="tb-tit">
+                <strong class="essential">주소</strong>
+              </div>
+              <div class="tb-con">
+                <div class="address_box">
+                  <div class="input_box">
+                    <input type="text" id="mAddr1" name="mAddr1" required="required" readonly>
+                    <button type="button" class="btn-address btn_addr" onclick="sample2_execDaumPostcode();">검색</button>
+                  </div>
+                  <div class="input_box">
+                    <input type="text" id="mAddr2" name="mAddr2" placeholder="상세 주소를 입력하세요. (선택)">
+                  </div>
+                </div>
+
+                <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:10;-webkit-overflow-scrolling:touch;">
+                  <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="width:20px;cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+                </div>
+
+              </div>
+            </div>
+            <div class="tb-row">
+              <div class="tb-tit tb-tit02">
+                <strong>담당자<br>정보</strong>
+              </div>
+              <div class="tb-col">
+                <div class="tb-row">
+                  <div class="row-tit">
+                    <span class="essential">성명</span>
+                  </div>
+                  <div class="tb-con">
+                    <div class="input_box">
+                      <input type="text" name="" id="" placeholder="성명을 입력하세요. ">
+                    </div>
+                  </div>
+                </div>
+                <div class="tb_flex">
+                  <div class="tb-col">
+                    <div class="tb-row">
+                      <div class="row-tit">
+                        <span class="essential">전화</span>
+                      </div>
+                      <div class="tb-con">
+                        <div class="input_box">
+                          <input type="text" name="" id="" placeholder="전화번호를 입력하세요.">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tb-row">
+                      <div class="row-tit">
+                        <span class="essential">부서</span>
+                      </div>
+                      <div class="tb-con">
+                        <div class="input_box">
+                          <input type="text" name="" id="" placeholder="부서명을 입력하세요.">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tb-col">
+                    <div class="tb-row">
+                      <div class="row-tit">
+                        <span class="essential">이메일</span>
+                      </div>
+                      <div class="tb-con">
+                        <div class="input_box">
+                          <input type="text" name="" id="" placeholder="이메일을 입력하세요.">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tb-row">
+                      <div class="row-tit">
+                        <span class="essential">직위</span>
+                      </div>
+                      <div class="tb-con">
+                        <div class="input_box">
+                          <input type="text" name="" id="" placeholder="직위를 입력하세요.">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+            <div class="tb-row">
+              <div class="tb-tit">
+                <strong class="essential">공모부문</strong>
+              </div>
+              <div class="tb-con">
+                <div class="select_box">
+                  <div class="select-selected">공모부문을 선택해주세요</div>
+                  <div class="select-items">
+                    <div class="select-item" data-value="1"> 
+                      <div class="item-tit"><span class="main-color">조례</span> 및 <span class="main-color">정책</span></div>
+                      <div class="item-des">
+                        <ul>
+                          <li>
+                            아동의 이익을 고려한 지자체의 아동친화정책 및 조례 제, 개정 사례
+                          </li>
+                          <li>
+                            학교에서 학생의 의견을 수렴하여 학칙 및 생활규정을 제, 개정한 사례
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="select-item" data-value="2"> 
+                      <div class="item-tit">아동<span class="main-color">참여</span></div>
+                      <div class="item-des">
+                        <ul>
+                          <li>
+                            다양한 연령과 계층의 아동 의견을 수렴하고, 관련 기구를 운영한 사례 
+                          </li>
+                          <li>
+                            학교에서 학생들의 참여의식을 함양하기 위한 교육 프로그램, 행사 등을 운영하거나 자선행사,
+                            봉사 등의 사회참여활동을 지원한 사례 
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="select-item" data-value="3"> 
+                      <div class="item-tit">아동<span class="main-color">권리교육</span></div>
+                      <div class="item-des">
+                        <ul>
+                          <li>
+                            아동의 눈높이에 맞춘 권리교육 및 지자체, 학교 내 교육 대상자를 위한 교육을 운영 한 사례 
+                          </li>
+                          <li>
+                            학교에서 학교 구성원(학생, 교사, 보호자)을 대상으로 아동권리교육을 실시하거나 학교 구성원 간
+                            긍정적 관계 형성을 위한 프로그램을 시행한 사례 
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <input type="hidden" name="customSelectValue" id="customSelectValue">
+              </div>
+            </div>
+            <div class="tb-row">
+              <div class="tb-tit">
+                <strong>사업소개서 </strong>
+              </div>
+              <div class="tb-con">
+                <ul class="file_boxes">
+                  <li>
+                    <div class="file_box">
+                      <span class="file_label">첨부파일</span>
+                      <span class="file_name no_files">
+                        파일을 선택하세요.
+                      </span>
+                      <input type="file" id="documentInput" class="a11yHidden">
+                      <button type="button" class="btn-document_add">첨부</button>
+                    </div>
+                    <button type="button" class="btn-filebox_add">
+                      <img src="assets/images/btn-files-add.png" alt="파일박스-추가">
+                    </button>
+                  </li>
+                </ul>
+                <div class="ref">
+                  <p>증빙자료 제출시 자유 양식으로 제출하되 확장자는 pdf, doc, docx, hwp 가능</p>
+                  <p>최대 5개 파일, 각 10MB 까지 업로드 가능, 용량 부족시 압축 바랍니다.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="pop-tb pop-tb__cardNews">
+          <div class="tb-header">카드뉴스</div>
+          <div class="tb-body">
+            <div class="tb-row">
+              <div class="tb-tit"></div>
+              <div class="tb-con">
+                <div class="input_box">
+                  <input type="text" name="" id="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pop-tb pop-tb__agree pop-tb__agree01">
+          <div class="tb-header">개인정보 수집 · 이용 안내</div>
+          <div class="tb-body">
+            <div class="tb-box tb-box_gray">
+              <ol>
+                <li>
+                  개인정보 수집 · 이용 목적<br>
+                  작품 심사, 공모전 관련 안내, 기념품 전달 등 공모전 진행
+                </li>
+                <li>
+                  수집하는 개인정보 항목<br>
+                  성명, 주소, 연락처, 이메일, 제출 자료
+                </li>
+                <li>
+                  개인정보의 보유 및 이용기간<br>
+                  공모전 종료 후 1년간 보관
+                </li>
+              </ol>
+              <p class="ref">
+                위 개인정보 수집 · 이용 동의에 거부할 수 있으며 거부할 시 공모전 참여 및 기념품 발송이 취소됩니다.<br>
+                개인정보는 공모전 진행 목적 외에 제3자에게 제공되거나 이용되지 않습니다.
+              </p>
+            </div>
+            <div class="agree_wrap">
+              <div class="agree_box">
+                <label>
+                  <input type="radio" name="agreeBtn1" id="">
+                  동의함
+                </label>
+                <label>
+                  <input type="radio" name="agreeBtn1" id="">
+                  동의하지 않음 
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pop-tb pop-tb__agree pop-tb__agree02">
+          <div class="tb-header">초상권 사용동의</div>
+          <div class="tb-body">
+            <div class="tb-box tb-box_gray">
+              <p>
+                유니세프 한국위원회는 유니세프의 국가위원회로서, 어린이가 살기 좋은 세상을 만들기 위하여 '아동권리 증진을 위한
+                옹호활동을 홍보'하고 있습니다.<br>
+                2024 UNICEF Awards: Change For Children 공모전 참여를 위하여 제출한 사진을 활용하는 것에 대해 동의를 받고 있습니다.
+              </p>
+              <p>
+                사진 내용: 유니세프아동친화도시, 유니세프아동친화학교 우수사례 관련 활동 참여 모습<br>
+                사용 목적: 유니세프아동친화도시, 유니세프아동친화학교 우수사례 홍보 자료 제작 및 배포<br>
+                제작물 형태: 외부 언론 보도, 웹사이트, SNS, 인쇄물 등 온 ∙ 오프라인 제작물<br>
+                부수: 제작물 형태에 따라 다름
+              </p>
+              <p>
+                언제든지 홍보물 제작을 철회 요청할 수 있으나, 이미 게시된 제작물의 경우 컨텐츠를 삭제할 수 없습니다.
+              </p>
+            </div>
+            <div class="tb-box">
+              <p>
+                위위 내용을 확인하시고 체크하여 주시기 바랍니다.<br>
+                동의를 거부할 권리가 있으나, 거부할 경우 공모전 수상 대상에서 제외됩니다.
+              </p>
+            </div>
+            <div class="agree_wrap">
+              <p>[필수] 위와 같이 초상권 사용에 동의합니다.</p>
+              <div class="agree_box">
+                <label>
+                  <input type="radio" name="agreeBtn2" id="">
+                  동의함
+                </label>
+                <label>
+                  <input type="radio" name="agreeBtn2" id="">
+                  동의하지 않음 
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn_wrap">
+          <button type="button" class="btn-pop_close" onclick="javascript:closePopupApply();">닫기</button>
+          <button type="submit" class="btn-pop_apply">공모전 접수</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
   <div class="wrap">
-      <div class="main-title-float">
+      <div class="main-title-float" onclick="javascript:openPopupApply();">
         <img id="floatButton" class="float" src="./assets/images/main-float-btn.png" alt="" />
       </div>
     <header class="header">
@@ -615,6 +909,96 @@
       <button class="close-btn" id="close-btn">닫기</button>
     </div>
   </div>
+
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" async="true"></script>
+  <script>
+		var element_layer = document.getElementById('layer');
+		function closeDaumPostcode() {
+			// iframe을 넣은 element를 안보이게 한다.
+			element_layer.style.display = 'none';
+		}
+
+		function sample2_execDaumPostcode() {
+			if (typeof daum != 'object') {
+				alert('우편번호 검색을 준비중입니다. 잠시만 기다려주세요');
+			}
+			new daum.Postcode({
+				oncomplete: function(data) {
+					// 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+					// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+					// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+					var addr = ''; // 주소 변수
+					var extraAddr = ''; // 참고항목 변수
+
+					//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+					if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+						addr = data.roadAddress;
+					} else { // 사용자가 지번 주소를 선택했을 경우(J)
+						addr = data.jibunAddress;
+					}
+
+					// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+					if(data.userSelectedType === 'R'){
+						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+						if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+							extraAddr += data.bname;
+						}
+						// 건물명이 있고, 공동주택일 경우 추가한다.
+						if(data.buildingName !== '' && data.apartment === 'Y'){
+							extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+						}
+						// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+						if(extraAddr !== ''){
+							extraAddr = ' (' + extraAddr + ')';
+						}
+						// 조합된 참고항목을 해당 필드에 넣는다.
+						//document.getElementById("pAddr2").value = extraAddr;
+						addr = addr + extraAddr;
+
+					} else {
+						document.getElementById("mAddr2").value = '';
+					}
+
+					// 우편번호와 주소 정보를 해당 필드에 넣는다.
+					document.getElementById("mAddr1").value = addr;
+					// 커서를 상세주소 필드로 이동한다.
+					document.getElementById("mAddr2").focus();
+
+
+					// iframe을 넣은 element를 안보이게 한다.
+					// (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+					element_layer.style.display = 'none';
+
+
+				},
+				width : '100%',
+				height : '100%',
+				maxSuggestItems : 5
+			}).embed(element_layer);
+
+			// iframe을 넣은 element를 보이게 한다.
+			element_layer.style.display = 'block';
+
+			// iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
+			initLayerPosition();
+		}
+
+		function initLayerPosition(){
+			var width = 300; //우편번호서비스가 들어갈 element의 width
+			var height = 400; //우편번호서비스가 들어갈 element의 height
+			var borderWidth = 5; //샘플에서 사용하는 border의 두께
+
+			// 위에서 선언한 값들을 실제 element에 넣는다.
+			element_layer.style.width = width + 'px';
+			element_layer.style.height = height + 'px';
+			element_layer.style.border = borderWidth + 'px solid';
+			// 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
+			element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
+			element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
+		}
+  </script>
 </body>
 
 </html>
