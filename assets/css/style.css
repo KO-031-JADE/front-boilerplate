@@ -13,6 +13,7 @@
 html {
   width: 100%;
   height: auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -57,6 +58,17 @@ body > .wrap > .main-title-float > .float {
 .main-color {
   color: #1cabe2;
 }
+
+  /* 기본 숨김 스타일 */
+  .hidden {
+    display: none;
+  }
+
+  /* 활성화된 탭 스타일 */
+  .tab.active {
+    font-weight: bold;
+    color: blue; /* 원하는 색상으로 설정 */
+  }
 
 /* header start */
 .header {
@@ -469,8 +481,11 @@ body > .wrap > .main-title-float > .float {
   font-size: 70px;
   text-align: center;
   margin-top: -10px;
-  padding: 18.5px 0;
   color:#fff;
+  height: 144px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .recruit-section .schedule-box .container .subject-list {
@@ -994,65 +1009,62 @@ body > .wrap > .main-title-float > .float {
 /* voting-section start */
 /* tabs-wrap */
 .voting-section{
-  background-color: #fff9e7;
+  background-color: #01823f;
+  padding: 120px;
 }
 
 .voting-section .container{
-  padding-top: 100px;
+  padding-top: 120px;
 }
 .voting-section .tabs-wrap {
-  width: 800px;
-  height: 100px;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 45px;
-  margin: 0 auto;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
 }
 
 .voting-section .tabs {
   display: flex;
-  height: 80px;
   align-items: center;
   position: relative;
+  height: 144px;
 }
 
-.voting-section .tabs .indicator {
-  display: block;
+.voting-section .tabs .line {
+  width: 1px;
+  height: 144px;
+  background-color: #fff;
   position: absolute;
-  width: 380px;
-  background: black;
   top: 0;
-  bottom: 0;
-  left: 0;
-  transition: transform 0.5s cubic-bezier(0.17, 0.8, 0.33, 0.99), width 0.5s linear;
-  z-index: 0;
-  border-radius: 25px;
-  box-shadow: 0 10px 30px 0 rgba(43,44,51,0.15);
-  border-radius: 40px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .voting-section .tabs .tab {
-  transition: color 0.1s linear;
+  transition: 0.1s linear;
   box-shadow: none;
   background-color: transparent;
   width: 380px;
   margin: 0;
-  padding: 13px 30px;
   cursor: pointer;
   z-index: 1;
-  color: #2b2c33;
-  font-weight: 700;
+  color: #fff;
+  font-weight: 100;
   font-size: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 40px;
+  flex-grow: 1;
+  font-size: 70px;
 }
 
-.voting-section .tabs-wrap .tabs .tab:not(.active) {
-  background: white;
+.voting-section .tabs .tab:not(.active):hover {
+  opacity: 0.6;
+  color:#fff;
+}
+
+.voting-section .tabs-wrap .tabs .tab.active {
+  /* background: white; */
+  font-weight: 800;
 }
 
 .voting-section .tabs .tab.active {
@@ -1069,38 +1081,24 @@ body > .wrap > .main-title-float > .float {
 }
 
 .cate-wrap .tabs {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   position: relative;
   height: 60px;
   width: 100%;
   justify-content: space-between;
-}
-
-.cate-wrap .tabs .indicator {
-  display: block;
-  position: absolute;
-  width: 150px;
-  height: 60px;
-  background: black;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  transition: transform 0.5s cubic-bezier(0.17, 0.8, 0.33, 0.99), width 0.5s linear;
-  z-index: 0;
-  border-radius: 30px;
-  box-shadow: 0 10px 30px 0 rgba(43, 44, 51, 0.15);
+  gap: 20px;
+  max-width: 1454px;
 }
 
 .cate-wrap .tabs .tab {
-  transition: color 0.1s linear;
+  transition: 0.1s linear;
   box-shadow: none;
   background-color: transparent;
-  padding: 15px 70px;
   cursor: pointer;
   z-index: 1;
-  color: #2b2c33;
-  font-weight: 700;
+  color: #fff;
+  font-weight: 500;
   font-size: 18px;
   display: flex;
   align-items: center;
@@ -1108,16 +1106,18 @@ body > .wrap > .main-title-float > .float {
   width: auto;
   font-size: 24px;
   position: relative;
+  height: 60px;
 }
 
 .cate-wrap .tabs .tab::after {
   content: '';
   width: 4px;
   height: 4px;
-  background-color: gray;
+  background-color: #fff;
+  opacity: 0.5;
   border-radius: 50%;
   position: absolute;
-  right: -20px; /* cate-wrap 간격 */
+  right: -12px; /* cate-wrap 간격 */
   top: 50%;
   transform: translateY(-50%);
 }
@@ -1129,41 +1129,160 @@ body > .wrap > .main-title-float > .float {
 
 .cate-wrap .tabs .tab.active {
   color: #fff;
+  
   background-color: transparent;
+  background-color: #01361a;
+  border-radius: 30px;
 }
 
 /* voting-box */
 .voting-section .container .voting-box {
   width: 100%;
-  height: 1382px;
-  border: 4px solid #1cabe2;
-  box-shadow: 6px 6px 0px 0px #1cabe2;
+  height: 1431px;
+  border: 4px solid #014f27;
+  box-shadow: 6px 6px 0px 0px #014f27;
   border-radius: 50px;
   margin-top: 50px;
   overflow: hidden;
 } 
-.voting-section .container .voting-box .top{
+.voting-section .container .voting-box .top {
   width: 100%;
   height: 150px;
   border-radius: 50px 50px 0 0;
-  background: #f3fbfe;
+  background: #f9f9f9;
 } 
+
+.voting-section .container .voting-box .top .search-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.voting-section .container .voting-box .bottom {
+  background-color: #fff;
+  height: 100%;
+}
+
+.voting-section .container .voting-box .bottom .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0 30px;
+  font-size: 22px;
+  font-weight: 600;
+  font-family: "Pretendard", sans-serif;
+}
+
+.voting-section .container .voting-box .bottom .info select {
+  width: 132px;
+  height: 100%;
+  cursor: pointer;
+  background: url(../images/select_arrow.png) no-repeat 96% 50% / 15px auto;
+  font-weight: 600;
+  border: none;
+}
+
+.voting-section .container .voting-box .bottom .contents1 {
+  background-color: #fff;
+  height: 100%;
+}
+.voting-section .container .voting-box .bottom .contents2 {
+  background-color: #f2f9f5;
+  height: 100%;
+}
+
+.dropdown, .search-input, .search-button {
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  font-size: 24px;
+  height: 60px;
+  font-family: "Pretendard", sans-serif;
+}
+
+.dropdown {
+  width: 302px;
+  cursor: pointer;
+  background: url(../images/select_arrow.png) no-repeat 86% 50% / 15px auto;
+  font-weight: 400;
+  padding: 0 41px
+}
+
+.search-input {
+  flex-grow: 1;
+  border: 1px solid #ddd;
+  font-weight: 400;
+  padding: 0 41px;
+  width: 858px;
+}
+
+.search-button {
+  width: 200px;
+  background-color: #00aaff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
 .voting-section .container .voting-box .contents{
   width: 100%;
   height: 100%;
   background-color: #fff;
-} 
+}
+
+/* 체크박스 라벨 스타일 */
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* 기본 체크박스 숨기기 */
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+/* 체크되지 않은 상태의 배경색과 테두리 */
+.custom-checkbox .checkmark {
+  width: 26px;
+  height: 26px;
+  margin-right: 8px;
+  background-color: #fff; /* 기본 배경색 */
+  border: 2px solid #000; /* 기본 테두리 */
+  border-radius: 4px;
+  display: inline-block;
+  position: relative; /* ::after 위치 설정을 위해 */
+}
+
+/* 체크된 상태에서 체크 표시 이미지 적용 */
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  top: 7%;
+  left: 65%;
+  width: 43px;
+  height: 41px;
+  background-image: url(../images/checkjbox_imagepng.png);
+  background-size: cover;
+  background-position: center;
+  transform: translate(-50%, -50%);
+}
+
 
 /* benefit-section start */
 
 .section-title {
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
   font-weight: 800;
-  font-size: 54px;
-  color: #000;
-  text-align: center;
-  padding: 23px 0;
+  font-size: 70px;
+  color: #fff;
+  height: 144px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .benefit-lists {
@@ -1245,14 +1364,15 @@ body > .wrap > .main-title-float > .float {
 
 /* notice-section start */
 .notice-section {
-  padding: 190px 0 175px;
+  padding: 120px 0 120px;
+  background-color: #374ea2;
 }
 
 .notice-box {
   background: #fff;
   border: 4px solid #000;
   border-radius: 50px;
-  padding: 0 95px;
+  padding: 0 70px;
   margin-top: 70px;
   box-shadow: 6px 6px 0px 0px #000;
 }
@@ -1291,7 +1411,7 @@ body > .wrap > .main-title-float > .float {
 }
 
 .notice-lists_tit {
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 500;
   padding-left: 100px;
   cursor: pointer;
@@ -1330,24 +1450,26 @@ body > .wrap > .main-title-float > .float {
 .notice-lists_des {
   background: #f9f9f9;
   border-radius: 20px;
-  padding: 30px 100px;
+  padding: 39px 100px;
   margin-top: 30px;
 }
 
 .notice-lists_des p {
-  line-height: 30px;
+  line-height: 42px;
+  font-size: 24px;
 }
 
 .download-box {
   background: #fff;
   border-radius: 50px;
-  padding: 6px 30px;
+  padding: 6px 0 6px 30px;
   display: flex;
   align-items: center;
   width: 100%;
   font-size: 20px;
   margin-top: 30px;
   box-shadow: 1px -1px 12px 0 rgba(0, 0, 0, 0.1);
+  font-family: "Pretendard", sans-serif;
 }
 
 .download-box ul {
@@ -1357,6 +1479,17 @@ body > .wrap > .main-title-float > .float {
 .download_label {
   font-weight: 500;
   width: 115px;
+  position: relative;
+}
+.download_label::after {
+  content: '';
+  width: 1px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  right: 23px;
+  transform: translate(0%, -50%);
+  background-color: #ccc;
 }
 
 .download-file {
@@ -1373,6 +1506,7 @@ body > .wrap > .main-title-float > .float {
 .download-file_name {
   color: #ccc;
   width: calc(100% - 180px);
+  font-weight: 300;
 }
 
 .download-file_button {
@@ -1386,6 +1520,7 @@ body > .wrap > .main-title-float > .float {
   border-radius: 50px;
   color: #fff;
   background-position: 136px center;
+  font-weight: 400;
 }
 
 /* notice-section end */

@@ -452,9 +452,9 @@
       <div class="container">
         <div class="tabs-wrap">
           <ul class="tabs with-indicator">
-            <li class="tab active">투표하기</li>
-            <li class="tab">점수확인</li>
-            <div class="indicator"></div>
+            <li class="tab active" data-target="contents1">투표하기</li>
+            <li class="tab" data-target="contents2">점수확인</li>
+            <li class="line"></li>
           </ul>
         </div>
 
@@ -471,92 +471,130 @@
         </div>
         <div class="voting-box">
           <div class="top">
-
+            <form class="search-container contents-container" onsubmit="search(event)">
+              <select class="dropdown" id="category">
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+              </select>
+              <input type="text" class="search-input" id="keyword" placeholder="검색어를 입력하세요.">
+              <button type="submit" class="search-button">검색</button>
+            </form>
           </div>
-          <div class="contents">
-
+          <!-- 전환될 콘텐츠 -->
+          <div class="bottom">
+            <div class="contents-container">
+              <div class="info">
+                <p>전체 <span class="main-color ">300</span> 건</p>
+                <select id="sorting">
+                  <option value="10">10개씩 보기</option>
+                  <option value="20">20개씩 보기</option>
+                </select>
+              </div>
+              <div id="contents1" class="contents1">
+                <ul>
+                  <li class="list">
+                    <div class="list-wrap">
+                      <p class="category bg-yellow">아동참여</p>
+                      <label class="custom-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        체크박스 텍스트
+                      </label>
+                      <p classs="sub-title">서울시 서초구청</p>
+                      <p classs="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
+                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div id="contents2" class="contents2 hidden">
+                <p class="no-list">
+                  <img src="./assets/images/no_list.png" alt="리스트가없습니다이미지">
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-        <section class="notice-section">
-          <div class="container">
-            <h2 class="section-title notice-title">공지사항</h2>
-            <div class="notice-box">
-              <ol class="notice-lists">
-                <li>
-                  <div class="notice-lists_tit">2024 UNICEF Awards 공모전 수상작 발표</div>
-                  <div class="notice-lists_box">
-                    <div class="notice-lists_des">
-                      <p>
-                        2024 UNICEF Awards의 수상작 발표는 공모전 종료 후 공식 웹사이트와 소셜 미디어 채널을 통해 발표될 예정입니다.
-                        <br>보통 심사 과정은 약 한 달 정도 소요되며, 모든 참가자에게 개별 연락도 진행됩니다.<br>
-                        공식 발표일에 대한 자세한 일정은 홈페이지 공지를 참고해 주세요! (예시 텍스트)
-                      </p>
-                      <div class="download-box">
-                        <div class="download_label">첨부파일</div>
-                        <ul>
-                          <li class="download-file">
-                            <span class="download-file_name">첨부파일_파일명1.jpg</span>
-                            <a href="javascript:;" title="파일 다운로드" download="" class="download-file_button" role="button">다운로드</a>
-                          </li>
-                          <!-- <li class="download-file">
-                            <span class="download-file_name">첨부파일_파일명2.jpg</span>
-                            <a href="javascript:;" title="파일 다운로드" download="" class="download-file_button">다운로드</a>
-                          </li> -->
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="notice-lists_tit">222</div>
-                  <div class="notice-lists_box">
-                    <div class="notice-lists_des">
-                      <p> Eveniet tempore quod molestiae temporibus iste cum velit? Dolor illum cupiditate quam odio
-                        expedita laudantium ipsa?
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="notice-lists_tit">333</div>
-                  <div class="notice-lists_box">
-                    <div class="notice-lists_des">
-                      <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus voluptatum dolorem
-                        excepturi quaerat ad.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="notice-lists_tit">444</div>
-                  <div class="notice-lists_box">
-                    <div class="notice-lists_des">
-                      <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus voluptatum dolorem
-                        excepturi quaerat ad.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="notice-lists_tit">555</div>
-                  <div class="notice-lists_box">
-                    <div class="notice-lists_des">
-                      <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus voluptatum dolorem
-                        excepturi quaerat ad.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </section>
-    </section>
 
+    </section>
+    <section class="notice-section">
+      <div class="container">
+        <h2 class="section-title notice-title">공지사항</h2>
+        <div class="notice-box">
+          <ol class="notice-lists">
+            <li>
+              <div class="notice-lists_tit">2024 UNICEF Awards 공모전 수상작 발표</div>
+              <div class="notice-lists_box">
+                <div class="notice-lists_des">
+                  <p>
+                    2024 UNICEF Awards의 수상작 발표는 공모전 종료 후 공식 웹사이트와 소셜 미디어 채널을 통해 발표될 예정입니다.
+                    <br>보통 심사 과정은 약 한 달 정도 소요되며, 모든 참가자에게 개별 연락도 진행됩니다.<br>
+                    공식 발표일에 대한 자세한 일정은 홈페이지 공지를 참고해 주세요! (예시 텍스트)
+                  </p>
+                  <div class="download-box">
+                    <div class="download_label">첨부파일</div>
+                    <ul>
+                      <li class="download-file">
+                        <span class="download-file_name">첨부파일_파일명1.jpg</span>
+                        <a href="javascript:;" title="파일 다운로드" download="" class="download-file_button" role="button">다운로드</a>
+                      </li>
+                      <!-- <li class="download-file">
+                        <span class="download-file_name">첨부파일_파일명2.jpg</span>
+                        <a href="javascript:;" title="파일 다운로드" download="" class="download-file_button">다운로드</a>
+                      </li> -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="notice-lists_tit">222</div>
+              <div class="notice-lists_box">
+                <div class="notice-lists_des">
+                  <p> Eveniet tempore quod molestiae temporibus iste cum velit? Dolor illum cupiditate quam odio
+                    expedita laudantium ipsa?
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="notice-lists_tit">333</div>
+              <div class="notice-lists_box">
+                <div class="notice-lists_des">
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus voluptatum dolorem
+                    excepturi quaerat ad.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="notice-lists_tit">444</div>
+              <div class="notice-lists_box">
+                <div class="notice-lists_des">
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus voluptatum dolorem
+                    excepturi quaerat ad.
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="notice-lists_tit">555</div>
+              <div class="notice-lists_box">
+                <div class="notice-lists_des">
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus voluptatum dolorem
+                    excepturi quaerat ad.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
 
   </div>
   <!-- 푸터 -->

@@ -98,3 +98,14 @@ p, ul{margin:0; padding:0;}
 a {
   text-decoration: none;
 }
+
+/* 셀렉트박스 커스텀 필요한 경우 */
+select {
+  -webkit-appearance:none; /* for chrome */
+  -moz-appearance:none; /*for firefox*/
+  appearance:none;
+}
+
+select::-ms-expand{
+  display:none;/*for IE10,11*/
+}
