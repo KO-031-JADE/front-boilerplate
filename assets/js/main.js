@@ -117,6 +117,18 @@ function openPopupApply() {
   document.querySelector("#apply_popup").classList.add("on");
   document.querySelector("html").classList.add("blockScroll");
   document.querySelector("#apply_popup").scrollTop = 0; // 팝업 맨 위로 이동
+
+  const form = document.querySelector("#apply_popup form");
+  if (form) {
+    form.reset(); // form reset
+  }
+  // reset 공모부문 select_box
+  document.querySelector('.select_box').classList.remove('open');
+  document.querySelector('.select-selected').classList.remove('selected');
+  document.querySelector('.select-selected').innerHTML = '공모부문을 선택해주세요';
+  document.querySelector('#customSelectValue').value = '';
+  // reset 첨부파일
+  resetFiles();
 }
 
 function closePopupApply() {
@@ -182,7 +194,7 @@ function attachFiles() {
           const deleteButton = document.createElement("button");
           deleteButton.type = "button";
           deleteButton.className = "btn-document_delete";
-          deleteButton.innerHTML = '<img src="assets/images/x_text.png" alt="파일-삭제">';
+          deleteButton.innerHTML = '<img src="assets/images/btn-doc-delete.png" alt="파일-삭제">';
           fileNameSpan.appendChild(deleteButton);
         }
       } else {
@@ -261,5 +273,28 @@ function attachFiles() {
   });
 }
 
+// 사업소개서 첨부파일 reset
+function resetFiles() {
+  const fileBoxes = document.querySelector(".file_boxes");
+
+  // 기존 파일박스 모두 제거
+  fileBoxes.innerHTML = ''; 
+
+  // 기본 파일박스 하나 추가
+  const initialBox = document.createElement("li");
+  initialBox.innerHTML = `
+    <div class="file_box">
+      <span class="file_label">첨부파일</span>
+      <span class="file_name no_files">파일을 선택하세요.</span>
+      <input type="file" class="a11yHidden">
+      <button type="button" class="btn-document_add">첨부</button>
+    </div>
+    <button type="button" class="btn-filebox_add">
+      <img src="assets/images/btn-files-add.png" alt="파일박스-추가">
+    </button>
+  `;
+
+  fileBoxes.appendChild(initialBox);
+}
 
 

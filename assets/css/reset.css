@@ -73,6 +73,7 @@ img,
 picture {
   max-width: 100%;
   display: block;
+  object-fit: contain;
 }
 
 /* input 및 button 항목들이 글꼴을 상속하도록 합니다. */

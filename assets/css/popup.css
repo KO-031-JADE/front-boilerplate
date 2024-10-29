@@ -10,8 +10,8 @@
   overflow: hidden;
 }
 .popup-dim {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -293,10 +293,6 @@
   left: 0;
 }
 
-.option-icon {
-  margin-right: 10px;
-}
-
 /* 사업소개서 첨부파일 */
 .pop-tb .file_boxes {
   width: 100%;
@@ -335,7 +331,7 @@
   letter-spacing: -0.5px;
   padding-left: 30px;
   display: flex;
-  align-self: center;
+  align-items: center;
 }
 .pop-tb .file_name.no_files {
   color: #999;
@@ -391,6 +387,9 @@
 }
 .pop-tb__cardNews .tb-header {
   background: #374ea2;
+}
+.pop-tb__cardNews .tb-tit {
+  background: #f5f6fa;
 }
 .pop-tb__agree .tb-header {
   background: #777779;
