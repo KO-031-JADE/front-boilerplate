@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
   handlePopup(); // 팝업
   toggleNoticeTitles(); // 공지사항 토글
-  handleTabs(); // 투표하기 탭 애니메이션
-  handleCateTabs(); // 카테고리 탭 애니메이션
+  handleTabs(); // 투표하기, 점수확인 탭
+  handleCateTabs(); // 카테고리 탭
 
   popSelect(); // 접수하기 팝업 공모부분 selectbox
   attachFiles(); // 사업소개서 첨부파일
@@ -128,19 +128,25 @@ function closePopupApply() {
 
 // 접수하기 팝업 공모부분 selectbox
 function popSelect() {
-  document.querySelector('.select-selected').addEventListener('click', function() {
-    document.querySelector('.select_box').classList.toggle('open');
-    console.log('select click');
+  const selectBox = document.querySelector('.select_box');
+  const selectSelected = selectBox.querySelector('.select-selected');
+  const hiddenInput = document.querySelector('#customSelectValue');
+  
+  selectSelected.addEventListener('click', function() {
+    selectBox.classList.toggle('open');
   });
   
-  document.querySelectorAll('.select-item').forEach(item => {
+  selectBox.querySelectorAll('.select-item').forEach(item => {
     item.addEventListener('click', function() {
       const selectedHTML = this.innerHTML;
       const selectedValue = this.getAttribute('data-value');
       
-      document.querySelector('.select-selected').innerHTML = selectedHTML;
-      document.querySelector('#customSelectValue').value = selectedValue;
-      document.querySelector('.select_box').classList.remove('open');
+      selectSelected.innerHTML = selectedHTML;
+      hiddenInput.value = selectedValue;
+      selectBox.classList.remove('open');
+      
+      // 선택된 상태 스타일 추가
+      selectSelected.classList.add('selected');
     });
   });
 }
