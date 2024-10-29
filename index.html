@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="assets/css/font.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/popup.css">
-  <link rel="stylesheet" href="assets/css/midea.css">
-  <link rel="stylesheet" href="assets/css/main_midea.css">
+  <link rel="stylesheet" href="assets/css/media.css">
+  <link rel="stylesheet" href="assets/css/main_media.css">
 
   <title>2024 UNICEF Awards 공모전</title>
 </head>
@@ -32,7 +32,7 @@
           <div class="pop-tb pop-tb__info">
             <div class="tb-header">신청 단체 정보</div>
             <div class="tb-body">
-  
+
               <div class="tb-row">
                 <div class="tb-tit">
                   <strong class="essential">단체명</strong>
@@ -52,17 +52,21 @@
                   <div class="address_box">
                     <div class="input_box">
                       <input type="text" id="mAddr1" name="mAddr1" required readonly>
-                      <button type="button" class="btn-address btn_addr" onclick="sample2_execDaumPostcode();">검색</button>
+                      <button type="button" class="btn-address btn_addr"
+                        onclick="sample2_execDaumPostcode();">검색</button>
                     </div>
                     <div class="input_box">
                       <input type="text" id="mAddr2" name="mAddr2" placeholder="상세 주소를 입력하세요. (선택)">
                     </div>
                   </div>
-  
-                  <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:10;-webkit-overflow-scrolling:touch;">
-                    <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="width:20px;cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+
+                  <div id="layer"
+                    style="display:none;position:fixed;overflow:hidden;z-index:10;-webkit-overflow-scrolling:touch;">
+                    <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer"
+                      style="width:20px;cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1"
+                      onclick="closeDaumPostcode()" alt="닫기 버튼">
                   </div>
-  
+
                 </div>
               </div>
               <div class="tb-row">
@@ -103,7 +107,7 @@
                         </div>
                       </div>
                     </div>
-  
+
                     <div class="tb-col">
                       <div class="tb-row">
                         <div class="row-tit">
@@ -127,8 +131,8 @@
                       </div>
                     </div>
                   </div>
-  
-  
+
+
                 </div>
               </div>
               <div class="tb-row">
@@ -139,8 +143,9 @@
                   <div class="select_box">
                     <div class="select-selected">공모부문을 선택해주세요</div>
                     <div class="select-items">
-                      <div class="select-item" data-value="1"> 
-                        <div class="item-tit"><span class="main-color">조례</span> 및 <span class="main-color">정책</span></div>
+                      <div class="select-item" data-value="1">
+                        <div class="item-tit"><span class="main-color">조례</span> 및 <span class="main-color">정책</span>
+                        </div>
                         <div class="item-des">
                           <ul>
                             <li>
@@ -152,45 +157,45 @@
                           </ul>
                         </div>
                       </div>
-                      <div class="select-item" data-value="2"> 
+                      <div class="select-item" data-value="2">
                         <div class="item-tit">아동<span class="main-color">참여</span></div>
                         <div class="item-des">
                           <ul>
                             <li>
-                              다양한 연령과 계층의 아동 의견을 수렴하고, 관련 기구를 운영한 사례 
+                              다양한 연령과 계층의 아동 의견을 수렴하고, 관련 기구를 운영한 사례
                             </li>
                             <li>
                               학교에서 학생들의 참여의식을 함양하기 위한 교육 프로그램, 행사 등을 운영하거나 자선행사,
-                              봉사 등의 사회참여활동을 지원한 사례 
+                              봉사 등의 사회참여활동을 지원한 사례
                             </li>
                           </ul>
                         </div>
                       </div>
-                      <div class="select-item" data-value="3"> 
+                      <div class="select-item" data-value="3">
                         <div class="item-tit">아동<span class="main-color">권리교육</span></div>
                         <div class="item-des">
                           <ul>
                             <li>
-                              아동의 눈높이에 맞춘 권리교육 및 지자체, 학교 내 교육 대상자를 위한 교육을 운영 한 사례 
+                              아동의 눈높이에 맞춘 권리교육 및 지자체, 학교 내 교육 대상자를 위한 교육을 운영 한 사례
                             </li>
                             <li>
                               학교에서 학교 구성원(학생, 교사, 보호자)을 대상으로 아동권리교육을 실시하거나 학교 구성원 간
-                              긍정적 관계 형성을 위한 프로그램을 시행한 사례 
+                              긍정적 관계 형성을 위한 프로그램을 시행한 사례
                             </li>
                           </ul>
                         </div>
                       </div>
-                      <div class="select-item" data-value="4"> 
+                      <div class="select-item" data-value="4">
                         <div class="item-tit">행정<span class="main-color">서비스</span></div>
                         <div class="item-des">
                           <ul>
                             <li>
-                              아동을 위한 지자체, 학교 내 사회보장 및 행정 서비스의 신설, 운영 사례 
+                              아동을 위한 지자체, 학교 내 사회보장 및 행정 서비스의 신설, 운영 사례
                             </li>
                           </ul>
                         </div>
                       </div>
-                      <div class="select-item" data-value="5"> 
+                      <div class="select-item" data-value="5">
                         <div class="item-tit">아동<span class="main-color">친화공간</span></div>
                         <div class="item-des">
                           <ul>
@@ -203,7 +208,7 @@
                       </div>
                     </div>
                   </div>
-                  <input type="hidden" name="customSelectValue" id="customSelectValue" required >
+                  <input type="hidden" name="customSelectValue" id="customSelectValue" required>
                 </div>
               </div>
               <div class="tb-row">
@@ -232,12 +237,12 @@
                   </div>
                 </div>
               </div>
-  
+
             </div>
           </div>
-  
-        <div class="pop-tb pop-tb__cardNews card-news-container">
-          <div class="tb-header card-title">카드뉴스</div>
+
+          <div class="pop-tb pop-tb__cardNews card-news-container">
+            <div class="tb-header card-title">카드뉴스</div>
             <div class="tb-body">
               <div class="tb-row">
                 <div class="tb-tit">
@@ -245,7 +250,8 @@
                 </div>
                 <div class="tb-con">
                   <div class="input_box">
-                    <input type="text" id="title" name="title" placeholder="제목을 입력하세요. (최대 40자까지 입력 가능)" maxlength="40" required>
+                    <input type="text" id="title" name="title" placeholder="제목을 입력하세요. (최대 40자까지 입력 가능)" maxlength="40"
+                      required>
                   </div>
                 </div>
               </div>
@@ -254,7 +260,7 @@
                 <div class="tb-tit">
                   <strong class="essential">카드 이미지</strong>
                   <p class="card-notice">
-                    최대 3장 <br class="br_pc"> 
+                    최대 3장 <br class="br_pc">
                     (1200px <img src="assets/images/icon-card_x.png" alt="x"> 1380px)
                   </p>
                 </div>
@@ -265,7 +271,7 @@
                   <p class="text-muted">· 카드는 최대 3장까지 등록 가능합니다.</p>
                 </div>
               </div>
-              
+
               <div class="tb-row">
                 <div class="tb-tit">
                   <label for="content">
@@ -274,13 +280,14 @@
                   </label>
                 </div>
                 <div class="tb-con">
-                  <textarea id="content" name="description" class="content-input" placeholder="내용을 입력하세요." maxlength="300"></textarea>
-                  <div class="text-end text-muted mt-2" ><span id="char-count" class="char-count">0 /</span> 300 자</div>
+                  <textarea id="content" name="description" class="content-input" placeholder="내용을 입력하세요."
+                    maxlength="300"></textarea>
+                  <div class="text-end text-muted mt-2"><span id="char-count" class="char-count">0 /</span> 300 자</div>
                 </div>
               </div>
             </div>
           </div>
-  
+
           <div class="pop-tb pop-tb__agree pop-tb__agree01">
             <div class="tb-header">개인정보 수집 · 이용 안내</div>
             <div class="tb-body">
@@ -312,13 +319,13 @@
                   </label>
                   <label>
                     <input type="radio" name="agreeBtn1" id="agreeBtn1_02">
-                    동의하지 않음 
+                    동의하지 않음
                   </label>
                 </div>
               </div>
             </div>
           </div>
-  
+
           <div class="pop-tb pop-tb__agree pop-tb__agree02">
             <div class="tb-header">초상권 사용동의</div>
             <div class="tb-body">
@@ -353,7 +360,7 @@
                   </label>
                   <label>
                     <input type="radio" name="agreeBtn2" id="agreeBtn2_02">
-                    동의하지 않음 
+                    동의하지 않음
                   </label>
                 </div>
               </div>
@@ -369,13 +376,13 @@
     </form>
   </div>
   <div class="wrap">
-      <div id="floatRightButton" class="main-right-float" onclick="javascript:openPopupApply();">
-        <img class="box" src="./assets/images/gobox.png" alt="" />
-        <img class="arrow" src="./assets/images/btn-apply_icon02.png" alt="" />
-      </div>
-      <div id="floatLeftButton" class="main-left-float" onclick="javascript:void(0);">
-        <img class="box" src="./assets/images/floating_bloons.png" alt="" />
-      </div>
+    <div id="floatRightButton" class="main-right-float" onclick="javascript:openPopupApply();">
+      <img class="box" src="./assets/images/gobox.png" alt="" />
+      <img class="arrow" src="./assets/images/btn-apply_icon02.png" alt="" />
+    </div>
+    <div id="floatLeftButton" class="main-left-float" onclick="javascript:void(0);">
+      <img class="box" src="./assets/images/floating_bloons.png" alt="" />
+    </div>
     <header class="header">
       <div class="container">
         <!-- 로고 섹션 -->
@@ -402,7 +409,8 @@
           <div class="main-title">
             <p>2024</p>
             <p class="main-color">UNICEF Awards</p>
-            <p>: C<span class="main-color">hange </span>F<span class="main-color">or</span> C<span class="main-color">hildren</span></p> 
+            <p>: C<span class="main-color">hange </span>F<span class="main-color">or</span> C<span
+                class="main-color">hildren</span></p>
             <del>아동을 위한 더 나은 변화</del>
           </div>
         </div>
@@ -416,7 +424,8 @@
               <p class="main-color">참여방법</p>
               <div>
                 <p>유니세프 아동친화도시 공모전 홈페이지접속</p>
-                <p class="flex"><span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span> 우수 사례 등록</p>
+                <p class="flex"><span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span>
+                  우수 사례 등록</p>
               </div>
             </li>
             <li>
@@ -435,37 +444,37 @@
         <div class="container">
           <div class="recruit-schedule">
             <div class="conainer">
-            <div class="top-box"></div>
-            <p class="box-title">공모<span class="main-color">일정</span></p>
-            <div class="box-contents">
-              <div class="contents-container">
-                <img src="./assets/images/schedule_contents.png" alt="" />
-                <div class="txt-wrap">
-                  <ul>
-                    <li class="yellow-color"><img src="./assets/images/yellow_hearts.png" alt="하트이미지"> 접수 기간</li>
-                    <li>11월 5일(화)~11월 15일(금)</li>
-                  </ul>
-                  <ul>
-                    <li class="red-color"><img src="./assets/images/red_hearts.png" alt="하트이미지"> 투표 기간</li>
-                    <li>11월 19일(화)~11월 27일(수)</li>
-                  </ul>
-                  <ul>
-                    <li class="low-green-color"><img src="./assets/images/low_green_hearts.png" alt="하트이미지"> 내부 작품 심사 기간
-                    </li>
-                    <li>11월 19일(화)~11월 29일(금)</li>
-                  </ul>
-                  <ul>
-                    <li class="green-color"><img src="./assets/images/green_hearts.png" alt="하트이미지"> 결과 발표</li>
-                    <li>12일 3일(화)</li>
-                  </ul>
-                  <ul>
-                    <li class="blue-color"><img src="./assets/images/blue_hearts.png" alt="하트이미지"> 시상</li>
+              <div class="top-box"></div>
+              <p class="box-title">공모<span class="main-color">일정</span></p>
+              <div class="box-contents">
+                <div class="contents-container">
+                  <img src="./assets/images/schedule_contents.png" alt="" />
+                  <div class="txt-wrap">
+                    <ul>
+                      <li class="yellow-color"><img src="./assets/images/yellow_hearts.png" alt="하트이미지"> 접수 기간</li>
+                      <li>11월 5일(화)~11월 15일(금)</li>
+                    </ul>
+                    <ul>
+                      <li class="red-color"><img src="./assets/images/red_hearts.png" alt="하트이미지"> 투표 기간</li>
+                      <li>11월 19일(화)~11월 27일(수)</li>
+                    </ul>
+                    <ul>
+                      <li class="low-green-color"><img src="./assets/images/low_green_hearts.png" alt="하트"> 내부 작품 심사 기간
+                      </li>
+                      <li>11월 19일(화)~11월 29일(금)</li>
+                    </ul>
+                    <ul>
+                      <li class="green-color"><img src="./assets/images/green_hearts.png" alt="하트이미지"> 결과 발표</li>
+                      <li>12일 3일(화)</li>
+                    </ul>
+                    <ul>
+                      <li class="blue-color"><img src="./assets/images/blue_hearts.png" alt="하트이미지"> 시상</li>
 
-                    <li>
-                      <p>12월 둘째 주</p>
-                      <p>(추후 사이트 내 공지)</p>
-                    </li>
-                  </ul>
+                      <li>
+                        <p>12월 둘째 주</p>
+                        <p>(추후 사이트 내 공지)</p>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -759,7 +768,8 @@
                 </div>
               </li>
             </ul>
-            <p class="benefit-ref">(<span class="yellow-color">*</span>24년 12월부터 유효하며, 각 학교 · 지자체 당 인증 신청 접수 시 1회 적용)</p>
+            <p class="benefit-ref">(<span class="yellow-color">*</span>24년 12월부터 유효하며, 각 학교 · 지자체 당 인증 신청 접수 시 1회 적용)
+            </p>
           </div>
         </div>
       </section>
@@ -812,17 +822,17 @@
                   <li class="list">
                     <div class="txt-wrap">
                       <div class="flex">
-                      <p class="category bg-yellow">아동참여</p>
-                      <label class="custom-checkbox">
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                      </label>
+                        <p class="category bg-yellow">아동참여</p>
+                        <label class="custom-checkbox">
+                          <input type="checkbox">
+                          <span class="checkmark"></span>
+                        </label>
                       </div>
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
-                  </li> 
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                  </li>
                   <li class="list">
                     <div class="txt-wrap">
                       <div class="flex">
@@ -831,11 +841,11 @@
                           <input type="checkbox">
                           <span class="checkmark"></span>
                         </label>
-                    </div>
+                      </div>
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                   </li>
                   <li class="list">
                     <div class="txt-wrap">
@@ -849,7 +859,7 @@
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                   </li>
                   <li class="list">
                     <div class="txt-wrap">
@@ -863,7 +873,7 @@
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                   </li>
                   <li class="list">
                     <div class="txt-wrap">
@@ -877,8 +887,8 @@
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
-                  </li> 
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                  </li>
                   <li class="list">
                     <div class="txt-wrap">
                       <div class="flex">
@@ -891,8 +901,8 @@
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
-                  </li> 
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                  </li>
                   <li class="list">
                     <div class="txt-wrap">
                       <div class="flex">
@@ -905,7 +915,7 @@
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                   </li>
                   <li class="list">
                     <div class="txt-wrap">
@@ -919,7 +929,7 @@
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                   </li>
                   <li class="list">
                     <div class="txt-wrap">
@@ -933,7 +943,7 @@
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                   </li>
                   <li class="list">
                     <div class="txt-wrap">
@@ -947,7 +957,7 @@
                       <p class="sub-title">서울시 서초구청</p>
                       <p class="txt">서울시 서초구청<br />시민의숲 어린이행사</p>
                     </div>
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                   </li>
                 </ul>
               </div>
@@ -997,7 +1007,8 @@
                     <ul>
                       <li class="download-file">
                         <span class="download-file_name">첨부파일_파일명1.jpg</span>
-                        <a href="javascript:;" title="파일 다운로드" download="" class="download-file_button" role="button">다운로드</a>
+                        <a href="javascript:;" title="파일 다운로드" download="" class="download-file_button"
+                          role="button">다운로드</a>
                       </li>
                       <!-- <li class="download-file">
                         <span class="download-file_name">첨부파일_파일명2.jpg</span>
@@ -1082,92 +1093,92 @@
 
   <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script>
-		var element_layer = document.getElementById('layer');
-		function closeDaumPostcode() {
-			// iframe을 넣은 element를 안보이게 한다.
-			element_layer.style.display = 'none';
-		}
+    var element_layer = document.getElementById('layer');
+    function closeDaumPostcode() {
+      // iframe을 넣은 element를 안보이게 한다.
+      element_layer.style.display = 'none';
+    }
 
-		function sample2_execDaumPostcode() {
-			if (typeof daum != 'object') {
-				alert('우편번호 검색을 준비중입니다. 잠시만 기다려주세요');
-			}
-			new daum.Postcode({
-				oncomplete: function(data) {
-					// 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+    function sample2_execDaumPostcode() {
+      if (typeof daum != 'object') {
+        alert('우편번호 검색을 준비중입니다. 잠시만 기다려주세요');
+      }
+      new daum.Postcode({
+        oncomplete: function (data) {
+          // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-					// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-					// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-					var addr = ''; // 주소 변수
-					var extraAddr = ''; // 참고항목 변수
+          // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+          // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+          var addr = ''; // 주소 변수
+          var extraAddr = ''; // 참고항목 변수
 
-					//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-					if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-						addr = data.roadAddress;
-					} else { // 사용자가 지번 주소를 선택했을 경우(J)
-						addr = data.jibunAddress;
-					}
+          //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+          if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+            addr = data.roadAddress;
+          } else { // 사용자가 지번 주소를 선택했을 경우(J)
+            addr = data.jibunAddress;
+          }
 
-					// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-					if(data.userSelectedType === 'R'){
-						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-						if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-							extraAddr += data.bname;
-						}
-						// 건물명이 있고, 공동주택일 경우 추가한다.
-						if(data.buildingName !== '' && data.apartment === 'Y'){
-							extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-						}
-						// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-						if(extraAddr !== ''){
-							extraAddr = ' (' + extraAddr + ')';
-						}
-						// 조합된 참고항목을 해당 필드에 넣는다.
-						//document.getElementById("pAddr2").value = extraAddr;
-						addr = addr + extraAddr;
+          // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+          if (data.userSelectedType === 'R') {
+            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+              extraAddr += data.bname;
+            }
+            // 건물명이 있고, 공동주택일 경우 추가한다.
+            if (data.buildingName !== '' && data.apartment === 'Y') {
+              extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            }
+            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+            if (extraAddr !== '') {
+              extraAddr = ' (' + extraAddr + ')';
+            }
+            // 조합된 참고항목을 해당 필드에 넣는다.
+            //document.getElementById("pAddr2").value = extraAddr;
+            addr = addr + extraAddr;
 
-					} else {
-						document.getElementById("mAddr2").value = '';
-					}
+          } else {
+            document.getElementById("mAddr2").value = '';
+          }
 
-					// 우편번호와 주소 정보를 해당 필드에 넣는다.
-					document.getElementById("mAddr1").value = addr;
-					// 커서를 상세주소 필드로 이동한다.
-					document.getElementById("mAddr2").focus();
-
-
-					// iframe을 넣은 element를 안보이게 한다.
-					// (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-					element_layer.style.display = 'none';
+          // 우편번호와 주소 정보를 해당 필드에 넣는다.
+          document.getElementById("mAddr1").value = addr;
+          // 커서를 상세주소 필드로 이동한다.
+          document.getElementById("mAddr2").focus();
 
 
-				},
-				width : '100%',
-				height : '100%',
-				maxSuggestItems : 5
-			}).embed(element_layer);
+          // iframe을 넣은 element를 안보이게 한다.
+          // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+          element_layer.style.display = 'none';
 
-			// iframe을 넣은 element를 보이게 한다.
-			element_layer.style.display = 'block';
 
-			// iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
-			initLayerPosition();
-		}
+        },
+        width: '100%',
+        height: '100%',
+        maxSuggestItems: 5
+      }).embed(element_layer);
 
-		function initLayerPosition(){
-			var width = 300; //우편번호서비스가 들어갈 element의 width
-			var height = 400; //우편번호서비스가 들어갈 element의 height
-			var borderWidth = 5; //샘플에서 사용하는 border의 두께
+      // iframe을 넣은 element를 보이게 한다.
+      element_layer.style.display = 'block';
 
-			// 위에서 선언한 값들을 실제 element에 넣는다.
-			element_layer.style.width = width + 'px';
-			element_layer.style.height = height + 'px';
-			element_layer.style.border = borderWidth + 'px solid';
-			// 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
-			element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
-			element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
-		}
+      // iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
+      initLayerPosition();
+    }
+
+    function initLayerPosition() {
+      var width = 300; //우편번호서비스가 들어갈 element의 width
+      var height = 400; //우편번호서비스가 들어갈 element의 height
+      var borderWidth = 5; //샘플에서 사용하는 border의 두께
+
+      // 위에서 선언한 값들을 실제 element에 넣는다.
+      element_layer.style.width = width + 'px';
+      element_layer.style.height = height + 'px';
+      element_layer.style.border = borderWidth + 'px solid';
+      // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
+      element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width) / 2 - borderWidth) + 'px';
+      element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height) / 2 - borderWidth) + 'px';
+    }
   </script>
 </body>
 
