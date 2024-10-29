@@ -746,7 +746,6 @@ body > .wrap > .main-right-float > .arrow {
   position: relative;
 }
 .examination-details-section .bg {
-  /* background: url(../images/examination_details_bg.png) no-repeat; */
   background-color: #80bd41;
   position: absolute;
   top: 0;
@@ -1069,11 +1068,11 @@ body > .wrap > .main-right-float > .arrow {
 /* tabs-wrap */
 .voting-section{
   background-color: #01823f;
-  padding: 120px;
 }
 
 .voting-section .container{
   padding-top: 120px;
+  padding-bottom: 120px;
 }
 .voting-section .tabs-wrap {
   border-top: 1px solid #fff;
@@ -1267,6 +1266,12 @@ body > .wrap > .main-right-float > .arrow {
   border-radius: 15px;
   border: 1px solid #ccc;
   padding: 19px ;
+  transition: .2s ease-in-out;
+}
+
+.voting-section .container .voting-box .bottom .contents .grid .checked-border {
+  box-shadow: 6px 6px 0px 0px #1cabe2;
+  border: 2px solid #1cabe2;
 }
 
 .voting-section .container .voting-box .bottom .contents .grid .list .txt-wrap {
@@ -1343,9 +1348,9 @@ body > .wrap > .main-right-float > .arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
   margin: 0px 58px;
 }
+
 .pagenation-container .pages .active {
   display: block;
   width: 50px;
@@ -1357,6 +1362,13 @@ body > .wrap > .main-right-float > .arrow {
   justify-content: center;
   color: #fff;
 }
+
+.pagenation-container .pages span {
+  display: block;
+  padding: 20px;
+  cursor: pointer;
+}
+
 
 .dropdown, .search-input, .search-button {
   border: 1px solid #ddd;
@@ -1538,9 +1550,25 @@ body > .wrap > .main-right-float > .arrow {
   background: #fff;
   border: 4px solid #000;
   border-radius: 50px;
-  padding: 0 70px;
   margin-top: 70px;
   box-shadow: 6px 6px 0px 0px #000;
+}
+
+.notice-box .empty {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f6fa;
+  max-width: 1400px;
+  height: 460px;
+  border-radius: 30px;
+  margin: 66px auto;
+  font-size: 50px;
+  font-weight: 800;
+  color:#374ea2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
 }
 
 .notice-lists {
@@ -1552,6 +1580,7 @@ body > .wrap > .main-right-float > .arrow {
   padding: 40px 0;
   border-bottom: 1px dashed #ccc;
   position: relative;
+  margin: 0 70px;
 }
 
 .notice-lists > li:last-child {

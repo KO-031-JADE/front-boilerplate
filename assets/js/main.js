@@ -11,7 +11,25 @@ document.addEventListener("DOMContentLoaded", function () {
   initDropzone(); // Dropzone 설정
   initSortable(); // Sortable 설정스크롤
   setupTextareaCounter(); // 글자수 카운팅
+  checkedOutline(); // 접수하기, 점수확인 체크박스 테두리
 });
+
+// 접수하기, 점수확인 체크박스 테두리
+function checkedOutline() {
+  const lists = document.querySelectorAll(".list");
+
+  lists.forEach(list => {
+      const checkbox = list.querySelector("input[type='checkbox']");
+      
+      checkbox.addEventListener("change", function () {
+          if (checkbox.checked) {
+              list.classList.add("checked-border"); // 클래스 추가
+          } else {
+              list.classList.remove("checked-border"); // 클래스 제거
+          }
+      });
+  });
+}
 
 // 헤더의 애니메이션
 function handleHeaderAnimation() {
@@ -109,11 +127,6 @@ function handleReceptionButtonFloating() {
     // $("#floatLeftButton").stop().animate({ "top": newPosition }, 500);	
   }).scroll();
 }
-
-
-
-
-
 
 // 접수하기 팝업
 function openPopupApply() {
