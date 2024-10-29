@@ -102,9 +102,6 @@
 .pop-tb .tb-row:last-of-type {
   border-bottom: 0;
 }
-.pop-tb  .tb-con_half {
-  width: 50%;
-}
 .pop-tb .tb_flex {
   display: flex;
 }
@@ -360,11 +357,16 @@
   padding-left: 30px;
   margin-top: 15px;
 }
+.file_boxes + .ref p {
+  position: relative;
+  padding-left: 10px;
+}
 .file_boxes + .ref p::before {
   content: '·';
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align: text-bottom;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 
@@ -532,8 +534,314 @@
   transform: translateX(130px);
 }
 
-@media only screen and (max-width: 1070px) {
-  .popup-title {
-    width: 100%;
-  }
+/* 카드뉴스 */
+.card-notice {
+  font-family: 'Paperlogy';
+  font-weight: 600;
+  font-size: 22px;
+  color: #374ea2;
+  text-align: center;
+}
+.card-notice img {
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 21px;
+  height: 21px;
+}
+.pop-tb__cardNews .dropzone{
+  width: 100%;
+  position: relative;
+  padding: 0;
+  border: 1px solid red;
+}
+#dropzone-preview {
+  display: flex;
+  align-items:center;
+}
+
+#dropzone-preview li {
+  width: 264px;
+  cursor: pointer;
+}
+#dropzone-preview .image-box{
+  position: relative;
+  height: 338px;
+}
+
+#dropzone-preview .image-box .d-flex {
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+  height: 100%;
+}
+
+#dropzone-preview .image-box .d-flex .shrink-0{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.representative-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #374ea2;
+  color: white;
+  padding: 5px;
+  display: none;
+  z-index: 1;
+}
+.representative-selected .representative-label {
+  display: block;
+}
+
+
+#dropzone-preview .image-box .d-flex .flex-shrink-0{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  cursor: pointer;
+}
+
+#dropzone-preview .image-box .d-flex .flex-shrink-0 img{
+  width: 224px;
+  height: 255px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.card-news-container {
+  max-width: 1196px;
+  margin: 50px auto;
+  border: 2px solid #dce1e7;
+  border-radius: 30px 30px 40px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 4px solid #374ea2;
+  border-top: 0;
+}
+
+.card-news-container input::placeholder {color:#999;}
+.card-news-container input::-webkit-input-placeholder {color:#999;}
+.card-news-container input:-ms-input-placeholder {color:#999;} 
+
+.card-news-container textarea::placeholder {color:#999;}
+.card-news-container textarea::-webkit-input-placeholder {color:#999;}
+.card-news-container textarea:-ms-input-placeholder {color:#999;}
+
+.title-input,
+.content-input {
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  transition: border-color 0.3s;
+  background-color: #f9f9f9;
+  width: 100%;
+  max-width: 848px;
+  border-radius: 30px;
+  margin: 0 auto;
+}
+
+.title-input{
+  padding: 20px 30px;
+}
+
+.content-input {
+  padding: 20px 30px;
+  resize: none;
+}
+
+.title-input:focus,
+.content-input:focus {
+  border-color: #0056b3;
+}
+
+
+.card-news-container .card-title{
+  font-family: 'font-r', sans-serif;
+  text-align: center;
+  padding: 23px 0 23px 0;
+  background-color: #374ea2;
+  color: #fff;
+  font-weight: bold;
+  font-size: 38px;
+  margin:0;
+
+}
+
+.card-news-container .left{
+  display: block;
+  background-color: #f5f6fa;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-news-container .card-wrap-title{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+.card-news-container .card-images-section{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+.card-news-container .card-wrap-contents{
+  display: flex;
+  align-items: center;
+}
+
+.card-news-container .card-wrap-title .left{
+  height: 100px;
+  position: relative;
+}
+.card-news-container .card-images-section .left{
+  text-align: center;
+  height: 474px;   
+}
+.card-news-container .card-images-section .left > div{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-news-container .card-wrap-contents .left{
+  height: 299px;
+  border-radius: 0 0 0 40px;
+  text-align: center;
+}
+
+.card-images-section .right {
+  width: 100%;
+  height: 420px;
+  max-width: 848px;
+  /* max-height: 352px; */
+  margin: 0 auto;
+  
+}
+
+.card-images-section .right .dropzone{
+  width: 100%;
+  height: 100%;
+  max-height: 383px;
+  position: relative;
+  padding: 0;
+  border-radius: 17px;
+}
+
+.card-images-section .right .text-muted{
+  margin: 20px 0 0 20px;
+}
+
+.card-images-section .right .dropzone .dz-message{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.card-news-container .card-wrap-contents .right{
+  width: 100%;
+  max-width: 848px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.card-news-container .card-wrap-contents .right .text-end{
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+}
+
+.card-news-container .card-wrap-contents .left .text-muted{
+  font-family: 'font-r', sans-serif;
+  color:#777777;
+  font-size: 20px;
+}
+
+.card-news-container .card-images-section .left p{
+  margin-top: 23px;
+  color:#374ea2;
+  font-family: 'font-b', sans-serif;
+}
+
+.card-label-font{
+  font-family: 'font-b', sans-serif;
+  font-size: 28px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.text-danger{
+  width: 8px;
+  height: 8px;
+  display: block;
+  background-color: #ffc20e;
+  border-radius: 100%;
+  margin-left: 10px;;
+  position: absolute;
+  top: 2px;
+  right: -18px;
+}
+
+.card-images-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.card-image {
+  position: relative;
+  border: 2px solid #dce1e7;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 338px;
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.card-image .representative-label {
+  position: absolute;
+  top: -2px;
+  left: 0px;
+  background-color: #374ea2;
+  color: #ffffff;
+  padding: 11px 29px;
+  border-radius: 15px 0 15px 0;
+  font-size: 18px;
+}
+
+.card-image .delete-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: url('../images/X.png');
+  color: #ffffff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 36px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#resized-thumbnail-preview {
+  margin-top: 20px;
+  border: 2px solid #dce1e7;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.representative-selected {
+  border: 2px solid #374ea2;
+}
+
+.char-count{
+  color:#999999;
 }
