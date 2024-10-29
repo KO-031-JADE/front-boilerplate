@@ -1,3 +1,4 @@
+// Dropzone 및 Sortable 초기화 설정
 document.addEventListener("DOMContentLoaded", function () {
   handleHeaderAnimation(); // 헤더 애니메이션
   handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
@@ -5,9 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
   toggleNoticeTitles(); // 공지사항 토글
   handleTabs(); // 투표하기, 점수확인 탭
   handleCateTabs(); // 카테고리 탭
-
   popSelect(); // 접수하기 팝업 공모부분 selectbox
   attachFiles(); // 사업소개서 첨부파일
+  initDropzone(); // Dropzone 설정
+  initSortable(); // Sortable 설정
+  setupTextareaCounter(); // 글자수 카운팅
 });
 
 // 헤더의 애니메이션
@@ -297,4 +300,186 @@ function resetFiles() {
   fileBoxes.appendChild(initialBox);
 }
 
+// Dropzone 설정
+function initDropzone() {
+  Dropzone.autoDiscover = false;
+  const dropzonePreviewNode = document.createElement('div');
+  dropzonePreviewNode.innerHTML = `
+    <li class="mt-2 dz-image-preview card-image">
+      <div class="rounded-3 position-relative image-box">
+        <div class="representative-label">대표</div>
+        <div class="d-flex align-items-center p-2">
+          <div class="flex-shrink-0 me-3">
+            <div class="width-8 h-auto rounded-3">
+              <img data-dz-thumbnail class="w-full h-auto rounded-3 block" src="#" alt="Dropzone-Image" />
+            </div>
+          </div>
+          <div class="flex-grow-1">
+            <div class="pt-1">
+              <h6 class="font-semibold mb-1" data-dz-name>&nbsp;</h6>
+              <p class="text-sm text-muted fw-normal" data-dz-size></p>
+              <strong class="error text-danger" data-dz-errormessage></strong>
+            </div>
+          </div>
+          <div class="shrink-0">
+            <button data-dz-remove class="delete-icon"></button>
+          </div>
+        </div>
+      </div>
+    </li>`;
+  
+  const previewTemplate = dropzonePreviewNode.innerHTML;
 
+  const dropzone = new Dropzone(".dropzone", {
+    dictDefaultMessage: "여기에 파일을 드롭하여 업로드하세요",
+    url: "https://httpbin.org/post",
+    autoProcessQueue: false,
+    previewTemplate: previewTemplate,
+    previewsContainer: '#dropzone-preview',
+    acceptedFiles: "image/jpeg,image/png,image/gif,image/jpg",
+    maxFiles: 3,
+    init: function () {
+      const myDropzone = this;
+      myDropzone.on("addedfile", (file) => validateFile(file, myDropzone));
+      myDropzone.on("removedfile", () => toggleMessage(myDropzone));
+      myDropzone.on("maxfilesexceeded", (file) => handleMaxFilesExceeded(file, myDropzone));
+    }
+  });
+
+  document.getElementById("dropzone-preview").addEventListener("click", function (event) {
+    setRepresentativeImage(event);
+  });
+
+  // document.getElementById("submit-button").addEventListener("click", () => submitFiles(dropzone));
+}
+
+// 파일 유효성 검사
+function validateFile(file, dropzone) {
+  const fileName = file.name;
+  const fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+  const img = new Image();
+
+  if (!['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension) || file.size > 2 * 1024 * 1024) {
+    alert("지원되지 않는 파일 형식 또는 크기입니다: " + fileName);
+    return dropzone.removeFile(file);
+  }
+
+  img.onload = function () {
+    if (img.width > 1200 || img.height > 1360) {
+      alert("이미지 크기는 1200x1360을 초과할 수 없습니다: " + fileName);
+      dropzone.removeFile(file);
+    }
+  };
+  img.src = URL.createObjectURL(file);
+
+  if (isDuplicateFile(file, dropzone.getAcceptedFiles())) {
+    alert("동일한 이름의 파일이 이미 존재합니다: " + fileName);
+    dropzone.removeFile(file);
+  }
+
+  if (!document.querySelector('.dz-image-preview.representative-selected')) {
+    setTimeout(() => {
+      const firstImage = document.querySelector('.dz-image-preview');
+      firstImage?.classList.add('representative-selected');
+    }, 10);
+  }
+
+  document.querySelector(".dz-message").style.display = "none";
+}
+
+// 파일 중복 검사
+function isDuplicateFile(file, existingFiles) {
+  return existingFiles.some(existingFile => existingFile.name === file.name && existingFile.size === file.size);
+}
+
+// 파일 제거 후 메시지 보이기 설정
+function toggleMessage(dropzone) {
+  if (dropzone.files.length === 0) document.querySelector(".dz-message").style.display = "block";
+}
+
+// 최대 파일 개수 초과 처리
+function handleMaxFilesExceeded(file, dropzone) {
+  alert("이미지는 최대 3개까지 업로드 가능합니다.");
+  dropzone.removeFile(file);
+}
+
+// 대표 이미지 설정
+function setRepresentativeImage(event) {
+  const target = event.target.closest('.dz-image-preview');
+  if (target) {
+    document.querySelectorAll('.dz-image-preview').forEach(item => item.classList.remove('representative-selected'));
+    target.classList.add('representative-selected');
+  }
+}
+
+// 파일 제출 처리
+function submitFiles(dropzone) {
+  if (dropzone.getQueuedFiles().length > 0) {
+    const formData = new FormData(document.getElementById("upload-form"));
+    const uploadedFiles = document.querySelectorAll('#dropzone-preview > .dz-image-preview');
+
+    uploadedFiles.forEach((item, index) => {
+      const fileName = item.querySelector('[data-dz-name]').textContent.trim();
+      const file = dropzone.getQueuedFiles().find(file => file.name === fileName);
+      formData.append(`image${index + 1}`, file, fileName);
+      formData.append(`image-title${index + 1}`, fileName);
+    });
+
+    const representativeImage = document.querySelector('.dz-image-preview.representative-selected img');
+    if (representativeImage) {
+      resizeRepresentativeImage(representativeImage, 300, 341).then((resizedData) => {
+        formData.append("thumbnail-img", resizedData.blob, `thumbnail_${fileName}`);
+        formData.append("thumbnail-image-title", fileName);
+
+        // 미리보기 업데이트
+        document.getElementById("resized-thumbnail-preview").src = resizedData.url;
+        document.getElementById("resized-thumbnail-preview").style.display = 'block';
+
+        fetch("https://httpbin.org/post", { method: "POST", body: formData })
+          .then(response => response.json())
+          .then(data => alert("파일이 성공적으로 업로드되었습니다!"))
+          .catch(error => alert("파일 업로드 중 오류가 발생했습니다."));
+      });
+    } else {
+      alert("대표 이미지를 선택해 주세요.");
+    }
+  } else {
+    alert("최소 1개의 이미지를 업로드해 주세요.");
+  }
+}
+
+// 대표 이미지 복사 및 리사이징
+function resizeRepresentativeImage(image, width, height) {
+  return new Promise((resolve) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(image, 0, 0, width, height);
+    canvas.toBlob(blob => resolve({ blob, url: canvas.toDataURL('image/jpeg') }), 'image/jpeg');
+  });
+}
+
+// Sortable 설정
+function initSortable() {
+  new Sortable(document.getElementById('dropzone-preview'), {
+    animation: 150,
+    ghostClass: 'sortable-ghost',
+    handle: '.image-box',
+    onEnd: function () {
+      const uploadedFiles = document.querySelectorAll('#dropzone-preview > .dz-image-preview');
+      const fileOrder = Array.from(uploadedFiles).map(item => item.querySelector('[data-dz-name]').textContent.trim());
+      console.log("업데이트된 이미지 순서:", fileOrder);
+    }
+  });
+}
+
+// 글자수 카운팅 설정
+function setupTextareaCounter() {
+  const contentTextarea = document.getElementById("content");
+  const charCountDisplay = document.getElementById("char-count");
+  contentTextarea.addEventListener("input", () => {
+    const currentLength = contentTextarea.value.length;
+    charCountDisplay.textContent = `${currentLength} /`;
+  });
+}
