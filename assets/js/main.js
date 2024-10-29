@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   popSelect(); // 접수하기 팝업 공모부분 selectbox
   attachFiles(); // 사업소개서 첨부파일
   initDropzone(); // Dropzone 설정
-  initSortable(); // Sortable 설정
+  initSortable(); // Sortable 설정스크롤
   setupTextareaCounter(); // 글자수 카운팅
 });
 
@@ -105,7 +105,8 @@ function handleReceptionButtonFloating() {
     // 현재 스크롤 위치를 가져온다.		
     var scrollTop = $(window).scrollTop();		
     var newPosition = scrollTop + floatPosition + "px";		
-    $("#floatButton").stop().animate({ "top": newPosition }, 500);	
+    $("#floatRightButton").stop().animate({ "top": newPosition }, 500);	
+    // $("#floatLeftButton").stop().animate({ "top": newPosition }, 500);	
   }).scroll();
 }
 

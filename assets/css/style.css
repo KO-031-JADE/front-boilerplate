@@ -32,15 +32,74 @@ body > .wrap > .container {
   position: relative;
 }
 
-body > .wrap > .main-title-float > .float {
-  position: absolute;
-  top: 712px;
-  /* right: 227px; */
-  right: 9.161%
-}
-
 .flex {
   display: flex;
+}
+
+body > .wrap > .main-right-float {
+  position: absolute;
+  top: 712px;
+  right: 227px;
+  z-index: 9;
+  cursor: pointer;
+}
+body > .wrap > .main-right-float .box {
+  transition: 0.2s ease;
+}
+body > .wrap > .main-right-float:hover .box {
+  transform: scale(1.1); /* 크기 1.1배로 확대 */
+  
+}
+
+#floatButton:hover {
+  transform: scale(1.1); /* 크기 1.1배로 확대 */
+}
+
+body > .wrap > .main-left-float {
+  position: fixed;
+  top: 144px;
+  left: 67px;
+  z-index: 9;
+  width: 252px;
+  height: 419px;
+  animation: floating 1.6s ease-in-out infinite;
+}
+
+body > .wrap > .main-left-float img {
+  display: block;
+  height: 100%;
+  cursor: pointer;
+}
+
+body > .wrap > .main-right-float > .arrow {
+  position: absolute;
+  right: 19px;
+  bottom: 38px;
+  animation: moveDiagonal 1s ease-in-out infinite;
+}
+
+@keyframes moveDiagonal {
+  0% {
+      transform: translate(0, 0);
+  }
+  50% {
+      transform: translate(-10px, -10px);
+  }
+  100% {
+      transform: translate(0, 0);
+  }
+}
+
+@keyframes floating {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+  100% {
+      transform: translateY(0);
+  }
 }
 
 .container {
