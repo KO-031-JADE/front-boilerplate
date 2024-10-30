@@ -985,12 +985,25 @@ body > .wrap > .main-right-float > .arrow {
   margin-top: 30px;
 }
 
-.evaluation-score ul li,
-.additional-points ul li {
+.evaluation-score ul li {
   background-color: #fff;
   width: 100%;
   border-radius: 40px;
   height: 80px;
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  margin-bottom: 10px;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.4px;
+}
+
+.additional-points ul li {
+  background-color: #fff;
+  width: 100%;
+  border-radius: 40px;
+  height: 119px;
   display: flex;
   align-items: center;
   font-size: 26px;
@@ -1022,7 +1035,7 @@ body > .wrap > .main-right-float > .arrow {
   height: 53px;
   background: url(../images/chack_icon.png) no-repeat;
   background-size: cover;
-  margin: 0 20px;
+  margin: 0px 20px 40px 20px;
 }
 .evaluation-score ul li:first-child {
   height: 119px;
@@ -1344,19 +1357,12 @@ body > .wrap > .main-right-float > .arrow {
   color: #999999;
 }
 
-.voting-section
-  .container
-  .voting-box
-  .bottom
-  .contents
-  .grid
-  .list
-  .txt-wrap
-  .txt {
+.voting-section .container .voting-box .bottom .contents .grid .list .txt-wrap .txt {
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
   margin-bottom: 17px;
+  height: 64px;
 }
 
 .voting-section .container .voting-box .bottom .contents .grid .list img {
@@ -1364,7 +1370,7 @@ body > .wrap > .main-right-float > .arrow {
   width: 100%;
   height: 100%;
   max-width: 224px;
-  max-height: 255px;
+  max-height: 255px
 }
 
 .bg-yellow {

@@ -1,5 +1,10 @@
-/* 데스크탑 중간 화면 (1920px 이하) */
-/* @media (max-width: 1920px) {} */
+/* 데스크탑 중간 화면 (1920px 이상) */
+@media (min-width: 1920px) {
+  .main-section{
+    height: 66vw;
+    max-height: none;
+  }
+}
 @media (max-width: 1700px) {
   body > .wrap > .main-right-float {
     width: 14.375vw;
@@ -8,12 +13,13 @@
     right: 11.8229vw;
   }
 
-  body > .wrap > .main-left-float {
+  #floatLeftButton {
     width: 12.6042vw;
     height: 21.8688vw;
     top: 7.57vw;
     left: 3.52vw;
   }
+
   body > .wrap > .main-right-float > .arrow {
     width: 2.3438vw;
     height: 2.3438vw;
@@ -769,6 +775,7 @@
     font-size: 1.25vw;
     line-height: 2vw;
     margin-bottom: 1.1771vw;
+    height: 3.33vw;
   }
 
   .voting-section .container .voting-box .bottom .contents .grid .list img {
@@ -1027,7 +1034,8 @@
 
   /* footer start */
   footer {
-    height: 19.6875vw;
+    /* height: 19.6875vw; */
+    height: 32.6875vw;
   }
 
   footer .logo {
