@@ -1,9 +1,9 @@
 // Dropzone 및 Sortable 초기화 설정
 document.addEventListener("DOMContentLoaded", function () {
+  handleLeftFloating(); // 왼쪽 플로팅 버튼 애니메이션 초기화
   handleHeaderAnimation(); // 헤더 애니메이션
   handleTabActivation(); // 메뉴 리스트 탭 활성화 기능
   handleSmoothScroll(); // 부드러운 스크롤 기능
-  handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
   handlePopup(); // 팝업
   toggleNoticeTitles(); // 공지사항 토글
   handleTabs(); // 투표하기, 점수확인 탭
@@ -16,6 +16,27 @@ document.addEventListener("DOMContentLoaded", function () {
   checkedOutline(); // 접수하기, 점수확인 체크박스 테두리
   setupContentSwitch(); // 컨텐츠 전환
 });
+
+// 왼쪽 플로팅 버튼 애니메이션 처리
+function handleLeftFloating() {
+  const floatButton = document.getElementById('floatLeftButton');
+  const votingSection = document.querySelector('.voting-section');
+
+  window.addEventListener('scroll', () => {
+    const votingSectionTop = votingSection.getBoundingClientRect().top;
+
+    if (votingSectionTop <= 0) {
+      // 스크롤이 voting-section 아래로 내려갔을 때 나타남
+      floatButton.classList.add('visible');
+    } else {
+      // 스크롤이 voting-section 위로 올라가면 사라짐
+      floatButton.classList.remove('visible');
+    }
+  });
+}
+
+// 문서가 로드되었을 때 handleLeftFloating 실행
+document.addEventListener("DOMContentLoaded", handleLeftFloating);
 
 // 헤더의 애니메이션
 function handleHeaderAnimation() {
@@ -167,18 +188,6 @@ function handleCateTabs() {
   }));
 }
 
-// 접수하러 가기 플로팅 애니메이션
-function handleReceptionButtonFloating() {
-  // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.	
-  var floatPosition = 712;	
-  $(window).scroll(function() {		
-    // 현재 스크롤 위치를 가져온다.		
-    var scrollTop = $(window).scrollTop();		
-    var newPosition = scrollTop + floatPosition + "px";		
-    $("#floatRightButton").stop().animate({ "top": newPosition }, 500);	
-    // $("#floatLeftButton").stop().animate({ "top": newPosition }, 500);	
-  }).scroll();
-}
 
 // 접수하기 팝업
 function openPopupApply() {

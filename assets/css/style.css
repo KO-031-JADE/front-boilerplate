@@ -43,7 +43,7 @@ body > .wrap > .container {
 }
 
 body > .wrap > .main-right-float {
-  position: absolute;
+  position: fixed;
   top: 712px;
   right: 227px;
   z-index: 9;
@@ -60,7 +60,9 @@ body > .wrap > .main-right-float:hover .box {
   transform: scale(1.1); /* 크기 1.1배로 확대 */
 }
 
-body > .wrap > .main-left-float {
+#floatLeftButton {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* 애니메이션 효과 */
+  opacity: 0;
   position: fixed;
   top: 144px;
   left: 67px;
@@ -68,6 +70,11 @@ body > .wrap > .main-left-float {
   width: 252px;
   height: 419px;
   animation: floating 1.6s ease-in-out infinite;
+}
+
+#floatLeftButton.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 body > .wrap > .main-left-float img {
