@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   handleHeaderAnimation(); // 헤더 애니메이션
   handleTabActivation(); // 메뉴 리스트 탭 활성화 기능
   handleSmoothScroll(); // 부드러운 스크롤 기능
+  handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
   handlePopup(); // 팝업
   toggleNoticeTitles(); // 공지사항 토글
   handleTabs(); // 투표하기, 점수확인 탭
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setupTextareaCounter(); // 글자수 카운팅
   checkedOutline(); // 접수하기, 점수확인 체크박스 테두리
   setupContentSwitch(); // 컨텐츠 전환
+  handleResize(); // resize
 });
 
 // 왼쪽 플로팅 버튼 애니메이션 처리
@@ -37,6 +39,18 @@ function handleLeftFloating() {
 
 // 문서가 로드되었을 때 handleLeftFloating 실행
 document.addEventListener("DOMContentLoaded", handleLeftFloating);
+
+function handleResize() {
+  if (window.innerWidth > 768) {
+    document.querySelector(".dropzone").addEventListener("click", openFileDialog);
+  } else {
+
+  }
+}
+
+// resize
+window.addEventListener('resize', handleResize);
+
 
 // 헤더의 애니메이션
 function handleHeaderAnimation() {
@@ -188,33 +202,18 @@ function handleCateTabs() {
   }));
 }
 
-
-// 접수하기 팝업
-function openPopupApply() {
-  document.querySelector(".popup-dim").classList.add("on");
-  document.querySelector("#apply_popup").classList.add("on");
-  document.querySelector("html").classList.add("blockScroll");
-  document.querySelector("#apply_popup").scrollTop = 0; // 팝업 맨 위로 이동
-
-  const form = document.querySelector("#apply_popup form");
-  if (form) {
-    form.reset(); // form reset
-  }
-  // reset 공모부문 select_box
-  document.querySelector('.select_box').classList.remove('open');
-  document.querySelector('.select-selected').classList.remove('selected');
-  document.querySelector('.select-selected').innerHTML = '공모부문을 선택해주세요';
-  document.querySelector('#customSelectValue').value = '';
-  // reset 첨부파일
-  resetFiles();
+// 접수하러 가기 플로팅 애니메이션
+function handleReceptionButtonFloating() {
+  // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.	
+  var floatPosition = 712;	
+  $(window).scroll(function() {		
+    // 현재 스크롤 위치를 가져온다.		
+    var scrollTop = $(window).scrollTop();		
+    var newPosition = scrollTop + floatPosition + "px";		
+    $("#floatRightButton").stop().animate({ "top": newPosition }, 500);	
+    // $("#floatLeftButton").stop().animate({ "top": newPosition }, 500);	
+  }).scroll();
 }
-
-function closePopupApply() {
-  document.querySelector(".popup-dim").classList.remove("on");
-  document.querySelector("#apply_popup").classList.remove("on");
-  document.querySelector("html").classList.remove("blockScroll");
-}
-
 
 // 접수하기 팝업 공모부분 selectbox
 function popSelect() {
@@ -396,7 +395,7 @@ function initDropzone() {
   
   const previewTemplate = dropzonePreviewNode.innerHTML;
 
-  const dropzone = new Dropzone(".dropzone", {
+  dropzone = new Dropzone(".dropzone", {
     dictDefaultMessage: "여기에 파일을 드롭하여 업로드하세요",
     url: "https://httpbin.org/post",
     autoProcessQueue: false,
@@ -411,33 +410,34 @@ function initDropzone() {
       myDropzone.on("maxfilesexceeded", (file) => handleMaxFilesExceeded(file, myDropzone));
     }
   });
-  
-  // 클릭 시 파일 선택 창 열기 함수
-  function openFileDialog(event) {
-    if (dropzone.files.length > 0 && dropzone.files.length < dropzone.options.maxFiles) {
-      event.stopPropagation();
-      dropzone.hiddenFileInput.click();
-    }
-  }
-
-  // 화면 크기가 768px보다 클 때만 클릭 이벤트 활성화
-  if (window.innerWidth > 768) {
-    document.querySelector(".dropzone").addEventListener("click", openFileDialog);
-  }
 
   document.getElementById("dropzone-preview").addEventListener("click", function (event) {
     setRepresentativeImage(event);
   });
 
   document.querySelector(".btn-pop_apply").addEventListener("click", () => submitFiles(dropzone));
+
+  if (window.innerWidth > 768) {
+    document.querySelector(".dropzone").addEventListener("click", openFileDialog);
+  }
 }
+
+// 파일 1개 이상 3개 미만일 때, 클릭 시 파일 선택 창 열기 함수
+function openFileDialog(event) {
+  if (dropzone.files.length > 0 && dropzone.files.length < dropzone.options.maxFiles) {
+    event.stopPropagation();
+    dropzone.hiddenFileInput.click();
+  }
+}
+
+
 
 // 파일 유효성 검사
 function validateFile(file, dropzone) {
   const fileName = file.name;
   const fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
   const img = new Image();
-
+  
   if (!['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension) || file.size > 2 * 1200 * 1380) {
     alert("지원되지 않는 파일 형식 또는 크기입니다: " + fileName);
     return dropzone.removeFile(file);
@@ -597,12 +597,34 @@ function openPopupApply() {
   clearDropzoneFiles();
   toggleMessage(dropzone);
 
+  // 닫기 버튼 따라다니기
+  if(window.innerWidth > 768) {
+    document.addEventListener('mousemove', onMouseMove);
+  }
+
 }
 
 function closePopupApply() {
   document.querySelector(".popup-dim").classList.remove("on");
   document.querySelector("#apply_popup").classList.remove("on");
   document.querySelector("html").classList.remove("blockScroll");
+  document.removeEventListener('mousemove', onMouseMove);
+}
+
+// 접수하기 팝업 밖에서 닫기 버튼 따라다니기
+function onMouseMove(event) {
+  const closeButton = document.querySelector('.btn-pop_close_follow');
+  const popupApply = document.getElementById('apply_popup');
+  const popupBox = document.querySelector('.popup-box');
+  console.log(`Mouse X: ${event.pageX}, Mouse Y: ${event.pageY}`);
+  closeButton.style.left = (event.pageX - 50) + 'px';
+  closeButton.style.top = (event.pageY - 50)  + 'px';
+
+  if (popupBox.contains(event.target)) {
+    closeButton.style.display = 'none';
+  } else {
+    closeButton.style.display = 'block';
+  }
 }
 
 // 접수하기, 점수확인 체크박스 테두리

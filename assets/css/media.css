@@ -252,6 +252,21 @@
   .btn-pop_apply:hover::after {
     transform: translateX(9.29vw);
   }
+  .btn-pop_close_follow {
+    font-size: 15px;
+    width: 260px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 22px;
+    display: block!important;
+    position: absolute;
+    /* top: -130px;
+    left: 50%;
+    transform: translateX(-50%); */
+    top: 0;
+    left: 0;
+  }
+
 
   /* 카드뉴스 */
   .card-notice {
@@ -316,11 +331,6 @@
   }
 }
 
-@media only screen and (max-width: 1070px) {
-  .popup-title {
-    width: 100%;
-  }
-}
 
 /* mobile 768 이하 */
 @media screen and (max-width: 768px) {
@@ -374,6 +384,7 @@
   }
   .tb-body > .tb-row:last-child {
     border-radius: 0;
+    border-bottom: 0;
   }
   .pop-tb .tb-tit02 {
     width: 100%;
@@ -708,4 +719,5 @@
     bottom: 15px;
     right: 15px;
   }
+
 }

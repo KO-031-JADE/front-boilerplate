@@ -27,6 +27,7 @@
   <div id="apply_popup" class="">
     <form action="">
 
+      <button type="button" class="btn-pop_close_follow" onclick="javascript:closePopupApply();"> 닫기</button>
       <div class="popup-box">
         <div class="top-box"></div>
         <div class="popup-title" >2024 <span class="main-color">UNICEFAwards</span><br class="br_m"> 공모전 접수하기</div>
@@ -87,50 +88,50 @@
                     </div>
                   </div>
                   <div class="tb_flex">
-                      <div class="tb-row">
-                        <div class="row-tit">
-                          <span class="essential">전화</span>
-                        </div>
-                        <div class="tb-con">
-                          <div class="input_box">
-                            <input type="text" name="" id="" placeholder="전화번호를 입력하세요." required>
-                          </div>
-                        </div>
+                    <div class="tb-row">
+                      <div class="row-tit">
+                        <span class="essential">전화</span>
                       </div>
-                      <div class="tb-row">
-                        <div class="row-tit">
-                          <span class="essential">이메일</span>
-                        </div>
-                        <div class="tb-con">
-                          <div class="input_box">
-                            <input type="text" name="" id="" placeholder="이메일을 입력하세요." required>
-                          </div>
+                      <div class="tb-con">
+                        <div class="input_box">
+                          <input type="text" name="" id="" placeholder="전화번호를 입력하세요." required>
                         </div>
                       </div>
                     </div>
-                    <div class="tb_flex">
-                      <div class="tb-row">
-                        <div class="row-tit">
-                          <span>부서</span>
-                        </div>
-                        <div class="tb-con">
-                          <div class="input_box">
-                            <input type="text" name="" id="" placeholder="부서명을 입력하세요.">
-                          </div>
-                        </div>
+                    <div class="tb-row">
+                      <div class="row-tit">
+                        <span class="essential">이메일</span>
                       </div>
-                      <div class="tb-row">
-                        <div class="row-tit">
-                          <span>직위</span>
-                        </div>
-                        <div class="tb-con">
-                          <div class="input_box">
-                            <input type="text" name="" id="" placeholder="직위를 입력하세요.">
-                          </div>
+                      <div class="tb-con">
+                        <div class="input_box">
+                          <input type="text" name="" id="" placeholder="이메일을 입력하세요." required>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <div class="tb_flex">
+                    <div class="tb-row">
+                      <div class="row-tit">
+                        <span>부서</span>
+                      </div>
+                      <div class="tb-con">
+                        <div class="input_box">
+                          <input type="text" name="" id="" placeholder="부서명을 입력하세요.">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tb-row">
+                      <div class="row-tit">
+                        <span>직위</span>
+                      </div>
+                      <div class="tb-con">
+                        <div class="input_box">
+                          <input type="text" name="" id="" placeholder="직위를 입력하세요.">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="tb-row">
                 <div class="tb-tit">
@@ -229,8 +230,8 @@
                     </li>
                   </ul>
                   <div class="ref">
-                    <p>증빙자료 제출시 자유 양식으로 제출하되<br class="br_m"> 확장자는 pdf, doc, docx, hwp 가능</p>
-                    <p>최대 5개 파일, 각 10MB 까지 업로드 가능,<br class="br_m"> 용량 부족시 압축 바랍니다.</p>
+                    <p>증빙자료 제출시 자유 양식으로 제출하되 확장자는 pdf, doc, docx, hwp 가능</p>
+                    <p>최대 5개 파일, 각 10MB 까지 업로드 가능, 용량 부족시 압축 바랍니다.</p>
                   </div>
                 </div>
               </div>
@@ -258,7 +259,7 @@
                   <strong class="essential">카드 이미지</strong>
                   <p class="card-notice">
                     최대 3장 <br class="br_pc">
-                    (1200px <img src="assets/images/icon-card_x.png" alt="x"> 1380px)
+                    (1200px <img src="assets/images/icon-card_x.png" alt="x"> 1360px)
                   </p>
                 </div>
                 <div class="tb-con">
@@ -980,7 +981,7 @@
               <div id="contents2" class="contents2 contents hidden">
                 <div class="no-list-wrap">
                   <div class="no-list">
-                    <img src="./assets/images/no_list.png" alt="리스트가없습니다이미지">
+                  <img src="./assets/images/no_list.png" alt="리스트가없습니다이미지">
                     <p><span>김연아님,</span> 접수 내역이 없습니다.</p>
                   </div>
                 </div>
@@ -1186,7 +1187,7 @@
     }
 
     function initLayerPosition() {
-      var width = 300; //우편번호서비스가 들어갈 element의 width
+      var width = 800; //우편번호서비스가 들어갈 element의 width
       var height = 400; //우편번호서비스가 들어갈 element의 height
       var borderWidth = 5; //샘플에서 사용하는 border의 두께
 
