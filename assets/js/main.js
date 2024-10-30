@@ -128,33 +128,6 @@ function handleReceptionButtonFloating() {
   }).scroll();
 }
 
-// 접수하기 팝업
-function openPopupApply() {
-  document.querySelector(".popup-dim").classList.add("on");
-  document.querySelector("#apply_popup").classList.add("on");
-  document.querySelector("html").classList.add("blockScroll");
-  document.querySelector("#apply_popup").scrollTop = 0; // 팝업 맨 위로 이동
-
-  const form = document.querySelector("#apply_popup form");
-  if (form) {
-    form.reset(); // form reset
-  }
-  // reset 공모부문 select_box
-  document.querySelector('.select_box').classList.remove('open');
-  document.querySelector('.select-selected').classList.remove('selected');
-  document.querySelector('.select-selected').innerHTML = '공모부문을 선택해주세요';
-  document.querySelector('#customSelectValue').value = '';
-  // reset 첨부파일
-  resetFiles();
-}
-
-function closePopupApply() {
-  document.querySelector(".popup-dim").classList.remove("on");
-  document.querySelector("#apply_popup").classList.remove("on");
-  document.querySelector("html").classList.remove("blockScroll");
-}
-
-
 // 접수하기 팝업 공모부분 selectbox
 function popSelect() {
   const selectBox = document.querySelector('.select_box');
@@ -314,6 +287,8 @@ function resetFiles() {
 }
 
 // Dropzone 설정
+let dropzone;
+
 function initDropzone() {
   Dropzone.autoDiscover = false;
   const dropzonePreviewNode = document.createElement('div');
@@ -324,11 +299,16 @@ function initDropzone() {
       <div class="image-box">
         <img data-dz-thumbnail src="#" alt="Dropzone-Image">
       </div>
+      <div class="file_info a11yHidden">
+        <p data-dz-name>&nbsp;</p>
+        <p data-dz-size></p>
+        <p data-dz-errormessage></p>
+      </div>
     </li>`;
   
   const previewTemplate = dropzonePreviewNode.innerHTML;
 
-  const dropzone = new Dropzone(".dropzone", {
+  dropzone = new Dropzone(".dropzone", {
     dictDefaultMessage: "여기에 파일을 드롭하여 업로드하세요",
     url: "https://httpbin.org/post",
     autoProcessQueue: false,
@@ -344,11 +324,24 @@ function initDropzone() {
     }
   });
 
+  // 클릭 시 파일 선택 창 열기 함수
+  function openFileDialog(event) {
+    if (dropzone.files.length > 0 && dropzone.files.length < dropzone.options.maxFiles) {
+      event.stopPropagation();
+      dropzone.hiddenFileInput.click();
+    }
+  }
+
+  // 화면 크기가 768px보다 클 때만 클릭 이벤트 활성화
+  if (window.innerWidth > 768) {
+    document.querySelector(".dropzone").addEventListener("click", openFileDialog);
+  }
+
   document.getElementById("dropzone-preview").addEventListener("click", function (event) {
     setRepresentativeImage(event);
   });
 
-  // document.getElementById("submit-button").addEventListener("click", () => submitFiles(dropzone));
+  document.querySelector(".btn-pop_apply").addEventListener("click", () => submitFiles(dropzone));
 }
 
 // 파일 유효성 검사
@@ -357,7 +350,7 @@ function validateFile(file, dropzone) {
   const fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
   const img = new Image();
   
-  if (!['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension) || file.size > 2 * 1024 * 1024) {
+  if (!['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension) || file.size > 2 * 1200 * 1380) {
     alert("지원되지 않는 파일 형식 또는 크기입니다: " + fileName);
     return dropzone.removeFile(file);
   }
@@ -392,7 +385,7 @@ function isDuplicateFile(file, existingFiles) {
 
 // 파일 제거 후 메시지 보이기 설정
 function toggleMessage(dropzone) {
-  if (dropzone.files.length === 0) {
+  if (dropzone && dropzone.files.length === 0) {
     document.querySelector(".dz-message").style.display = "block";
     document.querySelector(".dropzone").style.border = "1px solid #ccc";
   }
@@ -449,6 +442,13 @@ function submitFiles(dropzone) {
   }
 }
 
+// 파일 제거 함수
+function clearDropzoneFiles() {
+  if (dropzone) {
+    dropzone.removeAllFiles(true);
+  }
+}
+
 // 대표 이미지 복사 및 리사이징
 function resizeRepresentativeImage(image, width, height) {
   return new Promise((resolve) => {
@@ -469,8 +469,8 @@ function initSortable() {
     handle: '.image-box',
     onEnd: function () {
       const uploadedFiles = document.querySelectorAll('#dropzone-preview > .dz-image-preview');
-      const fileOrder = Array.from(uploadedFiles).map(item => item.querySelector('[data-dz-thumbnail]').textContent.trim());
-      console.log("업데이트된 이미지 순서:", fileOrder);
+      const fileOrder = Array.from(uploadedFiles).map(item => item.querySelector('[data-dz-name]').textContent.trim());
+      // console.log("업데이트된 이미지 순서:", fileOrder);
     }
   });
 }
@@ -483,4 +483,36 @@ function setupTextareaCounter() {
     const currentLength = contentTextarea.value.length;
     charCountDisplay.textContent = `${currentLength} /`;
   });
+}
+
+// 접수하기 팝업
+function openPopupApply() {
+  document.querySelector(".popup-dim").classList.add("on");
+  document.querySelector("#apply_popup").classList.add("on");
+  document.querySelector("html").classList.add("blockScroll");
+  document.querySelector("#apply_popup").scrollTop = 0; // 팝업 맨 위로 이동
+
+  const form = document.querySelector("#apply_popup form");
+  if (form) {
+    form.reset(); // form reset
+  }
+  // reset 공모부문 select_box
+  document.querySelector('.select_box').classList.remove('open');
+  document.querySelector('.select-selected').classList.remove('selected');
+  document.querySelector('.select-selected').innerHTML = '공모부문을 선택해주세요';
+  document.querySelector('#customSelectValue').value = '';
+
+  // reset 첨부파일
+  resetFiles();
+
+  // reset 카드뉴스
+  clearDropzoneFiles();
+  toggleMessage(dropzone);
+
+}
+
+function closePopupApply() {
+  document.querySelector(".popup-dim").classList.remove("on");
+  document.querySelector("#apply_popup").classList.remove("on");
+  document.querySelector("html").classList.remove("blockScroll");
 }
