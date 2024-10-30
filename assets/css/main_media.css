@@ -1,6 +1,6 @@
 /* 데스크탑 중간 화면 (1920px 이상) */
 @media (min-width: 1920px) {
-  .main-section{
+  .main-section {
     height: 66vw;
     max-height: none;
   }
@@ -411,7 +411,12 @@
     height: 44.7813vw;
   }
 
-  .examination-details-section .container .box-wrap .detail01 .box-contents .deco03 {
+  .examination-details-section
+    .container
+    .box-wrap
+    .detail01
+    .box-contents
+    .deco03 {
     right: 1.875vw;
     top: -4.21875vw;
     width: 8.38542vw;
@@ -428,7 +433,7 @@
     height: 20.9375vw;
   }
 
-  .examination-details-section .container .box-wrap .detail02 .deco05 { 
+  .examination-details-section .container .box-wrap .detail02 .deco05 {
     width: 13.54167vw;
     height: 12.29167vw;
   }
@@ -1070,12 +1075,55 @@
 
 /* 모바일 가로 화면 (768px 이하) */
 @media (max-width: 768px) {
+  .pc {
+    display: none;
+  }
+
+  .mo {
+    display: block;
+  }
+
   .main-section {
     background: url(../images/m_main.png) no-repeat;
     background-size: cover;
     width: 100%;
-    height: 110vh;
+    height: 100vh;
     max-height: none;
+    background-position: center;
+  }
+
+  .header h1 a {
+    width: 142.5px;
+    height: 53px;
+  }
+
+  .header {
+    z-index: 99;
+    background-color: #fff;
+    padding: 20px 0;
+  }
+
+  .slide {
+    width: 100%;
+    position: fixed;
+    top: -100%;
+    left: 0;
+    transition: top 0.3s;
+    background-color: #cccccc;
+    z-index: 2;
+  }
+
+  .header.drop {
+    padding: 20px 0;
+    background-color: #fff;
+  }
+
+  .slide ul li a {
+    color: #000;
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 }
 

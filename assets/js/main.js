@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   handleHeaderAnimation(); // 헤더 애니메이션
   handleTabActivation(); // 메뉴 리스트 탭 활성화 기능
   handleSmoothScroll(); // 부드러운 스크롤 기능
-  handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
+  // handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
   handlePopup(); // 팝업
   toggleNoticeTitles(); // 공지사항 토글
   handleTabs(); // 투표하기, 점수확인 탭
@@ -17,22 +17,23 @@ document.addEventListener("DOMContentLoaded", function () {
   checkedOutline(); // 접수하기, 점수확인 체크박스 테두리
   setupContentSwitch(); // 컨텐츠 전환
   handleResize(); // resize
+  mobileMenyToggleSlide(); // 모바일 메뉴 토글 슬라이드
 });
 
 // 왼쪽 플로팅 버튼 애니메이션 처리
 function handleLeftFloating() {
-  const floatButton = document.getElementById('floatLeftButton');
-  const votingSection = document.querySelector('.voting-section');
+  const floatButton = document.getElementById("floatLeftButton");
+  const votingSection = document.querySelector(".voting-section");
 
-  window.addEventListener('scroll', () => {
+  window.addEventListener("scroll", () => {
     const votingSectionTop = votingSection.getBoundingClientRect().top;
 
     if (votingSectionTop <= 0) {
       // 스크롤이 voting-section 아래로 내려갔을 때 나타남
-      floatButton.classList.add('visible');
+      floatButton.classList.add("visible");
     } else {
       // 스크롤이 voting-section 위로 올라가면 사라짐
-      floatButton.classList.remove('visible');
+      floatButton.classList.remove("visible");
     }
   });
 }
@@ -44,13 +45,11 @@ function handleResize() {
   if (window.innerWidth > 768) {
     document.querySelector(".dropzone").addEventListener("click", openFileDialog);
   } else {
-
   }
 }
 
 // resize
-window.addEventListener('resize', handleResize);
-
+window.addEventListener("resize", handleResize);
 
 // 헤더의 애니메이션
 function handleHeaderAnimation() {
@@ -72,24 +71,31 @@ function handleHeaderAnimation() {
 
 // 부드러운 스크롤 기능
 function handleSmoothScroll() {
-  document.querySelectorAll('.scroll-link').forEach(link => {
-    link.addEventListener('click', function (e) {
+  document.querySelectorAll(".scroll-link").forEach((link) => {
+    link.addEventListener("click", function (e) {
       e.preventDefault();
-      const targetId = this.getAttribute('data-target');
+      const targetId = this.getAttribute("data-target");
       const targetElement = document.getElementById(targetId);
-      
+
       if (targetElement) {
         // 요소의 위치 가져오기
         const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-        
+
         // 원하는 여백 (예: 100px)
         const offset = 145;
 
         // 부드럽게 스크롤 이동 (여백을 준 위치까지)
         window.scrollTo({
           top: targetPosition - offset,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
+      }
+      if ($("#burgur").hasClass("on")) {
+        $("#burgur").removeClass("on");
+        $("#slide").removeClass("on");
+      } else {
+        $("#burgur").addClass("on");
+        $("#slide").addClass("on");
       }
     });
   });
@@ -97,24 +103,24 @@ function handleSmoothScroll() {
 
 // 메뉴 리스트 탭 활성화 기능
 function handleTabActivation() {
-  document.querySelectorAll('.menu .scroll-link').forEach(link => {
-    link.addEventListener('click', function (e) {
+  document.querySelectorAll(".menu .scroll-link").forEach((link) => {
+    link.addEventListener("click", function (e) {
       e.preventDefault();
-      const targetId = this.getAttribute('data-target');
+      const targetId = this.getAttribute("data-target");
 
       // 스크롤 이동 처리
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
         const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
         const offset = 100; // 여백 설정
-        window.scrollTo({ top: targetPosition - offset, behavior: 'smooth' });
+        window.scrollTo({ top: targetPosition - offset, behavior: "smooth" });
       }
 
       // 탭 활성화 처리
-      if (targetId === 'section2') {
-        setActiveTab('contents2'); // 접수확인 탭 활성화
-      } else if (targetId === 'section3') {
-        setActiveTab('contents1'); // 투표하기 탭 활성화
+      if (targetId === "section2") {
+        setActiveTab("contents2"); // 접수확인 탭 활성화
+      } else if (targetId === "section3") {
+        setActiveTab("contents1"); // 투표하기 탭 활성화
       }
     });
   });
@@ -123,16 +129,16 @@ function handleTabActivation() {
 // 탭 활성화 함수
 function setActiveTab(targetContentId) {
   // 모든 탭에서 active 클래스 제거
-  document.querySelectorAll('.tabs-wrap .tab').forEach(tab => tab.classList.remove('active'));
-  document.querySelectorAll('.contents-container > .contents').forEach(content => content.classList.add('hidden'));
+  document.querySelectorAll(".tabs-wrap .tab").forEach((tab) => tab.classList.remove("active"));
+  document.querySelectorAll(".contents-container > .contents").forEach((content) => content.classList.add("hidden"));
 
   // 해당 탭과 콘텐츠 활성화
   const activeTab = document.querySelector(`.tabs-wrap .tab[data-target="${targetContentId}"]`);
   const activeContent = document.getElementById(targetContentId);
-  
+
   if (activeTab && activeContent) {
-    activeTab.classList.add('active');
-    activeContent.classList.remove('hidden');
+    activeTab.classList.add("active");
+    activeContent.classList.remove("hidden");
   }
 }
 
@@ -143,14 +149,16 @@ function handlePopup() {
   const closeBtn = document.getElementById("close-btn");
 
   if (!popup || !noShow7DaysBtn || !closeBtn) {
-    console.error("팝업 관련 요소가 존재하지 않습니다. HTML 코드를 확인해주세요.");
+    console.error(
+      "팝업 관련 요소가 존재하지 않습니다. HTML 코드를 확인해주세요."
+    );
     return;
   }
 
   // 7일간 팝업 표시 안 함 버튼 처리
   noShow7DaysBtn.addEventListener("click", () => setCookieAndHidePopup(popup));
   // 팝업 닫기 버튼 처리
-  closeBtn.addEventListener("click", () => popup.style.display = "none");
+  closeBtn.addEventListener("click", () => (popup.style.display = "none"));
 
   // 페이지 로드 시 쿠키 검사 후 팝업 표시 결정
   popup.style.display = getCookie("hideLegoPopup") !== "true" ? "block" : "none";
@@ -165,77 +173,82 @@ function setCookieAndHidePopup(popup) {
 // 쿠키를 설정하는 함수
 function setCookie(name, value, days) {
   const date = new Date();
-  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
   document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
 }
 
 // 쿠키를 가져오는 함수
 function getCookie(name) {
   const nameEQ = `${name}=`;
-  return document.cookie.split(';').map(c => c.trim()).find(c => c.indexOf(nameEQ) === 0)?.substring(nameEQ.length) || null;
+  return (
+    document.cookie.split(";").map((c) => c.trim()).find((c) => c.indexOf(nameEQ) === 0)?.substring(nameEQ.length) || null
+  );
 }
 
 // 공지사항 타이틀 클릭 시 토글
 function toggleNoticeTitles() {
-  document.querySelectorAll('.notice-lists_tit').forEach(title => {
-    title.addEventListener('click', () => title.classList.toggle('open'));
+  document.querySelectorAll(".notice-lists_tit").forEach((title) => {
+    title.addEventListener("click", () => title.classList.toggle("open"));
   });
 }
 
 // 투표하기, 점수확인 탭
 function handleTabs() {
-  const tabs = document.querySelectorAll('.tabs-wrap .tab');
+  const tabs = document.querySelectorAll(".tabs-wrap .tab");
 
-  tabs.forEach((tab) => tab.addEventListener('click', () => {
-    document.querySelector('.tabs-wrap .tab.active').classList.remove('active');
-    tab.classList.add('active');
-  }));
+  tabs.forEach((tab) => tab.addEventListener("click", () => {
+      document.querySelector(".tabs-wrap .tab.active").classList.remove("active");
+      tab.classList.add("active");
+    })
+  );
 }
 
 // 카테고리 탭
 function handleCateTabs() {
-  const tabs = document.querySelectorAll('.cate-wrap .tab');
+  const tabs = document.querySelectorAll(".cate-wrap .tab");
 
-  tabs.forEach((tab) => tab.addEventListener('click', () => {
-    document.querySelector('.cate-wrap .tab.active').classList.remove('active');
-    tab.classList.add('active');
-  }));
+  tabs.forEach((tab) =>
+    tab.addEventListener("click", () => {
+      document.querySelector(".cate-wrap .tab.active").classList.remove("active");
+      tab.classList.add("active");
+    })
+  );
 }
 
-// 접수하러 가기 플로팅 애니메이션
-function handleReceptionButtonFloating() {
-  // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.	
-  var floatPosition = 712;	
-  $(window).scroll(function() {		
-    // 현재 스크롤 위치를 가져온다.		
-    var scrollTop = $(window).scrollTop();		
-    var newPosition = scrollTop + floatPosition + "px";		
-    $("#floatRightButton").stop().animate({ "top": newPosition }, 500);	
-    // $("#floatLeftButton").stop().animate({ "top": newPosition }, 500);	
-  }).scroll();
-}
+// // 접수하러 가기 플로팅 애니메이션
+// function handleReceptionButtonFloating() {
+//   // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+//   var floatPosition = 712;
+//   $(window).scroll(function() {
+//     // 현재 스크롤 위치를 가져온다.
+//     var scrollTop = $(window).scrollTop();
+//     var newPosition = scrollTop + floatPosition + "px";
+//     $("#floatRightButton").stop().animate({ "top": newPosition }, 500);
+//     // $("#floatLeftButton").stop().animate({ "top": newPosition }, 500);
+//   }).scroll();
+// }
 
 // 접수하기 팝업 공모부분 selectbox
 function popSelect() {
-  const selectBox = document.querySelector('.select_box');
-  const selectSelected = selectBox.querySelector('.select-selected');
-  const hiddenInput = document.querySelector('#customSelectValue');
-  
-  selectSelected.addEventListener('click', function() {
-    selectBox.classList.toggle('open');
+  const selectBox = document.querySelector(".select_box");
+  const selectSelected = selectBox.querySelector(".select-selected");
+  const hiddenInput = document.querySelector("#customSelectValue");
+
+  selectSelected.addEventListener("click", function () {
+    selectBox.classList.toggle("open");
   });
-  
-  selectBox.querySelectorAll('.select-item').forEach(item => {
-    item.addEventListener('click', function() {
+
+  selectBox.querySelectorAll(".select-item").forEach((item) => {
+    item.addEventListener("click", function () {
       const selectedHTML = this.innerHTML;
-      const selectedValue = this.getAttribute('data-value');
-      
+      const selectedValue = this.getAttribute("data-value");
+
       selectSelected.innerHTML = selectedHTML;
       hiddenInput.value = selectedValue;
-      selectBox.classList.remove('open');
-      
+      selectBox.classList.remove("open");
+
       // 선택된 상태 스타일 추가
-      selectSelected.classList.add('selected');
+      selectSelected.classList.add("selected");
     });
   });
 }
@@ -246,7 +259,7 @@ function attachFiles() {
   const fileBoxes = document.querySelector(".file_boxes");
 
   // 1. btn-document_add 클릭 시 파일 선택창 열기
-  fileBoxes.addEventListener("click", function(event) {
+  fileBoxes.addEventListener("click", function (event) {
     if (event.target.classList.contains("btn-document_add")) {
       const fileInput = event.target.previousElementSibling; // 자매 요소인 input[type="file"]
       if (fileInput) {
@@ -256,7 +269,7 @@ function attachFiles() {
   });
 
   // 2. 파일 첨부 시 파일명 표시 및 삭제 버튼 추가
-  fileBoxes.addEventListener("change", function(event) {
+  fileBoxes.addEventListener("change", function (event) {
     if (event.target.classList.contains("a11yHidden")) {
       const fileInput = event.target;
       const fileNameSpan = fileInput.closest(".file_box").querySelector(".file_name");
@@ -287,7 +300,7 @@ function attachFiles() {
   });
 
   // 3. 파일 삭제 버튼 클릭 시 파일명 초기화 및 삭제 버튼 제거
-  fileBoxes.addEventListener("click", function(event) {
+  fileBoxes.addEventListener("click", function (event) {
     if (event.target.closest(".btn-document_delete")) {
       const fileBox = event.target.closest(".file_box");
       const fileInput = fileBox.querySelector("input[type='file']");
@@ -304,7 +317,7 @@ function attachFiles() {
   });
 
   // 4. 파일박스 추가 버튼 클릭 시 새로운 파일박스 생성
-  fileBoxes.addEventListener("click", function(event) {
+  fileBoxes.addEventListener("click", function (event) {
     if (event.target.closest(".btn-filebox_add")) {
       const boxCount = fileBoxes.querySelectorAll("li").length;
 
@@ -317,6 +330,7 @@ function attachFiles() {
             <input type="file" id="documentInput_${boxCount}" class="a11yHidden">
             <button type="button" class="btn-document_add">첨부</button>
           </div>
+          <div class="btn-filebox_wrap">
           <div class="btn-filebox_wrap">
             <button type="button" class="btn-filebox_add">파일박스 추가</button>
             ${boxCount > 0 ? `
@@ -336,14 +350,14 @@ function attachFiles() {
   });
 
   // 5. 파일박스 삭제 버튼 클릭 시 해당 파일박스 제거
-  fileBoxes.addEventListener("click", function(event) {
+  fileBoxes.addEventListener("click", function (event) {
     if (event.target.closest(".btn-filebox_delete")) {
       const boxToDelete = event.target.closest("li");
       boxToDelete.remove();
 
       // 파일박스 개수가 최대 미만이면 추가 버튼 다시 표시
       if (fileBoxes.querySelectorAll("li").length < maxBoxes) {
-        document.querySelectorAll(".btn-filebox_add").forEach(btn => btn.style.display = "inline-block");
+        document.querySelectorAll(".btn-filebox_add").forEach((btn) => (btn.style.display = "inline-block"));
       }
     }
   });
@@ -354,7 +368,7 @@ function resetFiles() {
   const fileBoxes = document.querySelector(".file_boxes");
 
   // 기존 파일박스 모두 제거
-  fileBoxes.innerHTML = ''; 
+  fileBoxes.innerHTML = "";
 
   // 기본 파일박스 하나 추가
   const initialBox = document.createElement("li");
@@ -378,7 +392,7 @@ let dropzone;
 
 function initDropzone() {
   Dropzone.autoDiscover = false;
-  const dropzonePreviewNode = document.createElement('div');
+  const dropzonePreviewNode = document.createElement("div");
   dropzonePreviewNode.innerHTML = `
     <li class="dz-image-preview card-image">
       <div class="representative-label">대표</div>
@@ -392,7 +406,7 @@ function initDropzone() {
         <p data-dz-errormessage></p>
       </div>
     </li>`;
-  
+
   const previewTemplate = dropzonePreviewNode.innerHTML;
 
   dropzone = new Dropzone(".dropzone", {
@@ -400,7 +414,7 @@ function initDropzone() {
     url: "https://httpbin.org/post",
     autoProcessQueue: false,
     previewTemplate: previewTemplate,
-    previewsContainer: '#dropzone-preview',
+    previewsContainer: "#dropzone-preview",
     acceptedFiles: "image/jpeg,image/png,image/gif,image/jpg",
     maxFiles: 3,
     init: function () {
@@ -412,8 +426,8 @@ function initDropzone() {
   });
 
   document.getElementById("dropzone-preview").addEventListener("click", function (event) {
-    setRepresentativeImage(event);
-  });
+      setRepresentativeImage(event);
+    });
 
   document.querySelector(".btn-pop_apply").addEventListener("click", () => submitFiles(dropzone));
 
@@ -429,8 +443,6 @@ function openFileDialog(event) {
     dropzone.hiddenFileInput.click();
   }
 }
-
-
 
 // 파일 유효성 검사
 function validateFile(file, dropzone) {
@@ -537,6 +549,7 @@ function clearDropzoneFiles() {
   }
 }
 
+
 // 대표 이미지 복사 및 리사이징
 function resizeRepresentativeImage(image, width, height) {
   return new Promise((resolve) => {
@@ -585,10 +598,11 @@ function openPopupApply() {
     form.reset(); // form reset
   }
   // reset 공모부문 select_box
-  document.querySelector('.select_box').classList.remove('open');
-  document.querySelector('.select-selected').classList.remove('selected');
-  document.querySelector('.select-selected').innerHTML = '공모부문을 선택해주세요';
-  document.querySelector('#customSelectValue').value = '';
+  document.querySelector(".select_box").classList.remove("open");
+  document.querySelector(".select-selected").classList.remove("selected");
+  document.querySelector(".select-selected").innerHTML =
+    "공모부문을 선택해주세요";
+  document.querySelector("#customSelectValue").value = "";
 
   // reset 첨부파일
   resetFiles();
@@ -598,32 +612,31 @@ function openPopupApply() {
   toggleMessage(dropzone);
 
   // 닫기 버튼 따라다니기
-  if(window.innerWidth > 768) {
-    document.addEventListener('mousemove', onMouseMove);
+  if (window.innerWidth > 768) {
+    document.addEventListener("mousemove", onMouseMove);
   }
-
 }
 
 function closePopupApply() {
   document.querySelector(".popup-dim").classList.remove("on");
   document.querySelector("#apply_popup").classList.remove("on");
   document.querySelector("html").classList.remove("blockScroll");
-  document.removeEventListener('mousemove', onMouseMove);
+  document.removeEventListener("mousemove", onMouseMove);
 }
 
 // 접수하기 팝업 밖에서 닫기 버튼 따라다니기
 function onMouseMove(event) {
-  const closeButton = document.querySelector('.btn-pop_close_follow');
-  const popupApply = document.getElementById('apply_popup');
-  const popupBox = document.querySelector('.popup-box');
+  const closeButton = document.querySelector(".btn-pop_close_follow");
+  const popupApply = document.getElementById("apply_popup");
+  const popupBox = document.querySelector(".popup-box");
   console.log(`Mouse X: ${event.pageX}, Mouse Y: ${event.pageY}`);
-  closeButton.style.left = (event.pageX - 50) + 'px';
-  closeButton.style.top = (event.pageY - 50)  + 'px';
+  closeButton.style.left = event.pageX - 50 + "px";
+  closeButton.style.top = event.pageY - 50 + "px";
 
   if (popupBox.contains(event.target)) {
-    closeButton.style.display = 'none';
+    closeButton.style.display = "none";
   } else {
-    closeButton.style.display = 'block';
+    closeButton.style.display = "block";
   }
 }
 
@@ -631,16 +644,16 @@ function onMouseMove(event) {
 function checkedOutline() {
   const lists = document.querySelectorAll(".list");
 
-  lists.forEach(list => {
-      const checkbox = list.querySelector("input[type='checkbox']");
-      
-      checkbox.addEventListener("change", function () {
-          if (checkbox.checked) {
-              list.classList.add("checked-border"); // 클래스 추가
-          } else {
-              list.classList.remove("checked-border"); // 클래스 제거
-          }
-      });
+  lists.forEach((list) => {
+    const checkbox = list.querySelector("input[type='checkbox']");
+
+    checkbox.addEventListener("change", function () {
+      if (checkbox.checked) {
+        list.classList.add("checked-border"); // 클래스 추가
+      } else {
+        list.classList.remove("checked-border"); // 클래스 제거
+      }
+    });
   });
 }
 
@@ -663,5 +676,17 @@ function setupContentSwitch() {
         targetContent.classList.remove("hidden");
       }
     });
+  });
+}
+
+function mobileMenyToggleSlide() {
+  $("#slide-open").click(function () {
+    if ($("#burgur").hasClass("on")) {
+      $("#burgur").removeClass("on");
+      $("#slide").removeClass("on");
+    } else {
+      $("#burgur").addClass("on");
+      $("#slide").addClass("on");
+    }
   });
 }

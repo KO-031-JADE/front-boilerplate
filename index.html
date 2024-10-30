@@ -30,7 +30,7 @@
       <button type="button" class="btn-pop_close_follow" onclick="javascript:closePopupApply();"> 닫기</button>
       <div class="popup-box">
         <div class="top-box"></div>
-        <div class="popup-title" >2024 <span class="main-color">UNICEFAwards</span><br class="br_m"> 공모전 접수하기</div>
+        <div class="popup-title">2024 <span class="main-color">UNICEFAwards</span><br class="br_m"> 공모전 접수하기</div>
         <div class="popup-content">
           <div class="pop-tb pop-tb__info">
             <div class="tb-header">신청 단체 정보</div>
@@ -279,9 +279,10 @@
                 <div class="tb-con">
                   <div class="textarea_box">
                     <textarea id="content" name="description" class="content-input" placeholder="내용을 입력하세요."
-                    maxlength="300"></textarea>
-                  <div class="text-counting">
-                    <span id="char-count" class="char-count">0 /</span> <strong>300</strong>자</div>
+                      maxlength="300"></textarea>
+                    <div class="text-counting">
+                      <span id="char-count" class="char-count">0 /</span> <strong>300</strong>자
+                    </div>
                   </div>
                 </div>
               </div>
@@ -384,8 +385,9 @@
   <div class="wrap">
     <!-- 접수하러가기 플로팅버튼 -->
     <div id="floatRightButton" class="main-right-float" onclick="javascript:openPopupApply();">
-      <img class="box" src="./assets/images/gobox.png" alt="" data-aos="fade-up" data-aos-duration="2000"/>
-      <img class="arrow" src="./assets/images/btn-apply_icon02.png" alt="" data-aos="fade-up" data-aos-duration="2000"/>
+      <img class="box" src="./assets/images/gobox.png" alt="" data-aos="fade-up" data-aos-duration="2000" />
+      <img class="arrow" src="./assets/images/btn-apply_icon02.png" alt="" data-aos="fade-up"
+        data-aos-duration="2000" />
     </div>
     <!-- 투표하기 플로팅버튼 -->
     <div id="floatLeftButton" class="main-left-float">
@@ -401,21 +403,45 @@
           </a>
         </h1>
 
-        <!-- 메뉴 리스트 -->
-        <ul class="menu">
-          <li><a href="javascript:void(0);" class="scroll-link" data-target="section1">공모전 소개</a></li>
-          <li><a href="javascript:void(0);" onclick="javascript:openPopupApply();" class="scroll-link">접수</a></li>
-          <li><a href="javascript:void(0);" class="scroll-link" data-target="section2">접수확인</a></li>
-          <li><a href="javascript:void(0);" class="scroll-link" data-target="section3">투표하기</a></li>
-          <li><a href="javascript:void(0);" class="scroll-link" data-target="section4">게시판</a></li>
-        </ul>
+        <!-- PC 메뉴 리스트 -->
+        <div class="pc">
+          <ul class="menu">
+            <li><a href="javascript:void(0);" class="scroll-link" data-target="section1">공모전 소개</a></li>
+            <li><a href="javascript:void(0);" onclick="javascript:openPopupApply();" class="scroll-link">접수</a></li>
+            <li><a href="javascript:void(0);" class="scroll-link" data-target="section2">접수확인</a></li>
+            <li><a href="javascript:void(0);" class="scroll-link" data-target="section3">투표하기</a></li>
+            <li><a href="javascript:void(0);" class="scroll-link" data-target="section4">게시판</a></li>
+          </ul>
+        </div>
+
+
+        <!-- Mobile 메뉴 -->
+        <div class="mo">
+          <div class="slide-open" id="slide-open">
+            <p>메뉴</p>
+            <span class="burgur" id="burgur">
+              <span class="top-line"></span>
+              <span class="bot-line"></span>
+            </span>
+          </div>
+        </div>
       </div>
     </header>
+    <!-- Mobile 슬라이드 메뉴 -->
+    <div class="slide" id="slide">
+      <ul>
+        <li><a href="javascript:void(0);" class="scroll-link" data-target="section1">공모전 소개</a></li>
+        <li><a href="javascript:void(0);" onclick="javascript:openPopupApply();" class="scroll-link">접수</a></li>
+        <li><a href="javascript:void(0);" class="scroll-link" data-target="section2">접수확인</a></li>
+        <li><a href="javascript:void(0);" class="scroll-link" data-target="section3">투표하기</a></li>
+        <li><a href="javascript:void(0);" class="scroll-link" data-target="section4">게시판</a></li>
+      </ul>
+    </div>
     <!-- 메인 -->
     <section class="main-section">
       <div class="container" data-aos="fade-up" data-aos-duration="2000">
         <div class="top">
-          <div class="main-title" >
+          <div class="main-title">
             <p>2024</p>
             <p class="main-color">UNICEF Awards</p>
             <p>: C<span class="main-color">hange </span>F<span class="main-color">or</span> C<span
@@ -453,7 +479,7 @@
         <div class="container">
           <div class="recruit-schedule">
             <div class="conainer">
-              <div id="section1"  class="top-box"></div>
+              <div id="section1" class="top-box"></div>
               <p class="box-title">공모<span class="main-color">일정</span></p>
               <div class="box-contents">
                 <div class="contents-container">
@@ -490,7 +516,8 @@
             </div>
           </div>
           <p class="recruit-title">
-            <img class="deco01" src="./assets/images/deco01.png" alt="일러스트이미지01" data-aos="fade-up" data-aos-duration="2000"/>
+            <img class="deco01" src="./assets/images/deco01.png" alt="일러스트이미지01" data-aos="fade-up"
+              data-aos-duration="2000" />
             공모주제
           </p>
           <div class="subject-list">
@@ -594,7 +621,8 @@
             <div class="top-box"></div>
             <p class="box-title">시상<span class="low-green-color">내역</span></p>
             <div class="box-contents">
-              <img class="deco03" src="./assets/images/deco03.png" alt="일러스트이미지03" data-aos="fade-up" data-aos-duration="2000"/>
+              <img class="deco03" src="./assets/images/deco03.png" alt="일러스트이미지03" data-aos="fade-up"
+                data-aos-duration="2000" />
               <div class="award-section contents-container">
                 <div class="award-header low-green-color">
                   <div>상제</div>
@@ -645,7 +673,8 @@
           </div>
           <!-- 심사기준 -->
           <div class="examination-detail detail02">
-            <img class="deco04" src="./assets/images/deco04.png" alt="일러스트이미지04" data-aos="fade-up" data-aos-duration="2000">
+            <img class="deco04" src="./assets/images/deco04.png" alt="일러스트이미지04" data-aos="fade-up"
+              data-aos-duration="2000">
             <div class="top-box"></div>
             <p class="box-title">심사<span class="low-green-color">기준</span></p>
             <div class="box-contents">
@@ -685,7 +714,8 @@
                 </div>
               </div>
             </div>
-            <img class="deco05" src="./assets/images/deco05.png" alt="일러스트이미지05" data-aos="fade-up" data-aos-duration="2000">
+            <img class="deco05" src="./assets/images/deco05.png" alt="일러스트이미지05" data-aos="fade-up"
+              data-aos-duration="2000">
           </div>
         </div>
         <div class="score-wrap">
@@ -981,7 +1011,7 @@
               <div id="contents2" class="contents2 contents hidden">
                 <div class="no-list-wrap">
                   <div class="no-list">
-                  <img src="./assets/images/no_list.png" alt="리스트가없습니다이미지">
+                    <img src="./assets/images/no_list.png" alt="리스트가없습니다이미지">
                     <p><span>김연아님,</span> 접수 내역이 없습니다.</p>
                   </div>
                 </div>
@@ -1005,7 +1035,8 @@
             </div>
           </div>
         </div>
-        <img class="deco08" src="./assets/images/deco08.png" alt="일러스트이미지08" data-aos="fade-up" data-aos-duration="2000">
+        <img class="deco08" src="./assets/images/deco08.png" alt="일러스트이미지08" data-aos="fade-up"
+          data-aos-duration="2000">
       </div>
     </section>
     <!-- 공지사항 -->
@@ -1209,7 +1240,7 @@
     //   duration: 1000
     // });
     $(window).on('load', function () {
-        AOS.refresh();
+      AOS.refresh();
     });
   </script>
 </body>
