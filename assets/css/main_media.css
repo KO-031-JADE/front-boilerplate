@@ -33,10 +33,12 @@
   .header {
     padding: 1.5625vw 0;
   }
+
   .header h1 a {
     width: 10.7292vw;
     height: 4.0104vw;
   }
+
   .header .container .menu {
     max-width: 33.0729vw;
   }
@@ -239,6 +241,11 @@
     height: 7.5vw;
   }
 
+  .deco01 {
+    width: 15.1563vw;
+    height: 21.3021vw;
+  }
+
   .recruit-section .schedule-box .container .subject-list {
     padding-top: 3.6458vw;
   }
@@ -246,6 +253,11 @@
   .recruit-section .schedule-box .container .subject-list .wrap {
     grid-template-columns: repeat(3, 1fr);
     gap: 2.0313vw;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .deco02 img {
+    width: 20.47vw;
+    height: 19.06vw;
   }
 
   .recruit-section .schedule-box .container .subject-list .wrap .type1 {
@@ -393,9 +405,26 @@
     height: 44.7813vw;
   }
 
+  .examination-details-section .container .box-wrap .detail01 .box-contents .deco03 {
+    right: 1.875vw;
+    top: -4.21875vw;
+    width: 8.38542vw;
+    height: 4.21875vw;
+  }
+
   .examination-details-section .container .box-wrap .detail02 {
     height: calc(36.4583vw - 3.3333vw);
     margin-top: 11.875vw;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .deco04 {
+    width: 20.36458vw;
+    height: 20.9375vw;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .deco05 { 
+    width: 13.54167vw;
+    height: 12.29167vw;
   }
 
   .examination-details-section .container .box-wrap .detail02 .box-contents {
@@ -551,6 +580,11 @@
     padding-bottom: 6.25vw;
   }
 
+  .voting-section .deco08 {
+    width: 19.11458vw;
+    height: 15.72917vw;
+  }
+
   .voting-section .tabs-wrap {
     border-top: 0.0521vw solid #fff;
     border-bottom: 0.0521vw solid #fff;
@@ -604,7 +638,7 @@
 
   /* voting-box */
   .voting-section .container .voting-box {
-    height: 74.5938vw;
+    height: 78vw;
     border: 0.2083vw solid #014f27;
     box-shadow: 0.3125vw 0.3125vw 0px 0px #014f27;
     border-radius: 2.6042vw;
@@ -633,6 +667,21 @@
     width: 6.875vw;
     background: url(../images/select_arrow.png) no-repeat 96% 50% / 0.7813vw
       auto;
+  }
+
+  .voting-section .container .voting-box .contents .no-list-wrap {
+    border-radius: 30px;
+    height: 51.25vw;
+  }
+
+  .voting-section .container .voting-box .contents .no-list-wrap .no-list p {
+    font-size: 2.60417vw;
+  }
+
+  .voting-section .container .voting-box .contents .no-list-wrap .no-list img {
+    width: 11.25vw;
+    height: 20.20833vw;
+    margin-bottom: 3.64583vw;
   }
 
   .voting-section .container .voting-box .bottom .contents .grid {
@@ -799,6 +848,22 @@
   }
 
   /* benefit-section start */
+
+  .benefit-section .deco06 {
+    width: 21.35417vw;
+    height: 14.47917vw;
+    gap: 2.55208vw;
+  }
+
+  .benefit-section .deco06 img:first-child {
+    width: 4.63542vw;
+    height: 5.20833vw;
+  }
+
+  .benefit-section .deco06 img:last-child {
+    width: 14.16667vw;
+    height: 13.75vw;
+  }
 
   .section-title {
     border-top: 0.0521vw solid #fff;
@@ -997,6 +1062,13 @@
 
 /* 모바일 가로 화면 (768px 이하) */
 @media (max-width: 768px) {
+  .main-section {
+    background: url(../images/m_main.png) no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 110vh;
+    max-height: none;
+  }
 }
 
 /* 모바일 세로 화면 (480px 이하) */

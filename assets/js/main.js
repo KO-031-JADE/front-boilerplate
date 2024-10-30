@@ -1,6 +1,8 @@
 // Dropzone 및 Sortable 초기화 설정
 document.addEventListener("DOMContentLoaded", function () {
   handleHeaderAnimation(); // 헤더 애니메이션
+  handleTabActivation(); // 메뉴 리스트 탭 활성화 기능
+  handleSmoothScroll(); // 부드러운 스크롤 기능
   handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
   handlePopup(); // 팝업
   toggleNoticeTitles(); // 공지사항 토글
@@ -12,24 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
   initSortable(); // Sortable 설정스크롤
   setupTextareaCounter(); // 글자수 카운팅
   checkedOutline(); // 접수하기, 점수확인 체크박스 테두리
+  setupContentSwitch(); // 컨텐츠 전환
 });
-
-// 접수하기, 점수확인 체크박스 테두리
-function checkedOutline() {
-  const lists = document.querySelectorAll(".list");
-
-  lists.forEach(list => {
-      const checkbox = list.querySelector("input[type='checkbox']");
-      
-      checkbox.addEventListener("change", function () {
-          if (checkbox.checked) {
-              list.classList.add("checked-border"); // 클래스 추가
-          } else {
-              list.classList.remove("checked-border"); // 클래스 제거
-          }
-      });
-  });
-}
 
 // 헤더의 애니메이션
 function handleHeaderAnimation() {
@@ -47,6 +33,72 @@ function handleHeaderAnimation() {
       header.classList.remove("drop");
     }
   });
+}
+
+// 부드러운 스크롤 기능
+function handleSmoothScroll() {
+  document.querySelectorAll('.scroll-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('data-target');
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // 요소의 위치 가져오기
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+        
+        // 원하는 여백 (예: 100px)
+        const offset = 145;
+
+        // 부드럽게 스크롤 이동 (여백을 준 위치까지)
+        window.scrollTo({
+          top: targetPosition - offset,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+// 메뉴 리스트 탭 활성화 기능
+function handleTabActivation() {
+  document.querySelectorAll('.menu .scroll-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('data-target');
+
+      // 스크롤 이동 처리
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+        const offset = 100; // 여백 설정
+        window.scrollTo({ top: targetPosition - offset, behavior: 'smooth' });
+      }
+
+      // 탭 활성화 처리
+      if (targetId === 'section2') {
+        setActiveTab('contents2'); // 접수확인 탭 활성화
+      } else if (targetId === 'section3') {
+        setActiveTab('contents1'); // 투표하기 탭 활성화
+      }
+    });
+  });
+}
+
+// 탭 활성화 함수
+function setActiveTab(targetContentId) {
+  // 모든 탭에서 active 클래스 제거
+  document.querySelectorAll('.tabs-wrap .tab').forEach(tab => tab.classList.remove('active'));
+  document.querySelectorAll('.contents-container > .contents').forEach(content => content.classList.add('hidden'));
+
+  // 해당 탭과 콘텐츠 활성화
+  const activeTab = document.querySelector(`.tabs-wrap .tab[data-target="${targetContentId}"]`);
+  const activeContent = document.getElementById(targetContentId);
+  
+  if (activeTab && activeContent) {
+    activeTab.classList.add('active');
+    activeContent.classList.remove('hidden');
+  }
 }
 
 // 팝업
@@ -127,6 +179,33 @@ function handleReceptionButtonFloating() {
     // $("#floatLeftButton").stop().animate({ "top": newPosition }, 500);	
   }).scroll();
 }
+
+// 접수하기 팝업
+function openPopupApply() {
+  document.querySelector(".popup-dim").classList.add("on");
+  document.querySelector("#apply_popup").classList.add("on");
+  document.querySelector("html").classList.add("blockScroll");
+  document.querySelector("#apply_popup").scrollTop = 0; // 팝업 맨 위로 이동
+
+  const form = document.querySelector("#apply_popup form");
+  if (form) {
+    form.reset(); // form reset
+  }
+  // reset 공모부문 select_box
+  document.querySelector('.select_box').classList.remove('open');
+  document.querySelector('.select-selected').classList.remove('selected');
+  document.querySelector('.select-selected').innerHTML = '공모부문을 선택해주세요';
+  document.querySelector('#customSelectValue').value = '';
+  // reset 첨부파일
+  resetFiles();
+}
+
+function closePopupApply() {
+  document.querySelector(".popup-dim").classList.remove("on");
+  document.querySelector("#apply_popup").classList.remove("on");
+  document.querySelector("html").classList.remove("blockScroll");
+}
+
 
 // 접수하기 팝업 공모부분 selectbox
 function popSelect() {
@@ -308,7 +387,7 @@ function initDropzone() {
   
   const previewTemplate = dropzonePreviewNode.innerHTML;
 
-  dropzone = new Dropzone(".dropzone", {
+  const dropzone = new Dropzone(".dropzone", {
     dictDefaultMessage: "여기에 파일을 드롭하여 업로드하세요",
     url: "https://httpbin.org/post",
     autoProcessQueue: false,
@@ -323,7 +402,7 @@ function initDropzone() {
       myDropzone.on("maxfilesexceeded", (file) => handleMaxFilesExceeded(file, myDropzone));
     }
   });
-
+  
   // 클릭 시 파일 선택 창 열기 함수
   function openFileDialog(event) {
     if (dropzone.files.length > 0 && dropzone.files.length < dropzone.options.maxFiles) {
@@ -349,7 +428,7 @@ function validateFile(file, dropzone) {
   const fileName = file.name;
   const fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
   const img = new Image();
-  
+
   if (!['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension) || file.size > 2 * 1200 * 1380) {
     alert("지원되지 않는 파일 형식 또는 크기입니다: " + fileName);
     return dropzone.removeFile(file);
@@ -515,4 +594,43 @@ function closePopupApply() {
   document.querySelector(".popup-dim").classList.remove("on");
   document.querySelector("#apply_popup").classList.remove("on");
   document.querySelector("html").classList.remove("blockScroll");
+}
+
+// 접수하기, 점수확인 체크박스 테두리
+function checkedOutline() {
+  const lists = document.querySelectorAll(".list");
+
+  lists.forEach(list => {
+      const checkbox = list.querySelector("input[type='checkbox']");
+      
+      checkbox.addEventListener("change", function () {
+          if (checkbox.checked) {
+              list.classList.add("checked-border"); // 클래스 추가
+          } else {
+              list.classList.remove("checked-border"); // 클래스 제거
+          }
+      });
+  });
+}
+
+// 콘텐츠 전환 기능
+function setupContentSwitch() {
+  // 탭 클릭 시 관련 콘텐츠 표시
+  document.querySelectorAll(".tabs-wrap .tab").forEach(tab => {
+    tab.addEventListener("click", function () {
+      // 모든 탭의 active 클래스 제거 및 모든 콘텐츠 숨김 처리
+      document.querySelectorAll(".tabs-wrap .tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".contents-container > .contents").forEach(content => content.classList.add("hidden"));
+      
+      // 클릭된 탭 활성화
+      this.classList.add("active");
+
+      // 해당 탭과 관련된 콘텐츠 활성화
+      const targetContentId = this.getAttribute("data-target");
+      const targetContent = document.getElementById(targetContentId);
+      if (targetContent) {
+        targetContent.classList.remove("hidden");
+      }
+    });
+  });
 }
