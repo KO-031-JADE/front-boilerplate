@@ -257,13 +257,12 @@ function attachFiles() {
             <input type="file" id="documentInput_${boxCount}" class="a11yHidden">
             <button type="button" class="btn-document_add">첨부</button>
           </div>
-          <button type="button" class="btn-filebox_add">
-            <img src="assets/images/btn-files-add.png" alt="파일박스-추가">
-          </button>
-          ${boxCount > 0 ? `
-            <button type="button" class="btn-filebox_delete">
-              <img src="assets/images/btn-files-delete.png" alt="파일박스-삭제">
-            </button>` : ""}
+          <div class="btn-filebox_wrap">
+            <button type="button" class="btn-filebox_add">파일박스 추가</button>
+            ${boxCount > 0 ? `
+              <button type="button" class="btn-filebox_delete">파일박스 삭제</button>` : ""}
+          </div>
+
         `;
 
         fileBoxes.appendChild(newBox);
@@ -306,9 +305,9 @@ function resetFiles() {
       <input type="file" class="a11yHidden">
       <button type="button" class="btn-document_add">첨부</button>
     </div>
-    <button type="button" class="btn-filebox_add">
-      <img src="assets/images/btn-files-add.png" alt="파일박스-추가">
-    </button>
+    <div class="btn-filebox_wrap">
+      <button type="button" class="btn-filebox_add">파일박스 추가</button>
+    </div>
   `;
 
   fileBoxes.appendChild(initialBox);
@@ -319,26 +318,11 @@ function initDropzone() {
   Dropzone.autoDiscover = false;
   const dropzonePreviewNode = document.createElement('div');
   dropzonePreviewNode.innerHTML = `
-    <li class="mt-2 dz-image-preview card-image">
-      <div class="rounded-3 position-relative image-box">
-        <div class="representative-label">대표</div>
-        <div class="d-flex align-items-center p-2">
-          <div class="flex-shrink-0 me-3">
-            <div class="width-8 h-auto rounded-3">
-              <img data-dz-thumbnail class="w-full h-auto rounded-3 block" src="#" alt="Dropzone-Image" />
-            </div>
-          </div>
-          <div class="flex-grow-1">
-            <div class="pt-1">
-              <h6 class="font-semibold mb-1" data-dz-name>&nbsp;</h6>
-              <p class="text-sm text-muted fw-normal" data-dz-size></p>
-              <strong class="error text-danger" data-dz-errormessage></strong>
-            </div>
-          </div>
-          <div class="shrink-0">
-            <button data-dz-remove class="delete-icon"></button>
-          </div>
-        </div>
+    <li class="dz-image-preview card-image">
+      <div class="representative-label">대표</div>
+      <button data-dz-remove class="delete-icon">삭제</button>
+      <div class="image-box">
+        <img data-dz-thumbnail src="#" alt="Dropzone-Image">
       </div>
     </li>`;
   
@@ -372,7 +356,7 @@ function validateFile(file, dropzone) {
   const fileName = file.name;
   const fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
   const img = new Image();
-
+  
   if (!['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension) || file.size > 2 * 1024 * 1024) {
     alert("지원되지 않는 파일 형식 또는 크기입니다: " + fileName);
     return dropzone.removeFile(file);
@@ -397,8 +381,8 @@ function validateFile(file, dropzone) {
       firstImage?.classList.add('representative-selected');
     }, 10);
   }
-
   document.querySelector(".dz-message").style.display = "none";
+  document.querySelector(".dropzone").style.border = "none";
 }
 
 // 파일 중복 검사
@@ -408,7 +392,10 @@ function isDuplicateFile(file, existingFiles) {
 
 // 파일 제거 후 메시지 보이기 설정
 function toggleMessage(dropzone) {
-  if (dropzone.files.length === 0) document.querySelector(".dz-message").style.display = "block";
+  if (dropzone.files.length === 0) {
+    document.querySelector(".dz-message").style.display = "block";
+    document.querySelector(".dropzone").style.border = "1px solid #ccc";
+  }
 }
 
 // 최대 파일 개수 초과 처리
@@ -482,7 +469,7 @@ function initSortable() {
     handle: '.image-box',
     onEnd: function () {
       const uploadedFiles = document.querySelectorAll('#dropzone-preview > .dz-image-preview');
-      const fileOrder = Array.from(uploadedFiles).map(item => item.querySelector('[data-dz-name]').textContent.trim());
+      const fileOrder = Array.from(uploadedFiles).map(item => item.querySelector('[data-dz-thumbnail]').textContent.trim());
       console.log("업데이트된 이미지 순서:", fileOrder);
     }
   });

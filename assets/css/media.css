@@ -45,7 +45,7 @@
   .pop-tb .essential::after {
     width: 0.57vw;
     height: 0.57vw;
-    margin: 0.43vw 0 0 0.14vw;
+    margin: 0.43vw 0 0 0.36vw;
   }
   .pop-tb .tb-col .row-tit {
     width: 10vw;
@@ -121,11 +121,11 @@
     margin-top: 0.57vw;
   }
   .pop-tb .file_box {
-    width: calc(100% - 5vw);
+    width: calc(100% - 4vw);
     height: 4.29vw;
     border-radius: 2.14vw;
     padding: 0.36vw 0.36vw 0.36vw 0.71vw;
-    margin-right: 0.71vw;
+    margin-right: 0.29vw;
   }
   .pop-tb .file_label {
     font-size: 1.43vw;
@@ -141,17 +141,22 @@
     border-radius: 1.71vw;
     font-size: 1.43vw;
   }
-  .btn-document_delete {
-    margin-left: 2.14vw;
+  .btn-filebox_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 4vw;
+    margin: 0.43vw;
   }
-  .btn-document_delete,
-  .btn-filebox_add,
-  .btn-filebox_delete {
-    width: 1.79vw;
-    height: 1.79vw;
+  .btn-filebox_wrap > button {
+    width: 1.76vw;
+    height: 1.76vw;
+  }
+  .btn-filebox_add {
+    background-size: 0.79vw 0.79vw;
   }
   .btn-filebox_delete {
-    margin-left: 0.43vw;
+    background-size: 0.79vw 1px;
   }
   .file_boxes + .ref {
     font-size: 1.43vw;
@@ -247,6 +252,68 @@
   .btn-pop_apply:hover::after {
     transform: translateX(9.29vw);
   }
+
+  /* 카드뉴스 */
+  .card-notice {
+    font-size: 1.57vw;
+    margin-top: 1.07vw;
+  }
+  .card-notice img {
+    width: 1.5vw;
+    height: 1.5vw;
+  }
+  .text-muted {
+    font-size: 1.43vw;
+    margin: 1.07vw 0 0 2.14vw;
+    padding-left: 0.71vw;
+  }
+  #dropzone-preview {
+    gap: 1.43vw;
+  }
+
+  .card-image {
+    border-radius: 1.07vw;
+    width: 18.86vw;
+    height: 24.14vw;
+    padding: 4.29vw 1.43vw 1.43vw;
+  }
+
+  .representative-label {
+    width: 6.43vw;
+    line-height: 3.57vw;
+    border-radius: 0 0 1.07vw 0;
+    font-size: 1.71vw;
+  }
+
+  .card-image .delete-icon {
+    top: 0.71vw;
+    right: 0.71vw;
+    width: 1.86vw;
+    height: 1.86vw;
+    box-shadow: 0px 0px 0.43vw rgba(0, 0, 0, 0.12);
+  }
+
+  #resized-thumbnail-preview {
+    margin-top: 1.43vw;
+    border-radius: 0.71vw;
+    box-shadow: 0 2px 0.43vw rgba(0, 0, 0, 0.1);
+  }
+
+  #dropzone-preview .image-box img {
+    border-radius: 0.71vw;
+  }
+
+  .content-input {
+    height: 18.57vw;
+    border-radius: 2.14vw;
+    padding: 25px 2.14vw 3.57vw;
+    font-size: 1.57vw;
+  }
+  .text-counting {
+    bottom: 2.14vw;
+    right: 2.86vw;
+    font-size: 1.43vw;
+  }
 }
 
 @media only screen and (max-width: 1070px) {
@@ -328,13 +395,8 @@
   .pop-tb .tb_flex {
     flex-direction: column;
   }
-  .pop-tb .tb_flex .tb-col {
-    width: 100%;
-    border-right: 0;
-  }
-  .pop-tb .tb_flex .tb-col:last-of-type {
-    border-right: 0;
-    border-top: 1px solid #e8e8e8;
+  .pop-tb .tb_flex:last-of-type .tb-row:first-child {
+    border-bottom: 1px solid #e8e8e8;
   }
   .pop-tb .tb-col .row-tit {
     width: 90px;
@@ -418,11 +480,12 @@
 
   /* 사업소개서 첨부파일 */
   .pop-tb .file_boxes li + li {
-    margin-top: 8px;
+    margin-top: 10px;
   }
   .pop-tb .file_box {
-    width: calc(100% - 70px);
+    width: calc(100% - 15px);
     height: auto;
+    min-height: 106px;
     border-radius: 15px;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -440,18 +503,41 @@
   .pop-tb .file_name {
     font-size: 13px;
     padding-left: 0;
+    line-height: 1.2;
+    margin-top: 5px;
+    position: relative;
+    width: 100%;
   }
   .btn-document_add {
-    width: 120px;
-    height: 20px;
-    border-radius: 24px;
+    width: 100%;
+    height: 30px;
+    border-radius: 15px;
     font-size: 13px;
+    margin-top: 15px;
   }
   .btn-document_delete {
-    margin-left: 30px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .btn-filebox_wrap {
+    flex-direction: column;
+    width: 15px;
+    margin: 0;
+    gap: 6px;
+  }
+  .btn-filebox_wrap > button {
+    width: 15px;
+    height: 45px;
+    border-radius: 7px;
+  }
+  .btn-filebox_add {
+    background-size: 6px 6px;
   }
   .btn-filebox_delete {
-    margin-left: 6px;
+    background-size: 6px 1px;
   }
   .file_boxes + .ref {
     font-size: 13px;
@@ -563,5 +649,63 @@
   }
   .btn-pop_apply:hover::after {
     transform: translateX(85px);
+  }
+
+  /* 카드뉴스 */
+  .card-notice {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .card-notice img {
+    width: 13px;
+    height: 13px;
+  }
+  .text-muted {
+    font-size: 13px;
+    margin: 10px 0 0 10px;
+    padding-left: 7px;
+  }
+  .card-image {
+    width: 165px;
+    height: 210px;
+    flex-shrink: 0;
+  }
+  .representative-label {
+    width: 56px;
+    line-height: 31px;
+    border-radius: 0 0 9px 0;
+    font-size: 15px;
+  }
+  .card-image .delete-icon {
+    width: 16px;
+    height: 16px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.12);
+  }
+  .dropzone {
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+  #dropzone-preview {
+    gap: 10px;
+    width: max-content;
+  }
+  .card-image, .representative-selected {
+    border-width: 1px;
+  }
+  .dropzone .dz-message {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .content-input {
+    font-size: 14px;
+    border-radius: 15px;
+    height: 200px;
+    padding: 20px 15px;
+  }
+  .text-counting {
+    font-size: 13px;
+    bottom: 15px;
+    right: 15px;
   }
 }
