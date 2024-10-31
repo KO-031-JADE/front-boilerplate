@@ -2059,6 +2059,25 @@
 
   footer{
     height: 100%;
+    padding: 80px 0 149px 0;
+  }
+
+  footer .logo {
+    width: 219.5px;
+    height: 28.5px;
+    padding: 0;
+    margin-bottom: 19.5px;
+  }
+
+  footer .footer-info {
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 27px;
+  }
+
+  .copyright{
+    font-size: 12px;
+    line-height: 17px;
   }
 
   /* 모바일 세로 화면 (480px 이하) */
