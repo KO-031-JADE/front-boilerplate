@@ -273,7 +273,6 @@ function attachFiles() {
     }
   });
 
-
   // 2. 파일 첨부 시 파일명 표시 및 삭제 버튼 추가
   fileBoxes.addEventListener('change', function (event) {
     if (event.target.classList.contains('a11yHidden')) {
@@ -501,44 +500,50 @@ function isDuplicateFile(file, existingFiles) {
   return existingFiles.some((existingFile) => existingFile.name === file.name && existingFile.size === file.size);
 }
 
+// 파일 미리보기 여백 설정
+function setDropzonePreviewUpload() {
+  //  if (!dropzone) return;
+
+  const display = !(dropzone.files.length === 0 || dropzone.files.length >= dropzone.options.maxFiles);
+  const preview = document.querySelector('#dropzone-preview');
+  const uploadWrapCss = 'card-with-upload';
+  const uploadMaxClassPrefix = 'card_upload_max';
+  const uploadMaxClassPrefixReg = new RegExp(uploadMaxClassPrefix + '.*', 'i');
+  const uploadMaxClass = display ? uploadMaxClassPrefix + (dropzone.options.maxFiles - dropzone.files.length) : '';
+
+  // 여백노출 클래스 추가
+  if (display) {
+    if (preview?.classList?.contains(uploadWrapCss) !== true) {
+      preview.classList.add(uploadWrapCss);
+    }
+    if (preview?.classList?.contains(uploadMaxClass) !== true) {
+      preview.classList.add(uploadMaxClass);
+    }
+  }
+  // 여백노출 클래스 삭제
+  for (var i = 0, l = preview.classList.length; i < l; ++i) {
+    const className = preview.classList[i];
+    if (!display) {
+      // 숨김
+      if (className === uploadWrapCss || uploadMaxClassPrefixReg.test(className)) {
+        preview.classList.remove(className);
+      }
+    } else {
+      // 노출
+      if (!className) break;
+      if (className !== uploadWrapCss && className !== uploadMaxClass && uploadMaxClassPrefixReg.test(className)) {
+        preview.classList.remove(className);
+      }
+    }
+  }
+}
+
 // 파일 제거 후 메시지 보이기 설정
 function toggleMessage(file, dropzone) {
   if (!dropzone) return;
-  const uploadWrapCss = 'card-with-upload'; // 뒤에 업로드영역 스타일명. 바꿔도 되요!!
-  /* $$$$$$$$$$$$$$$$$$$$$$ TODO : 임시 스타일 나중에 css 생성하시면 삭제해주세요 : s  */
-  // const tmpCss = document.querySelector('#testCss') ? document.querySelector('#testCss') : document.createElement('style');
-  // tmpCss.id = 'testCss';
-  // tmpCss.innerHTML =
-  //   `.` +
-  //   uploadWrapCss +
-  //   `::after {
-  //     content: '` +
-  //   dropzone.options.dictDefaultMessage +
-  //   `';
-  //     border: solid 1px #ccc;
-  //     border-radius: 15px;
-  //     box-sizing: content-box;
-  //     text-align: center;
-  //     width: calc(100%/3*2);
-  //     height: 338px;
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //   }`;
-  // document.head.appendChild(tmpCss);
-  // tmpCss.innerHTML = tmpCss.innerHTML.replace(
-  //   /width: calc\(100%\/[0-9]\*[0-9]\)/,
-  //   'width: calc(100%/' + dropzone.options.maxFiles + '*' + (dropzone.options.maxFiles - dropzone.files.length) + ')'
-  // );
-  /* $$$$$$$$$$$$$$$$$$$$$$ TODO : 임시 스타일 나중에 css 생성하시면 삭제해주세요 : e  */
-  const preview = document.querySelector('#dropzone-preview');
-  const hasPreviewUpload = preview?.classList?.contains(uploadWrapCss);
   if (dropzone.files.length === 0) {
     document.querySelector('.dz-message').style.display = 'block';
     document.querySelector('.dropzone').style.border = '1px solid #ccc';
-    if (hasPreviewUpload === true) {
-      preview.classList.remove(uploadWrapCss);
-    }
   } else {
     document.querySelector('.dz-message').style.display = 'none';
     document.querySelector('.dropzone').style.border = 'none';
@@ -550,17 +555,8 @@ function toggleMessage(file, dropzone) {
         nextObj.click();
       }
     }
-    // 이미지가 최대 갯수 만큼 등록되지 않았을 경우 뒤에 이미지 업로드 영역 추가
-    if (dropzone.files.length >= dropzone.options.maxFiles) {
-      if (hasPreviewUpload === true) {
-        preview.classList.remove(uploadWrapCss);
-      }
-    } else {
-      if (hasPreviewUpload !== true) {
-        preview.classList.add(uploadWrapCss);
-      }
-    }
   }
+  setDropzonePreviewUpload();
 }
 
 // 최대 파일 개수 초과 처리
@@ -771,4 +767,3 @@ function mobileMenyToggleSlide() {
     }
   });
 }
-
