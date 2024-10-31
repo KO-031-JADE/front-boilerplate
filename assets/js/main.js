@@ -527,12 +527,14 @@ function setDropzonePreviewUpload() {
       // 숨김
       if (className === uploadWrapCss || uploadMaxClassPrefixReg.test(className)) {
         preview.classList.remove(className);
+        i--;
       }
     } else {
       // 노출
       if (!className) break;
       if (className !== uploadWrapCss && className !== uploadMaxClass && uploadMaxClassPrefixReg.test(className)) {
         preview.classList.remove(className);
+        i--;
       }
     }
   }
