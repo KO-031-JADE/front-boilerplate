@@ -796,10 +796,10 @@
   transform: translateX(-100%);
   transition: transform 0.3s;
 }
-#widget.open {
+#widget.on {
   display: block;
 }
-#widget.open .widget_wrap {
+#widget.on .widget_wrap.open {
   transform: translateX(0);
 }
 .widget-top {

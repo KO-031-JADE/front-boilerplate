@@ -846,7 +846,7 @@
   }
 
   /* 체크된 상태에서 체크 표시 이미지 적용 */
-  .custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+  .custom-checkbox input[type="radio"]:checked + .checkmark::after {
     width: 2.2292vw;
     height: 2.1354vw;
   }

@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
   setupContentSwitch(); // 컨텐츠 전환
   handleResize(); // resize
   mobileMenyToggleSlide(); // 모바일 메뉴 토글 슬라이드
+  widgetOpen(); // 위젯 여닫기
+  radioClick();
+  widgetDelete();
+  widgetDeleteAll();
 });
 
 // 왼쪽 플로팅 버튼 애니메이션 처리
@@ -722,7 +726,7 @@ function checkedOutline() {
   const lists = document.querySelectorAll('.list');
 
   lists.forEach((list) => {
-    const checkbox = list.querySelector("input[type='checkbox']");
+    const checkbox = list.querySelector("input[type='radio']");
 
     checkbox.addEventListener('change', function () {
       if (checkbox.checked) {
@@ -769,3 +773,139 @@ function mobileMenyToggleSlide() {
     }
   });
 }
+
+// 위젯 여닫기
+function widgetOpen() {
+  const floatButton = document.getElementById('floatLeftButton');
+  const widget = document.getElementById('widget');
+  const widgetBox = document.querySelector('.widget_wrap');
+  const widgetClose = document.querySelector('.widget_close');
+
+  floatButton.addEventListener('click', function() {
+    console.log('open');
+    widget.classList.add('on');
+    setTimeout(function(){
+      widgetBox.classList.add('open');
+    },300);
+  });
+  widgetClose.addEventListener('click', function() {
+    console.log('close');
+    widgetBox.classList.remove('open');
+    setTimeout(function(){
+      widget.classList.remove('on');
+    },300);
+  });
+}
+
+// 라디오 버튼 클릭 이벤트
+function radioClick() {
+  document.querySelectorAll('.works-list-item input[type="radio"]').forEach((radio) => {
+    radio.addEventListener('click', function () {
+      console.log('list click');
+      const checkedItem = this.closest('.works-list-item');
+      const checkedData = checkedItem.getAttribute('data-item');
+      const checkedRadio = this.id;
+      const checkedImgSrc = checkedItem.querySelector('img').src;
+  
+      // 해당 data-item과 같은 data-vote 값을 가진 요소 찾기
+      const selectedItem = document.querySelector(`.vote-list-item[data-vote="${checkedData}"]`);
+      selectedItem.setAttribute('data-id', checkedRadio);
+  
+      const title = checkedItem.querySelector('.lists-decription_title').textContent;
+      const category = checkedItem.querySelector('.lists-decription_category').textContent;
+      const widgetList = document.querySelector(`.vote-list-item[data-id="${checkedRadio}"]`);
+  
+      widgetList.querySelector('.vote_category').textContent = category;
+      widgetList.querySelector('.vote_title').textContent = title;
+  
+      // 이미지 추가
+      selectedItem.querySelector('.vote_img').innerHTML = `
+        <img src="${checkedImgSrc}" alt="Selected Image" />
+      `;
+  
+      updateNotification();
+      updateVoteButton();
+    });
+  });
+};
+
+// 개별 삭제 버튼 클릭 이벤트
+function widgetDelete() {
+  document.querySelectorAll('.btn-vote_delete').forEach((button) => {
+    button.addEventListener('click', function (event) {
+      console.log('widget delete');
+      let deletedItem = event.target.closest('.vote-list-item');
+      let dataVote = deletedItem.getAttribute('data-vote');
+      let dataId = deletedItem.getAttribute('data-id');
+    
+      let worksItem = document.querySelector(`.works-list-item[data-item="${dataVote}"]`);
+      let radioButton = worksItem.querySelector(`input[type="radio"]#${dataId}`);
+      let title = worksItem.querySelector('.lists-decription_title').textContent;
+    
+      console.log(deletedItem,dataVote,dataId,worksItem);
+    
+      if (confirm(`${dataVote}, ${title}를 삭제하시겠습니까?`)) {
+        // 이미지 삭제 및 라디오 버튼 해제
+        deletedItem.querySelector('.vote_img').innerHTML = '';
+        deletedItem.querySelector('.vote_category').textContent = ' ';
+        deletedItem.querySelector('.vote_title').textContent = ' ';
+        worksItem.querySelector('input[type="radio"]').checked = false;
+      }
+    
+      updateNotification();
+      updateVoteButton();
+    });
+  });
+};
+
+
+
+// 전체 삭제 버튼 클릭 이벤트
+function widgetDeleteAll() {
+  document.querySelector('.btn-deleteAll').addEventListener('click', function () {
+    console.log('widget deleteAll');
+    if (confirm('모든 항목을 삭제하시겠습니까?')) {
+      // 모든 라디오 버튼 해제
+      document.querySelectorAll('.works-list-item input[type="radio"]').forEach((radio) => {
+        radio.checked = false;
+      });
+  
+      // .vote-list-item의 모든 데이터 초기화
+      document.querySelectorAll('.vote-list-item').forEach((item) => {
+        item.querySelector('.vote_img').innerHTML = '';
+        item.querySelector('.vote_category').textContent = ' ';
+        item.querySelector('.vote_title').textContent = ' ';
+        item.removeAttribute('data-id');
+      });
+  
+      alert('모든 항목이 삭제되었습니다.');
+    }
+  
+    updateNotification();
+    updateVoteButton();
+  });
+};
+
+// 위젯 선택된 카드 개수 안내문구
+function updateNotification() {
+  const selectedCount = document.querySelectorAll('.vote-list-item .vote_img img').length;
+  const maxCount = document.querySelectorAll('.vote-list-item').length;
+
+  if (selectedCount === 0) {
+    document.querySelector('.noti__none').style.display = 'block';
+    document.querySelector('.noti__count').style.display = 'none';
+  } else {
+    document.querySelector('.noti__none').style.display = 'none';
+    document.querySelector('.noti__count-num').textContent = selectedCount;
+    document.querySelector('.noti__count').style.display = 'block';
+  }
+}
+
+// 투표하기 버튼 업데이트
+function updateVoteButton() {
+  const selectedCount = document.querySelectorAll('.vote-list-item .vote_img img').length;
+  const maxCount = document.querySelectorAll('.vote-list-item').length;
+
+  document.querySelector('.btn-vote').disabled = selectedCount !== maxCount;
+}
+

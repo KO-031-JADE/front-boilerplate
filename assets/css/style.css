@@ -1512,7 +1512,7 @@ body > .wrap > .main-right-float > .arrow {
 }
 
 /* 기본 체크박스 숨기기 */
-.custom-checkbox input[type="checkbox"] {
+.custom-checkbox input[type="radio"] {
   display: none;
 }
 
@@ -1529,7 +1529,7 @@ body > .wrap > .main-right-float > .arrow {
 }
 
 /* 체크된 상태에서 체크 표시 이미지 적용 */
-.custom-checkbox input[type="checkbox"]:checked + .checkmark::after {
+.custom-checkbox input[type="radio"]:checked + .checkmark::after {
   content: "";
   position: absolute;
   top: 7%;
