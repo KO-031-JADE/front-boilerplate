@@ -271,13 +271,13 @@
   #dropzone-preview {
     gap: 1.43vw;
   }
-  .card_upload_max2,.card_upload_max1 {
+  .card-with-upload::after {
     height: 24.14vw;
     font-size: 1.43vw;
   }
   .card-image {
     border-radius: 1.07vw;
-    width: 18.86vw;
+    /* width: 18.86vw; */
     height: 24.14vw;
     padding: 4.29vw 1.43vw 1.43vw;
   }
@@ -801,9 +801,10 @@
     gap: 10px;
     width: max-content;
     position: relative;
+    margin: 0 auto;
   }
   /* 스크롤영역 */
-  #dropzone-preview::after {
+  #dropzone-preview::before {
     content:'';
     display: block;
     width: 100%;
@@ -815,10 +816,16 @@
     right: 0;
     bottom: -20px;
   }
-  .card_upload_max2,.card_upload_max1 {
-    border-radius: 15px;
+  .card-with-upload::after {
     height: 210px;
     font-size: 13px;
+    border-radius: 15px;
+  }
+  .card_upload_max2::after {
+    width: 330px;
+  }
+  .card_upload_max1::after {
+    width: 165px;
   }
   #dropzone-preview li:hover:not(.representative-selected) .representative-label {
     display: none;
