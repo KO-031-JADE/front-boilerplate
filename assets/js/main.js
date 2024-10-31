@@ -341,7 +341,6 @@ function attachFiles() {
             <button type="button" class="btn-document_add">첨부</button>
           </div>
           <div class="btn-filebox_wrap">
-          <div class="btn-filebox_wrap">
             <button type="button" class="btn-filebox_add">파일박스 추가</button>
             ${
               boxCount > 0
@@ -507,30 +506,30 @@ function toggleMessage(file, dropzone) {
   if (!dropzone) return;
   const uploadWrapCss = 'card-with-upload'; // 뒤에 업로드영역 스타일명. 바꿔도 되요!!
   /* $$$$$$$$$$$$$$$$$$$$$$ TODO : 임시 스타일 나중에 css 생성하시면 삭제해주세요 : s  */
-  const tmpCss = document.querySelector('#testCss') ? document.querySelector('#testCss') : document.createElement('style');
-  tmpCss.id = 'testCss';
-  tmpCss.innerHTML =
-    `.` +
-    uploadWrapCss +
-    `::after {
-      content: '` +
-    dropzone.options.dictDefaultMessage +
-    `';
-      border: solid 1px #ccc;
-      border-radius: 15px;
-      box-sizing: content-box;
-      text-align: center;
-      width: calc(100%/3*2);
-      height: 338px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }`;
-  document.head.appendChild(tmpCss);
-  tmpCss.innerHTML = tmpCss.innerHTML.replace(
-    /width: calc\(100%\/[0-9]\*[0-9]\)/,
-    'width: calc(100%/' + dropzone.options.maxFiles + '*' + (dropzone.options.maxFiles - dropzone.files.length) + ')'
-  );
+  // const tmpCss = document.querySelector('#testCss') ? document.querySelector('#testCss') : document.createElement('style');
+  // tmpCss.id = 'testCss';
+  // tmpCss.innerHTML =
+  //   `.` +
+  //   uploadWrapCss +
+  //   `::after {
+  //     content: '` +
+  //   dropzone.options.dictDefaultMessage +
+  //   `';
+  //     border: solid 1px #ccc;
+  //     border-radius: 15px;
+  //     box-sizing: content-box;
+  //     text-align: center;
+  //     width: calc(100%/3*2);
+  //     height: 338px;
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //   }`;
+  // document.head.appendChild(tmpCss);
+  // tmpCss.innerHTML = tmpCss.innerHTML.replace(
+  //   /width: calc\(100%\/[0-9]\*[0-9]\)/,
+  //   'width: calc(100%/' + dropzone.options.maxFiles + '*' + (dropzone.options.maxFiles - dropzone.files.length) + ')'
+  // );
   /* $$$$$$$$$$$$$$$$$$$$$$ TODO : 임시 스타일 나중에 css 생성하시면 삭제해주세요 : e  */
   const preview = document.querySelector('#dropzone-preview');
   const hasPreviewUpload = preview?.classList?.contains(uploadWrapCss);
