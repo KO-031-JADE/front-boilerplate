@@ -252,20 +252,6 @@
   .btn-pop_apply:hover::after {
     transform: translateX(9.29vw);
   }
-  .btn-pop_close_follow {
-    font-size: 15px;
-    width: 260px;
-    height: 45px;
-    line-height: 45px;
-    border-radius: 22px;
-    display: block!important;
-    position: absolute;
-    /* top: -130px;
-    left: 50%;
-    transform: translateX(-50%); */
-    top: 0;
-    left: 0;
-  }
 
 
   /* 카드뉴스 */
@@ -341,7 +327,7 @@
   }
   #apply_popup .popup-box {
     width: calc(100% - 40px);
-    margin: 100px auto;
+    margin: 120px auto;
     border: 3px solid #2d2926;
     background-color: #fff;
     border-radius: 20px;
@@ -660,6 +646,18 @@
   }
   .btn-pop_apply:hover::after {
     transform: translateX(85px);
+  }
+  .btn-pop_close_follow {
+    font-size: 15px;
+    width: 260px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 22px;
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   /* 카드뉴스 */

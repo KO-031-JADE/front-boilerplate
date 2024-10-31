@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", handleLeftFloating);
 function handleResize() {
   if (window.innerWidth > 768) {
     document.querySelector(".dropzone").addEventListener("click", openFileDialog);
+    handleMouseMoveListener();
   } else {
   }
 }
@@ -612,9 +613,7 @@ function openPopupApply() {
   toggleMessage(dropzone);
 
   // 닫기 버튼 따라다니기
-  if (window.innerWidth > 768) {
-    document.addEventListener("mousemove", onMouseMove);
-  }
+  handleMouseMoveListener();
 }
 
 function closePopupApply() {
@@ -625,13 +624,22 @@ function closePopupApply() {
 }
 
 // 접수하기 팝업 밖에서 닫기 버튼 따라다니기
+function handleMouseMoveListener() {
+  if (window.innerWidth > 768) {
+    document.addEventListener("mousemove", onMouseMove);
+  } else {
+    document.removeEventListener("mousemove", onMouseMove);
+  }
+}
+
 function onMouseMove(event) {
   const closeButton = document.querySelector(".btn-pop_close_follow");
   const popupApply = document.getElementById("apply_popup");
   const popupBox = document.querySelector(".popup-box");
-  console.log(`Mouse X: ${event.pageX}, Mouse Y: ${event.pageY}`);
-  closeButton.style.left = event.pageX - 50 + "px";
-  closeButton.style.top = event.pageY - 50 + "px";
+  closeButton.style.position = "fixed";
+  closeButton.style.transform = "translateX(0)";
+  closeButton.style.left = event.clientX - 50 + "px";
+  closeButton.style.top = event.clientY - 50 + "px";
 
   if (popupBox.contains(event.target)) {
     closeButton.style.display = "none";

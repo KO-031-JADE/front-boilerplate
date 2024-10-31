@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10;
+  z-index: 100;
   display: none;
 }
 .popup-dim.on {
@@ -34,7 +34,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 11;
+  z-index: 101;
   display: none;
 }
 #apply_popup.on {
@@ -223,7 +223,8 @@
   padding: 0 30px;
 }
 .select_box.open .select-selected {
-  border: 0;
+  /* border: 0; */
+  border-color: transparent;
 }
 .select-items {
   display: none;
@@ -573,7 +574,7 @@
   border-radius: 100%;
   display: none;
   position: fixed;
-  z-index: 1000;
+  z-index: 102;
 }
 
 /* 카드뉴스 */
