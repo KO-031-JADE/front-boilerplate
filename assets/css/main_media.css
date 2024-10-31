@@ -1223,7 +1223,7 @@
   .recruit-section .schedule-box .container .recruit-schedule .top-box {
     width: 163.5px;
     height: 24.5px;
-    top: -21.5px;
+    top: -20px;
     border-radius: 20px 22.5px 0 0;
     border: 3px solid #0c4b63;
     border-bottom: none;
@@ -1433,8 +1433,6 @@
 
   .examination-details-section .container .box-wrap .examination-detail .top-box {
     width: 163.5px;
-    height: 25px;
-    top: -24px;
     height: 23px;
     top: -20px;
     border-radius: 20px 22.5px 0 0;
@@ -1448,7 +1446,7 @@
     width: 102.5px;
     height: 26px;
     left: 29px;
-    top: -10px;
+    top: -3px;
   }
 
   .examination-details-section .container .box-wrap .detail01{
@@ -1534,7 +1532,13 @@
   }
 
   .award-section {
-    max-width: calc(100% - 25px);
+    padding: 0 12.5px 27px 12.5px;
+    max-width: none;
+  }
+
+  .award-section > div {
+    justify-content: space-between;
+    margin-bottom: 5px;
   }
 
   .award-section > div:first-child {
@@ -1544,36 +1548,514 @@
     margin-top: 37px;
   }
 
+    .award-section > div:nth-child(2) {
+      padding-left: 7%;
+    }
+
   .award-row div {
     height: 45px;
     line-height: 45px;
+    font-size: 15px;
+    font-weight: 400;
   }
   .award-header div:nth-child(1), .award-row div:nth-child(1) {
-    width: 31.15%;
+    width: 29.03%;
     max-width: none;
+    gap: 5px;
   }
 
   .award-header div:nth-child(3), .award-row div:nth-child(3) {
-    width: 22.95%;
+    width: 22.58%;
+        max-width: none;
+    gap: 5px;
   }
-  
+  .award {
+    justify-content: center!important;
+  }
   .award-header div:nth-child(2), .award-row div:nth-child(2) {
-    width: 45.90%;
+    width: 47.16%;
     max-width: none;
+    gap: 5px;
   } 
 
   .award {
     height: 45px;
-  }
-  /* .award-header div:nth-child(1), .award-row div:nth-child(1), .award-header div:nth-child(3), .award-row div:nth-child(3) {
-    max-width: 95px;
-    width: 31.15%;
+    font-size: 15px;
   }
 
-  .award-header div:nth-child(2), .award-row div:nth-child(2) {
-    width: 45.90%;
-    max-width: 140px;
-  } */
+  .award-row, .criteria-row {
+    gap: 5px;
+  }
+  
+  .examination-details-section .container .box-wrap .detail02,
+  .examination-details-section .container .box-wrap .detail02 .box-contents {
+    height: auto;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num {
+    font-size: 19px;
+    background-color: #f5faf0;
+    border-radius: 12.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#80bd41;
+    font-weight: 800;
+    height: 45px;
+    margin-bottom: 5px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num01 {
+    margin-top: 48px;
+    margin-bottom: 5px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .item .left {
+    font-size: 19px;
+    background-color: #f5faf0;
+    border-radius: 12.5px;
+    color:#80bd41;
+    font-weight: 800;
+    width: 33.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo li:nth-child(2) .item .left,
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo li:nth-child(3) .item .left {
+    width: 75px;
+    height: 45px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num01 li:nth-child(4) .item .left{
+    width: 75px;
+    height: 93px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num02 li:nth-child(4) .item .left{
+    width: 75px;
+    height: 173px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num03 li:nth-child(4) .item .left{
+    width: 75px;
+    height: 63px;
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo li .item .right {
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo li .item .right {
+    margin-left: 5px;
+    background-color: #f9f9f9;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 12.5px;
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo li:nth-child(2) .item .right,
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo li:nth-child(3) .item .right {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num01 li:nth-child(4) .item .right{
+    padding: 7.75px 0;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo li:nth-child(4) .item .right p{
+    padding-left: 32.5px;
+    position: relative;
+    margin-bottom: 5px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo li:nth-child(4) .item .right p::before {
+    content: '';
+    display: inline-block;
+    border-radius: 100%;
+    background-color: #80bd41;
+    width: 3px;
+    height: 3px;
+    position: absolute;
+    left: 20px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo hr {
+    display: block;
+    margin: 20px 12px;
+    border: 1px dotted #e8e8e8;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num01,
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num02,
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num03{
+    padding: 0 12px;
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num03 {
+    margin-bottom: 17px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num01,
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num02{
+
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num01 li:nth-child(4) .item .right p:first-child::before{
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num01 li:nth-child(4) .item .right p:last-child::before{
+    top:10px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num02 li:nth-child(4) .item .right{
+    height: 173px;
+    padding-top: 15px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num02 li:nth-child(4) .item .right p {
+    margin-bottom: 5px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num02 li:nth-child(4) .item .right p:nth-child(1)::before{
+    top:10px;
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num02 li:nth-child(4) .item .right p:nth-child(2)::before{
+    top:10px;
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num02 li:nth-child(4) .item .right p:nth-child(3)::before{
+    top:10px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num02 li:nth-child(4) .item .right p:nth-child(1)::before{
+    top:10px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num03 li:nth-child(4) .item .right p:nth-child(1)::before{
+    top: 10px;
+  }
+  .examination-details-section .container .box-wrap .detail02 .box-contents.mo .num03 li:nth-child(4) .item .right{
+    padding: 9px 0;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 .deco05 {
+    width: 104px;
+    height: 94px;
+    bottom: -80px;
+    left: -21px;
+  }
+
+  .additional-points ul li:last-child{
+    height: 114px;
+    text-align: center;
+    line-height: 25px;
+  }
+  .additional-points ul li .check_icon {
+    width: 32.5px;
+    height: 33px;
+    margin: 0 44px 0 18.5px;
+  }
+
+  .evaluation-score ul li, .additional-points ul li {
+    line-height: 21px;
+  }
+  .benefit-lists ul {
+    gap: 10.5px;
+  }
+
+  .benefit-lists li::before {
+    width: 37.5px;
+    height: 37.5px;
+    border-radius: 100%;
+    font-size: 17px;
+  }
+
+  .benefit-lists_icon {
+    height: 58px;
+    margin-top: 32px;
+  }
+
+  .benefit-lists li {
+    border: 3px solid #3a571d;
+    border-radius: 25px;
+    height: 222px;
+  }
+
+  .benefit-lists_txt {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 24px;
+  }
+
+  .benefit-lists_txt .sub {
+    font-size: 13px;
+  }
+
+  .benefit-ref {
+    font-weight: 400;
+    font-size: 11px;
+    margin-top: 20px;
+  }
+
+  .voting-section .container {
+    padding-top: 77px;
+    padding-bottom: 100px;
+  }
+
+  .voting-section .tabs-wrap {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+
+  .voting-section .tabs .line {
+    width: 1px;
+    height: 73.5px;
+  }
+
+  .voting-section .tabs-wrap .tabs .tab {
+    font-size: 35px;
+  }
+
+  .voting-section .tabs-wrap .tabs {
+    height: 73.5px
+  }
+
+  .voting-section .deco08 {
+    width: 147px;
+    height: 121px;
+    right: -5.94%;
+  }
+
+  .cate-wrap .tabs {
+    height: 37.5px;
+    max-width: none;
+    gap: 5px;
+  }
+
+  .cate-wrap .tabs .tab:nth-child(2) {
+    width: 132px;
+  }
+
+  .cate-wrap .tabs .tab {
+    height: 37.5px;
+    font-size: 19px;
+    background-color: #017338;
+    padding: 19px;
+    border-radius: 18.25px;
+  }
+
+  .cate-wrap .tabs .tab::after {
+    display: none;
+  }
+
+  .cate-wrap .tabs .tab.active {
+    border-radius: 18.25px;
+  }
+
+  .cate-wrap {
+    margin-top: 29.5px;
+    overflow-x: scroll;
+  }
+
+  .voting-section .container .voting-box {
+    margin-top: 26px;
+    height: auto;
+    border-radius: 25px;
+  }
+
+  .voting-section .container .voting-box .top {
+    height: 115px;
+  }
+  .voting-section .container .voting-box .top .search-container .flex {
+    padding: 15px 0 5.5px 0;
+    justify-content: space-between;
+  }
+  .voting-section .container .voting-box .top .search-container .flex .dropdown{
+    width: 185px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #777;
+    background: url(../images/select_arrow.png) no-repeat 88% 50% / 10px auto;
+    padding: 0 20px;
+  }
+  .search-button {
+    width: 125px;
+    height: 40px;
+    border-radius: 25px;
+    font-size: 15px;
+  }
+  .voting-section .container .voting-box .top .search-container {
+    display: block;
+    max-width: none;
+    width: 100%;
+    padding: 0 13px;
+  }
+
+  .search-input {
+    padding: 0 20px;
+    width: 315px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 15px;
+  }
+
+  .voting-section .container .voting-box .bottom .contents .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .voting-section .container .voting-box .bottom .contents-container {
+    max-width: none;
+    padding: 0 13px 30px 13px;
+  }
+
+  .voting-section .container .voting-box .bottom .info {
+    padding: 15px 0;
+  }
+
+  .voting-section .container .voting-box .bottom .info p {
+    font-size: 13px;
+    font-weight: 500;
+    padding-left: 15px;
+  }
+  .voting-section .container .voting-box .bottom .info p .main-color {
+    font-size: 15px;
+  }
+
+  .voting-section .container .voting-box .bottom .info select {
+    font-size: 13px;
+    width: 83.5px;
+    background: url(../images/select_arrow.png) no-repeat 96% 50% / 10px auto;
+    margin-right: 15px;
+  }
+
+  .voting-section .container .voting-box .bottom .contents .grid .list {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 9px;
+  }
+
+  .voting-section .container .voting-box .bottom .contents .grid .list .txt-wrap .flex .category {
+    width: 75px;
+    height: 19px;
+    border-radius: 9.375px;
+    font-size: 11px;
+    font-weight: 200;
+  }
+
+  .custom-checkbox .checkmark {
+    width: 16px;
+    height: 16px;
+  }
+
+  .custom-checkbox input[type="radio"]:checked + .checkmark::after {
+    width: 16px;
+    height: 16px;
+  }
+
+  .custom-checkbox {
+    font-size: 16px;
+  }
+
+  .voting-section .container .voting-box .bottom .contents .grid .list .txt-wrap .sub-title {
+    font-size: 12.5px;
+  }
+
+  .voting-section .container .voting-box .bottom .contents .grid .list .txt-wrap .txt {
+    font-size: 15px;
+    line-height: 20px;
+    height: 33.5px;
+  }
+
+  .voting-section .container .voting-box .bottom .contents .grid .list img {
+    max-width: none;
+    max-height: none;
+    border-radius: 6.25px;
+    margin-top: 20px;
+  }
+
+  .pagenation-container {
+    margin-top: 20px;
+  }
+
+  .pagenation-container #prev_page, .pagenation-container #next_page {
+    width: 15px;
+    height: 15.5px;
+  }
+
+  .pagenation-container .pages {
+    margin:  0 10px;
+    gap: 10px;
+  }
+
+  .pagenation-container .pages .active {
+    width: 30px;
+    height: 30px;
+  }
+  .pagenation-container .pages span {
+    font-size: 12px;
+  }
+
+  .notice-section{
+    padding: 70px 0;
+  }
+
+  .section-title {
+    font-size: 35px;
+    height: 73px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+
+  .notice-box {
+    margin-top: 25px;
+  }
+
+  .notice-lists > li {
+    padding:  25px 0;
+  }
+
+  .notice-lists > li::before {
+    width: 37.5px;
+    height: 37.5px;
+    font-size: 17px;
+    top: 32px;
+  }
+
+  .notice-lists_tit::after {
+    width: 13.5px;
+    height: 7.5px;
+  }
+
+  .notice-lists_tit {
+    font-size: 20px;
+    padding-left: 55px;
+    height: 50.5px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+  }
+
+  .notice-lists_des p {
+    font-size: 15px;
+    line-height: 26.25px;
+  }
+
+  .notice-lists_tit.open + .notice-lists_box {
+    max-height: none;
+  }
+
+  .notice-lists_des {
+    border-radius: 12.5px;
+  }
 
   footer{
     height: 100%;
