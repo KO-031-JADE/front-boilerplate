@@ -428,8 +428,11 @@ function initDropzone() {
     init: function () {
       const myDropzone = this;
       myDropzone.on('addedfile', (file) => validateFile(file, myDropzone));
-      myDropzone.on('removedfile', (thisFile) => {
-        toggleMessage(myDropzone, thisFile);
+      myDropzone.on('addedfiles', (a) => {
+        console.log('addedfiles', a);
+      });
+      myDropzone.on('removedfile', (file) => {
+        toggleMessage(file, myDropzone);
       });
       myDropzone.on('maxfilesexceeded', (file) => handleMaxFilesExceeded(file, myDropzone));
     },
@@ -498,13 +501,13 @@ function isDuplicateFile(file, existingFiles) {
 }
 
 // 파일 제거 후 메시지 보이기 설정
-function toggleMessage(dropzone, thisFile) {
+function toggleMessage(file, dropzone) {
   if (dropzone && dropzone.files.length === 0) {
     document.querySelector('.dz-message').style.display = 'block';
     document.querySelector('.dropzone').style.border = '1px solid #ccc';
   } else if (dropzone && dropzone.files.length > 0) {
     // 삭제 버튼 클릭시 대표 이미지 변경
-    if (thisFile != null && thisFile.previewElement?.classList?.contains('representative-selected') === true) {
+    if (file != null && file.previewElement?.classList?.contains('representative-selected') === true) {
       const nextObj = document.querySelector('#dropzone-preview > li [data-dzc-representative]');
       if (nextObj) {
         nextObj.click();
@@ -631,7 +634,7 @@ function openPopupApply() {
 
   // reset 카드뉴스
   clearDropzoneFiles();
-  toggleMessage(dropzone, null);
+  toggleMessage(null, dropzone);
 
   // 닫기 버튼 따라다니기
   handleMouseMoveListener();
