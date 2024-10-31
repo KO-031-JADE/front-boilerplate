@@ -380,11 +380,7 @@
     top: -3.125vw;
   }
 
-  .examination-details-section
-    .container
-    .box-wrap
-    .examination-detail
-    .box-title {
+  .examination-details-section .container .box-wrap .examination-detail .box-title {
     font-size: 3.125vw;
     position: absolute;
     top: -1.25vw;
@@ -393,11 +389,7 @@
     height: 2.7083vw;
   }
 
-  .examination-details-section
-    .container
-    .box-wrap
-    .examination-detail
-    .box-contents {
+  .examination-details-section .container .box-wrap .examination-detail .box-contents {
     border-radius: 0 2.0833vw 2.0833vw 2.0833vw;
     border: 0.2083vw solid #3a571d;
     box-shadow: 0.3125vw 0.3125vw 0px 0px #3a571d;
@@ -1140,16 +1132,18 @@
   .main-section .container .top p {
     font-size: 48px;
     line-height: 58px;
+    text-shadow: 2px 2px 2px #d1d1d1;
   }
 
   .main-section .container .top p .main-color {
     font-size: 48px;
+    text-shadow: 2px 2px 2px #d1d1d1;
   }
 
   .main-section .container .top .main-title del {
     width: 150px;
     height: 50px;
-    border-radius: 50px;
+    border-radius: 25px;
     line-height: 20px;
     display: flex;
     justify-content: center;
@@ -1230,7 +1224,7 @@
     width: 163.5px;
     height: 24.5px;
     top: -21.5px;
-    border-radius: 45px 45px 0 0;
+    border-radius: 20px 22.5px 0 0;
     border: 3px solid #0c4b63;
     border-bottom: none;
   }
@@ -1239,10 +1233,9 @@
     font-weight: 800;
     font-size: 30px;
     height: auto;
-    top: -19px;
+    top: -15px;
     left: 30px;
 }
-  }
 
   .recruit-section .schedule-box .container .recruit-schedule .box-contents {
     height: auto;
@@ -1311,6 +1304,22 @@
   .recruit-section .schedule-box .container .subject-list .wrap {
     grid-template-columns: repeat(1, 1fr);
     gap: 15px;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .deco02 img {
+    width: 157px;
+    height: 146.5px;
+    top: -56px;
+    right: -26px;
+  }
+
+  .examination-details-section .container .box-wrap {
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+
+  .examination-details-section .container .box-wrap .detail02 {
+    margin-top: 75px;
   }
 
   .recruit-section .schedule-box .container .subject-list .wrap .nemo {
@@ -1426,17 +1435,155 @@
     width: 163.5px;
     height: 25px;
     top: -24px;
+    height: 23px;
+    top: -20px;
+    border-radius: 20px 22.5px 0 0;
+    border: 3px solid #3a571d;
+    border-bottom: none;
   }
+
+  .examination-details-section .container .box-wrap .examination-detail .box-title {
+    font-size: 30px;
+    font-weight: 800;
+    width: 102.5px;
+    height: 26px;
+    left: 29px;
+    top: -10px;
+  }
+
+  .examination-details-section .container .box-wrap .detail01{
+    height: auto;
+  }
+
+  .examination-details-section .container .box-wrap .detail01 .box-contents {
+    height: auto;
+  }
+
+  .examination-details-section .container .box-wrap .examination-detail .box-contents {
+    border: 3px solid #3a571d;
+  }
+
+  .score-wrap {
+    display: block;
+    padding-bottom: 80px;
+  }
+
+  .score-wrap .evaluation-score {
+    margin-bottom: 60px;
+  }
+
+  .score-wrap .evaluation-score, .score-wrap .additional-points {
+    width: 100%;
+  }
+
+  .score-wrap .evaluation-score p, .score-wrap .additional-points p {
+    font-size: 25px;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+  }
+
+  .evaluation-score ul, .additional-points ul {
+    margin-top: 15px
+  }
+
+  .evaluation-score ul li, .additional-points ul li {
+    margin-bottom: 5px;
+  }
+
+  .evaluation-score ul li:first-child span {
+    width: 55px;
+    height: 68px;
+    border-radius: 18.25px;
+    margin: 0px 20px 0px 6px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .evaluation-score ul li:first-child {
+    height: 77.5px;
+    border-radius: 25px;
+    font-size: 15px;
+  }
+
+  .evaluation-score ul li, .additional-points ul li {
+    height: 55px;
+    border-radius: 22.5px;
+  }
+
+  .evaluation-score ul li span {
+    width: 55px;
+    height: 45.5px;
+    border-radius: 17.5px;
+    margin: 0px 20px 0px 6px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .evaluation-score ul li, .additional-points ul li {
+    font-size: 15px;
+  }
+
+  .benefit-lists {
+    margin-top: 40.5px;
+  }
+
+  .benefit-lists ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .award-section {
+    max-width: calc(100% - 25px);
+  }
+
+  .award-section > div:first-child {
+    height: 50px;
+    border-radius: 12.5px;
+    font-size: 19px;
+    margin-top: 37px;
+  }
+
+  .award-row div {
+    height: 45px;
+    line-height: 45px;
+  }
+  .award-header div:nth-child(1), .award-row div:nth-child(1) {
+    width: 31.15%;
+    max-width: none;
+  }
+
+  .award-header div:nth-child(3), .award-row div:nth-child(3) {
+    width: 22.95%;
+  }
+  
+  .award-header div:nth-child(2), .award-row div:nth-child(2) {
+    width: 45.90%;
+    max-width: none;
+  } 
+
+  .award {
+    height: 45px;
+  }
+  /* .award-header div:nth-child(1), .award-row div:nth-child(1), .award-header div:nth-child(3), .award-row div:nth-child(3) {
+    max-width: 95px;
+    width: 31.15%;
+  }
+
+  .award-header div:nth-child(2), .award-row div:nth-child(2) {
+    width: 45.90%;
+    max-width: 140px;
+  } */
 
   footer{
     height: 100%;
   }
 
+  /* 모바일 세로 화면 (480px 이하) */
+  @media (max-width: 480px) {
+  }
 
-/* 모바일 세로 화면 (480px 이하) */
-@media (max-width: 480px) {
-}
-
-/* 모바일 초소형 화면 (320px 이하) */
-@media (max-width: 320px) {
+  /* 모바일 초소형 화면 (320px 이하) */
+  @media (max-width: 320px) {
+  }
 }
