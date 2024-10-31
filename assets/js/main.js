@@ -522,7 +522,9 @@ function toggleMessage(file, dropzone) {
       text-align: center;
       width: calc(100%/3*2);
       height: 338px;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }`;
   document.head.appendChild(tmpCss);
   tmpCss.innerHTML = tmpCss.innerHTML.replace(
