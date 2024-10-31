@@ -756,9 +756,12 @@ function mobileMenyToggleSlide() {
     if ($('#burgur').hasClass('on')) {
       $('#burgur').removeClass('on');
       $('#slide').removeClass('on');
+      $('#header').removeClass('drop');
     } else {
       $('#burgur').addClass('on');
       $('#slide').addClass('on');
+      $('#header').addClass('drop');
     }
   });
 }
+

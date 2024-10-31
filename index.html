@@ -376,7 +376,6 @@
 
     </form>
   </div>
-
   <!-- 카드뉴스 디테일 -->
   <div class="card-detail-wrap">
     <div class="contents-container">
@@ -395,7 +394,7 @@
       <img class="box" src="./assets/images/floating_bloons.png" alt="" />
     </div>
     <!-- 헤더 -->
-    <header class="header">
+    <header id="header" class="header">
       <div class="container">
         <!-- 로고 섹션 -->
         <h1>
@@ -458,10 +457,13 @@
             </li>
             <li>
               <p class="main-color">참여방법</p>
-              <div>
+              <div class="pc">
                 <p>유니세프 아동친화도시 공모전 홈페이지접속</p>
-                <p class="flex"><span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span>
-                  우수 사례 등록</p>
+                <p class="flex "><span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span> 우수 사례 등록</p>
+              </div>
+              <div class="mo">
+                <p>유니세프 아동친화도시 공모전</p>
+                <p class="flex">홈페이지 접속 <span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span> 우수 사례 등록</p>
               </div>
             </li>
             <li>
@@ -484,7 +486,7 @@
               <p class="box-title">공모<span class="main-color">일정</span></p>
               <div class="box-contents">
                 <div class="contents-container">
-                  <img src="./assets/images/schedule_contents.png" alt="" />
+                  <img class="pc" src="./assets/images/schedule_contents.png" alt="" />
                   <div class="txt-wrap">
                     <ul>
                       <li class="yellow-color"><img src="./assets/images/yellow_hearts.png" alt="하트이미지"> 접수 기간</li>
@@ -494,11 +496,20 @@
                       <li class="red-color"><img src="./assets/images/red_hearts.png" alt="하트이미지"> 투표 기간</li>
                       <li>11월 19일(화)~11월 27일(수)</li>
                     </ul>
-                    <ul>
-                      <li class="low-green-color"><img src="./assets/images/low_green_hearts.png" alt="하트"> 내부 작품 심사 기간
-                      </li>
-                      <li>11월 19일(화)~11월 29일(금)</li>
-                    </ul>
+                    <div class="pc">
+                      <ul>
+                        <li class="low-green-color"><img src="./assets/images/low_green_hearts.png" alt="하트"> 내부 작품 심사 기간</li>
+                        <li>11월 19일(화)~11월 29일(금)</li>
+                      </ul>
+                    </div>
+
+                    <div  class="mo">
+                      <ul>
+                        <li class="low-green-color"><img src="./assets/images/low_green_hearts.png" alt="하트"> 내부 작품<br>심사 기간</li>
+                        <li>11월 19일(화)~11월 29일(금)</li>
+                      </ul>
+                    </div>
+
                     <ul>
                       <li class="green-color"><img src="./assets/images/green_hearts.png" alt="하트이미지"> 결과 발표</li>
                       <li>12일 3일(화)</li>
@@ -599,11 +610,26 @@
               </li>
             </ul>
           </div>
-          <div class="subject-notice">
-            <div class="wrap">
-              <span>작품규격</span>
-              <p>카드뉴스 (이미지 1200px <img src="./assets/images/x_text.png" alt="multiply"> 1360px) · 설명글 300자 · 사업 소개서 자유
-                양식 · 한 단체당 여러 개의 우수 사례 제출 가능</p>
+          <div class="pc">
+            <div class="subject-notice">
+              <div class="wrap">
+                <span>작품규격</span>
+                <p>카드뉴스 (이미지 1200px <img src="./assets/images/x_text.png" alt="multiply"> 1360px) · 설명글 300자 · 사업 소개서 자유
+                  양식 · 한 단체당 여러 개의 우수 사례 제출 가능</p>
+              </div>
+            </div>
+          </div>
+          <div class="mo">
+            <div class="subject-notice">
+              <div class="wrap">
+                <span>작품규격</span>
+                <ul>
+                  <li>카드뉴스 (이미지 1200px <img src="./assets/images/x_text.png" alt="multiply"> 1360px)</li>
+                  <li>설명글 300자</li>
+                  <li>사업 소개서 자유 양식</li>
+                  <li>한 단체당 여러 개의 우수 사례 제출 가능</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -1039,85 +1065,85 @@
         <img class="deco08" src="./assets/images/deco08.png" alt="일러스트이미지08" data-aos="fade-up"
           data-aos-duration="2000">
       </div>
-
+      
                       <!-- 나의 투표 위젯 -->
-                        <div id="widget">
-                          <div class="widget_wrap">
-                            <div class="widget-top">
-                              <div class="widget_tit">나의투표</div>
-                              <div class="widget_close">닫기</div>
-                            </div>
-                            <div class="widget-contents_wrap">
-                              <div id="beforeCertified" class="widget-content">
-                                <div class="beforeCertified_box">
-                                  <img src="assets/images/icon_certification.png" alt="간편인증-아이콘">
-                                  <p>간편인증이 <br> 필요한 서비스 입니다. </p>
-                                  <button type="button">간편인증</button>
-                                </div>
-                                <div class="beforeCertified_bottom">
-                                  <span>
-                                    휴대폰이 없으신가요? <br>
-                                    <a href="javascript:;" title="unicef 로그인 페이지">여기를 클릭하여 </a><br>
-                                    Unicef 로그인 후 투표해주세요.
-                                  </span>
-                                </div>
+                      <div id="widget">
+                        <div class="widget_wrap">
+                          <div class="widget-top">
+                            <div class="widget_tit">나의투표</div>
+                            <div class="widget_close">닫기</div>
+                          </div>
+                          <div class="widget-contents_wrap">
+                            <div id="beforeCertified" class="widget-content">
+                              <div class="beforeCertified_box">
+                                <img src="assets/images/icon_certification.png" alt="간편인증-아이콘">
+                                <p>간편인증이 <br> 필요한 서비스 입니다. </p>
+                                <button type="button">간편인증</button>
                               </div>
-                              <div id="myVote" class="widget-content">
-                                <ul class="vote_lists">
-                                  <li data-vote="1" class="not_selected">
-                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
-                                    <div class="vote_img"><img src="assets/images/ex_image.png" alt=""></div>
-                                    <div class="vote_des">
-                                      <div class="vote_category">조례 및 정책</div>
-                                      <div class="vote_school">화성시 청계초등학교</div>
-                                      <div class="vote_title">어린이 행복콜 서비스 어린이 행복콜 서비스</div>
-                                    </div>
-                                  </li>
-                                  <li data-vote="2" class="not_selected">
-                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
-                                    <div class="vote_img"><span>선택하기</span></div>
-                                    <div class="vote_des">
-                                      <div class="vote_category">아동참여</div>
-                                      <div class="vote_school"></div>
-                                      <div class="vote_title"></div>
-                                    </div>
-                                  </li>
-                                  <li data-vote="3" class="not_selected">
-                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
-                                    <div class="vote_img"><span>선택하기</span></div>
-                                    <div class="vote_des">
-                                      <div class="vote_category">아동권리교육</div>
-                                      <div class="vote_school"></div>
-                                      <div class="vote_title"></div>
-                                    </div>
-                                  </li>
-                                  <li data-vote="4" class="not_selected">
-                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
-                                    <div class="vote_img"><span>선택하기</span></div>
-                                    <div class="vote_des">
-                                      <div class="vote_category">행정서비스</div>
-                                      <div class="vote_school"></div>
-                                      <div class="vote_title"></div>
-                                    </div>
-                                  </li>
-                                  <li data-vote="5" class="not_selected">
-                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
-                                    <div class="vote_img"><span>선택하기</span></div>
-                                    <div class="vote_des">
-                                      <div class="vote_category">아동친화공간</div>
-                                      <div class="vote_school"></div>
-                                      <div class="vote_title"></div>
-                                    </div>
-                                  </li>
-                                </ul>
-                                <div class="vote_btn_wrap">
-                                  <button type="button" id="btnVote">투표하기</button>
-                                  <button type="button" id="deselectAll">전체 선택 해제 </button>
-                                </div>
+                              <div class="beforeCertified_bottom">
+                                <span>
+                                  휴대폰이 없으신가요? <br>
+                                  <a href="javascript:;" title="unicef 로그인 페이지">여기를 클릭하여 </a><br>
+                                  Unicef 로그인 후 투표해주세요.
+                                </span>
+                              </div>
+                            </div>
+                            <div id="myVote" class="widget-content">
+                              <ul class="vote_lists">
+                                <li data-vote="1" class="not_selected">
+                                  <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                  <div class="vote_img"><img src="assets/images/ex_image.png" alt=""></div>
+                                  <div class="vote_des">
+                                    <div class="vote_category">조례 및 정책</div>
+                                    <div class="vote_school">화성시 청계초등학교</div>
+                                    <div class="vote_title">어린이 행복콜 서비스 어린이 행복콜 서비스</div>
+                                  </div>
+                                </li>
+                                <li data-vote="2" class="not_selected">
+                                  <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                  <div class="vote_img"><span>선택하기</span></div>
+                                  <div class="vote_des">
+                                    <div class="vote_category">아동참여</div>
+                                    <div class="vote_school"></div>
+                                    <div class="vote_title"></div>
+                                  </div>
+                                </li>
+                                <li data-vote="3" class="not_selected">
+                                  <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                  <div class="vote_img"><span>선택하기</span></div>
+                                  <div class="vote_des">
+                                    <div class="vote_category">아동권리교육</div>
+                                    <div class="vote_school"></div>
+                                    <div class="vote_title"></div>
+                                  </div>
+                                </li>
+                                <li data-vote="4" class="not_selected">
+                                  <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                  <div class="vote_img"><span>선택하기</span></div>
+                                  <div class="vote_des">
+                                    <div class="vote_category">행정서비스</div>
+                                    <div class="vote_school"></div>
+                                    <div class="vote_title"></div>
+                                  </div>
+                                </li>
+                                <li data-vote="5" class="not_selected">
+                                  <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                  <div class="vote_img"><span>선택하기</span></div>
+                                  <div class="vote_des">
+                                    <div class="vote_category">아동친화공간</div>
+                                    <div class="vote_school"></div>
+                                    <div class="vote_title"></div>
+                                  </div>
+                                </li>
+                              </ul>
+                              <div class="vote_btn_wrap">
+                                <button type="button" id="btnVote">투표하기</button>
+                                <button type="button" id="deselectAll">전체 선택 해제 </button>
                               </div>
                             </div>
                           </div>
                         </div>
+                      </div>
 
     </section>
     <!-- 공지사항 -->

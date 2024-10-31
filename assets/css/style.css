@@ -155,7 +155,7 @@ body > .wrap > .main-right-float > .arrow {
   position: fixed;
   z-index: 1;
   width: 100%;
-  transition: 0.2s;
+  transition: 0.12s;
 }
 
 .header h1 a {
@@ -1914,7 +1914,7 @@ footer .footer-info {
   cursor: pointer;
   display: flex;
   width: 80px;
-  height: 45px;
+  height: 35px;
   justify-content: center;
   align-items: center;
   background: #00aeef;
@@ -1928,7 +1928,7 @@ footer .footer-info {
 }
 .burgur {
   right: 15px;
-  top: 23px;
+  top: 17px;
   position: absolute;
   width: 12px;
   height: 2px;

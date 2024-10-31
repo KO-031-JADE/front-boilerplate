@@ -1076,20 +1076,20 @@
 /* 모바일 가로 화면 (768px 이하) */
 @media (max-width: 768px) {
   .pc {
-    display: none;
+    display: none!important;
   }
 
   .mo {
-    display: block;
+    display: block!important;
   }
 
   .main-section {
     background: url(../images/m_main.png) no-repeat;
     background-size: cover;
     width: 100%;
-    height: 100vh;
+    height: 129vh;
     max-height: none;
-    background-position: center;
+    background-position: top;
   }
 
   .header h1 a {
@@ -1099,7 +1099,7 @@
 
   .header {
     z-index: 99;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 20px 0;
   }
 
@@ -1125,7 +1125,313 @@
     width: 100%;
     height: 100%;
   }
+  .container{
+    max-width: calc(100% - 30px);
+  }
+
+  /* .header .container {
+    max-width: calc(100% - 30px);
+  } */
+
+  .main-section .container .top {
+    padding: 0;
+    padding-top: 100px;
+  }
+  .main-section .container .top p {
+    font-size: 48px;
+    line-height: 58px;
+  }
+
+  .main-section .container .top p .main-color {
+    font-size: 48px;
+  }
+
+  .main-section .container .top .main-title del {
+    width: 150px;
+    height: 50px;
+    border-radius: 50px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 0;
+    left: 166px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .main-section .container .top .main-title del::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 18px solid transparent;
+    border-top-color: #10a34a;
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -42px;
+    margin-bottom: -12px;
+  }
+
+  .main-section .container .bottom {
+    padding: 3.125vw 0 0 0;
+  }
+
+  .main-section .container .bottom ul li {
+    margin-bottom: 1.0417vw;
+  }
+
+  .main-section .container .bottom ul li p.main-color {
+    font-size: 16px;
+    margin-right: 11px;
+  }
+
+  .main-section .container .bottom ul li > p:last-child {
+    font-size: 15px;
+  }
+  .main-section .container .bottom ul li > div > p {
+    font-size: 15px;
+    line-height: 25px;
+  }
+  .gts-icon {
+    width: 16px;
+    height: 16px;
+    margin: 0 4px;
+  }
+
+  .main-section .main-right-float {
+    display: none;
+  }
+
+  body > .wrap > .main-right-float{
+    width: 143.5px;
+    height: 117.5px;
+    right: -6px;
+    top: 70%;
+  }
+
+  body > .wrap > .main-right-float > .arrow {
+    width: 20.5px;
+    height: 21px;
+  }
+
+  .recruit-section .schedule-box .container {
+    padding-top: 262.5px;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule {
+    top: -82px;
+    height: auto;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .top-box {
+    width: 163.5px;
+    height: 24.5px;
+    top: -21.5px;
+    border-radius: 45px 45px 0 0;
+    border: 3px solid #0c4b63;
+    border-bottom: none;
+  }
+  
+  .recruit-section .schedule-box .container .recruit-schedule .box-title {
+    font-weight: 800;
+    font-size: 30px;
+    height: auto;
+    top: -19px;
+    left: 30px;
 }
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents {
+    height: auto;
+    border-radius: 0 25px 25px 25px;
+    border: 3px solid #0c4b63;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container {
+    max-width: calc(100% - 60px);
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap {
+    display: block;
+    margin: 20px 0;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul {
+    display: flex;
+    margin-bottom: 7px;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:first-child {
+    font-size: 17px;
+    margin-right: 10px;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li.blue-color {
+    width: 87.59px;
+    margin-bottom: 14px;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li.low-green-color img{
+    margin-bottom: 29px;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:last-child {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:first-child img {
+    width: 14px;
+    height: 12.5px;
+    margin-right: 10px;
+  }
+
+  .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container .txt-wrap ul li:last-child p:last-child {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  .recruit-title {
+    font-size: 35px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    margin-top: -0.5208vw;
+    height: 74px;
+  }
+  .deco01 {
+    top: -65px;
+    left: -5px;
+    width: 117px;
+    height: 164px;
+  }  
+
+  .recruit-section .schedule-box .container .subject-list .wrap {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .nemo {
+    border: 3px solid #0c4b63;
+    border-radius: 25px;
+    padding: 27px;
+    min-height: auto;
+    max-height: none;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .nemo .num {
+    top: 24px;
+    right: 24px;
+    width: 37.5px;
+    height: 37.5px;
+    font-size: 17px;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .nemo hr {
+    border: 1px dotted #e8e8e8;
+    margin: 7px 0;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .nemo .title {
+    font-size: 25px;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .nemo ul li {
+    font-size: 15px;
+    line-height: 25px;
+    padding-left: 20px;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .nemo ul li:first-child::before {
+    width: 5px;
+    height: 5px;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .type1 {
+    min-height: auto;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .type1 .top {
+    height: auto;
+  }
+
+  .recruit-section .schedule-box .container .subject-list .wrap .type2 {
+    min-height: auto;
+  }
+
+  
+
+  .recruit-section .schedule-box .container .subject-list {
+    padding-top: 25px;
+  }
+
+  .recruit-section .schedule-box .container .subject-notice {
+    padding: 47px 0 70px 0;
+  }
+
+  .recruit-section .schedule-box .container .subject-notice .wrap {
+    background:none ;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+  }
+
+  .recruit-section .schedule-box .container .subject-notice .wrap span {
+    font-weight: 700;
+    font-size: 20px;
+    position: relative;
+    width: 100%;
+    height: 45px;
+    border-radius: 45px;
+  }
+  .recruit-section .schedule-box .container .subject-notice .wrap ul {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+  }
+
+  .recruit-section .schedule-box .container .subject-notice .wrap ul li {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 45px;
+    padding: 15px 15px;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .recruit-section .schedule-box .container .subject-notice .wrap ul li img{
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .recruit-section .schedule-box .container .subject-notice .wrap ul li::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    border-radius: 100%;
+    background-color: #1cabe2;
+    margin-right: 11px;
+  }
+
+  .examination-details-section {
+    padding: 70px 0;
+  }
+
+  .examination-details-section .container .box-wrap .examination-detail .top-box {
+    width: 163.5px;
+    height: 25px;
+    top: -24px;
+  }
+
+  footer{
+    height: 100%;
+  }
+
 
 /* 모바일 세로 화면 (480px 이하) */
 @media (max-width: 480px) {
