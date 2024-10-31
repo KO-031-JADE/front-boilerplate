@@ -493,6 +493,7 @@ function validateFile(file, dropzone) {
   }
   document.querySelector('.dz-message').style.display = 'none';
   document.querySelector('.dropzone').style.border = 'none';
+  document.querySelector('.dropzone').style.borderRadius = '0';
 }
 
 // 파일 중복 검사
@@ -505,6 +506,7 @@ function toggleMessage(file, dropzone) {
   if (dropzone && dropzone.files.length === 0) {
     document.querySelector('.dz-message').style.display = 'block';
     document.querySelector('.dropzone').style.border = '1px solid #ccc';
+    document.querySelector('.dropzone').style.borderRadius = '15px';
   } else if (dropzone && dropzone.files.length > 0) {
     // 삭제 버튼 클릭시 대표 이미지 변경
     if (file != null && file.previewElement?.classList?.contains('representative-selected') === true) {

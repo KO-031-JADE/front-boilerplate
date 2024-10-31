@@ -376,6 +376,7 @@
 
     </form>
   </div>
+
   <!-- 카드뉴스 디테일 -->
   <div class="card-detail-wrap">
     <div class="contents-container">
@@ -1038,6 +1039,86 @@
         <img class="deco08" src="./assets/images/deco08.png" alt="일러스트이미지08" data-aos="fade-up"
           data-aos-duration="2000">
       </div>
+
+                      <!-- 나의 투표 위젯 -->
+                        <div id="widget">
+                          <div class="widget_wrap">
+                            <div class="widget-top">
+                              <div class="widget_tit">나의투표</div>
+                              <div class="widget_close">닫기</div>
+                            </div>
+                            <div class="widget-contents_wrap">
+                              <div id="beforeCertified" class="widget-content">
+                                <div class="beforeCertified_box">
+                                  <img src="assets/images/icon_certification.png" alt="간편인증-아이콘">
+                                  <p>간편인증이 <br> 필요한 서비스 입니다. </p>
+                                  <button type="button">간편인증</button>
+                                </div>
+                                <div class="beforeCertified_bottom">
+                                  <span>
+                                    휴대폰이 없으신가요? <br>
+                                    <a href="javascript:;" title="unicef 로그인 페이지">여기를 클릭하여 </a><br>
+                                    Unicef 로그인 후 투표해주세요.
+                                  </span>
+                                </div>
+                              </div>
+                              <div id="myVote" class="widget-content">
+                                <ul class="vote_lists">
+                                  <li data-vote="1" class="not_selected">
+                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                    <div class="vote_img"><img src="assets/images/ex_image.png" alt=""></div>
+                                    <div class="vote_des">
+                                      <div class="vote_category">조례 및 정책</div>
+                                      <div class="vote_school">화성시 청계초등학교</div>
+                                      <div class="vote_title">어린이 행복콜 서비스 어린이 행복콜 서비스</div>
+                                    </div>
+                                  </li>
+                                  <li data-vote="2" class="not_selected">
+                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                    <div class="vote_img"><span>선택하기</span></div>
+                                    <div class="vote_des">
+                                      <div class="vote_category">아동참여</div>
+                                      <div class="vote_school"></div>
+                                      <div class="vote_title"></div>
+                                    </div>
+                                  </li>
+                                  <li data-vote="3" class="not_selected">
+                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                    <div class="vote_img"><span>선택하기</span></div>
+                                    <div class="vote_des">
+                                      <div class="vote_category">아동권리교육</div>
+                                      <div class="vote_school"></div>
+                                      <div class="vote_title"></div>
+                                    </div>
+                                  </li>
+                                  <li data-vote="4" class="not_selected">
+                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                    <div class="vote_img"><span>선택하기</span></div>
+                                    <div class="vote_des">
+                                      <div class="vote_category">행정서비스</div>
+                                      <div class="vote_school"></div>
+                                      <div class="vote_title"></div>
+                                    </div>
+                                  </li>
+                                  <li data-vote="5" class="not_selected">
+                                    <button type="button" class="btn-vote_delete"><img src="assets/images/X.png" alt="삭제"></button>
+                                    <div class="vote_img"><span>선택하기</span></div>
+                                    <div class="vote_des">
+                                      <div class="vote_category">아동친화공간</div>
+                                      <div class="vote_school"></div>
+                                      <div class="vote_title"></div>
+                                    </div>
+                                  </li>
+                                </ul>
+                                <div class="vote_btn_wrap">
+                                  <button type="button" id="btnVote">투표하기</button>
+                                  <button type="button" id="deselectAll">전체 선택 해제 </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
     </section>
     <!-- 공지사항 -->
     <section class="notice-section">
@@ -1218,7 +1299,7 @@
     }
 
     function initLayerPosition() {
-      var width = 800; //우편번호서비스가 들어갈 element의 width
+      var width = (window.innerWidth || document.documentElement.clientWidth) <= 800 ? 300 : 800; //우편번호서비스가 들어갈 element의 width
       var height = 400; //우편번호서비스가 들어갈 element의 height
       var borderWidth = 5; //샘플에서 사용하는 border의 두께
 

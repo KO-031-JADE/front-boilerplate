@@ -204,7 +204,7 @@
   position: relative;
   width: 100%;
   cursor: pointer;
-  z-index: 1;
+  z-index: 11;
 }
 
 .select-selected {
@@ -638,7 +638,7 @@
 
 .card-image {
   position: relative;
-  border: 2px solid #dce1e7;
+  border: 1px solid #dce1e7;
   border-radius: 15px;
   /* overflow: hidden; */
   width: 264px;
@@ -669,6 +669,9 @@
   color: #fff;
   text-align: center;
   display: none;
+}
+.representative-label button {
+  color: #fff;
 }
 
 .representative-selected .representative-label {
@@ -752,3 +755,216 @@
 .text-counting .char-count {
   color: #999;
 }
+
+/* 나의 투표 위젯 */
+/* .voting-section {position: relative;} */
+#widget {
+  width: 100%;
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.widget_wrap {
+  width: 396px;
+  height: auto;
+  background: #fff;
+  border: 1px solid red;
+  transform: translateX(-100%);
+  transition: transform 0.3s;
+}
+#widget.open {
+  display: block;
+}
+#widget.open .widget_wrap {
+  transform: translateX(0);
+}
+.widget-top {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background: #1cabe2;
+}
+.widget_tit {
+  width: calc(100% - 110px);
+  height: 100%;
+  font-size: 36px;
+  color: #fff;
+  line-height: 80px;
+  padding-left: 30px;
+}
+.widget_close {
+  font-size: 26px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  line-height: 80px;
+  width: 110px;
+  height: 100%;
+  background: #0f8fd5;
+  cursor: pointer;
+}
+
+/* 간편인증 */
+#beforeCertified {
+  display: none;
+}
+.beforeCertified_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+  padding: 140px 30px 130px;
+}
+.beforeCertified_box > p {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+.beforeCertified_box > button {
+  width: 100%;
+  line-height: 80px;
+  border-radius: 10px;
+  background: #1cabe2;
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+}
+.beforeCertified_bottom {
+  background: #f9f9f9;
+  border-top: 1px solid #e8e8e8;
+  padding: 30px 40px 50px;
+}
+.beforeCertified_bottom span {
+  font-size: 22px;
+  color: #777779;
+}
+.beforeCertified_bottom a {
+  font-weight: 700;
+  color: #2d2926;
+}
+
+/* 나의투표 */
+#myVote {
+  padding: 10px 20px;
+}
+.vote_lists > li {
+  display: flex;
+  padding: 10px 0;
+  position: relative;
+  border-bottom: 1px dashed #e8e8e8;
+}
+.vote_lists > li.not_selected {
+
+}
+.btn-vote_delete {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 100%;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.12);
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+.vote_img {
+  width: 140px;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+.not_selected .vote_img {
+  background: #f6f6f6 url(../images/icon_vote@2x.png) no-repeat 50% 40px;
+  background-size: 38px 40px;
+}
+.vote_img span {
+  font-family: 'Pretendard';
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  letter-spacing: -0.45px;
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+}
+.vote_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.vote_des {
+  padding: 10px 0 0 20px;
+}
+.vote_category {
+  width: 100px;
+  line-height: 26px;
+  border-radius: 13px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  letter-spacing: -0.4px;
+}
+.vote_lists > li[data-vote="1"] .vote_category {
+  background: #374ea2;
+}
+.vote_lists > li[data-vote="2"] .vote_category {
+  background: #ffc20e;
+}
+.vote_lists > li[data-vote="3"] .vote_category {
+  background: #f36c21;
+}
+.vote_lists > li[data-vote="4"] .vote_category {
+  background: #81bd41;
+}
+.vote_lists > li[data-vote="5"] .vote_category {
+  background: #00833d;
+}
+.vote_school {
+  font-family: 'Pretendard';
+  font-size: 18px;
+  font-weight: 500;
+  color: #999;
+  margin-top: 20px
+}
+.vote_title {
+  font-family: 'Pretendard';
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.27;
+  margin-top: 5px;
+}
+.vote_btn_wrap {
+  padding: 10px 0;
+}
+.vote_btn_wrap > button {
+  display: block;
+  width: 100%;
+  line-height: 60px;
+  border-radius: 10px;
+  font-size: 22px;
+  letter-spacing: -0.55px;
+}
+.vote_btn_wrap > button + button {
+  margin-top: 10px;
+}
+#btnVote {
+  background: #000;  
+  color: #fff;
+}
+#deselectAll {
+  background: #e8e8e8;
+}
+
+
