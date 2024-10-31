@@ -260,6 +260,7 @@ function popSelect() {
 // 사업소개서 첨부파일 (최대 5개)
 function attachFiles() {
   const maxBoxes = 5;
+  const allowedExtensions = ['pdf', 'doc', 'docx', 'hwp'];
   const fileBoxes = document.querySelector('.file_boxes');
 
   // 1. btn-document_add 클릭 시 파일 선택창 열기
@@ -272,15 +273,18 @@ function attachFiles() {
     }
   });
 
+
   // 2. 파일 첨부 시 파일명 표시 및 삭제 버튼 추가
   fileBoxes.addEventListener('change', function (event) {
     if (event.target.classList.contains('a11yHidden')) {
       const fileInput = event.target;
       const fileNameSpan = fileInput.closest('.file_box').querySelector('.file_name');
+      const fileName = fileInput.files[0]?.name;
+      const fileExtension = fileName?.split('.').pop().toLowerCase();
 
-      if (fileInput.files[0]) {
-        // 파일이 첨부된 경우
-        fileNameSpan.textContent = fileInput.files[0].name;
+      if (fileName && allowedExtensions.includes(fileExtension)) {
+        // 허용된 파일 형식일 경우
+        fileNameSpan.textContent = fileName;
         fileNameSpan.classList.remove('no_files');
 
         // 삭제 버튼 추가
@@ -292,7 +296,9 @@ function attachFiles() {
           fileNameSpan.appendChild(deleteButton);
         }
       } else {
-        // 파일이 첨부되지 않은 경우
+        // 허용되지 않은 파일 형식일 경우
+        alert('pdf, doc, docx, hwp 파일만 첨부할 수 있습니다.');
+        fileInput.value = ''; // 입력값 초기화
         fileNameSpan.textContent = '파일을 선택하세요.';
         fileNameSpan.classList.add('no_files');
 
