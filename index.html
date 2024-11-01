@@ -9,8 +9,10 @@
   <script src="assets/js/aos.js"></script>
   <script src="assets/js/dropzone.min.js"></script>
   <script src="assets/js/sortable.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/dropzone.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="assets/css/aos.css">
   <link rel="stylesheet" href="assets/css/font.css">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -378,23 +380,42 @@
   </div>
 
   <!-- 카드뉴스 상세 -->
-  <div class="card-detail-wrap">
+  <div id="card-detail" class="card-detail-wrap">
     <div class="bg"></div>
     <div class="contents-container">
       <div class="images">
-
+        <!-- 슬라이더 컨테이너 -->
+        <div class="swiper-container">
+          <!-- 슬라이더 래퍼 -->
+          <div class="swiper-wrapper">
+            <!-- 슬라이드1 -->
+            <div class="swiper-slide"><img src="./assets/images/slide_image.jpg" alt="이미지1 설명"></div>
+            <!-- 슬라이드2 -->
+            <div class="swiper-slide"><img src="./assets/images/slide_image.jpg" alt="이미지2 설명"></div>
+            <!-- 슬라이드3 -->
+            <div class="swiper-slide"><img src="./assets/images/slide_image.jpg" alt="이미지3 설명"></div>
+          </div>
+          <!-- 슬라이드 네비게이션 버튼 -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <!-- 페이지네이션 -->
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
       <div class="txt-wrap">
-        <a href="javascript:void(0);">공유하기버튼</a>
-        <p class="title1"></p>
-        <p class="title2"></p>
+        <a class="share-cion" href="javascript:void(0);"><img src="./assets/images/share_icon.png" alt="공유하기"></a>
+        <p class="title1">서울시 서초구청</p>
+        <p class="title2">
+          서울시 서초구청<br>
+          시민의숲 어린이행사
+        </p>
         <p class="text">
           2024 UNICEF Awards 공모전 아동을 위한 더 나은 변화는 우리 사회의 미래를 밝히는 중요한 과제입니다. 아이들은 우리의 희망이며, 그들이 안전하고 건강하게 성장할 수 있는 환경을 제공해야 합니다. 교육 기회 확대, 정서적 지원, 건강한 식습관 조성 등 다양한 방안이 필요합니다. 또한, 아동의 목소리를 존중하고 참여를 촉진함으로써 그들의 권리를 보호해야 합니다. 함께 노력하면 아이들이 꿈꾸는 세상을 만들어 갈 수 있습니다. 지속적인 관심과 행동이 아동의 삶에 긍정적인 변화를 가져올 것입니다. (데모 텍스트 300자)
         </p>
         <div class="button-wrap">
-          <button>이동참여</button>
-          <button>수정</button>
-          <button>삭제</button>
+          <button class="m-button">이동참여</button>
+          <button class="f-button">수정</button>
+          <button class="d-button">삭제</button>
         </div>
       </div>
     </div>
@@ -1026,71 +1047,80 @@
                 <!-- data-item : 1.조례 및 정책 / 2.아동참여 / 3.아동권리교육 / 4.행정서비스 / 5.아동친화공간 -->
                 <ul id="data-container" class="works-lists grid">
                   <li class="works-list-item list" data-item="2">
-                    <div class="lists-decription txt-wrap">
-                      <div class="flex">
-                        <p class="lists-decription_category category">아동참여</p>
-                        <label class="custom-checkbox">
-                          <input type="radio" name="item02" id="listItem01">
-                          <span class="checkmark"></span>
-                        </label>
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                        <div class="flex">
+                          <p class="lists-decription_category category">아동참여</p>
+                          <label class="custom-checkbox">
+                            <input type="radio" name="item02" id="listItem01">
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                        <p class="lists-decription_school sub-title">111</p>
+                        <p class="lists-decription_title txt">서울시 서초구청<br />서울시 서초구청</p>
                       </div>
-                      <p class="lists-decription_school sub-title">111</p>
-                      <p class="lists-decription_title txt">서울시 서초구청<br />서울시 서초구청</p>
-                    </div>
-                    <div class="lists-img">
-                      <img src="./assets/images/deco07.png" alt="썸네일이미지">
-                    </div>
+                      <div class="lists-img">
+                        <img src="./assets/images/deco07.png" alt="썸네일이미지">
+                      </div>
+                    </a>
                   </li>
                   <li class="works-list-item list" data-item="1">
-                    <div class="lists-decription txt-wrap">
-                      <div class="flex">
-                        <p class="lists-decription_category category">조례 및 정책</p>
-                        <label class="custom-checkbox">
-                          <input type="radio" name="item01" id="listItem02">
-                          <span class="checkmark"></span>
-                        </label>
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                        <div class="flex">
+                          <p class="lists-decription_category category">조례 및 정책</p>
+                          <label class="custom-checkbox">
+                            <input type="radio" name="item01" id="listItem02">
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                        <p class="lists-decription_school sub-title">222</p>
+                        <p class="lists-decription_title txt">서울시 서초구청<br />시민의숲 어린이행사2</p>
                       </div>
-                      <p class="lists-decription_school sub-title">222</p>
-                      <p class="lists-decription_title txt">서울시 서초구청<br />시민의숲 어린이행사2</p>
-                    </div>
-                    <div class="lists-img">
-                      <img src="./assets/images/deco05.png" alt="썸네일이미지">
-                    </div>
+                      <div class="lists-img">
+                        <img src="./assets/images/deco05.png" alt="썸네일이미지">
+                      </div>
+                    </a>
                   </li>
                   <li class="works-list-item list" data-item="3">
-                    <div class="lists-decription txt-wrap">
-                      <div class="flex">
-                        <p class="lists-decription_category category">아동권리교육</p>
-                        <label class="custom-checkbox">
-                          <input type="radio" name="item03" id="listItem03">
-                          <span class="checkmark"></span>
-                        </label>
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                        <div class="flex">
+                          <p class="lists-decription_category category">아동권리교육</p>
+                          <label class="custom-checkbox">
+                            <input type="radio" name="item03" id="listItem03">
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                        <p class="lists-decription_school sub-title">333</p>
+                        <p class="lists-decription_title txt">서울시 서초구청<br />시민의숲 어린이행사3</p>
                       </div>
-                      <p class="lists-decription_school sub-title">333</p>
-                      <p class="lists-decription_title txt">서울시 서초구청<br />시민의숲 어린이행사3</p>
-                    </div>
-                    <div class="lists-img">
-                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
-                    </div>
+                      <div class="lists-img">
+                        <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                      </div>
+                    </a>
                   </li>
                   <li class="works-list-item list" data-item="4">
-                    <div class="lists-decription txt-wrap">
-                      <div class="flex">
-                        <p class="lists-decription_category category">행정서비스</p>
-                        <label class="custom-checkbox">
-                          <input type="radio" name="item04" id="listItem04">
-                          <span class="checkmark"></span>
-                        </label>
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                        <div class="flex">
+                          <p class="lists-decription_category category">행정서비스</p>
+                          <label class="custom-checkbox">
+                            <input type="radio" name="item04" id="listItem04">
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                        <p class="lists-decription_school sub-title">서444</p>
+                        <p class="lists-decription_title txt">4시민의숲 어린이행사</p>
                       </div>
-                      <p class="lists-decription_school sub-title">서444</p>
-                      <p class="lists-decription_title txt">4시민의숲 어린이행사</p>
-                    </div>
-                    <div class="lists-img">
-                      <img src="./assets/images/deco07.png" alt="썸네일이미지">
-                    </div>
+                      <div class="lists-img">
+                        <img src="./assets/images/deco07.png" alt="썸네일이미지">
+                      </div>
+                    </a>
                   </li>
                   <li class="works-list-item list" data-item="5">
-                    <div class="lists-decription txt-wrap">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
                       <div class="flex">
                         <p class="lists-decription_category category">아동친화공간</p>
                         <label class="custom-checkbox">
@@ -1104,9 +1134,11 @@
                     <div class="lists-img">
                       <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                     </div>
+                    </a>
                   </li>
                   <li class="works-list-item list" data-item="2">
-                    <div class="lists-decription txt-wrap">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
                       <div class="flex">
                         <p class="lists-decription_category category">아동참여</p>
                         <label class="custom-checkbox">
@@ -1120,9 +1152,11 @@
                     <div class="lists-img">
                       <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                     </div>
+                    </a>
                   </li>
                   <li class="works-list-item list" data-item="1">
-                    <div class="lists-decription txt-wrap">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
                       <div class="flex">
                         <p class="lists-decription_category category">조례 및 정책</p>
                         <label class="custom-checkbox">
@@ -1136,9 +1170,11 @@
                     <div class="lists-img">
                       <img src="./assets/images/deco08.png" alt="썸네일이미지">
                     </div>
+                    </a>
                   </li>
                   <li class="works-list-item list" data-item="3">
-                    <div class="lists-decription txt-wrap">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
                       <div class="flex">
                         <p class="lists-decription_category category">아동권리교육</p>
                         <label class="custom-checkbox">
@@ -1152,9 +1188,11 @@
                     <div class="lists-img">
                       <img src="./assets/images/subject_list6.png" alt="썸네일이미지">
                     </div>
+                    </a>
                   </li>
                   <li class="works-list-item list" data-item="4">
-                    <div class="lists-decription txt-wrap">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
                       <div class="flex">
                         <p class="lists-decription_category category">행정서비스</p>
                         <label class="custom-checkbox">
@@ -1168,9 +1206,11 @@
                     <div class="lists-img">
                       <img src="./assets/images/ex_image.png" alt="썸네일이미지">
                     </div>
+                    </a>
                   </li>
                   <li class="works-list-item list" data-item="5">
-                    <div class="lists-decription txt-wrap">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
                       <div class="flex">
                         <p class="lists-decription_category category">아동친화공간</p>
                         <label class="custom-checkbox">
@@ -1184,6 +1224,187 @@
                     <div class="lists-img">
                       <img src="./assets/images/subject_list6.png" alt="썸네일이미지">
                     </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="2">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                        <div class="flex">
+                          <p class="lists-decription_category category">아동참여</p>
+                          <label class="custom-checkbox">
+                            <input type="radio" name="item02" id="listItem01">
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                        <p class="lists-decription_school sub-title">111</p>
+                        <p class="lists-decription_title txt">서울시 서초구청<br />서울시 서초구청</p>
+                      </div>
+                      <div class="lists-img">
+                        <img src="./assets/images/deco07.png" alt="썸네일이미지">
+                      </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="1">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                        <div class="flex">
+                          <p class="lists-decription_category category">조례 및 정책</p>
+                          <label class="custom-checkbox">
+                            <input type="radio" name="item01" id="listItem02">
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                        <p class="lists-decription_school sub-title">222</p>
+                        <p class="lists-decription_title txt">서울시 서초구청<br />시민의숲 어린이행사2</p>
+                      </div>
+                      <div class="lists-img">
+                        <img src="./assets/images/deco05.png" alt="썸네일이미지">
+                      </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="3">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                        <div class="flex">
+                          <p class="lists-decription_category category">아동권리교육</p>
+                          <label class="custom-checkbox">
+                            <input type="radio" name="item03" id="listItem03">
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                        <p class="lists-decription_school sub-title">333</p>
+                        <p class="lists-decription_title txt">서울시 서초구청<br />시민의숲 어린이행사3</p>
+                      </div>
+                      <div class="lists-img">
+                        <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                      </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="4">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                        <div class="flex">
+                          <p class="lists-decription_category category">행정서비스</p>
+                          <label class="custom-checkbox">
+                            <input type="radio" name="item04" id="listItem04">
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                        <p class="lists-decription_school sub-title">서444</p>
+                        <p class="lists-decription_title txt">4시민의숲 어린이행사</p>
+                      </div>
+                      <div class="lists-img">
+                        <img src="./assets/images/deco07.png" alt="썸네일이미지">
+                      </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="5">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                      <div class="flex">
+                        <p class="lists-decription_category category">아동친화공간</p>
+                        <label class="custom-checkbox">
+                          <input type="radio" name="item05" id="listItem05">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <p class="lists-decription_school sub-title">555</p>
+                      <p class="lists-decription_title txt">서울시 서초구청5</p>
+                    </div>
+                    <div class="lists-img">
+                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="2">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                      <div class="flex">
+                        <p class="lists-decription_category category">아동참여</p>
+                        <label class="custom-checkbox">
+                          <input type="radio" name="item02" id="listItem06">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <p class="lists-decription_school sub-title">666</p>
+                      <p class="lists-decription_title txt">서울시 서초구청<br />66</p>
+                    </div>
+                    <div class="lists-img">
+                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="1">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                      <div class="flex">
+                        <p class="lists-decription_category category">조례 및 정책</p>
+                        <label class="custom-checkbox">
+                          <input type="radio" name="item01" id="listItem07">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <p class="lists-decription_school sub-title">서울시 서초구청 시민의숲 어린이행사7</p>
+                      <p class="lists-decription_title txt">서울시서초구청 시민의숲 어린이 행사7 서울시 서초구청 시민의숲 어린이행사7</p>
+                    </div>
+                    <div class="lists-img">
+                      <img src="./assets/images/deco08.png" alt="썸네일이미지">
+                    </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="3">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                      <div class="flex">
+                        <p class="lists-decription_category category">아동권리교육</p>
+                        <label class="custom-checkbox">
+                          <input type="radio" name="item03" id="listItem08">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <p class="lists-decription_school sub-title">서울시 서초구청</p>
+                      <p class="lists-decription_title txt">서울시 서초구청<br />시민의숲 어린이행사</p>
+                    </div>
+                    <div class="lists-img">
+                      <img src="./assets/images/subject_list6.png" alt="썸네일이미지">
+                    </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="4">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                      <div class="flex">
+                        <p class="lists-decription_category category">행정서비스</p>
+                        <label class="custom-checkbox">
+                          <input type="radio" name="item04" id="listItem09">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <p class="lists-decription_school sub-title">서울시 서초구청</p>
+                      <p class="lists-decription_title txt">서울시 서초구청<br />시민의숲 어린이행사</p>
+                    </div>
+                    <div class="lists-img">
+                      <img src="./assets/images/ex_image.png" alt="썸네일이미지">
+                    </div>
+                    </a>
+                  </li>
+                  <li class="works-list-item list" data-item="5">
+                    <a href="javascript:void(0);" onclick="javascript:detailPage();">
+                      <div class="lists-decription txt-wrap">
+                      <div class="flex">
+                        <p class="lists-decription_category category">아동친화공간</p>
+                        <label class="custom-checkbox">
+                          <input type="radio" name="item05" id="listItem10">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <p class="lists-decription_school sub-title">서울시 서초구청</p>
+                      <p class="lists-decription_title txt">서울시 서초구청<br />시민의숲 어린이행사</p>
+                    </div>
+                    <div class="lists-img">
+                      <img src="./assets/images/subject_list6.png" alt="썸네일이미지">
+                    </div>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -1511,6 +1732,21 @@
       element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height) / 2 - borderWidth) + 'px';
     }
   </script>
+
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    loop: true,
+    spaceBetween: 20,  // 슬라이드 사이의 간격을 0px로 설정
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+    },
+  });
+</script>
   <script>
     AOS.init({
       once: true,

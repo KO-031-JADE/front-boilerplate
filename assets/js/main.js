@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   radioClick();
   widgetDelete();
   widgetDeleteAll();
+  removeDetail();
 });
 
 // 왼쪽 플로팅 버튼 애니메이션 처리
@@ -938,3 +939,16 @@ function updateVoteButton() {
   document.querySelector('.btn-vote').disabled = selectedCount !== maxCount;
 }
 
+function detailPage() {
+  if ($('#card-detail').hasClass('on')) {
+    $('#card-detail').removeClass('on');
+  } else {
+    $('#card-detail').addClass('on');
+  }
+}
+
+function removeDetail() {
+  document.querySelector('.bg').addEventListener('click', function () {
+    document.getElementById('card-detail').classList.remove('on');
+  });
+}

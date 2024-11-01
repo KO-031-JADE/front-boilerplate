@@ -641,7 +641,7 @@
 
   /* voting-box */
   .voting-section .container .voting-box {
-    height: 78vw;
+    min-height: 78vw;
     border: 0.2083vw solid #014f27;
     box-shadow: 0.3125vw 0.3125vw 0px 0px #014f27;
     border-radius: 2.6042vw;
@@ -694,6 +694,9 @@
   .voting-section .container .voting-box .bottom .contents .grid .list {
     border-radius: 15px;
     border: 0.1042vw solid #ccc;
+  }
+
+  .voting-section .container .voting-box .bottom .contents .grid .list a {
     padding: 1.1771vw;
   }
 
@@ -1871,7 +1874,7 @@
   }
 
   .voting-section .container .voting-box .top {
-    height: 115px;
+    min-height: 115px;
   }
   .voting-section .container .voting-box .top .search-container .flex {
     padding: 15px 0 5.5px 0;
@@ -1940,6 +1943,9 @@
   .voting-section .container .voting-box .bottom .contents .grid .list {
     border-radius: 10px;
     border: 1px solid #ccc;
+  }
+
+  .voting-section .container .voting-box .bottom .contents .grid .list a {
     padding: 9px;
   }
 
