@@ -895,7 +895,6 @@ function widgetDelete() {
     
       let worksItem = document.querySelector('input[type="radio"]#'+dataId).closest('.works-list-item');
       let title = worksItem.querySelector('.lists-decription_title').textContent;
-      console.log(dataId,worksItem);
       
       if (confirm('‘'+title+'’ 작품 선택을 취소하시겠습니까?')) {
         // 이미지 삭제 및 라디오 버튼 해제
@@ -920,7 +919,6 @@ function widgetDelete() {
 // 전체 삭제 버튼 클릭 이벤트
 function widgetDeleteAll() {
   document.getElementById('deselectAll').addEventListener('click', function () {
-    console.log('widget deleteAll');
     if (confirm('선택을 모두 해제 하시겠습니까?')) {
       // 모든 라디오 버튼 해제
       document.querySelectorAll('.works-list-item').forEach((item) => {
