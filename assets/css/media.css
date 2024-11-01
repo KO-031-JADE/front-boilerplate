@@ -461,7 +461,7 @@
   .br_pc {display: none;}
   .br_m {display: block;}
   .popup {
-    height: 100svh;
+    /* height: 100svh; */
   }
   .popup .popup-box {
     width: calc(100% - 40px);
@@ -888,7 +888,7 @@
 
   /* 나의 투표 위젯 */
   #widget {
-    height: 100svh;
+    /* height: 100svh; */
   }
   .widget_wrap {
     width: 260px;
