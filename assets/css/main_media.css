@@ -698,6 +698,7 @@
 
   .voting-section .container .voting-box .bottom .contents .grid .list a {
     padding: 1.1771vw;
+
   }
 
   .voting-section
@@ -787,6 +788,7 @@
   .pagenation-container {
     width: 100%;
     margin-top: 2.6042vw;
+    padding-bottom: 1.3021vw;
   }
 
   .pagenation-container #prev_page,
@@ -1990,6 +1992,7 @@
 
   .pagenation-container {
     margin-top: 20px;
+    padding-bottom: 10px;
   }
 
   .pagenation-container #prev_page, .pagenation-container #next_page {

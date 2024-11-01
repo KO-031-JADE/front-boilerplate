@@ -1221,6 +1221,7 @@ body > .wrap > .main-right-float > .arrow {
   border-radius: 50px;
   margin-top: 50px;
   overflow: hidden;
+  background-color: #fff;
 }
 .voting-section .container .voting-box .top {
   width: 100%;
@@ -1316,6 +1317,7 @@ body > .wrap > .main-right-float > .arrow {
 
 .voting-section .container .voting-box .bottom .contents .grid .list a {
   padding: 19px;
+  display: block;
 }
 
 .voting-section .container .voting-box .bottom .contents .grid .checked-border {
@@ -1435,6 +1437,7 @@ body > .wrap > .main-right-float > .arrow {
   align-items: center;
   justify-content: center;
   margin-top: 50px;
+  padding-bottom: 25px;
 }
 .pagenation-container #prev_page,
 .pagenation-container #next_page {
