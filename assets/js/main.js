@@ -96,12 +96,12 @@ function handleSmoothScroll() {
           behavior: 'smooth',
         });
       }
-      if ($('#burgur').hasClass('on')) {
-        $('#burgur').removeClass('on');
-        $('#slide').removeClass('on');
-      } else {
-        $('#burgur').addClass('on');
-        $('#slide').addClass('on');
+
+      // 탭 활성화 처리
+      if (targetId === 'section2') {
+        setActiveTab('contents2'); // 접수확인 탭 활성화
+      } else if (targetId === 'section3') {
+        setActiveTab('contents1'); // 투표하기 탭 활성화
       }
 
       // 탭 활성화 처리
@@ -955,6 +955,7 @@ function updateVoteButton() {
   document.querySelector('.btn-vote').disabled = selectedCount !== maxCount;
 }
 
+// 뉴스카드 상세 열기버튼
 function detailPage() {
   if ($('#card-detail').hasClass('on')) {
     $('#card-detail').removeClass('on');
@@ -963,8 +964,12 @@ function detailPage() {
   }
 }
 
+// 뉴스카드 상세 닫기버튼
 function removeDetail() {
-  document.querySelector('.bg').addEventListener('click', function () {
-    document.getElementById('card-detail').classList.remove('on');
+  document.querySelectorAll('.card-detail-wrap .mo-detail, .card-detail-wrap .bg').forEach(element => {
+    element.addEventListener('click', function () {
+      document.getElementById('card-detail').classList.remove('on');
+      console.log('닫기');
+    });
   });
 }

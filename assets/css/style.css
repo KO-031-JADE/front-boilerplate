@@ -2058,6 +2058,7 @@ footer .footer-info {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  
 }
 
 .card-detail-wrap .contents-container .images{
@@ -2097,6 +2098,12 @@ footer .footer-info {
 .card-detail-wrap .contents-container .share-cion:hover {
   opacity: 0.5;
 }
+
+.share-cion img{
+  width: 27px;
+  height: 27px;
+}
+
 .card-detail-wrap .contents-container .txt-wrap .title1 {
   font-size: 28px;
   color: #999999;

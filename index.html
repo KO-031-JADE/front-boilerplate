@@ -380,7 +380,7 @@
   </div>
 
   <!-- 카드뉴스 상세 -->
-  <div id="card-detail" class="card-detail-wrap">
+  <div id="card-detail" class="card-detail-wrap on">
     <div class="bg"></div>
     <div class="contents-container">
       <div class="images">
@@ -395,11 +395,19 @@
             <!-- 슬라이드3 -->
             <div class="swiper-slide"><img src="./assets/images/slide_image.jpg" alt="이미지3 설명"></div>
           </div>
-          <!-- 슬라이드 네비게이션 버튼 -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-          <!-- 페이지네이션 -->
-          <div class="swiper-pagination"></div>
+          <div class="pc">
+            <!-- 슬라이드 네비게이션 버튼 -->
+            <div class="swiper-button-prev "></div>
+            <div class="swiper-button-next "></div>
+          </div>
+          <!-- <div class="swiper-pagination"></div> -->
+        </div>
+      </div>
+      <div class="image-bottom">
+        <div class="swiper-pagination"></div>
+        <div class="swiper-btn-wrap">
+          <div class="swiper-button-prev "></div>
+          <div class="swiper-button-next "></div>
         </div>
       </div>
       <div class="txt-wrap">
@@ -414,9 +422,13 @@
         </p>
         <div class="button-wrap">
           <button class="m-button">이동참여</button>
+          <hr class="mo">
           <button class="f-button">수정</button>
           <button class="d-button">삭제</button>
         </div>
+      </div>
+      <div class="close-btn mo">
+        <button class="mo-detail">닫기</button>
       </div>
     </div>
   </div>
