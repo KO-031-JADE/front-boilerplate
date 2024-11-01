@@ -102,13 +102,6 @@ function handleSmoothScroll() {
         $('#burgur').addClass('on');
         $('#slide').addClass('on');
       }
-
-      // 탭 활성화 처리
-      if (targetId === 'section2') {
-        setActiveTab('contents2'); // 접수확인 탭 활성화
-      } else if (targetId === 'section3') {
-        setActiveTab('contents1'); // 투표하기 탭 활성화
-      }
     });
   });
 }
@@ -700,33 +693,37 @@ function closePopupApply() {
   document.querySelector('.popup-dim').classList.remove('on');
   document.querySelector('#apply_popup').classList.remove('on');
   document.querySelector('html').classList.remove('blockScroll');
-  document.removeEventListener('mousemove', onMouseMove);
 }
 
-// 접수하기 팝업 밖에서 닫기 버튼 따라다니기
+// pc일 때만 접수하기 팝업 밖에서 닫기 버튼 따라다니기
 function handleMouseMoveListener() {
   if (window.innerWidth > 768) {
-    document.addEventListener('mousemove', onMouseMove);
-  } else {
-    document.removeEventListener('mousemove', onMouseMove);
+    // 영역 밖 이동 시 닫기 버튼 보이기 및 숨기기
+    const popupApply = document.querySelector('.popup-box');
+    const popupClose = document.querySelector('.btn-pop_close_follow');
+
+    document.addEventListener('mousemove', function (e) {
+      // `popupApply` 영역 안에 있는지 여부를 확인
+      const isInsideLayer = popupApply.contains(e.target);
+      
+      if (!isInsideLayer) {
+        popupClose.style.transform = "scale(1)";
+      } else {
+        popupClose.style.transform = "scale(0)";
+      }
+    });
+
+    // 영역 밖 이동 시 닫기 버튼 커서 따라다니기
+    document.addEventListener('mousemove', function (e) {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      
+      popupClose.style.left = `${mouseX - 50}px`;
+      popupClose.style.top = `${mouseY - 50}px`;
+    });
   }
 }
 
-function onMouseMove(event) {
-  const closeButton = document.querySelector('.btn-pop_close_follow');
-  const popupApply = document.getElementById('apply_popup');
-  const popupBox = document.querySelector('.popup-box');
-  closeButton.style.position = 'fixed';
-  closeButton.style.transform = 'translateX(0)';
-  closeButton.style.left = event.clientX - 50 + 'px';
-  closeButton.style.top = event.clientY - 50 + 'px';
-
-  if (popupBox.contains(event.target)) {
-    closeButton.style.display = 'none';
-  } else {
-    closeButton.style.display = 'block';
-  }
-}
 
 // 접수하기, 점수확인 체크박스 테두리
 function checkedOutline() {
@@ -792,19 +789,23 @@ function widgetOpen() {
   const floatButton = document.getElementById('floatLeftButton');
   const widget = document.getElementById('widget');
   const widgetBox = document.querySelector('.widget_wrap');
-  const widgetClose = document.querySelector('.widget_close');
+  const widgetCloseBtns = document.querySelectorAll('.widget_close, .btn-widget_close');
 
   floatButton.addEventListener('click', function() {
+    console.log(widget.scrollTop);
     widget.classList.add('on');
     setTimeout(function(){
       widgetBox.classList.add('open');
     },300);
+    widget.scrollTop = 0;
   });
-  widgetClose.addEventListener('click', function() {
-    widgetBox.classList.remove('open');
-    setTimeout(function(){
-      widget.classList.remove('on');
-    },300);
+  widgetCloseBtns.forEach(button => {
+    button.addEventListener('click', function() {
+      widgetBox.classList.remove('open');
+      setTimeout(function(){
+        widget.classList.remove('on');
+      },300);
+    });
   });
 }
 

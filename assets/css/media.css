@@ -414,11 +414,11 @@
   .br_pc {display: none;}
   .br_m {display: block;}
   #apply_popup {
-    height: auto;
+    height: 100svh;
   }
   #apply_popup .popup-box {
     width: calc(100% - 40px);
-    margin: 120px auto;
+    margin: 120px auto 50px;
     border: 3px solid #2d2926;
     background-color: #fff;
     border-radius: 20px;
@@ -840,12 +840,16 @@
   }
 
   /* 나의 투표 위젯 */
+  #widget {
+    height: 100svh;
+  }
   .widget_wrap {
     width: 260px;
     position: absolute;
-    top: 10%;
+    top: 30px;
     right: -100%;
     transform: translateX(0);
+    padding-bottom: 15px;
   }
   .widget_wrap.open {
     right: 0;
@@ -937,5 +941,14 @@
   .vote_btn_wrap > button + button {
     margin-top: 5px;
   }
-
+  .btn-widget_close {
+    display: block;
+    width: 230px;
+    line-height: 45px;
+    border-radius: 22px;
+    background: #1cabe2;
+    font-size: 15px;
+    color: #fff;
+    margin: 15px auto;
+  }
 }
