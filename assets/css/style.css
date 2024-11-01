@@ -1171,7 +1171,7 @@ body > .wrap > .main-right-float > .arrow {
 .cate-wrap .tabs .tab {
   transition: 0.1s linear;
   box-shadow: none;
-  background-color: #017338;
+  background-color: transparent;
   cursor: pointer;
   z-index: 1;
   color: #fff;
