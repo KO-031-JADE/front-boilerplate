@@ -792,7 +792,6 @@
   width: 396px;
   height: auto;
   background: #fff;
-  border: 1px solid red;
   transform: translateX(-100%);
   transition: transform 0.3s;
 }
@@ -868,23 +867,21 @@
 .beforeCertified_bottom a {
   font-weight: 700;
   color: #2d2926;
+  text-decoration: underline;
 }
 
 /* 나의투표 */
 #myVote {
   padding: 10px 20px;
 }
-.vote_lists > li {
+.vote-list-item {
   display: flex;
   padding: 10px 0;
   position: relative;
   border-bottom: 1px dashed #e8e8e8;
 }
-.vote_lists > li.not_selected {
-
-}
 .btn-vote_delete {
-  display: block;
+  display: none;
   width: 26px;
   height: 26px;
   border-radius: 100%;
@@ -900,10 +897,14 @@
   overflow: hidden;
   flex-shrink: 0;
   position: relative;
-}
-.not_selected .vote_img {
   background: #f6f6f6 url(../images/icon_vote@2x.png) no-repeat 50% 40px;
   background-size: 38px 40px;
+}
+.selected .vote_img {
+  background: none;
+}
+.selected .btn-vote_delete {
+  display: block;
 }
 .vote_img span {
   font-family: 'Pretendard';
@@ -928,30 +929,37 @@
   width: 100px;
   line-height: 26px;
   border-radius: 13px;
+  font-family: 'Pretendard';
   font-size: 16px;
   color: #fff;
   text-align: center;
   letter-spacing: -0.4px;
 }
-.vote_lists > li[data-vote="1"] .vote_category {
+.works-list-item[data-item="1"] .lists-decription_category,
+.vote-list-item[data-vote="1"] .vote_category {
   background: #374ea2;
 }
-.vote_lists > li[data-vote="2"] .vote_category {
+.works-list-item[data-item="2"] .lists-decription_category,
+.vote-list-item[data-vote="2"] .vote_category {
   background: #ffc20e;
 }
-.vote_lists > li[data-vote="3"] .vote_category {
+.works-list-item[data-item="3"] .lists-decription_category,
+.vote-list-item[data-vote="3"] .vote_category {
   background: #f36c21;
 }
-.vote_lists > li[data-vote="4"] .vote_category {
+.works-list-item[data-item="4"] .lists-decription_category,
+.vote-list-item[data-vote="4"] .vote_category {
   background: #81bd41;
 }
-.vote_lists > li[data-vote="5"] .vote_category {
+.works-list-item[data-item="5"] .lists-decription_category,
+.vote-list-item[data-vote="5"] .vote_category {
   background: #00833d;
 }
 .vote_school {
   font-family: 'Pretendard';
   font-size: 18px;
   font-weight: 500;
+  line-height: 1.2;
   color: #999;
   margin-top: 20px
 }
@@ -961,6 +969,12 @@
   font-weight: 500;
   line-height: 1.27;
   margin-top: 5px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .vote_btn_wrap {
   padding: 10px 0;
@@ -976,11 +990,16 @@
 .vote_btn_wrap > button + button {
   margin-top: 10px;
 }
-#btnVote {
+.btn-vote {
   background: #000;  
   color: #fff;
 }
-#deselectAll {
+.btn-vote:disabled {
+  background: #e8e8e8;
+  color: #999;
+  cursor: default;
+}
+.btn-delete_all {
   background: #e8e8e8;
 }
 

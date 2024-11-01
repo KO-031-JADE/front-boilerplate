@@ -1388,6 +1388,12 @@ body > .wrap > .main-right-float > .arrow {
   line-height: 32px;
   margin-bottom: 17px;
   height: 64px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .voting-section .container .voting-box .bottom .contents .grid .list img {

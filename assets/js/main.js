@@ -727,13 +727,19 @@ function checkedOutline() {
 
   lists.forEach((list) => {
     const checkbox = list.querySelector("input[type='radio']");
-
     checkbox.addEventListener('change', function () {
-      if (checkbox.checked) {
-        list.classList.add('checked-border'); // 클래스 추가
-      } else {
-        list.classList.remove('checked-border'); // 클래스 제거
-      }
+
+      // 모든 라디오 버튼의 체크 상태를 다시 확인하여 클래스 추가/제거
+      lists.forEach((listItem) => {
+        const checkbox = listItem.querySelector("input[type='radio']");
+        
+        if (checkbox.checked) {
+          listItem.classList.add('checked-border'); // 클래스 추가
+        } else {
+          listItem.classList.remove('checked-border'); // 클래스 제거
+        }
+      });
+
     });
   });
 }
@@ -782,14 +788,12 @@ function widgetOpen() {
   const widgetClose = document.querySelector('.widget_close');
 
   floatButton.addEventListener('click', function() {
-    console.log('open');
     widget.classList.add('on');
     setTimeout(function(){
       widgetBox.classList.add('open');
     },300);
   });
   widgetClose.addEventListener('click', function() {
-    console.log('close');
     widgetBox.classList.remove('open');
     setTimeout(function(){
       widget.classList.remove('on');
@@ -801,7 +805,6 @@ function widgetOpen() {
 function radioClick() {
   document.querySelectorAll('.works-list-item input[type="radio"]').forEach((radio) => {
     radio.addEventListener('click', function () {
-      console.log('list click');
       const checkedItem = this.closest('.works-list-item');
       const checkedData = checkedItem.getAttribute('data-item');
       const checkedRadio = this.id;
@@ -812,18 +815,20 @@ function radioClick() {
       selectedItem.setAttribute('data-id', checkedRadio);
   
       const title = checkedItem.querySelector('.lists-decription_title').textContent;
-      const category = checkedItem.querySelector('.lists-decription_category').textContent;
+      const school = checkedItem.querySelector('.lists-decription_school').textContent;
       const widgetList = document.querySelector(`.vote-list-item[data-id="${checkedRadio}"]`);
   
-      widgetList.querySelector('.vote_category').textContent = category;
       widgetList.querySelector('.vote_title').textContent = title;
+      widgetList.querySelector('.vote_school').textContent = school;
   
       // 이미지 추가
       selectedItem.querySelector('.vote_img').innerHTML = `
-        <img src="${checkedImgSrc}" alt="Selected Image" />
+        <img src="${checkedImgSrc}" alt="Selected-Image" />
       `;
+
+      selectedItem.classList.add('selected');
   
-      updateNotification();
+      // updateNotification();
       updateVoteButton();
     });
   });
@@ -833,26 +838,32 @@ function radioClick() {
 function widgetDelete() {
   document.querySelectorAll('.btn-vote_delete').forEach((button) => {
     button.addEventListener('click', function (event) {
-      console.log('widget delete');
       let deletedItem = event.target.closest('.vote-list-item');
       let dataVote = deletedItem.getAttribute('data-vote');
       let dataId = deletedItem.getAttribute('data-id');
     
       let worksItem = document.querySelector(`.works-list-item[data-item="${dataVote}"]`);
-      let radioButton = worksItem.querySelector(`input[type="radio"]#${dataId}`);
+      let radioButton = worksItem ? worksItem.querySelector(`input[type="radio"]#${dataId}`) : null;
       let title = worksItem.querySelector('.lists-decription_title').textContent;
-    
-      console.log(deletedItem,dataVote,dataId,worksItem);
-    
-      if (confirm(`${dataVote}, ${title}를 삭제하시겠습니까?`)) {
+      console.log(dataId,radioButton,worksItem);
+      if (confirm(`‘${title}’ 작품 선택을 취소하시겠습니까?`)) {
         // 이미지 삭제 및 라디오 버튼 해제
-        deletedItem.querySelector('.vote_img').innerHTML = '';
-        deletedItem.querySelector('.vote_category').textContent = ' ';
+        deletedItem.querySelector('.vote_img').innerHTML = '<span>선택하기</span>';
         deletedItem.querySelector('.vote_title').textContent = ' ';
-        worksItem.querySelector('input[type="radio"]').checked = false;
+        deletedItem.querySelector('.vote_school').textContent = ' ';
+        // 해당 라디오 버튼만 해제
+        if (radioButton) {
+          radioButton.checked = false;
+        }
+        if (worksItem) {
+          worksItem.classList.remove('checked-border');
+        }
+        deletedItem.classList.remove('selected');
       }
+
+
     
-      updateNotification();
+      // updateNotification();
       updateVoteButton();
     });
   });
@@ -862,26 +873,29 @@ function widgetDelete() {
 
 // 전체 삭제 버튼 클릭 이벤트
 function widgetDeleteAll() {
-  document.querySelector('.btn-deleteAll').addEventListener('click', function () {
+  document.getElementById('deselectAll').addEventListener('click', function () {
     console.log('widget deleteAll');
-    if (confirm('모든 항목을 삭제하시겠습니까?')) {
+    if (confirm('선택을 모두 해제 하시겠습니까?')) {
       // 모든 라디오 버튼 해제
-      document.querySelectorAll('.works-list-item input[type="radio"]').forEach((radio) => {
-        radio.checked = false;
+      document.querySelectorAll('.works-list-item').forEach((item) => {
+        item.querySelector('input[type="radio"]').checked = false;
+        item.classList.remove('checked-border');
       });
   
       // .vote-list-item의 모든 데이터 초기화
       document.querySelectorAll('.vote-list-item').forEach((item) => {
-        item.querySelector('.vote_img').innerHTML = '';
-        item.querySelector('.vote_category').textContent = ' ';
+        item.querySelector('.vote_img').innerHTML = '<span>선택하기</span>';
         item.querySelector('.vote_title').textContent = ' ';
+        item.querySelector('.vote_school').textContent = ' ';
         item.removeAttribute('data-id');
+
+        item.classList.remove('selected');
       });
   
-      alert('모든 항목이 삭제되었습니다.');
+      alert('선택이 모두 해제 되었습니다.');
     }
   
-    updateNotification();
+    // updateNotification();
     updateVoteButton();
   });
 };
