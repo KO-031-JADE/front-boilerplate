@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', handleLeftFloating);
 function handleResize() {
   if (window.innerWidth > 768) {
     document.querySelector('.dropzone').addEventListener('click', openFileDialog);
+    handleMouseMoveListener();
   } else {
   }
 }
@@ -95,6 +96,7 @@ function handleSmoothScroll() {
           behavior: 'smooth',
         });
       }
+
       if ($('#burgur').hasClass('on')) {
         $('#burgur').removeClass('on');
         $('#slide').removeClass('on');
@@ -102,6 +104,7 @@ function handleSmoothScroll() {
         $('#burgur').addClass('on');
         $('#slide').addClass('on');
       }
+
 
       // 탭 활성화 처리
       if (targetId === 'section2') {
@@ -218,16 +221,32 @@ function handleTabs() {
   );
 }
 
+
 // 카테고리 탭
 function handleCateTabs() {
-  const tabs = document.querySelectorAll('.cate-wrap .tab');
+const tabs = document.querySelectorAll('.cate-wrap .tab');
 
-  tabs.forEach((tab) =>
-    tab.addEventListener('click', () => {
-      document.querySelector('.cate-wrap .tab.active').classList.remove('active');
-      tab.classList.add('active');
-    })
-  );
+tabs.forEach((tab) =>
+ tab.addEventListener('click', () => {
+   document.querySelector('.cate-wrap .tab.active').classList.remove('active');
+   tab.classList.add('active');
+   console.log($('.cate-wrap .tab.active').index());
+   if($('.cate-wrap .tab.active').index() == 1){
+ 	  $("#nowSection").val("A");
+   } else  if($('.cate-wrap .tab.active').index() == 2){
+ 	  $("#nowSection").val("B");
+   } else  if($('.cate-wrap .tab.active').index() == 3){
+ 	  $("#nowSection").val("C");
+   } else  if($('.cate-wrap .tab.active').index() == 4){
+ 	  $("#nowSection").val("D");
+   } else  if($('.cate-wrap .tab.active').index() == 5){
+ 	  $("#nowSection").val("E");
+   } else {
+ 	  $("#nowSection").val("");
+   }
+   getAwardMyList();
+ })
+);
 }
 
 // // 접수하러 가기 플로팅 애니메이션
@@ -247,7 +266,7 @@ function handleCateTabs() {
 function popSelect() {
   const selectBox = document.querySelector('.select_box');
   const selectSelected = selectBox.querySelector('.select-selected');
-  const hiddenInput = document.querySelector('#customSelectValue');
+  const hiddenInput = document.querySelector('#section');
 
   selectSelected.addEventListener('click', function () {
     selectBox.classList.toggle('open');
@@ -660,7 +679,7 @@ function initSortable() {
 
 // 글자수 카운팅 설정
 function setupTextareaCounter() {
-  const contentTextarea = document.getElementById('content');
+  const contentTextarea = document.getElementById('cardContents');
   const charCountDisplay = document.getElementById('char-count');
   contentTextarea.addEventListener('input', () => {
     const currentLength = contentTextarea.value.length;
@@ -682,7 +701,7 @@ function openPopupApply() {
   document.querySelector('.select_box').classList.remove('open');
   document.querySelector('.select-selected').classList.remove('selected');
   document.querySelector('.select-selected').innerHTML = '공모부문을 선택해주세요';
-  document.querySelector('#customSelectValue').value = '';
+  document.querySelector('#section').value = '';
 
   // reset 첨부파일
   resetFiles();
@@ -694,6 +713,53 @@ function openPopupApply() {
   // 닫기 버튼 따라다니기
   handleMouseMoveListener('#apply_popup .popup-box', '#apply_popup .btn-pop_close_follow');
 }
+
+// //접수하기 팝업
+// function openPopupApply() {
+
+//   $.ajax({
+// 	    type: 'GET',
+// 	    url: '/unicef/api/fo/campaign/award/loginYn',
+// 	    headers: {
+// 	      'X-AUTH-TOKEN': localStorage.getItem('token'),
+// 	    },
+// 	  }).done(function (data) {
+// 	    console.log("(data.resultCode==>" + data.resultCode);
+// 	    if (data.resultCode == 'no') {
+// 	      var loginPage = confirm(
+// 	        '공모전 참여를 위해서 로그인이 필요합니다\n로그인 페이지로 이동하시겠습니까?'
+// 	      );
+// 	      if (loginPage) {
+// 	        location.href = '/auth/login?redirectTo=/event/unicef-awards';
+// 	      } else {
+// 	        return;
+// 	      }
+// 	    } else {
+// 	    	  document.querySelector('.popup-dim').classList.add('on');
+// 	    	  document.querySelector('#apply_popup').classList.add('on');
+// 	    	  document.querySelector('html').classList.add('blockScroll');
+// 	    	  document.querySelector('#apply_popup').scrollTop = 0; // 팝업 맨 위로 이동
+
+// 	    	  const form = document.querySelector('#apply_popup form');
+// 	    	  if (form) {
+// 	    	    form.reset(); // form reset
+// 	    	  }
+// 	    	  // reset 공모부문 select_box
+// 	    	  document.querySelector('.select_box').classList.remove('open');
+// 	    	  document.querySelector('.select-selected').classList.remove('selected');
+// 	    	  document.querySelector('.select-selected').innerHTML = '공모부문을 선택해주세요';
+// 	    	  document.querySelector('#section').value = '';
+
+// 	    	  // reset 첨부파일
+// 	    	  resetFiles();
+
+// 	    	  // reset 카드뉴스
+// 	    	  clearDropzoneFiles();
+// 	    	  toggleMessage(null, dropzone);
+
+//             // 닫기 버튼 따라다니기
+//   handleMouseMoveListener('#apply_popup .popup-box', '#apply_popup .btn-pop_close_follow');
+// 	    }
 
 // 투표동의 팝업
 function openPopupVoteAgree() {
@@ -895,6 +961,7 @@ function widgetDelete() {
     
       let worksItem = document.querySelector('input[type="radio"]#'+dataId).closest('.works-list-item');
       let title = worksItem.querySelector('.lists-decription_title').textContent;
+      console.log(dataId,worksItem);
       
       if (confirm('‘'+title+'’ 작품 선택을 취소하시겠습니까?')) {
         // 이미지 삭제 및 라디오 버튼 해제
@@ -919,6 +986,7 @@ function widgetDelete() {
 // 전체 삭제 버튼 클릭 이벤트
 function widgetDeleteAll() {
   document.getElementById('deselectAll').addEventListener('click', function () {
+    console.log('widget deleteAll');
     if (confirm('선택을 모두 해제 하시겠습니까?')) {
       // 모든 라디오 버튼 해제
       document.querySelectorAll('.works-list-item').forEach((item) => {
@@ -981,7 +1049,7 @@ function detailPage() {
 function removeDetail() {
   document.querySelectorAll('.card-detail-wrap .mo-detail, .card-detail-wrap .bg').forEach(element => {
     element.addEventListener('click', function () {
-    document.getElementById('card-detail').classList.remove('on');
+      document.getElementById('card-detail').classList.remove('on');
       console.log('닫기');
     });
   });
