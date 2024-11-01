@@ -949,7 +949,8 @@
     margin: 3.4375vw auto;
     font-size: 2.6042vw;
     font-weight: 800;
-    display: none;
+    padding: 0 5.2083vw;
+    width: calc(100% - 5.2083vw);
   }
 
   .notice-lists > li {
@@ -1144,6 +1145,23 @@
   .swiper-pagination-bullet {
     width: 0.8333vw;
     height: 0.8333vw;
+  }
+
+  .empty-box {
+    height: 51.25vw;
+    border-radius: 0.7812vw;
+  }
+  
+  .empty-box .conts p {
+    font-size: 2.6042vw;
+    font-weight: 800;
+    margin-top: 4.8438vw;
+  }
+
+  .empty-box .conts img {
+    width: 21.5625vw;
+    height: 13.125vw;
+    margin: 0 auto;
   }
   
 }
@@ -2118,6 +2136,15 @@
     margin-top: 25px;
   }
 
+  .notice-box .empty {
+    width: 100%;
+    height: 250px;
+    max-width: 312.5px;
+    font-size: 27px;
+    text-align: center;
+    border-radius: 10px;
+  }
+
   .notice-lists > li {
     padding:  25px 0;
   }
@@ -2383,10 +2410,26 @@
     width: 100px;
   }
 
+  .empty-box {
+    height: 577px;
+  }
+
+  .empty-box .conts img {
+    width: 207px;
+    height: 126px;
+  }
+
   .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
   }
+
+  .empty-box .conts p {
+    font-size: 27px;
+    margin-top: 45px;
+  }
+
+
   /* 모바일 세로 화면 (480px 이하) */
   @media (max-width: 480px) {
   }

@@ -2215,3 +2215,40 @@ footer .footer-info {
   display: block;
 }
 /* 카드뉴스 상세 end */
+
+.empty-box {
+  width: 100%;
+  height: 984px;
+  background-color: #f5f6fa;
+  position: relative;
+  border-radius: 15px;
+  display: none;
+}
+
+.empty-box .conts {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+
+}
+
+.empty-box .conts img {
+  width: 414px;
+  height: 252px;
+  margin: 0 auto;
+}
+
+
+.empty-box .conts p {
+  width: 100%;
+  font-size: 50px;
+  font-weight: 800;
+  margin-top: 93px;
+}
+
+.empty-box .conts p span {
+  color:#374ea2;
+}

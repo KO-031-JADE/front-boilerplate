@@ -107,7 +107,7 @@ textarea:not([rows]) {
 
 p, ul{margin:0; padding:0;}
 
-a {
+a, del {
   text-decoration: none;
 }
 
