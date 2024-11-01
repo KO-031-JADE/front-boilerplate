@@ -102,6 +102,13 @@ function handleSmoothScroll() {
       } else if (targetId === 'section3') {
         setActiveTab('contents1'); // 투표하기 탭 활성화
       }
+
+      // 탭 활성화 처리
+      if (targetId === 'section2') {
+        setActiveTab('contents2'); // 접수확인 탭 활성화
+      } else if (targetId === 'section3') {
+        setActiveTab('contents1'); // 투표하기 탭 활성화
+      }
     });
   });
 }
