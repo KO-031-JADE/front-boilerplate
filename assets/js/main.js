@@ -95,13 +95,6 @@ function handleSmoothScroll() {
           behavior: 'smooth',
         });
       }
-      if ($('#burgur').hasClass('on')) {
-        $('#burgur').removeClass('on');
-        $('#slide').removeClass('on');
-      } else {
-        $('#burgur').addClass('on');
-        $('#slide').addClass('on');
-      }
 
       // 탭 활성화 처리
       if (targetId === 'section2') {
