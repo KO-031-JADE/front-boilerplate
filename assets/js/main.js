@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', handleLeftFloating);
 function handleResize() {
   if (window.innerWidth > 768) {
     document.querySelector('.dropzone').addEventListener('click', openFileDialog);
-    handleMouseMoveListener();
   } else {
   }
 }
@@ -96,12 +95,12 @@ function handleSmoothScroll() {
           behavior: 'smooth',
         });
       }
-
-      // 탭 활성화 처리
-      if (targetId === 'section2') {
-        setActiveTab('contents2'); // 접수확인 탭 활성화
-      } else if (targetId === 'section3') {
-        setActiveTab('contents1'); // 투표하기 탭 활성화
+      if ($('#burgur').hasClass('on')) {
+        $('#burgur').removeClass('on');
+        $('#slide').removeClass('on');
+      } else {
+        $('#burgur').addClass('on');
+        $('#slide').addClass('on');
       }
 
       // 탭 활성화 처리
@@ -455,7 +454,7 @@ function initDropzone() {
     setRepresentativeImage(event);
   });
 
-  document.querySelector('.btn-pop_apply').addEventListener('click', () => submitFiles(dropzone));
+  document.querySelector('#apply_popup .btn-pop_submit').addEventListener('click', () => submitFiles(dropzone));
 
   if (window.innerWidth > 768) {
     document.querySelector('.dropzone').addEventListener('click', openFileDialog);
@@ -673,7 +672,6 @@ function setupTextareaCounter() {
 function openPopupApply() {
   document.querySelector('.popup-dim').classList.add('on');
   document.querySelector('#apply_popup').classList.add('on');
-  document.querySelector('html').classList.add('blockScroll');
   document.querySelector('#apply_popup').scrollTop = 0; // 팝업 맨 위로 이동
 
   const form = document.querySelector('#apply_popup form');
@@ -694,43 +692,60 @@ function openPopupApply() {
   toggleMessage(null, dropzone);
 
   // 닫기 버튼 따라다니기
-  handleMouseMoveListener();
+  handleMouseMoveListener('#apply_popup .popup-box', '#apply_popup .btn-pop_close_follow');
 }
 
-function closePopupApply() {
+// 투표동의 팝업
+function openPopupVoteAgree() {
+  document.querySelector('.popup-dim').classList.add('on');
+  document.querySelector('#vote_agree').classList.add('on');
+  document.querySelector('#vote_agree').scrollTop = 0; // 팝업 맨 위로 이동
+
+  const form = document.querySelector('#vote_agree form');
+  if (form) {
+    form.reset(); // form reset
+  }
+
+  // 닫기 버튼 따라다니기
+  handleMouseMoveListener('#vote_agree .popup-box', '#vote_agree .btn-pop_close_follow');
+}
+
+function closePopupApply(popupSelector) {
   document.querySelector('.popup-dim').classList.remove('on');
-  document.querySelector('#apply_popup').classList.remove('on');
-  document.querySelector('html').classList.remove('blockScroll');
+  document.querySelector(popupSelector).classList.remove('on');
+  // document.removeEventListener('mousemove', mouseMoveHandler);
 }
 
-// pc일 때만 접수하기 팝업 밖에서 닫기 버튼 따라다니기
-function handleMouseMoveListener() {
-  if (window.innerWidth > 768) {
-    // 영역 밖 이동 시 닫기 버튼 보이기 및 숨기기
-    const popupApply = document.querySelector('.popup-box');
-    const popupClose = document.querySelector('.btn-pop_close_follow');
+function handleMouseMoveListener(popupSelector, closeBtnSelector) {
+  const popup = document.querySelector(popupSelector);
+  const popupClose = document.querySelector(closeBtnSelector);
 
-    document.addEventListener('mousemove', function (e) {
-      // `popupApply` 영역 안에 있는지 여부를 확인
-      const isInsideLayer = popupApply.contains(e.target);
+  // 팝업이 존재할 경우
+  if (popup && popupClose) {
+    // 마우스 이동 리스너 정의
+    const mouseMoveHandler = (e) => {
+      const isInsideLayer = popup.contains(e.target);
       
-      if (!isInsideLayer) {
-        popupClose.style.transform = "scale(1)";
+      if (window.innerWidth > 768) {
+        // PC 화면에서 닫기 버튼 따라다니기
+        popupClose.style.transform = isInsideLayer ? "scale(0)" : "scale(1)";
+        popupClose.style.left = `${e.clientX - 50}px`;
+        popupClose.style.top = `${e.clientY - 50}px`;
       } else {
-        popupClose.style.transform = "scale(0)";
+        // 모바일 화면에서 닫기 버튼 고정
+        popupClose.style.transform = "scale(1) translateX(-50%)";
+        popupClose.style.position = "absolute";
+        popupClose.style.left = '50%';
+        popupClose.style.top = '50px'; 
       }
-    });
+    };
 
-    // 영역 밖 이동 시 닫기 버튼 커서 따라다니기
-    document.addEventListener('mousemove', function (e) {
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
-      
-      popupClose.style.left = `${mouseX - 50}px`;
-      popupClose.style.top = `${mouseY - 50}px`;
-    });
+    // 마우스 이동 리스너 추가
+    document.addEventListener('mousemove', mouseMoveHandler);
+
   }
 }
+
 
 
 // 접수하기, 점수확인 체크박스 테두리
@@ -968,7 +983,7 @@ function detailPage() {
 function removeDetail() {
   document.querySelectorAll('.card-detail-wrap .mo-detail, .card-detail-wrap .bg').forEach(element => {
     element.addEventListener('click', function () {
-      document.getElementById('card-detail').classList.remove('on');
+    document.getElementById('card-detail').classList.remove('on');
       console.log('닫기');
     });
   });

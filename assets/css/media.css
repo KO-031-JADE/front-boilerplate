@@ -235,21 +235,21 @@
   .btn-pop_close {
     width: 14.29vw;
   }
-  .btn-pop_apply {
+  .btn-pop_submit {
     width: 42.86vw;
   }
-  .btn-pop_apply::before {
+  .btn-pop_submit::before {
     width: 2.86vw;
     height: 2.86vw;
     transform: translate(7.86vw,-50%);
   }
-  .btn-pop_apply::after {
+  .btn-pop_submit::after {
     width: 3.21vw;
     height: 3.21vw;
     top: 3.07vw;
     transform: translateX(9.64vw);
   }
-  .btn-pop_apply:hover::after {
+  .btn-pop_submit:hover::after {
     transform: translateX(9.29vw);
   }
 
@@ -406,6 +406,53 @@
     margin-top: 0.71vw;
   }
 
+  /* 투표동의 팝업 */
+  #vote_agree .popup-box {
+    max-width: 1096px;
+  }
+  #vote_agree .top-box {
+    width: 60.71vw;
+  }
+  #vote_agree .popup-title {
+    width: 60vw;
+  }
+  #vote_agree .btn_wrap {
+    margin-top: 3.57vw;
+  }
+  #vote_agree .popup-content {
+    padding: 5.71vw 3.57vw 7.14vw;
+  }
+  #vote_agree .pop-tb__agree .tb-body {
+    padding: 3.57vw;
+  }
+  .vote_agree_info {
+    height: 20.5vw;
+    border-radius: 2.14vw;
+  }
+  .vote_agree_info p {
+    font-size: 2.57vw;
+  }
+  .vote_agree_img01 {
+    bottom: -3.93vw;
+    left: 1.79vw;
+    width: 11.36vw;
+  }
+  .vote_agree_img02 {
+    bottom: -3.57vw;
+    right: 2.36vw;
+    width: 9.5vw;
+  }
+  #vote_agree .pop-tb input[type="text"] {
+    width: 10vw;
+    padding: 0 0.71vw;
+    font-size: 1.43vw;
+  }
+  #vote_agree .pop-tb__agree p + ul {
+    margin-top: 2.14vw;
+  }
+  #vote_agree .pop-tb__agree ul li {
+    padding-left: 0.71vw;
+  }
 
 }
 
@@ -413,10 +460,10 @@
 @media screen and (max-width: 768px) {
   .br_pc {display: none;}
   .br_m {display: block;}
-  #apply_popup {
+  .popup {
     height: 100svh;
   }
-  #apply_popup .popup-box {
+  .popup .popup-box {
     width: calc(100% - 40px);
     margin: 120px auto 50px;
     border: 3px solid #2d2926;
@@ -721,21 +768,21 @@
     border-radius: 28px;
     font-size: 25px;
   }
-  .btn-pop_close, .btn-pop_apply {
+  .btn-pop_close, .btn-pop_submit {
     width: 100%;
   }
-  .btn-pop_apply::before {
+  .btn-pop_submit::before {
     width: 25px;
     height: 25px;
     transform: translate(72px,-50%);
   }
-  .btn-pop_apply::after {
+  .btn-pop_submit::after {
     width: 28px;
     height: 28px;
     top: 27px;
     transform: translateX(90px);
   }
-  .btn-pop_apply:hover::after {
+  .btn-pop_submit:hover::after {
     transform: translateX(85px);
   }
   .btn-pop_close_follow {
@@ -951,4 +998,47 @@
     color: #fff;
     margin: 15px auto;
   }
+
+  
+  /* 투표동의 팝업 */
+  #vote_agree .popup-title {
+    width: 100%;
+  }
+  #vote_agree .btn_wrap {
+    margin-top: 20px;
+  }
+  #vote_agree .popup-content {
+    padding: 0;
+  }
+  #vote_agree .pop-tb__agree .tb-body {
+    padding: 15px;
+  }
+  #vote_agree .tb-header {
+    font-size: 15px;
+    padding: 15px 20px;
+    line-height: 1.2;
+  }
+  .vote_agree_info {
+    height: 80px;
+    border-radius: 15px;
+    padding: 0 10px;
+  }
+  .vote_agree_info img {
+    display: none;
+  }
+  .vote_agree_info p {
+    font-size: 13px;
+  }
+  #vote_agree .pop-tb input[type="text"] {
+    width: 80px;
+    padding: 0 5px;
+    font-size: 13px;
+  }
+  #vote_agree .pop-tb__agree p + ul {
+    margin-top: 10px;
+  }
+  #vote_agree .pop-tb__agree ul li {
+    margin-top: 10px;
+  }
+
 }
