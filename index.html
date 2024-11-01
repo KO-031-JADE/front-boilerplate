@@ -26,10 +26,10 @@
 <body>
   <!-- 접수하기 팝업 -->
   <div class="popup-dim "></div>
-  <div id="apply_popup" class="">
+  <div id="apply_popup" class="popup">
     <form action="">
 
-      <button type="button" class="btn-pop_close_follow" onclick="javascript:closePopupApply();"> 닫기</button>
+      <button type="button" class="btn-pop_close_follow" onclick="javascript:closePopupApply('#apply_popup');"> 닫기</button>
       <div class="popup-box">
         <div class="top-box"></div>
         <div class="popup-title">2024 <span class="main-color">UNICEFAwards</span><br class="br_m"> 공모전 접수하기</div>
@@ -370,13 +370,109 @@
             </div>
           </div>
           <div class="btn_wrap">
-            <button type="button" class="btn-pop_close" onclick="javascript:closePopupApply();">닫기</button>
-            <button type="submit" class="btn-pop_apply">공모전 접수</button>
+            <button type="button" class="btn-pop_close" onclick="javascript:closePopupApply('#apply_popup');">닫기</button>
+            <button type="submit" class="btn-pop_submit">공모전 접수</button>
           </div>
         </div>
       </div>
 
     </form>
+  </div>
+
+  <!-- 투표동의 팝업 -->
+  <div id="vote_agree" class="popup">
+    <button type="button" class="btn-pop_close_follow" onclick="javascript:closePopupApply('#vote_agree');"> 닫기</button>
+    <div class="popup-box">
+      <div class="top-box"></div>
+      <div class="popup-title">2024 <span class="main-color">UNICEFAwards</span> 투표</div>
+      <div class="popup-content">
+        <div class="vote_agree_info">
+          <img src="assets/images/vote_agree_deco01.png" alt="" class="vote_agree_img01">
+          <p>
+            투표를 하신 분 중 <span>추첨</span>을 통해<br class="br_pc">
+            <span>50분</span>에게 <span>소정의 기념품</span>을 드립니다.
+          </p>
+          <img src="assets/images/vote_agree_deco02.png" alt="" class="vote_agree_img02">
+        </div>
+        <form action="">
+          <div class="pop-tb pop-tb__agree">
+            <div class="tb-header">개인정보 수집 · 이용 안내</div>
+            <div class="tb-body">
+              <div class="tb-box tb-box_gray">
+                <ol>
+                  <li>
+                    개인정보 수집 · 이용 목적<br>
+                    작품 심사, 공모전 관련 안내, 기념품 전달 등 공모전 진행
+                  </li>
+                  <li>
+                    수집하는 개인정보 항목<br>
+                    성명, 주소, 연락처, 이메일, 제출 자료
+                  </li>
+                  <li>
+                    개인정보의 보유 및 이용기간<br>
+                    공모전 종료 후 1년간 보관
+                  </li>
+                </ol>
+                <p class="ref">
+                  위 개인정보 수집 · 이용 동의에 거부할 수 있으며 거부할 시 공모전 참여 및 기념품 발송이 취소됩니다.<br>
+                  개인정보는 공모전 진행 목적 외에 제3자에게 제공되거나 이용되지 않습니다.
+                </p>
+              </div>
+              <div class="agree_wrap">
+                <div class="agree_box">
+                  <label>
+                    <input type="radio" name="voteAgreeBtn1" id="voteAgreeBtn1_01" required>
+                    동의함
+                  </label>
+                  <label>
+                    <input type="radio" name="voteAgreeBtn1" id="voteAgreeBtn1_02">
+                    동의하지 않음
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="pop-tb pop-tb__agree">
+            <div class="tb-header">만 14세 미만 아동의 법정대리인(보호자) 동의 안내</div>
+            <div class="tb-body">
+              <div class="tb-box tb-box_gray">
+                <p>신청자가 만 14세 미만아동의 경우에는 법령에 의거 법정대리인의 동의가 필요합니다.</p>
+                <ul>
+                  <li class="tb_flex">
+                    <div class="input_box">
+                      <label for="">법정대리인 성명 : </label>
+                      <input type="text" name="" id="">
+                    </div>
+                    <div class="input_box">
+                      <label for="">휴대폰 번호 : </label>
+                      <input type="text" name="" id="">
+                    </div>
+                  </li>
+                  <li>법정대리인께서는 위와 같이 개인정보 수집 · 이용에 동의하시겠습니까?</li>
+                </ul>
+              </div>
+              <div class="agree_wrap">
+                <div class="agree_box">
+                  <label>
+                    <input type="radio" name="voteAgreeBtn2" id="voteAgreeBtn2_01" required>
+                    동의함
+                  </label>
+                  <label>
+                    <input type="radio" name="voteAgreeBtn2" id="voteAgreeBtn2_02">
+                    동의하지 않음
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="btn_wrap">
+            <button type="button" class="btn-pop_close" onclick="javascript:closePopupApply('#vote_agree');">닫기</button>
+            <button type="submit" class="btn-pop_submit">투표하기</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <!-- 카드뉴스 상세 -->
@@ -396,7 +492,7 @@
             <div class="swiper-slide"><img src="./assets/images/slide_image.jpg" alt="이미지3 설명"></div>
           </div>
           <div class="pc">
-            <!-- 슬라이드 네비게이션 버튼 -->
+          <!-- 슬라이드 네비게이션 버튼 -->
             <div class="swiper-button-prev "></div>
             <div class="swiper-button-next "></div>
           </div>
@@ -404,7 +500,7 @@
         </div>
       </div>
       <div class="image-bottom">
-        <div class="swiper-pagination"></div>
+          <div class="swiper-pagination"></div>
         <div class="swiper-btn-wrap">
           <div class="swiper-button-prev "></div>
           <div class="swiper-button-next "></div>
@@ -1056,7 +1152,7 @@
                 </select>
               </div>
               <div id="contents1" class="contents1 contents">
-              
+
                 <!-- data-item : 1.조례 및 정책 / 2.아동참여 / 3.아동권리교육 / 4.행정서비스 / 5.아동친화공간 -->
                 <ul id="data-container" class="works-lists grid">
                   <li class="works-list-item list" data-item="2">
@@ -1240,7 +1336,7 @@
                     </a>
                   </li>
                 </ul>
-              
+
                 <!-- 투표 기간 안내 / 리스트 없을경우 -->
                 <div class="empty-box">
                   <div class="conts">
@@ -1255,7 +1351,7 @@
                     </p>
                   </div>
                 </div>
-              
+
               </div>
               <div id="contents2" class="contents2 contents hidden">
                 <div class="no-list-wrap">
@@ -1365,7 +1461,7 @@
                                   </li>
                                 </ul>
                                 <div class="vote_btn_wrap">
-                                  <button type="button" class="btn-vote" disabled>투표하기</button>
+                                  <button type="button" class="btn-vote" disabled onclick="javascript:openPopupVoteAgree();">투표하기</button>
                                   <button type="button" class="btn-delete_all" id="deselectAll">전체 선택 해제 </button>
                                 </div>
                               </form>
