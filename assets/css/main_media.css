@@ -608,6 +608,10 @@
     font-size: 3.6458vw;
   }
 
+  .voting-section .tabs-wrap .tabs .tab.active { 
+    text-shadow: 0vw 0.3125vw 0.5208vw #005c2c;
+  }
+
   /* cate-wrap */
   .cate-wrap {
     margin-top: 3.6458vw;
@@ -814,7 +818,6 @@
   .dropdown,
   .search-input,
   .search-button {
-    border: 0.1042vw solid #ddd;
     border-radius: 1.5625vw;
     font-size: 1.25vw;
     height: 3.125vw;
@@ -825,12 +828,15 @@
     background: url(../images/select_arrow.png) no-repeat 86% 50% / 0.7813vw
       auto;
     padding: 0 2.1354vw;
+    background-color: #fff;
+    border: 0.1042vw solid #ddd;
   }
 
   .search-input {
     border: 0.1042vw solid #ddd;
     padding: 0 2.1354vw;
     width: 44.6875vw;
+    border: 0.1042vw solid #ddd;
   }
 
   .search-button {
@@ -936,10 +942,10 @@
   }
 
   .notice-box {
-    border: 0.2083vw solid #000;
+    border: 0.2083vw solid #1d2a57;
     border-radius: 2.6042vw;
     margin-top: 3.6458vw;
-    box-shadow: 0.3125vw 0.3125vw 0px 0px #000;
+    box-shadow: 0.3125vw 0.3125vw 0px 0px #1d2a57;
   }
 
   .notice-box .empty {
@@ -1354,6 +1360,7 @@
     height: auto;
     border-radius: 0 25px 25px 25px;
     border: 3px solid #0c4b63;
+    box-shadow: 4px 4px 0px 0px #0c4b63;
   }
 
   .recruit-section .schedule-box .container .recruit-schedule .box-contents .contents-container {
@@ -1441,6 +1448,7 @@
     padding: 27px;
     min-height: auto;
     max-height: none;
+    box-shadow: 4px 4px 0px 0px #0c4b63;
   }
 
   .recruit-section .schedule-box .container .subject-list .wrap .nemo .num {
@@ -1572,6 +1580,8 @@
 
   .examination-details-section .container .box-wrap .examination-detail .box-contents {
     border: 3px solid #3a571d;
+    border-radius: 0 25px 25px 25px ;
+    box-shadow: 4px 4px 0px 0px #3a571d;
   }
 
   .score-wrap {
@@ -1899,6 +1909,7 @@
     border: 3px solid #3a571d;
     border-radius: 25px;
     height: 222px;
+    box-shadow: 4px 4px 0px 0px #3a571d;
   }
 
   .benefit-lists_txt {
@@ -1919,7 +1930,7 @@
 
   .voting-section .container {
     padding-top: 77px;
-    padding-bottom: 100px;
+    padding-bottom: 121px;
   }
 
   .voting-section .tabs-wrap {
@@ -1998,6 +2009,7 @@
     color: #777;
     background: url(../images/select_arrow.png) no-repeat 88% 50% / 10px auto;
     padding: 0 20px;
+    background-color: #fff;
   }
   .search-button {
     width: 125px;
@@ -2027,7 +2039,7 @@
 
   .voting-section .container .voting-box .bottom .contents-container {
     max-width: none;
-    padding: 0 13px 30px 13px;
+    padding: 0 13px 5px 13px;
   }
 
   .voting-section .container .voting-box .bottom .info {
@@ -2057,6 +2069,11 @@
 
   .voting-section .container .voting-box .bottom .contents .grid .list a {
     padding: 9px;
+  }
+
+  .voting-section .container .voting-box .bottom .contents .grid .checked-border {
+      box-shadow: 2.5px 2.5px 0px 0px #1cabe2;
+      border: 1px solid #1cabe2;
   }
 
   .voting-section .container .voting-box .bottom .contents .grid .list .txt-wrap .flex .category {
@@ -2134,6 +2151,9 @@
 
   .notice-box {
     margin-top: 25px;
+    border: 2px solid #1d2a57;
+    border-radius: 25px;
+    box-shadow: 3px 3px 0px 0px #1d2a57;
   }
 
   .notice-box .empty {
@@ -2428,6 +2448,53 @@
     font-size: 27px;
     margin-top: 45px;
   }
+
+  #floatLeftButton {
+    width: 109.5px;
+    height: 161.5px;
+    top: 240px;
+    right: 0;
+    left: auto;
+  }
+
+.deco03 {
+    width: 64px;
+    height: 32.5px;
+    position: absolute;
+    top: -32.5px;
+    right: 20px;
+  }
+
+.deco04 {
+  width: 156.5px;
+  height: 161px;
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  right: -21px;
+}
+
+.benefit-section .deco06 {
+  width: 138.5px;
+  height: 168px;
+  bottom: 46px;
+}
+
+.benefit-section .deco06 img:first-child {
+  width: 35.5px;
+  height: 40px;
+}
+
+.benefit-section .deco06 img:last-child {
+  width: 109px;
+  height: 105.5px;
+  margin-top: 22.5px;
+  float: right;
+}
+
+.voting-section .tabs-wrap .tabs .tab.active {
+  text-shadow: 0px 10px 13px #005c2c;
+}
 
 
   /* 모바일 세로 화면 (480px 이하) */
