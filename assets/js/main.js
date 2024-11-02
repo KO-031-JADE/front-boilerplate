@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   handleLeftFloating(); // 왼쪽 플로팅 버튼 애니메이션 초기화
   handleHeaderAnimation(); // 헤더 애니메이션
-  handleTabActivation(); // 메뉴 리스트 탭 활성화 기능
   handleSmoothScroll(); // 부드러운 스크롤 기능
   // handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
   handlePopup(); // 팝업
@@ -96,33 +95,7 @@ function handleSmoothScroll() {
           behavior: 'smooth',
         });
       }
-
-
-      // 탭 활성화 처리
-      if (targetId === 'section2') {
-        setActiveTab('contents2'); // 접수확인 탭 활성화
-      } else if (targetId === 'section3') {
-        setActiveTab('contents1'); // 투표하기 탭 활성화
-      }
-    });
-  });
-}
-
-// 메뉴 리스트 탭 활성화 기능
-function handleTabActivation() {
-  document.querySelectorAll('.menu .scroll-link').forEach((link) => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('data-target');
-
-      // 스크롤 이동 처리
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-        const offset = 100; // 여백 설정
-        window.scrollTo({ top: targetPosition - offset, behavior: 'smooth' });
-      }
-
+      $("#slide").removeClass("on");
       // 탭 활성화 처리
       if (targetId === 'section2') {
         setActiveTab('contents2'); // 접수확인 탭 활성화

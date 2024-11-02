@@ -792,7 +792,6 @@
   .pagenation-container {
     width: 100%;
     margin-top: 2.6042vw;
-    padding-bottom: 1.3021vw;
   }
 
   .pagenation-container #prev_page,
@@ -2039,7 +2038,7 @@
 
   .voting-section .container .voting-box .bottom .contents-container {
     max-width: none;
-    padding: 0 13px 5px 13px;
+    padding: 0 13px 28.5px 13px;
   }
 
   .voting-section .container .voting-box .bottom .info {
@@ -2082,16 +2081,19 @@
     border-radius: 9.375px;
     font-size: 11px;
     font-weight: 200;
+    line-height: 19px;
   }
 
   .custom-checkbox .checkmark {
     width: 16px;
     height: 16px;
+    border-radius: 2px;
   }
 
   .custom-checkbox input[type="radio"]:checked + .checkmark::after {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 18px;
+    top: 3px;
   }
 
   .custom-checkbox {
@@ -2117,7 +2119,6 @@
 
   .pagenation-container {
     margin-top: 20px;
-    padding-bottom: 10px;
   }
 
   .pagenation-container #prev_page, .pagenation-container #next_page {
@@ -2404,7 +2405,7 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    margin: 14px 14px 0 0;
+    margin: 38px 14px 0 0;
   }
   .card-detail-wrap .contents-container .image-bottom .swiper-btn-wrap .swiper-button-prev{
     margin-right: 5px;
@@ -2427,7 +2428,7 @@
     margin: 0 5px;
   }
   .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
-    width: 100px;
+    width: 80px;
   }
 
   .empty-box {
@@ -2442,6 +2443,11 @@
   .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
+  }
+
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+      top: 25px;
+      left: 0;
   }
 
   .empty-box .conts p {
