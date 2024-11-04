@@ -1099,6 +1099,14 @@
     width: 3.3333vw;
     height: 3.3333vw;
     border: 0.0521vw solid #9da5a8;
+    right: 2.8646vw;
+  }
+
+  .close-cion {
+    width: 2.1875vw; /* 42px */
+    height: 2.1354vw; /* 41px */
+    top: 0.5208vw; /* 10px */
+    right: -1.0938vw; /* -21px */
   }
 
   .share-cion img {
