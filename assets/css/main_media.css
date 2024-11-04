@@ -1355,7 +1355,7 @@
   .recruit-section .schedule-box .container .recruit-schedule .top-box {
     width: 163.5px;
     height: 24.5px;
-    top: -20px;
+    top: -22px;
     border-radius: 20px 22.5px 0 0;
     border: 3px solid #0c4b63;
     border-bottom: none;
@@ -1549,7 +1549,7 @@
   .recruit-section .schedule-box .container .subject-notice .wrap ul li img{
     margin: 0 5px;
     width: 15px;
-    height: 15px;
+    height: 16.5px;
   }
 
   .recruit-section .schedule-box .container .subject-notice .wrap ul li::before {
@@ -2226,8 +2226,8 @@
   }
 
   footer .logo {
-    width: 219.5px;
-    height: 28.5px;
+    width: 219px;
+    height: 28px;
     padding: 0;
     margin-bottom: 19.5px;
   }

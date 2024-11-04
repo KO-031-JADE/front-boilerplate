@@ -683,6 +683,7 @@
   .file_boxes + .ref p {
     padding-left: 7px;
     line-height: 1.38;
+    font-size: 13px;
   }
   .file_boxes + .ref p + p {
     margin-top: 5px;

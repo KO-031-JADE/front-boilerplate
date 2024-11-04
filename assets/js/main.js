@@ -1,10 +1,11 @@
 // Dropzone 및 Sortable 초기화 설정
 document.addEventListener('DOMContentLoaded', function () {
-  handleLeftFloating(); // 왼쪽 플로팅 버튼 애니메이션 초기화
+  handleLeftFloating(); // 왼쪽 플로팅 버튼 애니메이션
+  handleRightFloating(); // 오른쪽 플로팅 버튼 애니메이션
   handleHeaderAnimation(); // 헤더 애니메이션
   handleSmoothScroll(); // 부드러운 스크롤 기능
   handlePopup(); // 팝업
-  // toggleNoticeTitles(); // 공지사항 토글 => common.js
+  toggleNoticeTitles(); // 공지사항 토글 => common.js
   handleTabs(); // 투표하기, 점수확인 탭
   handleCateTabs(); // 카테고리 탭
   popSelect(); // 접수하기 팝업 공모부분 selectbox
@@ -21,8 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
   widgetDelete();
   widgetDeleteAll();
   removeDetail();
+  // slideButtonToggle();
 });
+
 let maxBoxes = 5;//수정시 갯수 조절필요 전역변수로 뺌
+
 // 왼쪽 플로팅 버튼 애니메이션 처리
 function handleLeftFloating() {
   const floatButton = document.getElementById('floatLeftButton');
@@ -30,19 +34,49 @@ function handleLeftFloating() {
 
   window.addEventListener('scroll', () => {
     const votingSectionTop = votingSection.getBoundingClientRect().top;
+    const votingSectionBottom = votingSection.getBoundingClientRect().bottom;
 
-    if (votingSectionTop <= 0) {
-      // 스크롤이 voting-section 아래로 내려갔을 때 나타남
+    // console.log(votingSectionTop)
+    if (votingSectionTop <= 0 && votingSectionBottom > 0) {
+      // 스크롤이 voting-section 내부에 있을 때 나타남
       floatButton.classList.add('visible');
     } else {
-      // 스크롤이 voting-section 위로 올라가면 사라짐
+      // 스크롤이 voting-section 위나 아래로 벗어나면 사라짐
       floatButton.classList.remove('visible');
     }
   });
 }
 
-// 문서가 로드되었을 때 handleLeftFloating 실행
-document.addEventListener('DOMContentLoaded', handleLeftFloating);
+// 오른쪽 플로팅 버튼 애니메이션 처리
+function handleRightFloating() {
+  const floatButton = document.getElementById('floatRightButton');
+  const pcFooter = document.querySelector('footer.pc');
+  const moFooter = document.querySelector('footer.mo');
+
+  // IntersectionObserver 설정
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // 푸터가 화면에 보이기 시작하면 버튼 숨김
+        floatButton.classList.remove('visible');
+        console.log('푸터에 도달함 - 버튼 숨김');
+      } else {
+        // 푸터가 화면에서 벗어나면 버튼 표시
+        floatButton.classList.add('visible');
+        console.log('푸터에서 벗어남 - 버튼 표시');
+      }
+    });
+  }, { threshold: 0 });
+
+  // 두 푸터를 감지 대상으로 추가
+  observer.observe(pcFooter);
+  observer.observe(moFooter);
+}
+
+// 문서가 로드되었을 때 handleRightFloating 실행
+document.addEventListener('DOMContentLoaded', handleRightFloating);
+
+
 
 function handleResize() {
   if (window.innerWidth > 768) {
@@ -854,7 +888,7 @@ function widgetOpen() {
   const widgetBox = document.querySelector('.widget_wrap');
   const widgetCloseBtns = document.querySelectorAll('.widget_close, .btn-widget_close');
 
-/*  floatButton.addEventListener('click', function() {
+  floatButton.addEventListener('click', function() {
     widget.classList.add('on');
     setTimeout(function(){
       widgetBox.classList.add('open');
@@ -868,7 +902,7 @@ function widgetOpen() {
         widget.classList.remove('on');
       },300);
     });
-  });*/
+  });
 }
 
 // 라디오 버튼 클릭 이벤트
@@ -1052,11 +1086,16 @@ function detailPage(indexNumber) {
   }
 }
 
-// 뉴스카드 상세 닫기버튼
+// 뉴스카드 상세 닫기버튼 
 function removeDetail() {
   document.querySelectorAll('.card-detail-wrap .mo-detail, .card-detail-wrap .bg').forEach(element => {
     element.addEventListener('click', function () {
       document.getElementById('card-detail').classList.remove('on');
     });
   });
+}
+
+// 슬라이드 이미지 호버시 버튼 토글 
+function slideButtonToggle() {
+
 }

@@ -66,7 +66,7 @@
                   </div>
 
                   <div id="layer"
-                    style="display:none;position:fixed;overflow:hidden;z-index:10;-webkit-overflow-scrolling:touch;">
+                    style="display:none;position:fixed;overflow:hidden;z-index:12;-webkit-overflow-scrolling:touch;">
                     <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer"
                       style="width:20px;cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1"
                       onclick="closeDaumPostcode()" alt="닫기 버튼">
@@ -92,7 +92,7 @@
                   <div class="tb_flex">
                     <div class="tb-row">
                       <div class="row-tit">
-                        <span class="essential">전화</span>
+                        <span class="essential">휴대전화</span>
                       </div>
                       <div class="tb-con">
                         <div class="input_box">
@@ -268,7 +268,7 @@
                   <div class="dropzone">
                     <ul class="list-unstyled card-images-grid" id="dropzone-preview"></ul>
                   </div>
-                  <p class="text-muted">카드는 최대 3장까지 등록 가능합니다.</p>
+                  <p class="text-muted">카드 이미지 최대 3장 (600px X 680px) 또는 (1200px X1360px)</p>
                 </div>
               </div>
 
@@ -479,7 +479,7 @@
   <div id="card-detail" class="card-detail-wrap">
     <div class="bg"></div>
     <div class="contents-container">
-      <div class="images">
+      <div id="sl_con" class="images">
         <!-- 슬라이더 컨테이너 -->
         <div class="swiper-container">
           <!-- 슬라이더 래퍼 -->
@@ -612,12 +612,12 @@
             <li>
               <p class="main-color">참여방법</p>
               <div class="pc">
-                <p>유니세프 아동친화도시 공모전 홈페이지접속</p>
-                <p class="flex "><span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span> 우수 사례 등록</p>
+                <p>유니세프아동친화도시 공모전 홈페이지 접속</p>
+                <p class="flex" onclick="javascript:openPopupApply();" style="cursor: pointer; width: 50%;"><span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span> 접수 하러 가기</p>
               </div>
               <div class="mo">
-                <p>유니세프 아동친화도시 공모전</p>
-                <p class="flex">홈페이지 접속 <span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span> 우수 사례 등록</p>
+                <p>유니세프아동친화도시 공모전</p>
+                <p class="flex">홈페이지 접속 <a href="javascript:void(0);" style="display: flex; align-items: center;" onclick="javascript:openPopupApply();"><span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span> 접수 하러 가기</a></p>
               </div>
             </li>
             <li>
@@ -673,7 +673,7 @@
 
                       <li>
                         <p>12월 둘째 주</p>
-                        <p>(추후 사이트 내 공지)</p>
+                        <p>(추후 공모전 홈페이지 내 공지)</p>
                       </li>
                     </ul>
                   </div>
@@ -778,7 +778,7 @@
               <div class="wrap">
                 <span>작품규격</span>
                 <ul>
-                  <li>카드뉴스 (이미지 1200px <img src="./assets/images/x_text.png" alt="multiply"> 1360px)</li>
+                  <li>카드뉴스 (이미지 1200px <img src="./assets/images/mo_x_text.png" alt="multiply"> 1360px)</li>
                   <li>설명글 300자</li>
                   <li>사업 소개서 자유 양식</li>
                   <li>한 단체당 여러 개의 우수 사례 제출 가능</li>
@@ -880,9 +880,9 @@
                   <div>참신성</div>
                   <div>40%</div>
                   <div>
-                    <p>타 지자체: 학교의 벤치마킹 대상 가능 여부</p>
-                    <p>타 지자체: 학교의 학습 사례 가능 여부</p>
-                    <p>CFC 인증 도시ㆍCFS 인증 학교만의 독특한 활동 여부</p>
+                    <p>타 지자체 · 학교의 벤치마킹 대상 가능 여부</p>
+                    <p>타 지자체 · 학교의 학습 사례 가능 여부</p>
+                    <p>CFC 인증 도시 · CFS 인증 학교만의 독특한 활동 여부</p>
                   </div>
                 </div>
                 <div class="criteria-row">
@@ -1141,6 +1141,7 @@
               <div class="flex">
                 <select class="dropdown" id="category">
                   <option value="title">제목</option>
+                  <option value="group">단체명</option>
                   <option value="content">내용</option>
                 </select>
                 <button type="submit" class="search-button">검색</button>
@@ -1156,6 +1157,9 @@
                 <select id="sorting">
                   <option value="10">10개씩 보기</option>
                   <option value="20">20개씩 보기</option>
+                  <option value="20">30개씩 보기</option>
+                  <option value="20">40개씩 보기</option>
+                  <option value="20">50개씩 보기</option>
                 </select>
               </div>
               <div id="contents1" class="contents1 contents">
@@ -1484,7 +1488,7 @@
       <div class="container">
         <h2 id="section4" class="section-title notice-title">공지사항</h2>
         <div class="notice-box">
-          <ol class="notice-lists" style="display: none;">
+          <ol class="notice-lists" style="display: block;">
             <li>
               <div class="notice-lists_tit">2024 UNICEF Awards 공모전 수상작 발표</div>
               <div class="notice-lists_box">
@@ -1561,7 +1565,7 @@
   </div>
   <!-- PC footer -->
   <footer class="pc">
-    <img class="logo" src="./assets/images/footer_logo.png" alt="" />
+    <a href="/"><img class="logo" src="./assets/images/footer_logo.png" alt="" /></a>
     <p class="footer-info">단체명 : 사단법인 유니세프 한국위원회 (고유번호:102-82-07606) | 연락처 : 02-737-1004 | 주소 : [04099] 서울시 마포구 서강로
       60(창전동) | 대표자 : 정갑영</p>
     <p class="copyright">COPYRIGHT @ THE KOREAN COMMITTEE FOR UNICEF. ALL RIGHT RESERVED</p>
@@ -1569,7 +1573,7 @@
 
   <!-- Mobile footer -->
   <footer class="mo">
-    <img class="logo" src="./assets/images/footer_logo.png" alt="" />
+    <a href="/"><img class="logo" src="./assets/images/mo_footer_logo.png" alt="" /></a>
     <p class="footer-info">
       단체명 : 사단법인 유니세프 한국위원회 (고유번호:102-82-07606)<br>
       연락처 : 02-737-1004<br>
