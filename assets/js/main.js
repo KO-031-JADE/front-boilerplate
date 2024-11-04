@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   widgetDelete();
   widgetDeleteAll();
   removeDetail();
-  // slideButtonToggle();
+  slideButtonToggle();
 });
 
 let maxBoxes = 5;//수정시 갯수 조절필요 전역변수로 뺌
@@ -129,6 +129,7 @@ function handleSmoothScroll() {
         });
       }
       $("#slide").removeClass("on");
+      $('#burgur').removeClass('on');
       // 탭 활성화 처리
       if (targetId === 'section2') {
         setActiveTab('contents2'); // 접수확인 탭 활성화
@@ -872,7 +873,6 @@ function mobileMenyToggleSlide() {
     if ($('#burgur').hasClass('on')) {
       $('#burgur').removeClass('on');
       $('#slide').removeClass('on');
-      $('#header').removeClass('drop');
     } else {
       $('#burgur').addClass('on');
       $('#slide').addClass('on');
@@ -1084,18 +1084,30 @@ function detailPage(indexNumber) {
   } else {
     $('#card-detail').addClass('on');
   }
+
+  handleMouseMoveListener('#card-detail .contents-container', '#card-detail .btn-pop_close_follow02');
+
 }
 
 // 뉴스카드 상세 닫기버튼 
 function removeDetail() {
-  document.querySelectorAll('.card-detail-wrap .mo-detail, .card-detail-wrap .bg').forEach(element => {
-    element.addEventListener('click', function () {
-      document.getElementById('card-detail').classList.remove('on');
-    });
-  });
+  document.getElementById('card-detail').classList.remove('on');
 }
+
 
 // 슬라이드 이미지 호버시 버튼 토글 
 function slideButtonToggle() {
+  const imagesSection = document.querySelector('#sl_con .swiper-container, .swiper-button-prev, .swiper-button-next');
+  const swiperButtons = document.querySelectorAll('.swiper-button-prev, .swiper-button-next');
 
+  if (imagesSection && swiperButtons.length) {
+    imagesSection.addEventListener('mouseenter', function () {
+      // console.log('a');
+      swiperButtons.forEach(button => button.classList.add('opacity1'));
+    });
+
+    imagesSection.addEventListener('mouseleave', function () {
+      swiperButtons.forEach(button => button.classList.remove('opacity1'));
+    });
+  }
 }

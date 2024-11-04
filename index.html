@@ -32,7 +32,7 @@
       <button type="button" class="btn-pop_close_follow" onclick="javascript:closePopupApply('#apply_popup');"> 닫기</button>
       <div class="popup-box">
         <div class="top-box"></div>
-        <div class="popup-title">2024 <span class="main-color">UNICEFAwards</span><br class="br_m"> 공모전 접수하기</div>
+        <div class="popup-title">2024 <span class="main-color">UNICEFAwards</span><br class="br_m">공모전 접수하기</div>
         <div class="popup-content">
           <div class="pop-tb pop-tb__info">
             <div class="tb-header">신청 단체 정보</div>
@@ -260,15 +260,16 @@
                 <div class="tb-tit">
                   <strong class="essential">카드 이미지</strong>
                   <p class="card-notice">
-                    최대 3장 <br class="br_pc">
-                    (1200px <img src="assets/images/icon-card_x.png" alt="x"> 1360px)
+                    (600px X 680px) <br>
+                    또는<br>
+                    (1200px X1360px)
                   </p>
                 </div>
                 <div class="tb-con">
                   <div class="dropzone">
                     <ul class="list-unstyled card-images-grid" id="dropzone-preview"></ul>
                   </div>
-                  <p class="text-muted">카드 이미지 최대 3장 (600px X 680px) 또는 (1200px X1360px)</p>
+                  <p class="text-muted">카드 이미지 최대 3장</p>
                 </div>
               </div>
 
@@ -478,6 +479,7 @@
   <!-- 카드뉴스 상세 -->
   <div id="card-detail" class="card-detail-wrap">
     <div class="bg"></div>
+    <button type="button" class="btn-pop_close_follow02 pc" onclick="javascript:removeDetail();"> 닫기</button>
     <div class="contents-container">
       <div id="sl_con" class="images">
         <!-- 슬라이더 컨테이너 -->
@@ -520,7 +522,7 @@
         </div>
       </div>
       <div class="close-btn mo">
-        <button class="mo-detail">닫기</button>
+        <button class="mo-detail" onclick="javascript:removeDetail();">닫기</button>
       </div>
     </div>
   </div>

@@ -1182,6 +1182,15 @@
     height: 13.125vw;
     margin: 0 auto;
   }
+
+
+  .swiper-button-next {
+    left: 30.4167vw;
+  }
+
+  .swiper-button-prev {
+    left: 5.9896vw;
+  }
   
 }
 
@@ -2558,6 +2567,10 @@
   font-size: 15px;
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  opacity: 1;
+}
 
   /* 모바일 세로 화면 (480px 이하) */
   @media (max-width: 480px) {

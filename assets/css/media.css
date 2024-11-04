@@ -786,7 +786,7 @@
   .btn-pop_submit:hover::after {
     transform: translateX(85px);
   }
-  .btn-pop_close_follow {
+  .btn-pop_close_follow, .btn-pop_close_follow02 {
     font-size: 15px;
     width: 260px;
     height: 45px;
