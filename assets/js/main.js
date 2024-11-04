@@ -3,9 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
   handleLeftFloating(); // 왼쪽 플로팅 버튼 애니메이션 초기화
   handleHeaderAnimation(); // 헤더 애니메이션
   handleSmoothScroll(); // 부드러운 스크롤 기능
-  // handleReceptionButtonFloating(); // 접수하러 가기 버튼 애니메이션
   handlePopup(); // 팝업
-  toggleNoticeTitles(); // 공지사항 토글
+  // toggleNoticeTitles(); // 공지사항 토글 => common.js
   handleTabs(); // 투표하기, 점수확인 탭
   handleCateTabs(); // 카테고리 탭
   popSelect(); // 접수하기 팝업 공모부분 selectbox
@@ -23,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   widgetDeleteAll();
   removeDetail();
 });
-
+let maxBoxes = 5;//수정시 갯수 조절필요 전역변수로 뺌
 // 왼쪽 플로팅 버튼 애니메이션 처리
 function handleLeftFloating() {
   const floatButton = document.getElementById('floatLeftButton');
@@ -191,41 +190,27 @@ function handleTabs() {
 function handleCateTabs() {
 const tabs = document.querySelectorAll('.cate-wrap .tab');
 
-tabs.forEach((tab) =>
- tab.addEventListener('click', () => {
-   document.querySelector('.cate-wrap .tab.active').classList.remove('active');
-   tab.classList.add('active');
-   console.log($('.cate-wrap .tab.active').index());
-   if($('.cate-wrap .tab.active').index() == 1){
- 	  $("#nowSection").val("A");
-   } else  if($('.cate-wrap .tab.active').index() == 2){
- 	  $("#nowSection").val("B");
-   } else  if($('.cate-wrap .tab.active').index() == 3){
- 	  $("#nowSection").val("C");
-   } else  if($('.cate-wrap .tab.active').index() == 4){
- 	  $("#nowSection").val("D");
-   } else  if($('.cate-wrap .tab.active').index() == 5){
- 	  $("#nowSection").val("E");
-   } else {
- 	  $("#nowSection").val("");
-   }
-   getAwardMyList();
- })
-);
+  tabs.forEach((tab) =>
+  tab.addEventListener('click', () => {
+    document.querySelector('.cate-wrap .tab.active').classList.remove('active');
+    tab.classList.add('active');
+    if($('.cate-wrap .tab.active').index() == 1){
+      $("#nowSection").val("A");
+    } else  if($('.cate-wrap .tab.active').index() == 2){
+      $("#nowSection").val("B");
+    } else  if($('.cate-wrap .tab.active').index() == 3){
+      $("#nowSection").val("C");
+    } else  if($('.cate-wrap .tab.active').index() == 4){
+      $("#nowSection").val("D");
+    } else  if($('.cate-wrap .tab.active').index() == 5){
+      $("#nowSection").val("E");
+    } else {
+      $("#nowSection").val("");
+    }
+    getAwardMyList();
+  })
+  );
 }
-
-// // 접수하러 가기 플로팅 애니메이션
-// function handleReceptionButtonFloating() {
-//   // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-//   var floatPosition = 712;
-//   $(window).scroll(function() {
-//     // 현재 스크롤 위치를 가져온다.
-//     var scrollTop = $(window).scrollTop();
-//     var newPosition = scrollTop + floatPosition + "px";
-//     $("#floatRightButton").stop().animate({ "top": newPosition }, 500);
-//     // $("#floatLeftButton").stop().animate({ "top": newPosition }, 500);
-//   }).scroll();
-// }
 
 // 접수하기 팝업 공모부분 selectbox
 function popSelect() {
@@ -254,7 +239,6 @@ function popSelect() {
 
 // 사업소개서 첨부파일 (최대 5개)
 function attachFiles() {
-  const maxBoxes = 5;
   const allowedExtensions = ['pdf', 'doc', 'docx', 'hwp'];
   const fileBoxes = document.querySelector('.file_boxes');
 
@@ -275,8 +259,20 @@ function attachFiles() {
       const fileNameSpan = fileInput.closest('.file_box').querySelector('.file_name');
       const fileName = fileInput.files[0]?.name;
       const fileExtension = fileName?.split('.').pop().toLowerCase();
+      const maxSize = 10 * 1024 * 1024; //* 10MB 사이즈 제한
+      const fileSize = fileInput.files[0]?.size;
+  
 
-      if (fileName && allowedExtensions.includes(fileExtension)) {
+      if($("#reportCnt").val() == "5"){//5개 등록일 경우
+    	  alert("최대 5개 파일 등록이 가능합니다.");
+    	  fileInput.value = ''; // 입력값 초기화
+          fileNameSpan.textContent = '파일을 선택하세요.';
+          fileNameSpan.classList.add('no_files');
+          return;
+
+      }
+
+      if (fileName && allowedExtensions.includes(fileExtension) && fileSize < maxSize) {
         // 허용된 파일 형식일 경우
         fileNameSpan.textContent = fileName;
         fileNameSpan.classList.remove('no_files');
@@ -289,9 +285,9 @@ function attachFiles() {
           deleteButton.innerHTML = '<img src="assets/images/btn-doc-delete.png" alt="파일-삭제">';
           fileNameSpan.appendChild(deleteButton);
         }
-      } else {
+      } else {    	
         // 허용되지 않은 파일 형식일 경우
-        alert('pdf, doc, docx, hwp 파일만 첨부할 수 있습니다.');
+        alert('10MB 이하의 pdf, doc, docx, hwp 파일만 첨부할 수 있습니다.');
         fileInput.value = ''; // 입력값 초기화
         fileNameSpan.textContent = '파일을 선택하세요.';
         fileNameSpan.classList.add('no_files');
@@ -331,7 +327,7 @@ function attachFiles() {
           <div class="file_box">
             <span class="file_label">첨부파일</span>
             <span class="file_name no_files">파일을 선택하세요.</span>
-            <input type="file" id="documentInput_${boxCount}" class="a11yHidden">
+             <input type="file" id="documentInput_${boxCount}" name="report${boxCount+1}" class="a11yHidden">
             <button type="button" class="btn-document_add">첨부</button>
           </div>
           <div class="btn-filebox_wrap">
@@ -383,7 +379,7 @@ function resetFiles() {
     <div class="file_box">
       <span class="file_label">첨부파일</span>
       <span class="file_name no_files">파일을 선택하세요.</span>
-      <input type="file" class="a11yHidden">
+       <input type="file" class="a11yHidden" name="report1">
       <button type="button" class="btn-document_add">첨부</button>
     </div>
     <div class="btn-filebox_wrap">
@@ -428,6 +424,9 @@ function initDropzone() {
       const myDropzone = this;
       myDropzone.on('addedfile', (file) => validateFile(file, myDropzone));
       myDropzone.on('removedfile', (file) => {
+        if(Number($("#imgCnt").val()) > 0){
+          $("#imgCnt").val(Number($("#imgCnt").val())-1);
+        }
         toggleMessage(file, myDropzone);
       });
       myDropzone.on('maxfilesexceeded', (file) => handleMaxFilesExceeded(file, myDropzone));
@@ -438,7 +437,7 @@ function initDropzone() {
     setRepresentativeImage(event);
   });
 
-  document.querySelector('#apply_popup .btn-pop_submit').addEventListener('click', () => submitFiles(dropzone));
+  //document.querySelector('#apply_popup .btn-pop_submit').addEventListener('click', () => submitFiles(dropzone));
 
   if (window.innerWidth > 768) {
     document.querySelector('.dropzone').addEventListener('click', openFileDialog);
@@ -459,11 +458,18 @@ function openFileDialog(event) {
 
 // 파일 유효성 검사
 function validateFile(file, dropzone) {
+  if($("#imgCnt").val() == "3"){
+    alert("카드는 최대 3장까지 등록 가능합니다.");
+    dropzone.removeFile(file);
+    return;
+  } else {
+    //$("#imgCnt").val(Number($("#imgCnt").val())+1);
+  }
   const fileName = file.name;
   const fileExtension = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
   const img = new Image();
 
-  if (!['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension) || file.size > 2 * 1200 * 1380) {
+  if (!['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension) || file.size >  2 * 1024 * 1024) {
     alert('지원되지 않는 파일 형식 또는 크기입니다: ' + fileName);
     return dropzone.removeFile(file);
   }
@@ -487,7 +493,9 @@ function validateFile(file, dropzone) {
       firstImage?.classList.add('representative-selected');
     }, 10);
   }
+  $("#imgCnt").val(Number($("#imgCnt").val())+1);
   toggleMessage(file, dropzone);
+
 }
 
 // 파일 중복 검사
@@ -570,6 +578,8 @@ function setRepresentativeImage(event) {
   if (target) {
     document.querySelectorAll('.dz-image-preview').forEach((item) => item.classList.remove('representative-selected'));
     target.classList.add('representative-selected');
+    $("#thumbnailOrder").val($('li.representative-selected').index());//대표이미지 순번 저장
+    
   }
 }
 
@@ -652,7 +662,6 @@ function setupTextareaCounter() {
   });
 }
 
-// 접수하기 팝업
 function openPopupApply() {
   document.querySelector('.popup-dim').classList.add('on');
   document.querySelector('#apply_popup').classList.add('on');
@@ -679,7 +688,7 @@ function openPopupApply() {
   handleMouseMoveListener('#apply_popup .popup-box', '#apply_popup .btn-pop_close_follow');
 }
 
-// //접수하기 팝업
+// //접수하기 팝업 jsp 적용 
 // function openPopupApply() {
 
 //   $.ajax({
@@ -845,7 +854,7 @@ function widgetOpen() {
   const widgetBox = document.querySelector('.widget_wrap');
   const widgetCloseBtns = document.querySelectorAll('.widget_close, .btn-widget_close');
 
-  floatButton.addEventListener('click', function() {
+/*  floatButton.addEventListener('click', function() {
     widget.classList.add('on');
     setTimeout(function(){
       widgetBox.classList.add('open');
@@ -859,7 +868,7 @@ function widgetOpen() {
         widget.classList.remove('on');
       },300);
     });
-  });
+  });*/
 }
 
 // 라디오 버튼 클릭 이벤트
@@ -1002,7 +1011,40 @@ function updateVoteButton() {
 }
 
 // 뉴스카드 상세 열기버튼
-function detailPage() {
+function detailPage(indexNumber) {
+	var param = "indexNumber="+indexNumber;
+	$.get("/unicef/api/fo/campaign/award/detail", param, function(data) {
+		if(data.resultCode === "success") {
+			swiper.removeAllSlides();//기존 슬라이드 삭제
+			let deatilInfo = data.data.info;
+			$('#delButton').attr('onclick','fnDelAward("'+deatilInfo.indexNumber+'","'+deatilInfo.cardSubject+'")');
+			$('#modifyButton').attr('onclick','openPopupApply("'+deatilInfo.indexNumber+'")');
+			$('#detail_group_name').html(deatilInfo.groupName);
+			$('#detail_card_subject').html(deatilInfo.cardSubject);
+			if(null != deatilInfo.cardContents){
+				$('#detail_card_contents').html(deatilInfo.cardContents);
+			}
+			$('#detail_section').html(deatilInfo.section);
+			var imgist=[];
+			// +=  "<div class='swiper-slide'><img src='./assets/images/slide_image.jpg' alt='이미지1 설명'></div>";
+			//imgist +=  "<div class='swiper-slide'><img src='./assets/images/recruit_decorating01.jpg' alt='이미지2 설명'></div>";
+			for(var i=1;i<=deatilInfo.totalImg;i++){
+				if(i == 1){
+					imgist.push("<div class=\"swiper-slide\"><img src='"+deatilInfo.realImageUrl1+"' alt='이미지1'></div>");
+				} else if(i == 2){
+					imgist.push("<div class=\"swiper-slide\"><img src='"+deatilInfo.realImageUrl2+"' alt='이미지2'></div>");
+				}  else {
+					imgist.push("<div class=\"swiper-slide\"><img src='"+deatilInfo.realImageUrl3+"' alt='이미지3'></div>");
+				}
+			}
+			swiper.appendSlide(imgist);
+			swiper.update();  //슬라이드를 새로 추가할 경우 꼭 update 함수를 호출하는게 좋다
+			swiper.slideTo(0);//시작시 첫번째 사진으로 이동
+	
+		}
+	});
+	
+	
   if ($('#card-detail').hasClass('on')) {
     $('#card-detail').removeClass('on');
   } else {
@@ -1015,7 +1057,6 @@ function removeDetail() {
   document.querySelectorAll('.card-detail-wrap .mo-detail, .card-detail-wrap .bg').forEach(element => {
     element.addEventListener('click', function () {
       document.getElementById('card-detail').classList.remove('on');
-      console.log('닫기');
     });
   });
 }

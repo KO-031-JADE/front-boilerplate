@@ -1057,6 +1057,11 @@
 
   /* popup start */
 
+  .lego_popup img{
+    width: 26.9792vw;
+    height: 34.2188vw;
+  }
+
   .lego_popup .popup-buttons button {
     height: 3.125vw;
     font-size: 1.0417vw;
@@ -2502,6 +2507,11 @@
   text-shadow: 0px 10px 13px #005c2c;
 }
 
+.voting-section .container .voting-box {
+  border: 2px solid #014f27;
+  box-shadow: 3px 3px 0px 0px #014f27;
+}
+
 .voting-section .container .voting-box .contents .no-list-wrap {
   border-radius: 10px;
   height: 577px;
@@ -2519,6 +2529,16 @@
 .voting-section .container .voting-box .contents .no-list-wrap .no-list p {
   font-size: 27px;
   width: 100%;
+}
+
+.lego_popup img{
+  width: 320px;
+  height: 446px;
+}
+
+.lego_popup .popup-buttons button {
+  height: 40px;
+  font-size: 15px;
 }
 
 
