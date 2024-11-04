@@ -629,7 +629,6 @@ body > .wrap > .main-right-float > .arrow {
   padding-left: 27px;
   line-height: 34.336px;
   letter-spacing: -0.8px;
-  font-family: "Pretendard", sans-serif;
 }
 
 .recruit-section
@@ -840,7 +839,7 @@ body > .wrap > .main-right-float > .arrow {
   display: flex;
   height: 80px;
   align-items: center;
-  background-color: #f2f9f5;
+  background-color: #f5faf0;
   font-size: 34px;
   font-weight: 700;
   text-align: center;
@@ -876,7 +875,7 @@ body > .wrap > .main-right-float > .arrow {
 .award-row div:nth-child(3) {
   max-width: 290px;
   width: 20.7%;
-  background-color: #f2f9f5;
+  background-color: #f5faf0;
 }
 
 .award-header div:nth-child(2),
@@ -922,7 +921,7 @@ body > .wrap > .main-right-float > .arrow {
 }
 
 .criteria-row div:nth-child(2) {
-  background-color: #f2f9f5;
+  background-color: #f5faf0;
 }
 .criteria-row div:nth-child(4) {
   background-color: #f9f9f9;
@@ -1019,7 +1018,6 @@ body > .wrap > .main-right-float > .arrow {
   align-items: center;
   font-size: 26px;
   margin-bottom: 10px;
-  font-family: "Pretendard", sans-serif;
   font-weight: 300;
   letter-spacing: -0.4px;
 }
@@ -1033,7 +1031,6 @@ body > .wrap > .main-right-float > .arrow {
   align-items: center;
   font-size: 26px;
   margin-bottom: 10px;
-  font-family: "Pretendard", sans-serif;
   font-weight: 300;
   letter-spacing: -0.4px;
 }
@@ -1949,8 +1946,8 @@ footer .footer-info {
 }
 
 .lego_popup img{
-  width: 518px;
-  height: 657px;
+  width: auto;
+  height: auto;
 }
 
 .no-show-7days-btn {
