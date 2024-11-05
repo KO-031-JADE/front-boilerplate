@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   widgetDeleteAll();
   removeDetail();
   slideButtonToggle();
-});
+}); 
 
 let maxBoxes = 5;//수정시 갯수 조절필요 전역변수로 뺌
 
@@ -34,10 +34,15 @@ function handleLeftFloating() {
 
   window.addEventListener('scroll', () => {
     const votingSectionTop = votingSection.getBoundingClientRect().top;
-    const votingSectionBottom = votingSection.getBoundingClientRect().bottom;
+	const votingSectionBottom = votingSection.getBoundingClientRect().bottom;
+	
+	// 퍼블에 없는 구문. dom이 로드되기 전에 오류발생
+	if (!floatButton){
+		return;
+	}
 
-    // console.log(votingSectionTop)
-    if (votingSectionTop <= 0 && votingSectionBottom > 0) {
+	// console.log(votingSectionTop)
+	if (votingSectionTop <= 0 && votingSectionBottom > 0) {
       // 스크롤이 voting-section 내부에 있을 때 나타남
       floatButton.classList.add('visible');
     } else {
@@ -274,7 +279,7 @@ function popSelect() {
 
 // 사업소개서 첨부파일 (최대 5개)
 function attachFiles() {
-  const allowedExtensions = ['pdf', 'doc', 'docx', 'hwp'];
+  const allowedExtensions = ['pdf', 'doc', 'docx', 'hwp', 'ppt', 'pptx'];
   const fileBoxes = document.querySelector('.file_boxes');
 
   // 1. btn-document_add 클릭 시 파일 선택창 열기
@@ -304,7 +309,6 @@ function attachFiles() {
           fileNameSpan.textContent = '파일을 선택하세요.';
           fileNameSpan.classList.add('no_files');
           return;
-
       }
 
       if (fileName && allowedExtensions.includes(fileExtension) && fileSize < maxSize) {
@@ -322,7 +326,7 @@ function attachFiles() {
         }
       } else {    	
         // 허용되지 않은 파일 형식일 경우
-        alert('10MB 이하의 pdf, doc, docx, hwp 파일만 첨부할 수 있습니다.');
+        alert('10MB 이하의 pdf, doc, docx, hwp, ppt, pptx 파일만 첨부할 수 있습니다.');
         fileInput.value = ''; // 입력값 초기화
         fileNameSpan.textContent = '파일을 선택하세요.';
         fileNameSpan.classList.add('no_files');
@@ -459,12 +463,25 @@ function initDropzone() {
       const myDropzone = this;
       myDropzone.on('addedfile', (file) => validateFile(file, myDropzone));
       myDropzone.on('removedfile', (file) => {
-        if(Number($("#imgCnt").val()) > 0){
-          $("#imgCnt").val(Number($("#imgCnt").val())-1);
-        }
-        toggleMessage(file, myDropzone);
+          if(Number($("#imgCnt").val()) > 0){
+            $("#imgCnt").val(Number($("#imgCnt").val())-1);
+				const deleteIdx = file.previewElement.getAttribute('data-dzc-id');
+				if (deleteIdx) {
+					const arrDeleteIdx = $("#deleteFileIdx").val() ? $("#deleteFileIdx").val().split(',') : [];
+					arrDeleteIdx.push(deleteIdx);
+					$("#deleteFileIdx").val(arrDeleteIdx.join(','));
+				}
+				/*
+	            if(typeof file.idx != "undefined"){//인덱스 번호 있으면 파일 삭제
+	          	  var param = "indexNumber="+file.idx;
+	          		$.get("/unicef/api/fo/campaign/award/fileDelete", param, function(data) {
+	          		});
+	       	    }
+				*/
+          }
+          toggleMessage(file, myDropzone);
       });
-      myDropzone.on('maxfilesexceeded', (file) => handleMaxFilesExceeded(file, myDropzone));
+	  myDropzone.on('maxfilesexceeded', (file) => handleMaxFilesExceeded(file, myDropzone));
     },
   });
 
@@ -526,7 +543,7 @@ function validateFile(file, dropzone) {
     setTimeout(() => {
       const firstImage = document.querySelector('.dz-image-preview');
       firstImage?.classList.add('representative-selected');
-    }, 10);
+    }, 0); // 개발과 퍼블 설정이 다름 (딜레이 발생시 정상 작동 안함)
   }
   $("#imgCnt").val(Number($("#imgCnt").val())+1);
   toggleMessage(file, dropzone);
@@ -1056,7 +1073,7 @@ function detailPage(indexNumber) {
 			$('#detail_group_name').html(deatilInfo.groupName);
 			$('#detail_card_subject').html(deatilInfo.cardSubject);
 			if(null != deatilInfo.cardContents){
-				$('#detail_card_contents').html(deatilInfo.cardContents);
+				$('#detail_card_contents').html(deatilInfo.cardContents.replaceAll(">","&gt").replaceAll("<","&lt"));
 			}
 			$('#detail_section').html(deatilInfo.section);
 			var imgist=[];
@@ -1074,7 +1091,11 @@ function detailPage(indexNumber) {
 			swiper.appendSlide(imgist);
 			swiper.update();  //슬라이드를 새로 추가할 경우 꼭 update 함수를 호출하는게 좋다
 			swiper.slideTo(0);//시작시 첫번째 사진으로 이동
-	
+			if (deatilInfo.totalImg <=1) {
+				$('#divCardDetailSwiperPg').css('background','transparent');
+			} else {
+				$('#divCardDetailSwiperPg').css('background', '');
+			}
 		}
 	});
 	
@@ -1087,13 +1108,13 @@ function detailPage(indexNumber) {
 
   handleMouseMoveListener('#card-detail .contents-container', '#card-detail .btn-pop_close_follow02');
 
+
 }
 
 // 뉴스카드 상세 닫기버튼 
 function removeDetail() {
   document.getElementById('card-detail').classList.remove('on');
 }
-
 
 // 슬라이드 이미지 호버시 버튼 토글 
 function slideButtonToggle() {

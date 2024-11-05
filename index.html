@@ -1,3 +1,9 @@
+<!-- 
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> -->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -19,20 +25,101 @@
   <link rel="stylesheet" href="assets/css/popup.css">
   <link rel="stylesheet" href="assets/css/media.css">
   <link rel="stylesheet" href="assets/css/main_media.css">
-
+  <!-- <script src="assets/js/common.js"></script> -->
   <title>2024 UNICEF Awards 공모전</title>
 </head>
+<!-- <%
+	String url1 = request.getScheme().toString(); // http
+String url2 = request.getServerName().toString(); // localhost
+String url3 = Integer.toString(request.getServerPort()); // 8080
+String allUrl = "";
 
+if (url3 != "") {
+	allUrl = url1 + ":" + url2 + ":" + url3;
+} else {
+	allUrl = url1 + ":" + url2;
+}
+
+NiceID.Check.CPClient niceCheck = new NiceID.Check.CPClient();
+
+String sSiteCode = "BC780"; // NICE로부터 부여받은 사이트 코드
+String sSitePassword = "l8DTekBB0eFa"; // NICE로부터 부여받은 사이트 패스워드
+
+String sRequestNumber = "REQ0000000001"; // 요청 번호, 이는 성공/실패후에 같은 값으로 되돌려주게 되므로 
+									// 업체에서 적절하게 변경하여 쓰거나, 아래와 같이 생성한다.
+sRequestNumber = niceCheck.getRequestNO(sSiteCode);
+session.setAttribute("REQ_SEQ", sRequestNumber); // 해킹등의 방지를 위하여 세션을 쓴다면, 세션에 요청번호를 넣는다.
+
+String sAuthType = "M"; // 없으면 기본 선택화면, M: 핸드폰, C: 신용카드, X: 공인인증서
+
+String popgubun = "N"; //Y : 취소버튼 있음 / N : 취소버튼 없음
+String customize = ""; //없으면 기본 웹페이지 / Mobile : 모바일페이지
+
+String sGender = ""; //없으면 기본 선택 값, 0 : 여자, 1 : 남자 
+
+// CheckPlus(본인인증) 처리 후, 결과 데이타를 리턴 받기위해 다음예제와 같이 http부터 입력합니다.
+//리턴url은 인증 전 인증페이지를 호출하기 전 url과 동일해야 합니다. ex) 인증 전 url : http://www.~ 리턴 url : http://www.~
+//String sReturnUrl = "https://www.unicef.or.kr/unicef/api/common/nice/success_award";      // 성공시 이동될 URL
+//String sErrorUrl =  "https://www.unicef.or.kr/unicef/api/common/nice/fail";          // 실패시 이동될 URL
+
+String sReturnUrl = "http://localhost:8080/unicef/api/common/nice/success_award"; // 성공시 이동될 URL
+String sErrorUrl = "http://localhost:8080/unicef/api/common/nice/fail"; // 실패시 이동될 URL
+
+//String sReturnUrl = "http://192.168.100.236/unicef/api/common/nice/success_award";      // 성공시 이동될 URL
+//String sErrorUrl = "http://192.168.100.236/unicef/api/common/nice/fail";          // 실패시 이동될 URL
+
+// 입력될 plain 데이타를 만든다.
+String sPlainData = "7:REQ_SEQ" + sRequestNumber.getBytes().length + ":" + sRequestNumber + "8:SITECODE"
+		+ sSiteCode.getBytes().length + ":" + sSiteCode + "9:AUTH_TYPE" + sAuthType.getBytes().length + ":" + sAuthType
+		+ "7:RTN_URL" + sReturnUrl.getBytes().length + ":" + sReturnUrl + "7:ERR_URL" + sErrorUrl.getBytes().length
+		+ ":" + sErrorUrl + "11:POPUP_GUBUN" + popgubun.getBytes().length + ":" + popgubun + "9:CUSTOMIZE"
+		+ customize.getBytes().length + ":" + customize + "6:GENDER" + sGender.getBytes().length + ":" + sGender;
+
+String sMessage = "";
+String sEncData = "";
+
+int iReturn = niceCheck.fnEncode(sSiteCode, sSitePassword, sPlainData);
+if (iReturn == 0) {
+	sEncData = niceCheck.getCipherData();
+} else if (iReturn == -1) {
+	sMessage = "암호화 시스템 에러입니다.";
+} else if (iReturn == -2) {
+	sMessage = "암호화 처리오류입니다.";
+} else if (iReturn == -3) {
+	sMessage = "암호화 데이터 오류입니다.";
+} else if (iReturn == -9) {
+	sMessage = "입력 데이터 오류입니다.";
+} else {
+	sMessage = "알수 없는 에러 입니다. iReturn : " + iReturn;
+}
+%> -->
+<script>
+
+  		window.name ="Parent_window";
+  		function fnPopup(){
+  			window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+  			document.form_chk.action = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
+  			document.form_chk.target = "popupChk";
+  			document.form_chk.submit();
+  		}
+</script>
 <body>
   <!-- 접수하기 팝업 -->
   <div class="popup-dim "></div>
   <div id="apply_popup" class="popup">
-    <form action="">
+    <form id="writeForm" name="writeForm" method="post" enctype="multipart/form-data">
+      <input type="hidden" id="thumbnailOrder" name="thumbnailOrder" value="0"/>
+      <input type="hidden" id="nowSection" name="nowSection" value=""/>
+      <input type="hidden" id="indexNumber" name="indexNumber" value="new"/>
+      <input type="hidden" id="reportCnt" name="reportCnt" value="0"/>
+      <input type="hidden" id="imgCnt" name="imgCnt" value="0"/>
+      <input type="hidden" id="deleteFileIdx" name="deleteFileIdx" value=""/>
+
 
       <button type="button" class="btn-pop_close_follow" onclick="javascript:closePopupApply('#apply_popup');"> 닫기</button>
       <div class="popup-box">
         <div class="top-box"></div>
-        <div class="popup-title">2024 <span class="main-color">UNICEFAwards</span><br class="br_m">공모전 접수하기</div>
+        <div class="popup-title">2024 <span class="main-color">UNICEFAwards</span><br class="br_m"><span id="awardTile">공모전 접수하기</span></div>
         <div class="popup-content">
           <div class="pop-tb pop-tb__info">
             <div class="tb-header">신청 단체 정보</div>
@@ -45,7 +132,7 @@
                 </div>
                 <div class="tb-con">
                   <div class="input_box">
-                    <input type="text" name="" id="" placeholder=" ex) 00시 00초등학교" required>
+                    <input type="text" name="groupName" id="groupName" placeholder=" ex) 00시 00초등학교" required data-title="단체명을" title="단체명" maxlength="30">
                   </div>
                 </div>
               </div>
@@ -56,12 +143,12 @@
                 <div class="tb-con">
                   <div class="address_box">
                     <div class="input_box">
-                      <input type="text" id="mAddr1" name="mAddr1" required readonly>
+                      <input type="text" id="address" name="address" required readonly title="주소" data-title="주소를">
                       <button type="button" class="btn-address btn_addr"
                         onclick="sample2_execDaumPostcode();">검색</button>
                     </div>
                     <div class="input_box">
-                      <input type="text" id="mAddr2" name="mAddr2" placeholder="상세 주소를 입력하세요. (선택)">
+                      <input type="text" id="addressDetail" name="addressDetail" placeholder="상세 주소를 입력하세요. (선택)">
                     </div>
                   </div>
 
@@ -85,7 +172,7 @@
                     </div>
                     <div class="tb-con">
                       <div class="input_box">
-                        <input type="text" name="" id="" placeholder="성명을 입력하세요." required>
+                        <input type="text" name="chargeName" id="chargeName" placeholder="성명을 입력하세요." required data-title="성명을" title="성명" maxlength="15">
                       </div>
                     </div>
                   </div>
@@ -96,7 +183,7 @@
                       </div>
                       <div class="tb-con">
                         <div class="input_box">
-                          <input type="text" name="" id="" placeholder="전화번호를 입력하세요." required>
+                          <input type="text" name="chargeContact" id="chargeContact" placeholder="전화번호를 입력하세요." required data-title="연락처를" title="연락처" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
                         </div>
                       </div>
                     </div>
@@ -106,7 +193,7 @@
                       </div>
                       <div class="tb-con">
                         <div class="input_box">
-                          <input type="text" name="" id="" placeholder="이메일을 입력하세요." required>
+                          <input type="text" name="chargeEmail" id="chargeEmail" placeholder="이메일을 입력하세요." required data-title="이메일을" title="이메일" maxlength="50">
                         </div>
                       </div>
                     </div>
@@ -118,7 +205,7 @@
                       </div>
                       <div class="tb-con">
                         <div class="input_box">
-                          <input type="text" name="" id="" placeholder="부서명을 입력하세요.">
+                          <input type="text" name="chargeDepart" id="chargeDepart" placeholder="부서명을 입력하세요." data-title="부서을" title="부서" maxlength="20"> 
                         </div>
                       </div>
                     </div>
@@ -128,7 +215,7 @@
                       </div>
                       <div class="tb-con">
                         <div class="input_box">
-                          <input type="text" name="" id="" placeholder="직위를 입력하세요.">
+                          <input type="text" name="chargePosition" id="chargePosition" placeholder="직위를 입력하세요." data-title="직위을" title="직위" maxlength="20">
                         </div>
                       </div>
                     </div>
@@ -143,7 +230,7 @@
                   <div class="select_box">
                     <div class="select-selected">공모부문을 선택해주세요</div>
                     <div class="select-items">
-                      <div class="select-item" data-value="1">
+                      <div class="select-item" data-value="A">
                         <div class="item-tit"><span class="main-color">조례</span> 및 <span class="main-color">정책</span>
                         </div>
                         <div class="item-des">
@@ -157,7 +244,7 @@
                           </ul>
                         </div>
                       </div>
-                      <div class="select-item" data-value="2">
+                      <div class="select-item" data-value="B">
                         <div class="item-tit">아동<span class="main-color">참여</span></div>
                         <div class="item-des">
                           <ul>
@@ -171,7 +258,7 @@
                           </ul>
                         </div>
                       </div>
-                      <div class="select-item" data-value="3">
+                      <div class="select-item" data-value="C">
                         <div class="item-tit">아동<span class="main-color">권리교육</span></div>
                         <div class="item-des">
                           <ul>
@@ -185,7 +272,7 @@
                           </ul>
                         </div>
                       </div>
-                      <div class="select-item" data-value="4">
+                      <div class="select-item" data-value="D">
                         <div class="item-tit">행정<span class="main-color">서비스</span></div>
                         <div class="item-des">
                           <ul>
@@ -195,7 +282,7 @@
                           </ul>
                         </div>
                       </div>
-                      <div class="select-item" data-value="5">
+                      <div class="select-item" data-value="E">
                         <div class="item-tit">아동<span class="main-color">친화공간</span></div>
                         <div class="item-des">
                           <ul>
@@ -208,7 +295,7 @@
                       </div>
                     </div>
                   </div>
-                  <input type="hidden" name="section" id="section" required>
+                  <input type="hidden" name="section" id="section" required data-title="공모부문을" title="공모부문">
                 </div>
               </div>
               <div class="tb-row">
@@ -223,7 +310,7 @@
                         <span class="file_name no_files">
                           파일을 선택하세요.
                         </span>
-                        <input type="file" id="documentInput" class="a11yHidden">
+                        <input type="file" id="documentInput" name="report1" class="a11yHidden">
                         <button type="button" class="btn-document_add">첨부</button>
                       </div>
                       <div class="btn-filebox_wrap">
@@ -231,6 +318,7 @@
                       </div>
                     </li>
                   </ul>
+                  <div class="ref" id="report_list"></div>
                   <div class="ref">
                     <p>증빙자료 제출시 자유 양식으로 제출하되 확장자는 pdf, doc, docx, hwp 가능</p>
                     <p>최대 5개 파일, 각 10MB 까지 업로드 가능, 용량 부족시 압축 바랍니다.</p>
@@ -250,8 +338,8 @@
                 </div>
                 <div class="tb-con">
                   <div class="input_box">
-                    <input type="text" id="title" name="title" placeholder="제목을 입력하세요. (최대 40자까지 입력 가능)" maxlength="40"
-                      required>
+                    <input type="text" id="cardSubject" name="cardSubject" placeholder="제목을 입력하세요. (최대 40자까지 입력 가능)" maxlength="40"
+                      required  data-title=" 카드뉴스 제목을" title="카드뉴스 제목">
                   </div>
                 </div>
               </div>
@@ -269,7 +357,9 @@
                   <div class="dropzone">
                     <ul class="list-unstyled card-images-grid" id="dropzone-preview"></ul>
                   </div>
-                  <p class="text-muted">카드 이미지 최대 3장</p>
+                  <div class="ref" id="img_list">
+                  </div>
+                <p class="text-muted">카드는 최대 3장까지 등록 가능합니다.</p>
                 </div>
               </div>
 
@@ -281,8 +371,8 @@
                 </div>
                 <div class="tb-con">
                   <div class="textarea_box">
-                    <textarea id="cardContents" name="description" class="content-input" placeholder="내용을 입력하세요."
-                      maxlength="300"></textarea>
+                    <textarea id="cardContents" name="cardContents" class="content-input" placeholder="내용을 입력하세요."
+                      maxlength="300" minlength="0"   required  data-title=" 카드뉴스 내용을" title="카드뉴스 내용"></textarea>
                     <div class="text-counting">
                       <span id="char-count" class="char-count">0 /</span> <strong>300</strong>자
                     </div>
@@ -318,11 +408,11 @@
               <div class="agree_wrap">
                 <div class="agree_box">
                   <label>
-                    <input type="radio" name="agreeBtn1" id="agreeBtn1_01" required>
+                    <input type="radio" name="agreeBtn1" id="agreeBtn1_01" required value="Y">
                     동의함
                   </label>
                   <label>
-                    <input type="radio" name="agreeBtn1" id="agreeBtn1_02">
+                    <input type="radio" name="agreeBtn1" id="agreeBtn1_02" value="N">
                     동의하지 않음
                   </label>
                 </div>
@@ -359,11 +449,11 @@
                 <p>[필수] 위와 같이 초상권 사용에 동의합니다.</p>
                 <div class="agree_box">
                   <label>
-                    <input type="radio" name="agreeBtn2" id="agreeBtn2_01" required>
+                    <input type="radio" name="agreeBtn2" id="agreeBtn2_01" required value="Y">
                     동의함
                   </label>
                   <label>
-                    <input type="radio" name="agreeBtn2" id="agreeBtn2_02">
+                    <input type="radio" name="agreeBtn2" id="agreeBtn2_02" value="N">
                     동의하지 않음
                   </label>
                 </div>
@@ -371,8 +461,8 @@
             </div>
           </div>
           <div class="btn_wrap">
-            <button type="button" class="btn-pop_close" onclick="javascript:closePopupApply('#apply_popup');">닫기</button>
-            <button type="submit" class="btn-pop_submit">공모전 접수</button>
+             <button type="button" class="btn-pop_close" onclick="javascript:closePopupApply('#apply_popup');">닫기</button>
+            <button type="button" class="btn-pop_submit" id="applyButton" onclick="save()">공모전 접수</button>
           </div>
         </div>
       </div>
@@ -488,37 +578,39 @@
           <div class="swiper-wrapper">
             <!-- 슬라이드1 -->
             <div class="swiper-slide"><img src="./assets/images/slide_image.jpg" alt="이미지1 설명"></div>
+            <!-- 슬라이드2 -->
             <div class="swiper-slide"><img src="./assets/images/slide_image.jpg" alt="이미지2 설명"></div>
+            <!-- 슬라이드3 -->
             <div class="swiper-slide"><img src="./assets/images/slide_image.jpg" alt="이미지3 설명"></div>
           </div>
           <div class="pc">
           </div>
         </div>
       </div>
-      <div class="image-bottom">
+      <div class="image-bottom" id="divCardDetailSwiperPg">
           <div class="swiper-pagination"></div>
         <div class="swiper-btn-wrap">
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev "></div>
+          <div class="swiper-button-next "></div>
         </div>
       </div>
       <div class="txt-wrap">
-        <a class="share-cion" href="javascript:void(0);"><img src="./assets/images/share_icon.png" alt="공유하기"></a>
+        <!-- <a class="share-cion" href="javascript:void(0);"><img src="./assets/images/share_icon.png" alt="공유하기"></a> -->
         <a class="close-cion pc" onclick="javascript:removeDetail();" href="javascript:void(0);"><img src="./assets/images/detail_close_button_inner.png" alt="닫기"></a>
-        <p class="title1">서울시 서초구청</p>
-        <p class="title2">
+        <p class="title1" id="detail_group_name">서울시 서초구청</p>
+        <p class="title2" id="detail_card_subject">
           서울시 서초구청<br>
           시민의숲 어린이행사
         </p>
-        <p class="text">
+        <p class="text"  id="detail_card_contents" style="white-space: pre-wrap;">
           2024 UNICEF Awards 공모전 아동을 위한 더 나은 변화는 우리 사회의 미래를 밝히는 중요한 과제입니다. 아이들은 우리의 희망이며, 그들이 안전하고 건강하게 성장할 수 있는 환경을 제공해야 합니다. 교육 기회 확대, 정서적 지원, 건강한 식습관 조성 등 다양한 방안이 필요합니다. 또한, 아동의 목소리를 존중하고 참여를 촉진함으로써 그들의 권리를 보호해야 합니다. 함께 노력하면 아이들이 꿈꾸는 세상을 만들어 갈 수 있습니다. 지속적인 관심과 행동이 아동의 삶에 긍정적인 변화를 가져올 것입니다. (데모 텍스트 300자)
         </p>
         <div class="button-wrap">
-          <button class="m-button">이동참여</button>
+          <button class="m-button"><p id="detail_section"></p></button>
           <hr class="mo">
-          <button class="f-button">수정</button>
-          <button class="d-button">삭제</button>
-        </div>
+          <button class="f-button" id="modifyButton">수정</button>
+          <button class="d-button" id="delButton">삭제</button>
+         </div>
       </div>
       <div class="close-btn mo">
         <button class="mo-detail" onclick="javascript:removeDetail();">닫기</button>
@@ -529,7 +621,7 @@
   <div class="wrap">
     
     <!-- 접수하러가기 플로팅버튼 -->
-    <div id="floatRightButton" class="main-right-float" onclick="javascript:openPopupApply();">
+    <div id="floatRightButton" class="main-right-float" onclick="javascript:openPopupApply('new');">
       <img class="box" src="./assets/images/gobox.png" alt="" data-aos="fade-up" data-aos-duration="2000" />
       <img class="arrow" src="./assets/images/btn-apply_icon02.png" alt="" data-aos="fade-up"
         data-aos-duration="2000" />
@@ -560,9 +652,9 @@
         <div class="pc">
           <ul class="menu">
             <li><a href="javascript:void(0);" class="scroll-link" data-target="section1">공모전 소개</a></li>
-            <li><a href="javascript:void(0);" onclick="javascript:openPopupApply();" class="scroll-link">접수</a></li>
-            <li><a href="javascript:void(0);" class="scroll-link" data-target="section2">접수확인</a></li>
-            <li><a href="javascript:void(0);" class="scroll-link" data-target="section3">투표하기</a></li>
+            <li><a href="javascript:void(0);" onclick="javascript:openPopupApply('new');" class="scroll-link">접수</a></li>
+            <li><a href="javascript:void(0);" onclick="getAwardMyList()" class="scroll-link" data-target="section2">접수확인</a></li>
+            <li><a href="javascript:void(0);" onclick="getVoteList()" class="scroll-link" data-target="section3">투표하기</a></li>
             <li><a href="javascript:void(0);" class="scroll-link" data-target="section4">게시판</a></li>
           </ul>
         </div>
@@ -585,9 +677,9 @@
     <div class="slide" id="slide">
       <ul>
         <li><a href="javascript:void(0);" class="scroll-link" data-target="section1">공모전 소개</a></li>
-        <li><a href="javascript:void(0);" onclick="javascript:openPopupApply();" class="scroll-link">접수</a></li>
-        <li><a href="javascript:void(0);" class="scroll-link" data-target="section2">접수확인</a></li>
-        <li><a href="javascript:void(0);" class="scroll-link" data-target="section3">투표하기</a></li>
+        <li><a href="javascript:void(0);" onclick="javascript:openPopupApply('new');" class="scroll-link">접수</a></li>
+        <li><a href="javascript:void(0);" onclick="getAwardMyList()" class="scroll-link" data-target="section2">접수확인</a></li>
+        <li><a href="javascript:void(0);" onclick="getVoteList()"  class="scroll-link" data-target="section3">투표하기</a></li>
         <li><a href="javascript:void(0);" class="scroll-link" data-target="section4">게시판</a></li>
       </ul>
     </div>
@@ -618,7 +710,7 @@
               </div>
               <div class="mo">
                 <p>유니세프아동친화도시 공모전</p>
-                <p class="flex">홈페이지 접속 <a href="javascript:void(0);" style="display: flex; align-items: center;" onclick="javascript:openPopupApply();"><span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span> 접수하러 가기</a></p>
+                <p class="flex">홈페이지 접속 <a href="javascript:void(0);" style="display: flex; align-items: center;" onclick="javascript:openPopupApply();"><span class="gts-icon"><img src="./assets/images/greater_than_sign.png" alt=""></span> 접수 하러 가기</a></p>
               </div>
             </li>
             <li>
@@ -1109,8 +1201,8 @@
       <div class="container">
         <div class="tabs-wrap">
           <ul class="tabs with-indicator">
-            <li class="tab active" data-target="contents1" id="section3">투표하기</li>
-            <li class="tab" data-target="contents2" id="section2">접수확인</li>
+            <li class="tab active" data-target="contents1" id="section3"  onclick="getVoteList()">투표하기</li>
+            <li class="tab" data-target="contents2" id="section2" onclick="getAwardMyList()">접수확인</li>
             <li class="line"></li>
           </ul>
         </div>
@@ -1127,21 +1219,21 @@
         <div class="voting-box">
           <!-- PC검색 -->
           <div class="top pc">
-            <form class="search-container contents-container" onsubmit="search(event)">
-              <select class="dropdown" id="category">
+            <form class="search-container contents-container" id="searchFrmPc" onsubmit="search(event)">
+              <select class="dropdown" id="searchPage">
                 <option value="title">제목</option>
                 <option value="group">단체명</option>
                 <option value="content">내용</option>
               </select>
               <input type="text" class="search-input" id="keyword" placeholder="검색어를 입력하세요.">
-              <button type="submit" class="search-button">검색</button>
+              <button type="submit" class="search-button"  id="keyword">검색</button>
             </form>
           </div>
           <!-- Mobile 검색 -->
           <div class="top mo">
-            <form class="search-container contents-container" onsubmit="search(event)">
+            <form class="search-container contents-container" id="searchFrmMo" onsubmit="search(event)">
               <div class="flex">
-                <select class="dropdown" id="category">
+                <select class="dropdown" id="searchPage">
                   <option value="title">제목</option>
                   <option value="group">단체명</option>
                   <option value="content">내용</option>
@@ -1155,8 +1247,8 @@
           <div class="bottom">
             <div class="contents-container">
               <div class="info">
-                <p>전체 <span class="main-color ">300</span> 건</p>
-                <select id="sorting">
+                <p>전체 <span class="main-color" id="total_award">0</span> 건</p>
+                <select name="list_num" id="list_num" onchange="sortChange()">
                   <option value="10">10개씩 보기</option>
                   <option value="20">20개씩 보기</option>
                   <option value="30">30개씩 보기</option>
@@ -1390,6 +1482,7 @@
                 <button id="next_page"></button>
               </div>
             </div>
+            </div>
           </div>
         </div>
         <img class="deco08" src="./assets/images/deco08.png" alt="일러스트이미지08" data-aos="fade-up"
@@ -1488,7 +1581,7 @@
     <section class="notice-section">
       <div class="container">
         <h2 id="section4" class="section-title notice-title">공지사항</h2>
-        <div class="notice-box">
+        <div class="notice-box"  id="notice-box">
           <ol class="notice-lists" style="display: block;">
             <li>
               <div class="notice-lists_tit">2024 UNICEF Awards 공모전 수상작 발표</div>
@@ -1564,6 +1657,12 @@
       </div>
     </section>
   </div>
+  <form name="searchForm" id="searchForm">
+    <input type="hidden" name="pageIndex" id="listPageIndex" value="1">
+    <input type="hidden" name="recordCountPerPage" id="listRecordCountPerPage" value="10">
+    <input type="hidden" name="pageSize" id="listPageSize" value="">
+    <input type="hidden" name="totalCnt" id="listTotalPage" value="">
+</form>
   <!-- PC footer -->
   <footer class="pc">
     <a href="/"><img class="logo" src="./assets/images/footer_logo.png" alt="" /></a>
@@ -1648,13 +1747,13 @@
             addr = addr + extraAddr;
 
           } else {
-            document.getElementById("mAddr2").value = '';
-          }
+            document.getElementById("addressDetail").value = '';
+            }
 
-          // 우편번호와 주소 정보를 해당 필드에 넣는다.
-          document.getElementById("mAddr1").value = addr;
-          // 커서를 상세주소 필드로 이동한다.
-          document.getElementById("mAddr2").focus();
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById("address").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("addressDetail").focus();
 
 
           // iframe을 넣은 element를 안보이게 한다.

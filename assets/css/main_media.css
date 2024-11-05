@@ -137,7 +137,7 @@
   }
 
   .main-section .main-right-float {
-    top: 40.9813vw;
+    top: 53.125vw;
     right: 7.3958vw;
     font-size: 0.8333vw;
   }
@@ -902,11 +902,6 @@
     padding: 1.4583vw 0.5208vw;
   }
 
-  .benefit-lists li:nth-child(3),
-  .benefit-lists li:nth-child(4) {
-    margin: 25.5px 0;
-  }
-
   .benefit-lists li::before {
     width: 3.125vw;
     height: 3.125vw;
@@ -1601,7 +1596,7 @@
     font-weight: 800;
     width: 102.5px;
     height: 26px;
-    left: 29px;
+    left: 30.5px;
     top: -3px;
   }
 
@@ -1914,11 +1909,19 @@
     height: 114px;
     text-align: center;
     line-height: 25px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .additional-points ul li .check_icon {
     width: 32.5px;
     height: 33px;
     margin: 0 44px 0 18.5px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
   }
 
   .evaluation-score ul li, .additional-points ul li {
@@ -2595,6 +2598,11 @@
 .swiper-button-prev,
 .swiper-button-next {
   opacity: 1;
+}
+
+.benefit-lists li:nth-child(3),
+.benefit-lists li:nth-child(4) {
+  margin: 25.5px 0;
 }
 
   /* 모바일 세로 화면 (480px 이하) */

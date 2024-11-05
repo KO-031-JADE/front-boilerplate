@@ -309,7 +309,7 @@ body > .wrap > .main-right-float > .arrow {
 .main-section .main-right-float {
   transform: rotate(90deg);
   position: absolute;
-  top: 787px;
+  top: 1020px;
   right: 143px;
   font-family: "Pretendard", sans-serif;
   font-size: 16px;
@@ -1767,6 +1767,9 @@ body > .wrap > .main-right-float > .arrow {
   position: relative;
   height: 60px;
   line-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .notice-lists_tit::after {
@@ -2161,12 +2164,21 @@ footer .footer-info {
   font-size: 28px;
   color: #999999;
   margin-bottom: 20px;
+  width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .card-detail-wrap .contents-container .txt-wrap .title2 {
   font-size: 44px;
   line-height: 60px;
   font-weight: 600;
   margin-bottom: 50px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-detail-wrap .contents-container .txt-wrap .text {
