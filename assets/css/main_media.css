@@ -1034,7 +1034,8 @@
     padding: 0 1.5625vw;
     border-radius: 2.6042vw;
     background: url(../images/down_icon.png) no-repeat 85% 50% / 0.7813vw;
-    background-color: #000;
+    background-color: #141d3d;
+    margin-right: 0.3125vw;
   }
   /* notice-section end */
 

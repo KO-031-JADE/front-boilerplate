@@ -1856,7 +1856,7 @@ body > .wrap > .main-right-float > .arrow {
 }
 
 .download-file_name {
-  color: #ccc;
+  color: #999;
   width: calc(100% - 180px);
   font-weight: 300;
 }
@@ -1868,11 +1868,12 @@ body > .wrap > .main-right-float > .arrow {
   display: flex;
   justify-content: space-between;
   background: url(../images/down_icon.png) no-repeat;
-  background-color: #000;
+  background-color: #141d3d;
   border-radius: 50px;
   color: #fff;
   background-position: 136px center;
   font-weight: 400;
+  margin-right: 6px;
 }
 
 /* notice-section end */
