@@ -2637,16 +2637,7 @@
     .whale .examination-details-section .container .box-wrap .examination-detail .top-box {
       top: -19.2px;
     }
-  /* Firefox 전용 스타일 */
-  @-moz-document url-prefix() {
-    .recruit-section .schedule-box .container .recruit-schedule .top-box {
-      top: -19.2px!important;
-    }
-    .examination-details-section .container .box-wrap .examination-detail .top-box {
-      top: 0!important;
-    }
-  }
-
+    
   /* 모바일 세로 화면 (480px 이하) */
   @media (max-width: 480px) {
   }
