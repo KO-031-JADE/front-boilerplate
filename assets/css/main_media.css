@@ -1376,6 +1376,7 @@
     border-radius: 20px 22.5px 0 0;
     border: 3px solid #0c4b63;
     border-bottom: none;
+    box-shadow: none;
   }
   
   .recruit-section .schedule-box .container .recruit-schedule .box-title {
