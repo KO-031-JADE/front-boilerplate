@@ -1388,7 +1388,7 @@
 /* Chrome 전용 스타일 */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   .recruit-section .schedule-box .container .recruit-schedule .top-box {
-    top: -19.7px;
+    top: -19.6px;
   }
 }
   
