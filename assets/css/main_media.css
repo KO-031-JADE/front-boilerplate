@@ -1692,6 +1692,7 @@
   .award-section > div {
     justify-content: space-between;
     margin-bottom: 5px;
+    border-radius: 12.5px;
   }
 
   .award-section > div:first-child {
@@ -1710,6 +1711,7 @@
     line-height: 45px;
     font-size: 15px;
     font-weight: 400;
+    border-radius: 12.5px;
   }
   .award-header div:nth-child(1), .award-row div:nth-child(1) {
     width: 29.03%;
@@ -1915,7 +1917,7 @@
     align-items: center;
   }
   .additional-points ul li .check_icon {
-    width: 32.5px;
+    width: 33px;
     height: 33px;
     margin: 0 44px 0 18.5px;
     position: absolute;
@@ -2198,7 +2200,7 @@
 
   .notice-box .empty {
     width: calc( 100% - 26px);
-    margin: 0 13px 13px;
+    margin: 12.5px;
     height: 250px;
     font-size: 27px;
     text-align: center;
