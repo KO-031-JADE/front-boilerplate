@@ -1377,25 +1377,35 @@
     border: 3px solid #0c4b63;
     border-bottom: none;
   } 
+  /* 엣지 */
   .edge .recruit-section .schedule-box .container .recruit-schedule .top-box {
     top: -19.7px;
   }
-  .whale .recruit-section .schedule-box .container .recruit-schedule .top-box {
-    top: -19.7px;
-  }
-/* Safari 전용 스타일 */
-@supports (-webkit-touch-callout: none) {
-  .recruit-section .schedule-box .container .recruit-schedule .top-box {
-    top: -19.7px;
-  }
-}
 
-/* Chrome 전용 스타일 */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  .recruit-section .schedule-box .container .recruit-schedule .top-box {
+  /* 웨일 */
+  .whale .recruit-section .schedule-box .container .recruit-schedule .top-box {
     top: -19.6px;
   }
-}
+
+  /* Safari 전용 스타일 */
+  @supports (-webkit-touch-callout: none) {
+    .recruit-section .schedule-box .container .recruit-schedule .top-box {
+      top: -19.7px;
+    }
+  }
+
+  /* Chrome 전용 스타일 */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .recruit-section .schedule-box .container .recruit-schedule .top-box {
+      top: -19.6px;
+    }
+  }
+  /* Firefox 전용 스타일 */
+  @-moz-document url-prefix() {
+    .recruit-section .schedule-box .container .recruit-schedule .top-box {
+      top: -19.7px;
+    }
+  }
   
   .recruit-section .schedule-box .container .recruit-schedule .box-title {
     font-weight: 800;
