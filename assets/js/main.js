@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   widgetDeleteAll();
   removeDetail();
   slideButtonToggle();
+  browserDetector(); // 브라우저 감지
 }); 
 
 let maxBoxes = 5;//수정시 갯수 조절필요 전역변수로 뺌
@@ -1130,5 +1131,18 @@ function slideButtonToggle() {
     imagesSection.addEventListener('mouseleave', function () {
       swiperButtons.forEach(button => button.classList.remove('opacity1'));
     });
+  }
+}
+
+// 브라우저 감지
+function browserDetector() {
+  // Edge
+  if (navigator.userAgent.includes("Edg")) {
+    document.body.classList.add("edge");
+  }
+
+  // Whale
+  if (navigator.userAgent.includes("Whale")) {
+    document.body.classList.add("whale");
   }
 }

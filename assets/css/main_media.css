@@ -1376,8 +1376,13 @@
     border-radius: 20px 22.5px 0 0;
     border: 3px solid #0c4b63;
     border-bottom: none;
+  } 
+  .edge .recruit-section .schedule-box .container .recruit-schedule .top-box {
+    top: -19.7px;
   }
-
+  .whale .recruit-section .schedule-box .container .recruit-schedule .top-box {
+    top: -19.7px;
+  }
 /* Safari 전용 스타일 */
 @supports (-webkit-touch-callout: none) {
   .recruit-section .schedule-box .container .recruit-schedule .top-box {
