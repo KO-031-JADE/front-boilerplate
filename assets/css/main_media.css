@@ -974,7 +974,7 @@
   .notice-lists_tit {
     font-size: 1.7708vw;
     padding-left: 5.2083vw;
-    height: 3.125vw;
+    height: auto;
     line-height: 3.125vw;
   }
 
@@ -984,7 +984,7 @@
   }
 
   .notice-lists_tit.open + .notice-lists_box {
-    max-height: 25vw;
+    max-height: fit-content;
   }
 
   .notice-lists_des {
@@ -2224,7 +2224,8 @@
   .notice-lists_tit {
     font-size: 20px;
     padding-left: 55px;
-    height: 50.5px;
+    height: auto;
+    min-height: 50.5px;
     line-height: 27px;
     display: flex;
     align-items: center;
@@ -2237,7 +2238,7 @@
   }
 
   .notice-lists_tit.open + .notice-lists_box {
-    max-height: none;
+    max-height: fit-content;
   }
 
   .notice-lists_des {
