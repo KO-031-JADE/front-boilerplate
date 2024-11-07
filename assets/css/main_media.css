@@ -974,6 +974,7 @@
   .notice-lists_tit {
     font-size: 1.7708vw;
     padding-left: 5.2083vw;
+    padding-right: 5.2083vw;
     height: auto;
     line-height: 3.125vw;
   }
@@ -2228,12 +2229,13 @@
   .notice-lists_tit {
     font-size: 20px;
     padding-left: 55px;
+    padding-right: 55px;
     height: auto;
     min-height: 50.5px;
     line-height: 27px;
     display: flex;
     align-items: center;
-    padding-right: 17px;
+    overflow-wrap: anywhere;
   }
 
   .notice-lists_des p {
