@@ -2224,15 +2224,16 @@
   .notice-lists_tit::after {
     width: 13.5px;
     height: 7.5px;
+    right: 9.5px;
   }
 
   .notice-lists_tit {
     font-size: 20px;
     padding-left: 55px;
-    padding-right: 55px;
+    padding-right: 43px;
     height: auto;
     min-height: 50.5px;
-    line-height: 27px;
+    line-height: 28px;
     display: flex;
     align-items: center;
     overflow-wrap: anywhere;
