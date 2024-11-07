@@ -199,11 +199,7 @@ function setCookie(name, value, days) {
 function getCookie(name) {
   const nameEQ = `${name}=`;
   return (
-    document.cookie
-      .split(';')
-      .map((c) => c.trim())
-      .find((c) => c.indexOf(nameEQ) === 0)
-      ?.substring(nameEQ.length) || null
+    document.cookie.split(';').map((c) => c.trim()).find((c) => c.indexOf(nameEQ) === 0)?.substring(nameEQ.length) || null
   );
 }
 
