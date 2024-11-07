@@ -1,29 +1,6 @@
 // Dropzone 및 Sortable 초기화 설정
 document.addEventListener('DOMContentLoaded', function () {
-  handleLeftFloating(); // 왼쪽 플로팅 버튼 애니메이션
-  handleRightFloating(); // 오른쪽 플로팅 버튼 애니메이션
-  handleHeaderAnimation(); // 헤더 애니메이션
-  handleSmoothScroll(); // 부드러운 스크롤 기능
-  handlePopup(); // 팝업
-  toggleNoticeTitles(); // 공지사항 토글 => common.js
-  handleTabs(); // 투표하기, 점수확인 탭
-  handleCateTabs(); // 카테고리 탭
-  popSelect(); // 접수하기 팝업 공모부분 selectbox
-  attachFiles(); // 사업소개서 첨부파일
-  initDropzone(); // Dropzone 설정
-  initSortable(); // Sortable 설정스크롤
-  setupTextareaCounter(); // 글자수 카운팅
-  checkedOutline(); // 접수하기, 점수확인 체크박스 테두리
-  setupContentSwitch(); // 컨텐츠 전환
-  handleResize(); // resize
-  mobileMenyToggleSlide(); // 모바일 메뉴 토글 슬라이드
-  widgetOpen(); // 위젯 여닫기
-  radioClick();
-  widgetDelete();
-  widgetDeleteAll();
-  removeDetail();
-  slideButtonToggle();
-  browserDetector(); // 브라우저 감지
+
 }); 
 
 let maxBoxes = 5;//수정시 갯수 조절필요 전역변수로 뺌
