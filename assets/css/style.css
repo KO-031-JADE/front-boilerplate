@@ -1905,13 +1905,15 @@ footer .footer-info {
 /* footer end */
 
 /* popup start */
-.lego_popup {
+.lego_popup, 
+.notice_popup {
   width: 100%;
   height: 100%;
   display: none;
 }
 
-.lego_popup .contents {
+.lego_popup .contents,
+.notice_popup .contents {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -1922,12 +1924,116 @@ footer .footer-info {
   justify-content: center;
   align-items: center;
   width: 520px;
+  z-index: 9999;
+}
+
+
+.notice_popup .contents .txt-wrap {
+  background-color: #1cabe2;
+  width: 100%;
+  padding: 30px
+}
+
+.notice_popup .contents .txt-wrap .title-wrap{
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.notice_popup .contents .txt-wrap .title-wrap .title {
+  font-weight: 800;
+  font-size: 46px;
+}
+
+.notice_popup .contents .txt-wrap .title-wrap .subtitle {
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.notice_popup .contents .box {
+  background-color: #fff;
+  border-radius: 40px;
+  border: 4px solid #1d2a57;
+  box-shadow: 3px 3px 0px 0px #1d2a57;
+  padding: 42px 57px;
+  position: relative;
+  margin-top: 37px;
+}
+
+.notice_popup .contents .box .bloon {
+  position: absolute;
+  top: -18px;
+  left: 10px;
+  width: 101px;
+  height: 69.2px;
+}
+
+
+.notice_popup .contents .box .text-top {
+  font-weight: 800;
+  font-size: 36px;
+  text-align: center;
+  line-height: 53px;
+}
+
+.notice_popup .contents .box hr {
+  border: none;
+  width: 100%;
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #ccc,
+    #ccc 10px,
+    transparent 10px,
+    transparent 12px
+  );
+  margin: 40.5px 0;
+}
+
+.notice_popup .contents .box .text-bottom {
+  font-size: 28px;
+  line-height: 48px;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.notice_popup .contents .box .text-bottom del {
+  font-weight: bold;
+}
+.notice_popup .contents .box .text-bottom span {
+  font-weight: bold;
+  color:#fff;
+  background-color: #10a34a;
+  border-radius: 21px;
+  padding: 7px 15px;
+}
+
+.notice_popup .popup-buttons {
+  width: 100%;
+  display: flex;
+  height: 100%;
+  font-weight: 300;
 }
 
 .lego_popup .popup-buttons {
   display: flex;
   height: 100%;
   width: 520px;
+}
+
+.notice_popup .popup-buttons button {
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  color: #fff;
+  border: none;
+  flex-grow: 1;
+  cursor: pointer;
 }
 
 .lego_popup .bg {

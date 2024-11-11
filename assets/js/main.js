@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
   handleRightFloating(); // 오른쪽 플로팅 버튼 애니메이션
   handleHeaderAnimation(); // 헤더 애니메이션
   handleSmoothScroll(); // 부드러운 스크롤 기능
-  handlePopup(); // 팝업
+  handleLegoPopup(); // 팝업
+  handleNoticePopup(); // 팝업
   toggleNoticeTitles(); // 공지사항 토글 => common.js
   handleTabs(); // 투표하기, 점수확인 탭
   handleCateTabs(); // 카테고리 탭
@@ -65,11 +66,9 @@ function handleRightFloating() {
       if (entry.isIntersecting) {
         // 푸터가 화면에 보이기 시작하면 버튼 숨김
         floatButton.classList.remove('visible');
-        console.log('푸터에 도달함 - 버튼 숨김');
       } else {
         // 푸터가 화면에서 벗어나면 버튼 표시
         floatButton.classList.add('visible');
-        console.log('푸터에서 벗어남 - 버튼 표시');
       }
     });
   }, { threshold: 0 });
@@ -162,11 +161,41 @@ function setActiveTab(targetContentId) {
   }
 }
 
-// 팝업
-function handlePopup() {
+// 공지사항 팝업
+function handleNoticePopup() {
+  const startDate = new Date('2024-11-19');
+  const endDate = new Date('2024-11-27');
+  const today = new Date(''); // 테스트 날짜
+
+  const popup = document.querySelector('.notice_popup');
+  const legoPopup = document.getElementById('lego_popup');
+  const closeBtn = document.getElementById('notice-close-btn');
+  const bg = document.querySelector('.popup-dim');
+
+  if (today >= startDate && today <= endDate) {
+    popup.style.display = 'block';
+    bg.classList.add('on');
+  } else {
+    popup.style.display = 'none';
+    if (legoPopup.style.display !== 'block') {
+      bg.classList.remove('on');
+    }
+  }
+  
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+    if (legoPopup.style.display !== 'block') {
+      bg.classList.remove('on');
+    }
+  });
+}
+
+// 레고 팝업
+function handleLegoPopup() {
   const popup = document.getElementById('lego_popup');
   const noShow7DaysBtn = document.getElementById('no-show-7days-btn');
   const closeBtn = document.getElementById('close-btn');
+  const bg = document.querySelector('.popup-dim');
 
   if (!popup || !noShow7DaysBtn || !closeBtn) {
     console.error('팝업 관련 요소가 존재하지 않습니다. HTML 코드를 확인해주세요.');
@@ -174,18 +203,30 @@ function handlePopup() {
   }
 
   // 7일간 팝업 표시 안 함 버튼 처리
-  noShow7DaysBtn.addEventListener('click', () => setCookieAndHidePopup(popup));
-  // 팝업 닫기 버튼 처리
-  closeBtn.addEventListener('click', () => (popup.style.display = 'none'));
+  noShow7DaysBtn.addEventListener('click', () => setCookieAndHidePopup(popup, bg));
+  
+  closeBtn.addEventListener('click', () => {
+    popup.style.display = 'none';
+    if (!document.querySelector('.notice_popup') || document.querySelector('.notice_popup').style.display === 'none') {
+      bg.classList.remove('on');
+    }
+  });
 
-  // 페이지 로드 시 쿠키 검사 후 팝업 표시 결정
-  popup.style.display = getCookie('hideLegoPopup') !== 'true' ? 'block' : 'none';
+  if (getCookie('hideLegoPopup') !== 'true') {
+    popup.style.display = 'block';
+    bg.classList.add('on'); 
+  } else {
+    popup.style.display = 'none';
+  }
 }
 
+
+
 // 쿠키 설정 후 팝업 숨김 처리
-function setCookieAndHidePopup(popup) {
+function setCookieAndHidePopup(popup, bg) {
   setCookie('hideLegoPopup', 'true', 7);
   popup.style.display = 'none';
+  bg.style.display = 'none'
 }
 
 // 쿠키를 설정하는 함수

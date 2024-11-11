@@ -1059,8 +1059,78 @@
 
   /* popup start */
 
-  .lego_popup .contents {
+  .lego_popup .contents,
+  .notice_popup .contents {
     width: 27.0833vw;
+  }
+
+  .notice_popup .contents .txt-wrap {
+    padding: 1.5625vw;
+  }
+
+  .notice_popup .contents .txt-wrap .title-wrap{ 
+    padding: 0.5208vw;
+  }
+
+  .notice_popup .contents .txt-wrap .title-wrap .title {
+    font-size: 2.3958vw;
+  }
+  
+  .notice_popup .contents .txt-wrap .title-wrap .subtitle {
+    font-size: 1.4583vw;
+  }
+
+  .notice_popup .contents .box {
+    border-radius: 2.0833vw;
+    border: 0.2083vw solid #1d2a57;
+    box-shadow: 0.1562vw 0.1562vw 0px 0px #1d2a57;
+    padding: 2.1875vw 2.9688vw;
+    margin-top: 1.9271vw;
+  }
+  
+  .notice_popup .contents .box .bloon {
+    top: -0.9375vw;
+    left: 0.5208vw;
+    width: 5.2604vw;
+    height: 3.6042vw;
+  }
+  
+  .notice_popup .contents .box .text-top {
+    font-size: 1.875vw;
+    line-height: 2.7604vw;
+  }
+  
+  .notice_popup .contents .box hr {
+    border: none;
+    width: 100%;
+    height: 0.1042vw;
+    background-image: repeating-linear-gradient(
+      to right,
+      #ccc,
+      #ccc 0.5208vw,
+      transparent 0.5208vw,
+      transparent 0.625vw
+    );
+    margin: 2.1094vw 0;
+  }
+  
+  .notice_popup .contents .box .text-bottom {
+    font-size: 1.4583vw;
+    line-height: 2.5vw;
+    letter-spacing: -0.5px;
+  }
+  
+  .notice_popup .contents .box .text-bottom span {
+    color: #fff;
+    border-radius: 1.0938vw;
+    padding: 0.3646vw 0.7812vw;
+  }
+  
+  .notice_popup .popup-buttons {
+    width: 100%;
+    display: flex;
+    height: 100%;
+    font-weight: 300;
   }
 
   .lego_popup img{
@@ -1072,7 +1142,8 @@
     width: 27.0833vw;
   }
 
-  .lego_popup .popup-buttons button {
+  .lego_popup .popup-buttons button,
+  .notice_popup .popup-buttons button {
 
     height: 3.125vw;
     font-size: 1.0417vw;
@@ -2585,8 +2656,80 @@
   width: 100%;
 }
 
-.lego_popup .contents {
+.lego_popup .contents,
+.notice_popup .contents {
   width: 320px;
+}
+
+.notice_popup .contents .txt-wrap {
+  padding: 20px 20px 26px;
+}
+
+.notice_popup .contents .txt-wrap .title-wrap{ 
+  padding: 16.5px;
+  border-top: 1.25px solid #fff;
+  border-bottom: 1.25px solid #fff;
+}
+
+.notice_popup .contents .txt-wrap .title-wrap .title {
+  font-size: 29px;
+}
+
+.notice_popup .contents .txt-wrap .title-wrap .subtitle {
+  font-size: 17px;
+}
+
+.notice_popup .contents .box {
+  border-radius: 25px;
+  border: 2 solid #1d2a57;
+  box-shadow: 3px 3px 0px 0px #1d2a57;
+  padding: 27.5px 30px;
+  margin-top: 25px;
+}
+
+.notice_popup .contents .box .bloon {
+  left: 5px;
+  top: -12.5px;
+  width: 62.5px;
+  height: 42px;
+}
+
+.notice_popup .contents .box .text-top {
+  font-size: 23px;
+  line-height: 33px;
+}
+
+.notice_popup .contents .box hr {
+  border: none;
+  width: 100%;
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #ccc,
+    #ccc 10px,
+    transparent 10px,
+    transparent 12px
+  );
+  margin: 27px 0;
+}
+
+.notice_popup .contents .box .text-bottom {
+  font-size: 18px;
+  line-height: 30px;
+  letter-spacing: -0.5px;
+}
+
+.notice_popup .contents .box .text-bottom span {
+  color: #fff;
+  border-radius: 13.125px;
+  padding: 5.5px 7.5px;
+}
+
+.notice_popup .popup-buttons {
+  width: 100%;
+  display: flex;
+  height: 100%;
+  font-weight: 300;
 }
 
 .lego_popup .popup-buttons {
@@ -2598,7 +2741,8 @@
   height: 446px;
 }
 
-.lego_popup .popup-buttons button {
+.lego_popup .popup-buttons button,
+.notice_popup .popup-buttons button {
   height: 40px;
   font-size: 15px;
 }
