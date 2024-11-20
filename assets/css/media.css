@@ -16,6 +16,14 @@
 
 /* 모바일 가로 화면 (768px 이하) */
 @media (max-width: 768px) {
+  /* root 재정의 예시 코드 */
+  :root {
+    --font-size-base: 14px;
+    --background-color: #eeeeee;
+  }
+  body {
+    font-size: calc(var(--font-size-base) - 4px);
+  }
 }
 
 /* 모바일 세로 화면 (480px 이하) */
@@ -25,8 +33,6 @@
 /* 모바일 초소형 화면 (320px 이하) */
 @media (max-width: 320px) {
 }
-
-@media (max-width: 1700px) {}
 
 /* 엣지 */
 .edge {
