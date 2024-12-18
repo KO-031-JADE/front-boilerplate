@@ -16,3 +16,7 @@ function browserDetector() {
     alert('whale');
   }
 }
+
+function textQr() {
+
+}
