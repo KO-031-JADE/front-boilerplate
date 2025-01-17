@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-  browserDetector(); // 브라우저 감지
+  // 브라우저 감지
+  browserDetector();
+
+  // 컴포넌트 로드
+  loadComponent("#header-placeholder", "../components/header/header.html");
+  loadComponent("#footer-placeholder", "../components/footer/footer.html");
+  // loadComponent("#button-placeholder", "../components/common/button.html");
 });
 
 // 브라우저 감지
@@ -19,4 +25,14 @@ function browserDetector() {
 
 function textQr() {
 
+}
+
+// 공통 컴포넌트 로드 함수
+function loadComponent(selector, filePath) {
+  fetch(filePath)
+    .then((response) => response.text())
+    .then((html) => {
+      document.querySelector(selector).innerHTML = html;
+    })
+    .catch((error) => console.error("Error loading component:", error));
 }
