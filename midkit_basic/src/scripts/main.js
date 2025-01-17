@@ -26,13 +26,3 @@ function browserDetector() {
 function textQr() {
 
 }
-
-// 공통 컴포넌트 로드 함수
-function loadComponent(selector, filePath) {
-  fetch(filePath)
-    .then((response) => response.text())
-    .then((html) => {
-      document.querySelector(selector).innerHTML = html;
-    })
-    .catch((error) => console.error("Error loading component:", error));
-}
