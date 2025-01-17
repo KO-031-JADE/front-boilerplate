@@ -104,9 +104,6 @@
  ┃ ┣ 📂icons                      # 아이콘 파일 저장 (SVG, PNG 등)
  ┃ ┗ 📂images                     # 이미지 파일 저장 (JPG, PNG 등)
  ┣ 📂src                        # 소스 코드 디렉토리
- ┃ ┣ 📂layout                    # 공통 레이아웃 관리
- ┃ ┃ ┣ 📂footer                    # 푸터 관련 파일
- ┃ ┃ ┗ 📂header                    # 헤더 관련 파일
  ┃ ┣ 📂pages                     # 개별 페이지 관리
  ┃ ┃ ┣ 📂about                    # About 페이지
  ┃ ┃ ┣ 📂contact                  # Contact 페이지
@@ -124,15 +121,6 @@
  ┃ ┃ ┣ 📜media.css                # 미디어 쿼리 스타일 정의
  ┃ ┃ ┣ 📜reset.css                # 기본 브라우저 스타일 초기화
  ┃ ┃ ┗ 📜style.css                # 프로젝트 공통 스타일
- ┃ ┣ 📂templates                 # 공통 HTML 템플릿 관리
- ┃ ┃ ┣ 📂forms                    # 공통 폼 템플릿 (로그인/회원가입)
- ┃ ┃ ┃ ┣ 📜login-form.html          # 로그인 폼 HTML
- ┃ ┃ ┃ ┗ 📜signup-form.html         # 회원가입 폼 HTML
- ┃ ┃ ┣ 📂modals                   # 공통 모달 템플릿
- ┃ ┃ ┃ ┣ 📜alert-modal.html         # 경고 모달 HTML
- ┃ ┃ ┃ ┗ 📜confirm-modal.html       # 확인 모달 HTML
- ┃ ┃ ┗ 📂partials                 # 공통 섹션 템플릿
- ┃ ┃   ┗ 📜navigation.html          # 네비게이션 HTML 템플릿
  ┣ 📜index.html                 # 메인 진입점 HTML
  ┗ 📜README.md                  # 프로젝트 설명 파일
 
@@ -144,3 +132,4 @@
 2. 불필요한 파일, 코드, 주석. 폰트 삭제 후 작업 진행.
 3. CSS는 globals.css에서 글로벌 변수 관리. 필요 시 추가.
 4. 기본적으로 CDN 사용 지향. 로컬 파일은 백업 또는 수정 필요 시만 사용.
+5. HTML5 Boilerplate, Google Web Fundamentals, 그리고 오픈소스 프로젝트 사례를 종합적으로 참고.
