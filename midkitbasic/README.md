@@ -102,12 +102,12 @@
  ┃ ┗ 📂images                     # 이미지 파일 저장 (JPG, PNG 등)
  ┣ 📂src                        # 소스 코드 디렉토리
  ┃ ┣ 📂pages                     # 개별 페이지 관리
- ┃ ┃ ┣ 📂about                    # About 페이지
- ┃ ┃ ┣ 📂contact                  # Contact 페이지
+ ┃ ┃ ┣ 📂about                    # About 임시 페이지
+ ┃ ┃ ┣ 📂contact                  # Contact 임시 페이지
  ┃ ┃ ┗ 📂main                     # 메인 페이지
  ┃ ┣ 📂scripts                   # 공통 스크립트 관리
  ┃ ┃ ┣ 📂helpers                  # 유틸리티 함수 모음 (예: 날짜 포맷 변환)
- ┃ ┃ ┣ 📂lib                      # 외부 스크립트 라이브러리 (예: AOS, GSAP)
+ ┃ ┃ ┣ 📂lib                      # 외부 스크립트 라이브러리 (예: Swiper, Jquery)
  ┃ ┃ ┣ 📂services                 # API 통신 및 서비스 로직 관리
  ┃ ┃ ┗ 📜main.js                  # 프로젝트 전체에서 사용하는 공통 스크립트
  ┃ ┣ 📂styles                    # 전역 스타일 관리

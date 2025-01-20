@@ -3,9 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
   browserDetector();
 
   // 컴포넌트 로드
-  loadComponent("#header-placeholder", "../components/header/header.html");
-  loadComponent("#footer-placeholder", "../components/footer/footer.html");
-  // loadComponent("#button-placeholder", "../components/common/button.html");
+  // 헤더 컴포넌트 사용
+  $("#header-container").html(createHeader("내 웹사이트"));
+
+  // 사이드바 컴포넌트 사용
+  $("#sidebar-container").html(Sidebar.create(["메뉴5", "메뉴2", "메뉴3"]));
+
+  // 푸터 컴포넌트 동적 로딩
+  $("#footer-container").load("./src/components-test/footer/footer.html");
 });
 
 // 브라우저 감지
