@@ -72,10 +72,6 @@ a:not([class]) {
   text-decoration-skip-ink: auto;
   color: currentColor;
 }
-a:not([class]):focus,
-a:not([class]):hover {
-  text-decoration: underline;
-}
 
 /* 이미지 관련 작업 */
 img,
