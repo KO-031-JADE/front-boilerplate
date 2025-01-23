@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 컴포넌트 로드
   // 헤더 컴포넌트 사용
-  $("#header-container").html(createHeader("내 웹사이트"));
+  $("#header-container").html(createHeader("난임백과"));
 
   // 사이드바 컴포넌트 사용
   $("#sidebar-container").html(Sidebar.create(["메뉴5", "메뉴2", "메뉴3"]));
