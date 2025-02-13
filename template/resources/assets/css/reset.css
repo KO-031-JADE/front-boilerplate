@@ -12,25 +12,34 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+  font-size: 14px;
+  color: #222;
 }
 
 /* 기본 여백 제거 */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd,
-ol {
-  margin: 0;
-  padding: 0;
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
   word-break: keep-all;
   word-wrap: break-word;
+  text-wrap: balance; /* 최신 브라우저 */
+  overflow-wrap: break-word; /* 대체 속성 */
   line-height: 1.5;
+  font-family: 'Pretendard';
+  letter-spacing: -0.04em;
 }
 
 /* 리스트 기본 스타일 제거 */
@@ -45,26 +54,6 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   margin: 0;
-}
-
-/* 제목 및 상호작용 요소의 line-height 조정 */
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-  line-height: 1.1;
-}
-
-/* 제목에 대한 text-wrap을 balance로 설정 (브라우저 호환성 참고) */
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance; /* 최신 브라우저 */
-  overflow-wrap: break-word; /* 대체 속성 */
 }
 
 /* 기본 a 태그 스타일 */
@@ -120,4 +109,21 @@ select::-ms-expand {
 a,
 del {
   text-decoration: none;
+  color: inherit;
+}
+strong, b {
+  font-weight: 700;
+}
+
+input::-webkit-input-placeholder {
+  color: #999;
+}
+input::-moz-placeholder {
+  color: #999;
+}
+input:-ms-input-placeholder {
+  color: #999;
+}
+input::placeholder {
+  color: #999;
 }
